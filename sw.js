@@ -1,4 +1,4 @@
-const CACHE = 'travis-workout-v2';
+const CACHE = 'travis-workout-v3';
 const ASSETS = [
   './',
   './index.html',

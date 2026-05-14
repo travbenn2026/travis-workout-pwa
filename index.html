@@ -79,6 +79,7 @@
   .block-tab.active-arms     { border-bottom-color: var(--arms);     color: var(--arms); }
   .block-tab.active-recovery { border-bottom-color: var(--recovery); color: var(--recovery); }
   .block-tab.active-warmup   { border-bottom-color: #888;            color: #aaa; }
+  .block-tab.active-cooldown { border-bottom-color: #3abcbc;         color: #3abcbc; }
 
   /* MAIN SCROLL */
   .main-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 14px 16px; }
@@ -168,6 +169,20 @@
   /* TOAST */
   .toast { position: fixed; bottom: calc(76px + var(--safe-bottom)); left: 50%; transform: translateX(-50%); background: #1a2a10; border: 1px solid #44aa22; color: #88dd44; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap; z-index: 200; }
   .toast.show { opacity: 1; }
+
+  /* COOLDOWN */
+  .cooldown-card { background: #080f10; border: 1px solid #0e2a2a; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+  .cooldown-head { background: #0a1a1a; padding: 10px 14px; border-bottom: 1px solid #0e2a2a; display: flex; align-items: center; gap: 8px; }
+  .cooldown-head-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #3abcbc; }
+  .cooldown-head-sub { font-size: 11px; color: #2a7a7a; margin-left: auto; }
+  .stretch-row { padding: 11px 14px; border-bottom: 1px solid #0e1e1e; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .stretch-row:last-child { border-bottom: none; }
+  .stretch-left { flex: 1; }
+  .stretch-name { font-size: 13px; font-weight: 600; color: #e0f0f0; margin-bottom: 3px; }
+  .stretch-cue  { font-size: 11px; color: #3a7a7a; line-height: 1.5; }
+  .stretch-hold { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 800; color: #3abcbc; flex-shrink: 0; padding-top: 1px; }
+  .cooldown-note { background: #060e0e; border-left: 3px solid #0e3a3a; border-radius: 0 0 12px 12px; padding: 10px 14px; font-size: 11px; color: #2a6a6a; line-height: 1.6; }
+  .cooldown-note strong { color: #3a9a9a; }
 
   @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
   .main-scroll > *, .tracker-scroll > * { animation: fadeUp 0.18s ease both; }
@@ -311,6 +326,7 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"push" },
   ],
   1:[
     { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
@@ -340,6 +356,7 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"pull" },
   ],
   2:[
     { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min · Knee-conscious" },
@@ -369,6 +386,7 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Knee-priority",isCooldown:true,cooldownType:"legs" },
   ],
   3:[
     { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min · Elbow prep" },
@@ -398,6 +416,7 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Elbow focus",isCooldown:true,cooldownType:"arms" },
   ],
   4:[
     { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
@@ -427,6 +446,7 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"push" },
   ],
   5:[
     { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
@@ -456,13 +476,65 @@ const BLOCKS = {
         ]},
       ]
     },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"pull" },
   ],
   6:[
     { id:"recovery",emoji:"🧘",label:"Recovery",meta:"30–45 min · No loading",isRecovery:true },
+    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Pre-sauna",isCooldown:true,cooldownType:"recovery" },
   ],
 };
 
-// ── TRACKER STORAGE ───────────────────────────────────────────────────────────
+// ── COOLDOWNS ─────────────────────────────────────────────────────────────────
+
+const COOLDOWNS = {
+  push: {
+    note:"<strong>Why these:</strong> Heavy pressing shortens the pec minor and anterior delt. These stretches restore chest length, decompress the shoulder capsule, and release tricep tension before you sit down.",
+    stretches:[
+      { name:"Doorway / Tonal Post Chest Stretch", cue:"Grab Tonal upright at shoulder height, step through and rotate away. Feel the full pec stretch. Switch sides.", hold:"45 sec each" },
+      { name:"Cross-Body Shoulder Stretch", cue:"Pull elbow across chest, hold at shoulder height. Targets posterior capsule and rear delt.", hold:"30 sec each" },
+      { name:"Overhead Tricep Stretch", cue:"Reach one hand down spine, use other hand to gently press elbow back. Long head of tricep.", hold:"30 sec each" },
+      { name:"Thoracic Extension over Bench", cue:"Sit at edge of bench, hands behind head, gently arch upper back over the edge. Undoes the thoracic flexion from pressing.", hold:"60 sec" },
+    ]
+  },
+  pull: {
+    note:"<strong>Why these:</strong> Heavy rows and pulldowns compress the lats in a shortened position and fatigue the bicep tendon. These stretches restore lat length, open the chest (antagonist), and release elbow flexor tension.",
+    stretches:[
+      { name:"Overhead Lat Stretch", cue:"Grab Tonal upright overhead, sink hips back and away. Feel the entire lat lengthen from armpit to hip.", hold:"45 sec each" },
+      { name:"Doorway Chest Opener", cue:"Arms at 90°, press forearms into door frame and lean through. Counteracts the hunched position from rowing.", hold:"45 sec" },
+      { name:"Supinated Bicep / Forearm Stretch", cue:"Arm straight, palm up, use other hand to gently press fingers down. Releases bicep tendon and forearm flexors.", hold:"30 sec each" },
+      { name:"Child's Pose with Lat Reach", cue:"On knees, reach both arms forward on the floor, sink chest toward ground. Walk hands to one side for a unilateral lat stretch.", hold:"45 sec each side" },
+    ]
+  },
+  legs: {
+    note:"<strong>Why these:</strong> Squatting and hinging load the knee joint and compress the hip flexors. Gentle decompression of the knee and hip capsule after a leg session significantly improves next-session readiness — especially important with your meniscus history.",
+    stretches:[
+      { name:"Standing Quad / Hip Flexor Stretch", cue:"Stand on one leg, pull heel to glute. Keep hips level, stand tall. If balance is an issue, hold Tonal upright.", hold:"45 sec each" },
+      { name:"Supine Lying Hamstring Stretch (Tonal)", cue:"On back, one leg straight up, gentle pull with hands or strap. No aggressive forcing — just passive length.", hold:"45 sec each" },
+      { name:"Pigeon / Figure-Four Glute Stretch", cue:"On back, cross ankle over opposite knee, pull both legs toward chest. Deep glute and hip external rotator stretch.", hold:"45 sec each" },
+      { name:"Gentle Knee Extension Decompression", cue:"Sit at edge of bench, let one knee hang straight with a slight forward lean. No weight — just passive decompression of the joint. ⚠️ Meniscus-safe.", hold:"60 sec each" },
+    ]
+  },
+  arms: {
+    note:"<strong>Why these:</strong> High-volume bicep and tricep work creates significant elbow flexor/extensor fatigue and wrist tension. These are the stretches most lifters skip that most directly prevent elbow issues over time.",
+    stretches:[
+      { name:"Wrist Flexor Stretch", cue:"Arm straight in front, palm up, use other hand to gently press fingers down toward floor. Forearm flexors and bicep tendon.", hold:"30 sec each" },
+      { name:"Wrist Extensor Stretch", cue:"Arm straight, palm down, gently press fingers toward floor. Forearm extensors and brachioradialis.", hold:"30 sec each" },
+      { name:"Overhead Tricep Stretch", cue:"Reach one hand down spine, gently press elbow back with other hand. Long head of tricep — the most worked head today.", hold:"30 sec each" },
+      { name:"Cross-Body Shoulder / Bicep Stretch", cue:"Arm across chest at shoulder height, other hand gently presses elbow. Releases bicep tendon attachment at shoulder.", hold:"30 sec each" },
+    ]
+  },
+  recovery: {
+    note:"<strong>Recovery day cooldown:</strong> After cardio, run through this brief sequence before sauna. The heat will deepen the benefit of anything you just stretched.",
+    stretches:[
+      { name:"90-90 Hip Stretch (Tonal)", cue:"Both hips at 90°, sit tall, gently lean forward over front shin. Work both sides — internal and external rotation.", hold:"60 sec each" },
+      { name:"Bretzel (Tonal)", cue:"Side-lying hip flexor and thoracic rotation combo. One of the best all-in-one recovery stretches.", hold:"45 sec each" },
+      { name:"Child's Pose with Lat Reach", cue:"Both arms forward, sink chest. Walk hands to each side for unilateral lat stretch. Slow breathing.", hold:"60 sec" },
+      { name:"Supine Spinal Twist", cue:"On back, one knee crosses body, arms out to sides. Let gravity do the work. Full thoracic and lumbar decompression.", hold:"45 sec each" },
+    ]
+  },
+};
+
+
 
 const STORE_KEY = 'travis_progress_v1';
 function loadLogs()    { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; } }
@@ -543,7 +615,31 @@ function renderWarmup(dt) {
     <div class="card"><div class="ex-row"><div class="ex-note">${w.activation}</div></div></div>`;
 }
 
+function renderCooldown(type) {
+  const c = COOLDOWNS[type];
+  if (!c) return '';
+  const rows = c.stretches.map(s=>`
+    <div class="stretch-row">
+      <div class="stretch-left">
+        <div class="stretch-name">${s.name}</div>
+        <div class="stretch-cue">${s.cue}</div>
+      </div>
+      <div class="stretch-hold">${s.hold}</div>
+    </div>`).join('');
+  return `
+    <div class="cooldown-card">
+      <div class="cooldown-head">
+        <span style="font-size:16px">🧊</span>
+        <div class="cooldown-head-title">Post-Workout Stretch</div>
+        <div class="cooldown-head-sub">~5 min · Do these now</div>
+      </div>
+      ${rows}
+    </div>
+    <div class="cooldown-note">${c.note}</div>`;
+}
+
 function renderBlockContent(block, dt) {
+  if (block.isCooldown) return renderCooldown(block.cooldownType);
   if (block.id==='warmup') return renderWarmup(dt);
   if (block.isRecovery) return `
     <div class="pw-card" style="background:#080d0f;border-color:#102030">
@@ -595,7 +691,7 @@ function buildBlockTabs() {
   const dt=DAYS[currentDay].type;
   document.getElementById('blockTabs').innerHTML=BLOCKS[currentDay].map(b=>{
     const a=b.id===currentBlock;
-    const cls=a?(b.id==='warmup'?'active-warmup':b.isRecovery?'active-recovery':'active-'+dt):'';
+    const cls=a?(b.id==='warmup'?'active-warmup':b.isCooldown?'active-cooldown':b.isRecovery?'active-recovery':'active-'+dt):'';
     return `<div class="block-tab ${cls}" onclick="selectBlock('${b.id}')">${b.emoji} ${b.label}</div>`;
   }).join('');
 }
