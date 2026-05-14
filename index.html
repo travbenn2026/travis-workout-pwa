@@ -15,183 +15,161 @@
 <title>Travis's Program</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #080808; --card: #111; --border: #1e1e1e; --text: #efefef;
-    --muted: #5a5a5a; --subtle: #2a2a2a;
-    --push: #e8622a; --pull: #27b872; --legs: #e8a82a; --arms: #9b2de8; --recovery: #3a88cc;
-    --safe-bottom: env(safe-area-inset-bottom, 16px);
-    --safe-top: env(safe-area-inset-top, 0px);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; overflow: hidden; font-family: 'Barlow', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
-  .shell { display: flex; flex-direction: column; height: 100dvh; padding-top: var(--safe-top); }
-
-  /* BOTTOM NAV */
-  .bottom-nav { flex-shrink: 0; display: flex; background: #0d0d0d; border-top: 1px solid var(--border); padding-bottom: var(--safe-bottom); }
-  .nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 10px 0 6px; cursor: pointer; border: none; background: none; color: var(--muted); font-family: 'Barlow', sans-serif; transition: color 0.15s; }
-  .nav-btn.active { color: var(--push); }
-  .nav-btn.active.nav-track { color: #4499dd; }
-  .nav-icon  { font-size: 20px; margin-bottom: 3px; }
-  .nav-label { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-
-  /* SCREENS */
-  .screen { display: none; flex-direction: column; flex: 1; overflow: hidden; }
-  .screen.active { display: flex; }
-
-  /* HEADER */
-  .header { flex-shrink: 0; padding: 14px 18px 10px; background: var(--bg); border-bottom: 1px solid var(--border); }
-  .header-row { display: flex; align-items: center; justify-content: space-between; }
-  .prog-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; line-height: 1; }
-  .prog-sub   { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
-  .header-badge { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
-  .badge-push     { background: rgba(232,98,42,0.15);  color: var(--push); }
-  .badge-pull     { background: rgba(39,184,114,0.15); color: var(--pull); }
-  .badge-legs     { background: rgba(232,168,42,0.15); color: var(--legs); }
-  .badge-arms     { background: rgba(155,45,232,0.15); color: var(--arms); }
-  .badge-recovery { background: rgba(58,136,204,0.15); color: var(--recovery); }
-
-  /* DAY CHIPS */
-  .day-scroll-wrap { flex-shrink: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-bottom: 1px solid var(--border); }
-  .day-scroll-wrap::-webkit-scrollbar { display: none; }
-  .day-scroll { display: flex; padding: 10px 14px; gap: 8px; width: max-content; }
-  .day-chip { display: flex; flex-direction: column; align-items: center; padding: 8px 14px; border-radius: 10px; background: var(--card); border: 1.5px solid var(--border); cursor: pointer; min-width: 64px; }
-  .day-chip.active-push     { border-color: var(--push);     background: rgba(232,98,42,0.08); }
-  .day-chip.active-pull     { border-color: var(--pull);     background: rgba(39,184,114,0.08); }
-  .day-chip.active-legs     { border-color: var(--legs);     background: rgba(232,168,42,0.08); }
-  .day-chip.active-arms     { border-color: var(--arms);     background: rgba(155,45,232,0.08); }
-  .day-chip.active-recovery { border-color: var(--recovery); background: rgba(58,136,204,0.08); }
-  .chip-dow  { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .chip-name { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
-  .chip-push .chip-name,     .active-push .chip-name     { color: var(--push); }
-  .chip-pull .chip-name,     .active-pull .chip-name     { color: var(--pull); }
-  .chip-legs .chip-name,     .active-legs .chip-name     { color: var(--legs); }
-  .chip-arms .chip-name,     .active-arms .chip-name     { color: var(--arms); }
-  .chip-recovery .chip-name, .active-recovery .chip-name { color: var(--recovery); }
-
-  /* BLOCK TABS */
-  .block-tabs-wrap { flex-shrink: 0; overflow-x: auto; scrollbar-width: none; background: var(--card); border-bottom: 1px solid var(--border); }
-  .block-tabs-wrap::-webkit-scrollbar { display: none; }
-  .block-tabs { display: flex; padding: 0 14px; width: max-content; }
-  .block-tab { padding: 11px 14px; font-size: 12px; font-weight: 600; color: var(--muted); border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
-  .block-tab.active-push     { border-bottom-color: var(--push);     color: var(--push); }
-  .block-tab.active-pull     { border-bottom-color: var(--pull);     color: var(--pull); }
-  .block-tab.active-legs     { border-bottom-color: var(--legs);     color: var(--legs); }
-  .block-tab.active-arms     { border-bottom-color: var(--arms);     color: var(--arms); }
-  .block-tab.active-recovery { border-bottom-color: var(--recovery); color: var(--recovery); }
-  .block-tab.active-warmup   { border-bottom-color: #888;            color: #aaa; }
-  .block-tab.active-cooldown { border-bottom-color: #3abcbc;         color: #3abcbc; }
-
-  /* MAIN SCROLL */
-  .main-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px 14px 16px; }
-
-  /* EXERCISE CARDS */
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
-  .ss-bar { background: #13091e; border-bottom: 1px solid var(--border); padding: 6px 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8844cc; display: flex; align-items: center; gap: 6px; }
-  .ss-dot { width: 5px; height: 5px; border-radius: 50%; background: #8844cc; }
-  .ex-row { padding: 12px 14px; border-bottom: 1px solid var(--border); }
-  .ex-row:last-child { border-bottom: none; }
-  .ex-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
-  .ex-name { font-size: 14px; font-weight: 600; color: #fff; flex: 1; line-height: 1.2; }
-  .ex-pills { display: flex; gap: 5px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
-  .pill { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; white-space: nowrap; }
-  .pill-sets { background: var(--subtle); color: #bbb; }
-  .pill-reps { background: var(--subtle); color: #bbb; }
-  .pill-rir  { background: #1a1208; color: #aa8830; }
-  .ex-note { font-size: 11px; color: var(--muted); line-height: 1.5; }
-  .ex-tag { display: inline-block; margin-top: 5px; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-  .tag-tonal  { background: #0a1a2a; color: #4499dd; }
-  .tag-custom { background: #191908; color: #aaaa33; }
-  .tag-db     { background: #1a0808; color: #cc5544; }
-  .tag-cardio { background: #080e1a; color: #4466cc; }
-  .note-box { background: #0f0e08; border-left: 3px solid #333; border-radius: 0 0 12px 12px; padding: 11px 14px; font-size: 11px; color: #777; line-height: 1.6; }
-  .note-box strong { color: #999; }
-
-  /* WARMUP ELEMENTS */
-  .timing-strip { display: flex; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
-  .t-item { flex: 1; padding: 11px 6px; border-right: 1px solid var(--border); text-align: center; }
-  .t-item:last-child { border-right: none; }
-  .t-time   { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; color: #e8b840; line-height: 1; margin-bottom: 3px; }
-  .t-label  { font-size: 11px; font-weight: 600; color: #ccc; margin-bottom: 2px; }
-  .t-detail { font-size: 9px; color: var(--muted); line-height: 1.3; }
-  .warmup-row { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .warmup-row:last-child { border-bottom: none; }
-  .warmup-name   { font-size: 13px; font-weight: 500; color: #ddd; }
-  .warmup-detail { font-size: 11px; color: var(--muted); text-align: right; flex-shrink: 0; max-width: 130px; line-height: 1.3; }
-  .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 14px 0 7px; display: flex; align-items: center; gap: 8px; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .pw-card { background: #0f0d08; border: 1px solid #2a2010; border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
-  .pw-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c8a050; margin-bottom: 8px; }
-  .pw-row { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; border-bottom: 1px solid #1a1508; }
-  .pw-row:last-child { border-bottom: none; }
-  .pw-time-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; color: #e8b840; min-width: 38px; }
-  .pw-desc { font-size: 12px; color: #a08040; }
-  .rec-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
-  .rec-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; color: #aaa; margin-bottom: 6px; }
-  .rec-card p  { font-size: 12px; color: var(--muted); line-height: 1.7; }
-
-  /* TRACKER SCREEN */
-  .tracker-header { flex-shrink: 0; padding: 14px 18px 10px; border-bottom: 1px solid var(--border); }
-  .tracker-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; color: #fff; }
-  .tracker-sub   { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
-  .tracker-scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 14px 14px 16px; }
-
-  /* LOG FORM */
-  .log-form-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 16px; }
-  .log-form-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #4499dd; margin-bottom: 12px; }
-  .log-row { display: flex; gap: 8px; margin-bottom: 8px; }
-  .log-select, .log-input { background: #0d0d0d; border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px; padding: 10px 12px; outline: none; -webkit-appearance: none; }
-  .log-select { flex: 2; }
-  .log-input  { flex: 1; text-align: center; }
-  .log-input:focus, .log-select:focus { border-color: #4499dd; }
-  .log-btn { width: 100%; background: #4499dd; border: none; border-radius: 8px; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 12px; cursor: pointer; margin-top: 4px; }
-  .log-btn:active { background: #3388cc; }
-
-  /* HISTORY CARDS */
-  .pr-badge { display: inline-block; background: #1a2a08; color: #88cc44; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.5px; margin-left: 6px; }
-  .ex-hist-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
-  .ex-hist-head { padding: 12px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .ex-hist-name { font-size: 14px; font-weight: 600; color: #fff; }
-  .ex-hist-best { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; color: #88cc44; font-weight: 700; }
-  .mini-chart  { padding: 12px 14px 4px; }
-  .chart-bars  { display: flex; align-items: flex-end; gap: 4px; height: 52px; margin-bottom: 0; }
-  .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-  .chart-bar   { width: 100%; border-radius: 3px 3px 0 0; min-height: 4px; }
-  .chart-date  { font-size: 9px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; text-align: center; margin-top: 3px; }
-  .chart-val   { font-size: 9px; color: #777; text-align: center; }
-  .hist-row { padding: 9px 14px; border-bottom: 1px solid #181818; display: flex; justify-content: space-between; align-items: center; }
-  .hist-row:last-child { border-bottom: none; }
-  .hist-date   { font-size: 12px; color: var(--muted); }
-  .hist-weight { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: #ccc; }
-  .hist-e1rm   { font-size: 11px; color: var(--muted); }
-  .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px; line-height: 1.6; }
-  .empty-state .empty-icon { font-size: 36px; margin-bottom: 12px; }
-
-  /* TOAST */
-  .toast { position: fixed; bottom: calc(76px + var(--safe-bottom)); left: 50%; transform: translateX(-50%); background: #1a2a10; border: 1px solid #44aa22; color: #88dd44; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: opacity 0.2s; pointer-events: none; white-space: nowrap; z-index: 200; }
-  .toast.show { opacity: 1; }
-
-  /* COOLDOWN */
-  .cooldown-card { background: #080f10; border: 1px solid #0e2a2a; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
-  .cooldown-head { background: #0a1a1a; padding: 10px 14px; border-bottom: 1px solid #0e2a2a; display: flex; align-items: center; gap: 8px; }
-  .cooldown-head-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #3abcbc; }
-  .cooldown-head-sub { font-size: 11px; color: #2a7a7a; margin-left: auto; }
-  .stretch-row { padding: 11px 14px; border-bottom: 1px solid #0e1e1e; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-  .stretch-row:last-child { border-bottom: none; }
-  .stretch-left { flex: 1; }
-  .stretch-name { font-size: 13px; font-weight: 600; color: #e0f0f0; margin-bottom: 3px; }
-  .stretch-cue  { font-size: 11px; color: #3a7a7a; line-height: 1.5; }
-  .stretch-hold { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 800; color: #3abcbc; flex-shrink: 0; padding-top: 1px; }
-  .cooldown-note { background: #060e0e; border-left: 3px solid #0e3a3a; border-radius: 0 0 12px 12px; padding: 10px 14px; font-size: 11px; color: #2a6a6a; line-height: 1.6; }
-  .cooldown-note strong { color: #3a9a9a; }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-  .main-scroll > *, .tracker-scroll > * { animation: fadeUp 0.18s ease both; }
+:root{--bg:#080808;--card:#111;--card2:#161616;--border:#1e1e1e;--text:#efefef;--muted:#5a5a5a;--subtle:#2a2a2a;--push:#e8622a;--pull:#27b872;--legs:#e8a82a;--arms:#9b2de8;--recovery:#3a88cc;--acc:#e8b840;--int:#cc44ff;--del:#44bbcc;--safe-bottom:env(safe-area-inset-bottom,16px);--safe-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+.shell{display:flex;flex-direction:column;height:100dvh;padding-top:var(--safe-top)}
+.bottom-nav{flex-shrink:0;display:flex;background:#0d0d0d;border-top:1px solid var(--border);padding-bottom:var(--safe-bottom)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 0 6px;cursor:pointer;border:none;background:none;color:var(--muted);font-family:'Barlow',sans-serif;transition:color .15s}
+.nav-btn.active{color:var(--push)}.nav-btn.active.nav-track{color:#4499dd}.nav-btn.active.nav-dash{color:#e8b840}
+.nav-icon{font-size:20px;margin-bottom:3px}.nav-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.screen{display:none;flex-direction:column;flex:1;overflow:hidden}.screen.active{display:flex}
+.header{flex-shrink:0;padding:14px 18px 10px;background:var(--bg);border-bottom:1px solid var(--border)}
+.header-row{display:flex;align-items:center;justify-content:space-between}
+.prog-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:#fff;line-height:1}
+.prog-sub{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.header-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase}
+.badge-push{background:rgba(232,98,42,.15);color:var(--push)}.badge-pull{background:rgba(39,184,114,.15);color:var(--pull)}
+.badge-legs{background:rgba(232,168,42,.15);color:var(--legs)}.badge-arms{background:rgba(155,45,232,.15);color:var(--arms)}
+.badge-recovery{background:rgba(58,136,204,.15);color:var(--recovery)}
+.day-scroll-wrap{flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.day-scroll-wrap::-webkit-scrollbar{display:none}
+.day-scroll{display:flex;padding:10px 14px;gap:8px;width:max-content}
+.day-chip{display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:10px;background:var(--card);border:1.5px solid var(--border);cursor:pointer;min-width:64px;position:relative}
+.day-chip.active-push{border-color:var(--push);background:rgba(232,98,42,.08)}.day-chip.active-pull{border-color:var(--pull);background:rgba(39,184,114,.08)}
+.day-chip.active-legs{border-color:var(--legs);background:rgba(232,168,42,.08)}.day-chip.active-arms{border-color:var(--arms);background:rgba(155,45,232,.08)}
+.day-chip.active-recovery{border-color:var(--recovery);background:rgba(58,136,204,.08)}
+.chip-dow{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.chip-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;white-space:nowrap}
+.chip-push .chip-name,.active-push .chip-name{color:var(--push)}.chip-pull .chip-name,.active-pull .chip-name{color:var(--pull)}
+.chip-legs .chip-name,.active-legs .chip-name{color:var(--legs)}.chip-arms .chip-name,.active-arms .chip-name{color:var(--arms)}
+.chip-recovery .chip-name,.active-recovery .chip-name{color:var(--recovery)}
+.chip-done-dot{position:absolute;top:5px;right:7px;width:6px;height:6px;border-radius:50%;background:#44cc44}
+.block-tabs-wrap{flex-shrink:0;overflow-x:auto;scrollbar-width:none;background:var(--card);border-bottom:1px solid var(--border)}
+.block-tabs-wrap::-webkit-scrollbar{display:none}.block-tabs{display:flex;padding:0 14px;width:max-content}
+.block-tab{padding:11px 14px;font-size:12px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.block-tab.active-push{border-bottom-color:var(--push);color:var(--push)}.block-tab.active-pull{border-bottom-color:var(--pull);color:var(--pull)}
+.block-tab.active-legs{border-bottom-color:var(--legs);color:var(--legs)}.block-tab.active-arms{border-bottom-color:var(--arms);color:var(--arms)}
+.block-tab.active-recovery{border-bottom-color:var(--recovery);color:var(--recovery)}
+.block-tab.active-warmup{border-bottom-color:#888;color:#aaa}.block-tab.active-cooldown{border-bottom-color:#3abcbc;color:#3abcbc}
+.main-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 14px 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.ss-bar{background:#13091e;border-bottom:1px solid var(--border);padding:6px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8844cc;display:flex;align-items:center;gap:6px}
+.ss-dot{width:5px;height:5px;border-radius:50%;background:#8844cc}
+.ex-row{padding:12px 14px;border-bottom:1px solid var(--border)}.ex-row:last-child{border-bottom:none}
+.ex-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
+.ex-name{font-size:14px;font-weight:600;color:#fff;flex:1;line-height:1.2}
+.ex-pills{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.pill-sets{background:var(--subtle);color:#bbb}.pill-reps{background:var(--subtle);color:#bbb}
+.pill-rir{background:#1a1208;color:#aa8830}.pill-suggest{background:#0d1f10;color:#44bb66}
+.ex-note{font-size:11px;color:var(--muted);line-height:1.5}
+.ex-tag{display:inline-block;margin-top:5px;padding:1px 6px;border-radius:3px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.tag-tonal{background:#0a1a2a;color:#4499dd}.tag-custom{background:#191908;color:#aaaa33}
+.tag-db{background:#1a0808;color:#cc5544}.tag-cardio{background:#080e1a;color:#4466cc}
+.note-box{background:#0f0e08;border-left:3px solid #333;border-radius:0 0 12px 12px;padding:11px 14px;font-size:11px;color:#777;line-height:1.6}
+.note-box strong{color:#999}
+.done-btn{width:100%;background:#0d2010;border:1.5px solid #1a4a20;border-radius:10px;color:#44cc66;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:13px;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px}
+.done-btn.completed{background:#0a1a0a;border-color:#1a3a1a;color:#33884a}
+.timing-strip{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.t-item{flex:1;padding:11px 6px;border-right:1px solid var(--border);text-align:center}.t-item:last-child{border-right:none}
+.t-time{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:#e8b840;line-height:1;margin-bottom:3px}
+.t-label{font-size:11px;font-weight:600;color:#ccc;margin-bottom:2px}.t-detail{font-size:9px;color:var(--muted);line-height:1.3}
+.warmup-row{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.warmup-row:last-child{border-bottom:none}.warmup-name{font-size:13px;font-weight:500;color:#ddd}
+.warmup-detail{font-size:11px;color:var(--muted);text-align:right;flex-shrink:0;max-width:130px;line-height:1.3}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:14px 0 7px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.pw-card{background:#0f0d08;border:1px solid #2a2010;border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.pw-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c8a050;margin-bottom:8px}
+.pw-row{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid #1a1508}
+.pw-row:last-child{border-bottom:none}
+.pw-time-badge{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:#e8b840;min-width:38px}
+.pw-desc{font-size:12px;color:#a08040}
+.rec-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px}
+.rec-card h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;color:#aaa;margin-bottom:6px}
+.rec-card p{font-size:12px;color:var(--muted);line-height:1.7}
+.cooldown-card{background:#080f10;border:1px solid #0e2a2a;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.cooldown-head{background:#0a1a1a;padding:10px 14px;border-bottom:1px solid #0e2a2a;display:flex;align-items:center;gap:8px}
+.cooldown-head-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3abcbc}
+.cooldown-head-sub{font-size:11px;color:#2a7a7a;margin-left:auto}
+.stretch-row{padding:11px 14px;border-bottom:1px solid #0e1e1e;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.stretch-row:last-child{border-bottom:none}.stretch-left{flex:1}
+.stretch-name{font-size:13px;font-weight:600;color:#e0f0f0;margin-bottom:3px}
+.stretch-cue{font-size:11px;color:#3a7a7a;line-height:1.5}
+.stretch-hold{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:#3abcbc;flex-shrink:0;padding-top:1px}
+.cooldown-note{background:#060e0e;border-left:3px solid #0e3a3a;border-radius:0 0 12px 12px;padding:10px 14px;font-size:11px;color:#2a6a6a;line-height:1.6}
+.cooldown-note strong{color:#3a9a9a}
+.tracker-header{flex-shrink:0;padding:14px 18px 10px;border-bottom:1px solid var(--border)}
+.tracker-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:#fff}
+.tracker-sub{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.tracker-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 16px}
+.log-form-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:16px}
+.log-form-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#4499dd;margin-bottom:12px}
+.log-row{display:flex;gap:8px;margin-bottom:8px}
+.log-select,.log-input{background:#0d0d0d;border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;padding:10px 12px;outline:none;-webkit-appearance:none}
+.log-select{flex:2}.log-input{flex:1;text-align:center}
+.log-input:focus,.log-select:focus{border-color:#4499dd}
+.log-btn{width:100%;background:#4499dd;border:none;border-radius:8px;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:12px;cursor:pointer;margin-top:4px}
+.log-btn:active{background:#3388cc}
+.pr-badge{display:inline-block;background:#1a2a08;color:#88cc44;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;letter-spacing:.5px;margin-left:6px}
+.ex-hist-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.ex-hist-head{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.ex-hist-name{font-size:14px;font-weight:600;color:#fff}.ex-hist-best{font-family:'Barlow Condensed',sans-serif;font-size:13px;color:#88cc44;font-weight:700}
+.mini-chart{padding:12px 14px 4px}.chart-bars{display:flex;align-items:flex-end;gap:4px;height:52px}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.chart-bar{width:100%;border-radius:3px 3px 0 0;min-height:4px}
+.chart-date{font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;text-align:center;margin-top:3px}
+.chart-val{font-size:9px;color:#777;text-align:center}
+.hist-row{padding:9px 14px;border-bottom:1px solid #181818;display:flex;justify-content:space-between;align-items:center}
+.hist-row:last-child{border-bottom:none}.hist-date{font-size:12px;color:var(--muted)}
+.hist-weight{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:#ccc}
+.hist-e1rm{font-size:11px;color:var(--muted)}
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;line-height:1.6}
+.empty-state .empty-icon{font-size:36px;margin-bottom:12px}
+.dash-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 16px}
+.phase-card{border-radius:14px;padding:16px;margin-bottom:12px;position:relative;overflow:hidden}
+.phase-acc{background:linear-gradient(135deg,#1a1200,#2a1e00);border:1px solid #3a2a00}
+.phase-int{background:linear-gradient(135deg,#160a20,#250f35);border:1px solid #3a1a55}
+.phase-del{background:linear-gradient(135deg,#001a1a,#002828);border:1px solid #005555}
+.phase-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.phase-acc .phase-label{color:#aa8020}.phase-int .phase-label{color:#9944cc}.phase-del .phase-label{color:#339999}
+.phase-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:8px}
+.phase-week{font-size:13px;margin-bottom:12px}
+.phase-acc .phase-week{color:#c8a040}.phase-int .phase-week{color:#bb66ee}.phase-del .phase-week{color:#44aaaa}
+.phase-bar-bg{background:rgba(255,255,255,.1);border-radius:4px;height:6px;margin-bottom:8px}
+.phase-bar-fill{height:6px;border-radius:4px}
+.phase-acc .phase-bar-fill{background:#e8b840}.phase-int .phase-bar-fill{background:#cc44ff}.phase-del .phase-bar-fill{background:#44cccc}
+.phase-next{font-size:11px}
+.phase-acc .phase-next{color:#806010}.phase-int .phase-next{color:#7722aa}.phase-del .phase-next{color:#227777}
+.streak-row{display:flex;gap:10px;margin-bottom:12px}
+.streak-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.streak-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:4px}
+.streak-fire .streak-num{color:#ff8844}.streak-sessions .streak-num{color:#4499dd}
+.streak-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.week-dots-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
+.week-dots-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.week-dots{display:flex;gap:6px;justify-content:space-between}
+.week-dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.dot-circle{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px}
+.dot-circle.done{background:#0d2010;border-color:#1a4a20}.dot-circle.today{border-color:#e8b840;background:rgba(232,184,64,.08)}
+.dot-label{font-size:9px;color:var(--muted);font-weight:600;text-transform:uppercase}
+.pr-wall-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.pr-wall-head{padding:12px 14px;border-bottom:1px solid var(--border)}
+.pr-wall-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#88cc44}
+.pr-row{padding:10px 14px;border-bottom:1px solid #161616;display:flex;justify-content:space-between;align-items:center}
+.pr-row:last-child{border-bottom:none}.pr-ex{font-size:12px;font-weight:600;color:#ccc}.pr-right{text-align:right}
+.pr-val{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.pr-e1rm{font-size:10px;color:var(--muted)}.pr-date{font-size:10px;color:var(--muted)}
+.pr-empty{padding:20px 14px;text-align:center;font-size:12px;color:var(--muted)}
+.toast{position:fixed;bottom:calc(76px + var(--safe-bottom));left:50%;transform:translateX(-50%);background:#1a2a10;border:1px solid #44aa22;color:#88dd44;font-size:13px;font-weight:600;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;z-index:200}
+.toast.show{opacity:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.main-scroll>*,.tracker-scroll>*,.dash-scroll>*{animation:fadeUp .18s ease both}
 </style>
 </head>
 <body>
 <div class="shell">
-
-  <!-- WORKOUT SCREEN -->
   <div class="screen active" id="screenWorkout">
     <div class="header">
       <div class="header-row">
@@ -203,610 +181,169 @@
     <div class="block-tabs-wrap"><div class="block-tabs" id="blockTabs"></div></div>
     <div class="main-scroll" id="mainScroll"></div>
   </div>
-
-  <!-- TRACKER SCREEN -->
   <div class="screen" id="screenTracker">
-    <div class="tracker-header">
-      <div class="tracker-title">Progression Tracker</div>
-      <div class="tracker-sub">Top working set · e1RM calculated · Auto-saved</div>
-    </div>
+    <div class="tracker-header"><div class="tracker-title">Progression Tracker</div><div class="tracker-sub">Top working set · e1RM calculated · Auto-saved</div></div>
     <div class="tracker-scroll" id="trackerScroll"></div>
   </div>
-
-  <!-- BOTTOM NAV -->
+  <div class="screen" id="screenDash">
+    <div class="header">
+      <div class="header-row"><div><div class="prog-title">Dashboard</div><div class="prog-sub" id="dashPhaseSub">Loading...</div></div></div>
+    </div>
+    <div class="dash-scroll" id="dashScroll"></div>
+  </div>
   <div class="bottom-nav">
-    <button class="nav-btn active" id="navWorkout" onclick="switchScreen('workout')">
-      <div class="nav-icon">🏋️</div><div class="nav-label">Program</div>
-    </button>
-    <button class="nav-btn nav-track" id="navTracker" onclick="switchScreen('tracker')">
-      <div class="nav-icon">📈</div><div class="nav-label">Progress</div>
-    </button>
+    <button class="nav-btn active" id="navWorkout" onclick="switchScreen('workout')"><div class="nav-icon">&#127947;&#65039;</div><div class="nav-label">Program</div></button>
+    <button class="nav-btn nav-track" id="navTracker" onclick="switchScreen('tracker')"><div class="nav-icon">&#128200;</div><div class="nav-label">Progress</div></button>
+    <button class="nav-btn nav-dash" id="navDash" onclick="switchScreen('dash')"><div class="nav-icon">&#9889;</div><div class="nav-label">Dashboard</div></button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
-
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-
-const DAYS = [
-  { dow:"Mon", name:"Push A",   type:"push"     },
-  { dow:"Tue", name:"Pull A",   type:"pull"     },
-  { dow:"Wed", name:"Legs A",   type:"legs"     },
-  { dow:"Thu", name:"Arms",     type:"arms"     },
-  { dow:"Fri", name:"Push B",   type:"push"     },
-  { dow:"Sat", name:"Pull B",   type:"pull"     },
-  { dow:"Sun", name:"Recovery", type:"recovery" },
+const PROGRAM_START=new Date('2025-05-09');
+const PHASES=[
+  {name:'Accumulation',weeks:8,color:'acc',repRanges:{compound:'6-8',accessory:'10-15'},rirNote:'RIR 1-2',suggestMult:1.0,description:'Build volume and muscle tissue. Progress via reps first, then weight.'},
+  {name:'Intensification',weeks:8,color:'int',repRanges:{compound:'3-5',accessory:'6-10'},rirNote:'RIR 0-1',suggestMult:1.1,description:'Express strength built in Accumulation. Heavier loads, less total volume.'},
+  {name:'Deload',weeks:2,color:'del',repRanges:{compound:'8-10',accessory:'12-15'},rirNote:'RIR 3-4',suggestMult:0.5,description:'Recovery week. 50% volume, same movements, let the body consolidate.'},
 ];
-
-const TRACK_EXERCISES = [
-  "Incline Barbell Bench Press",
-  "Barbell Bench Press (Flat)",
-  "Barbell OHP",
-  "Barbell Bent Over Row",
-  "Weighted Pull-Up / Chin-Up",
-  "Alt Lat Pulldown",
-  "Barbell Front Squat",
-  "Barbell RDL",
-  "Barbell Glute Bridge",
-  "Barbell Bicep Curl",
-  "SA Overhead Tricep Extension",
-  "Skull Crushers",
-  "Incline DB Curl",
-];
-
-const WARMUPS = {
-  push: {
-    rowerNote: "5 min easy. Moderate stroke rate. Open thoracic spine with each drive.",
-    mobility: [
-      { name:"Wall Chest Opener",          detail:"10 reps / 5 sec hold each" },
-      { name:"Shoulder CARs",              detail:"5 circles each dir. / arm"  },
-      { name:"Cat-Cow (Tonal)",            detail:"10 reps — thoracic focus"   },
-      { name:"Reverse Fly light (Tonal)",  detail:"2×15 — scapula activation"  },
-    ],
-    activation:"Pushup to Plank ×10 or Incline Push-Up ×15 — prime pecs and shoulder stabilizers before loading."
-  },
-  pull: {
-    rowerNote:"5 min easy. Lengthen the pull phase, feel lats engage at the catch.",
-    mobility:[
-      { name:"Reach and Rotate (Tonal)",         detail:"10 reps each side"      },
-      { name:"Ninety Ninety Arm Sweep (Tonal)",  detail:"10 reps — shoulder capsule" },
-      { name:"Pulling Straps very light (Tonal)",detail:"2×12 — scapula activation"  },
-      { name:"Dead Hang / Lat Stretch",          detail:"30 sec × 2 — open lats" },
-    ],
-    activation:"T-Pull light (Tonal) ×15 — fires lower traps and rear delts before heavy rows."
-  },
-  legs: {
-    rowerNote:"5 min easy. Lower intensity — preserve knee freshness for squatting.",
-    mobility:[
-      { name:"90-90 Hip Stretch (Tonal)",    detail:"60 sec each side"      },
-      { name:"Bretzel (Tonal)",              detail:"30 sec each side"      },
-      { name:"Quad Hip Stretch (Tonal)",     detail:"45 sec each side"      },
-      { name:"Marching Glute Bridge (Tonal)",detail:"2×15 — glute activation" },
-    ],
-    activation:"Goblet Squat ×15 bodyweight with 3-sec descent + squat wedges — groove pattern and warm the knee joint."
-  },
-  arms: {
-    rowerNote:"5 min easy. Light effort — lower CNS demand day.",
-    mobility:[
-      { name:"Int./Ext. Shoulder Rotation light (Tonal)",detail:"2×15 each — elbow health" },
-      { name:"Wrist Circles + Flexor Stretch",           detail:"30 sec each direction"    },
-      { name:"Floor Slides (Tonal)",                     detail:"2×12 — scapular control"  },
-      { name:"W Hold very light (Tonal)",                detail:"2×15 — rear delt prep"    },
-    ],
-    activation:"Light Bicep Curl + Tricep Pushdown ×15 each — blood into arms, establish mind-muscle connection."
-  },
-};
-
-const BLOCKS = {
-  0:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
-    { id:"b1",emoji:"🏋️",label:"Block 1",meta:"Compounds · 2–3 min rest",
-      groups:[
-        { ss:false,rows:[{name:"Incline Barbell Bench Press",note:"Custom · Load barbell on Tonal uprights at 30–45° bench. Superior upper chest stimulus at your strength level.",tag:"custom",sets:"4×",reps:"6–8",rir:"RIR 1–2"}] },
-        { ss:false,rows:[{name:"Barbell Bench Press (Flat)",note:"Tonal · Primary compound. Shoulder blades retracted and depressed throughout.",tag:"tonal",sets:"3×",reps:"8–10",rir:"RIR 2"}] },
-      ],note:"<strong>Progression:</strong> Add weight when you hit top of rep range at target RIR for 2 consecutive sessions."
-    },
-    { id:"b2",emoji:"💥",label:"Block 2",meta:"Supersets · 90 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset A — Upper Chest + Front Delt",rows:[
-          {name:"Standing Incline Chest Press",note:"Tonal cable · Upper chest, full ROM",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 2"},
-          {name:"Front Raise",note:"Tonal · Alternating, controlled negative",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 2"},
-        ]},
-        { ss:true,ssLabel:"Superset B — Fly + Lateral Delt",rows:[
-          {name:"Incline Chest Fly",note:"Tonal · Stretch-focused, slight elbow bend",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-          {name:"Lateral Raise",note:"Tonal · 3-sec negative, slight forward lean",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"💪",label:"Block 3",meta:"Triceps · 60 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Long Head + Lateral Head",rows:[
-          {name:"Skull Crushers",note:"Tonal barbell · Elbows in, lower to forehead",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Reverse Grip Tricep Extension",note:"Tonal cable · Lateral head emphasis",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"push" },
-  ],
-  1:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
-    { id:"b1",emoji:"🏋️",label:"Block 1",meta:"Compounds · 2–3 min rest",
-      groups:[
-        { ss:false,rows:[{name:"Barbell Bent Over Row",note:"Tonal · Pronated grip, hinge ~45°, elbows drive back. Primary thickness builder.",tag:"tonal",sets:"4×",reps:"6–8",rir:"RIR 1–2"}] },
-        { ss:false,rows:[{name:"Weighted Pull-Up / Chin-Up",note:"Custom · Use Tonal counterweight assist or clamp 50 lb KB between feet. Best lat builder at your level.",tag:"custom",sets:"3×",reps:"6–10",rir:"RIR 2"}] },
-      ],note:"<strong>Cue:</strong> Initiate every pull by depressing the shoulder blade first, then drive elbow — keeps tension on lats, not biceps."
-    },
-    { id:"b2",emoji:"🦅",label:"Block 2",meta:"Supersets · 90 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset A — Pulldown + Row",rows:[
-          {name:"Neutral Grip Lat Pulldown",note:"Tonal · Full stretch at top, squeeze at bottom",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 2"},
-          {name:"Seated Row",note:"Tonal · Elbows tucked, 1-sec pause at contraction",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 2"},
-        ]},
-        { ss:true,ssLabel:"Superset B — Isolation + Rear Delt",rows:[
-          {name:"X Pulldown",note:"Tonal · Arms straight, pure lat isolation",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-          {name:"Reverse Fly",note:"Tonal · Rear delts, light weight, full arc",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"💪",label:"Block 3",meta:"Biceps · 60 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Peak + Brachialis",rows:[
-          {name:"Seated Bicep Curl",note:"Tonal · Full ROM, no swing, squeeze at top",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Reverse Grip Bicep Curl",note:"Tonal · Brachialis + brachioradialis focus",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"pull" },
-  ],
-  2:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min · Knee-conscious" },
-    { id:"b1",emoji:"🏋️",label:"Block 1",meta:"Compounds · 2–3 min rest",
-      groups:[
-        { ss:false,rows:[{name:"Barbell Front Squat",note:"Tonal · Use squat wedges. Front rack reduces posterior knee shear.",tag:"tonal",sets:"4×",reps:"6–8",rir:"RIR 2"}] },
-        { ss:false,rows:[{name:"Bulgarian Split Squat",note:"Tonal cable for balance. Rear foot elevated on bench.",tag:"tonal",sets:"3×",reps:"10–12 ea.",rir:"RIR 2"}] },
-      ],note:"⚠️ <strong>Knee:</strong> Always use squat wedges. Swap Front Squat → Goblet Squat to Bench if knee aches."
-    },
-    { id:"b2",emoji:"🦵",label:"Block 2",meta:"Posterior · 90 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset A — Hip Hinge + Hip Extension",rows:[
-          {name:"Barbell RDL",note:"Tonal · Hip hinge, feel hamstring stretch at bottom",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 2"},
-          {name:"Barbell Glute Bridge",note:"Tonal · Use barbell pad. Full hip extension, 1-sec squeeze.",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-        ]},
-        { ss:true,ssLabel:"Superset B — Step + Calf",rows:[
-          {name:"Resisted Step Up",note:"Tonal · 3-sec descent, knee tracks second toe",tag:"tonal",sets:"3×",reps:"12 ea.",rir:"RIR 2"},
-          {name:"Resisted Calf Raise",note:"Tonal · Single leg, full ROM top to bottom",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"🔩",label:"Block 3",meta:"Core · 45 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Anti-Rotation + Hip Flexor",rows:[
-          {name:"Seated Pallof Press",note:"Tonal · Anti-rotation, elbows in, press straight out",tag:"tonal",sets:"2×",reps:"12 ea.",rir:"—"},
-          {name:"Dead Bug",note:"Tonal or floor · Opposite arm/leg, lower back stays flat",tag:"tonal",sets:"2×",reps:"10 ea.",rir:"—"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Knee-priority",isCooldown:true,cooldownType:"legs" },
-  ],
-  3:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min · Elbow prep" },
-    { id:"b1",emoji:"💪",label:"Block 1",meta:"Biceps · 90 sec rest",
-      groups:[
-        { ss:false,rows:[{name:"Barbell Bicep Curl",note:"Tonal · Strict form, no body swing, full ROM.",tag:"tonal",sets:"4×",reps:"8–10",rir:"RIR 1"}] },
-        { ss:true,ssLabel:"Superset A — Stretch + Brachialis",rows:[
-          {name:"Incline DB Curl",note:"Dumbbells · 45–60° incline. Full stretch at bottom.",tag:"db",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Reverse Grip Bicep Curl",note:"Tonal · Brachialis & brachioradialis",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-        ]},
-      ],note:"<strong>Arms strategy:</strong> 3× weekly stimulus — tris on Push A, bis on Pull A, full session here."
-    },
-    { id:"b2",emoji:"🔱",label:"Block 2",meta:"Triceps · 90 sec rest",
-      groups:[
-        { ss:false,rows:[{name:"SA Overhead Tricep Extension",note:"Tonal · Long head stretch at top. Most important tricep head for size.",tag:"tonal",sets:"4×",reps:"10–12",rir:"RIR 1"}] },
-        { ss:true,ssLabel:"Superset B — Medial + Lateral Head",rows:[
-          {name:"Skull Crushers",note:"Tonal barbell · Elbows in, lower to forehead",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Tricep Kickback",note:"Tonal cable · 3-sec negative, lateral head pump",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"🔩",label:"Block 3",meta:"Core · 45 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Stability Finisher",rows:[
-          {name:"Seated Pallof Press",note:"Tonal · Anti-rotation core finisher",tag:"tonal",sets:"2×",reps:"12 ea.",rir:"—"},
-          {name:"Bird Dog with Row",note:"Tonal · Single limb stability + row",tag:"tonal",sets:"2×",reps:"10 ea.",rir:"—"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Elbow focus",isCooldown:true,cooldownType:"arms" },
-  ],
-  4:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
-    { id:"b1",emoji:"🏋️",label:"Block 1",meta:"Compounds · 2–3 min rest",
-      groups:[
-        { ss:false,rows:[{name:"Barbell OHP",note:"Tonal · Standing or seated. Push B is shoulder-dominant to complement Push A's chest focus.",tag:"tonal",sets:"4×",reps:"6–8",rir:"RIR 1–2"}] },
-        { ss:false,rows:[{name:"Half Kneeling SA OHP",note:"Tonal · Unilateral, core stability demand",tag:"tonal",sets:"3×",reps:"10–12 ea.",rir:"RIR 2"}] },
-      ],note:"<strong>Push B intent:</strong> Higher shoulder volume, less chest than Push A. Variation prevents accommodation."
-    },
-    { id:"b2",emoji:"💥",label:"Block 2",meta:"Supersets · 90 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset A — Chest + Lateral Delt",rows:[
-          {name:"Alt Bench Press",note:"Tonal · Single-arm alternating, shoulder-friendly ROM",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 2"},
-          {name:"Lateral Raise",note:"Tonal · Drop set on final set",tag:"tonal",sets:"4×",reps:"12–15",rir:"RIR 1"},
-        ]},
-        { ss:true,ssLabel:"Superset B — Fly + Rear Delt",rows:[
-          {name:"Middle Chest Fly",note:"Tonal cable · Squeeze at center",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-          {name:"Reverse Fly",note:"Tonal · Rear delt, light, full arc",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"💪",label:"Block 3",meta:"Triceps · 60 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Overhead + Pump",rows:[
-          {name:"SA Tricep Extension",note:"Tonal · Overhead, long head, elbow pointing up",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Tricep Kickback",note:"Tonal cable · Pump finisher, lateral head",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"push" },
-  ],
-  5:[
-    { id:"warmup",emoji:"🔥",label:"Warm-Up",meta:"15 min" },
-    { id:"b1",emoji:"🏋️",label:"Block 1",meta:"Lat Width · 2–3 min rest",
-      groups:[
-        { ss:false,rows:[{name:"Alt Lat Pulldown",note:"Tonal · Wide grip. Pull B focuses on lat width vs Pull A's thickness.",tag:"tonal",sets:"4×",reps:"8–10",rir:"RIR 2"}] },
-        { ss:false,rows:[{name:"Rotational Row",note:"Tonal · Rotation at peak — longer ROM than standard rows",tag:"tonal",sets:"3×",reps:"10–12 ea.",rir:"RIR 2"}] },
-      ]
-    },
-    { id:"b2",emoji:"🦅",label:"Block 2",meta:"Supersets · 90 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset A — Lat + Lower Trap",rows:[
-          {name:"Straight Arm Pulldown",note:"Tonal · Arms straight, pure lat isolation",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-          {name:"Y Pull",note:"Tonal · Lower trap and posture",tag:"tonal",sets:"3×",reps:"15–20",rir:"RIR 1"},
-        ]},
-        { ss:true,ssLabel:"Superset B — Rear Delt + Trap Shelf",rows:[
-          {name:"W Hold",note:"Tonal · 2-sec hold at contraction",tag:"tonal",sets:"3×",reps:"15",rir:"RIR 1"},
-          {name:"Shoulder Shrug",note:"Tonal · Full elevation, slow lower. Builds trap shelf.",tag:"tonal",sets:"3×",reps:"12–15",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"b3",emoji:"💪",label:"Block 3",meta:"Biceps · 60 sec rest",
-      groups:[
-        { ss:true,ssLabel:"Superset C — Peak + Alternate",rows:[
-          {name:"Lying Bicep Curl",note:"Tonal cable · Unique stretch angle, peak contraction",tag:"tonal",sets:"3×",reps:"10–12",rir:"RIR 1"},
-          {name:"Seated Alt Bicep Curl",note:"Tonal · Alternating, supinate at top",tag:"tonal",sets:"3×",reps:"12 ea.",rir:"RIR 1"},
-        ]},
-      ]
-    },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Post-workout",isCooldown:true,cooldownType:"pull" },
-  ],
-  6:[
-    { id:"recovery",emoji:"🧘",label:"Recovery",meta:"30–45 min · No loading",isRecovery:true },
-    { id:"cooldown",emoji:"🧊",label:"Cool-Down",meta:"5 min · Pre-sauna",isCooldown:true,cooldownType:"recovery" },
-  ],
-};
-
-// ── COOLDOWNS ─────────────────────────────────────────────────────────────────
-
-const COOLDOWNS = {
-  push: {
-    note:"<strong>Why these:</strong> Heavy pressing shortens the pec minor and anterior delt. These stretches restore chest length, decompress the shoulder capsule, and release tricep tension before you sit down.",
-    stretches:[
-      { name:"Doorway / Tonal Post Chest Stretch", cue:"Grab Tonal upright at shoulder height, step through and rotate away. Feel the full pec stretch. Switch sides.", hold:"45 sec each" },
-      { name:"Cross-Body Shoulder Stretch", cue:"Pull elbow across chest, hold at shoulder height. Targets posterior capsule and rear delt.", hold:"30 sec each" },
-      { name:"Overhead Tricep Stretch", cue:"Reach one hand down spine, use other hand to gently press elbow back. Long head of tricep.", hold:"30 sec each" },
-      { name:"Thoracic Extension over Bench", cue:"Sit at edge of bench, hands behind head, gently arch upper back over the edge. Undoes the thoracic flexion from pressing.", hold:"60 sec" },
-    ]
-  },
-  pull: {
-    note:"<strong>Why these:</strong> Heavy rows and pulldowns compress the lats in a shortened position and fatigue the bicep tendon. These stretches restore lat length, open the chest (antagonist), and release elbow flexor tension.",
-    stretches:[
-      { name:"Overhead Lat Stretch", cue:"Grab Tonal upright overhead, sink hips back and away. Feel the entire lat lengthen from armpit to hip.", hold:"45 sec each" },
-      { name:"Doorway Chest Opener", cue:"Arms at 90°, press forearms into door frame and lean through. Counteracts the hunched position from rowing.", hold:"45 sec" },
-      { name:"Supinated Bicep / Forearm Stretch", cue:"Arm straight, palm up, use other hand to gently press fingers down. Releases bicep tendon and forearm flexors.", hold:"30 sec each" },
-      { name:"Child's Pose with Lat Reach", cue:"On knees, reach both arms forward on the floor, sink chest toward ground. Walk hands to one side for a unilateral lat stretch.", hold:"45 sec each side" },
-    ]
-  },
-  legs: {
-    note:"<strong>Why these:</strong> Squatting and hinging load the knee joint and compress the hip flexors. Gentle decompression of the knee and hip capsule after a leg session significantly improves next-session readiness — especially important with your meniscus history.",
-    stretches:[
-      { name:"Standing Quad / Hip Flexor Stretch", cue:"Stand on one leg, pull heel to glute. Keep hips level, stand tall. If balance is an issue, hold Tonal upright.", hold:"45 sec each" },
-      { name:"Supine Lying Hamstring Stretch (Tonal)", cue:"On back, one leg straight up, gentle pull with hands or strap. No aggressive forcing — just passive length.", hold:"45 sec each" },
-      { name:"Pigeon / Figure-Four Glute Stretch", cue:"On back, cross ankle over opposite knee, pull both legs toward chest. Deep glute and hip external rotator stretch.", hold:"45 sec each" },
-      { name:"Gentle Knee Extension Decompression", cue:"Sit at edge of bench, let one knee hang straight with a slight forward lean. No weight — just passive decompression of the joint. ⚠️ Meniscus-safe.", hold:"60 sec each" },
-    ]
-  },
-  arms: {
-    note:"<strong>Why these:</strong> High-volume bicep and tricep work creates significant elbow flexor/extensor fatigue and wrist tension. These are the stretches most lifters skip that most directly prevent elbow issues over time.",
-    stretches:[
-      { name:"Wrist Flexor Stretch", cue:"Arm straight in front, palm up, use other hand to gently press fingers down toward floor. Forearm flexors and bicep tendon.", hold:"30 sec each" },
-      { name:"Wrist Extensor Stretch", cue:"Arm straight, palm down, gently press fingers toward floor. Forearm extensors and brachioradialis.", hold:"30 sec each" },
-      { name:"Overhead Tricep Stretch", cue:"Reach one hand down spine, gently press elbow back with other hand. Long head of tricep — the most worked head today.", hold:"30 sec each" },
-      { name:"Cross-Body Shoulder / Bicep Stretch", cue:"Arm across chest at shoulder height, other hand gently presses elbow. Releases bicep tendon attachment at shoulder.", hold:"30 sec each" },
-    ]
-  },
-  recovery: {
-    note:"<strong>Recovery day cooldown:</strong> After cardio, run through this brief sequence before sauna. The heat will deepen the benefit of anything you just stretched.",
-    stretches:[
-      { name:"90-90 Hip Stretch (Tonal)", cue:"Both hips at 90°, sit tall, gently lean forward over front shin. Work both sides — internal and external rotation.", hold:"60 sec each" },
-      { name:"Bretzel (Tonal)", cue:"Side-lying hip flexor and thoracic rotation combo. One of the best all-in-one recovery stretches.", hold:"45 sec each" },
-      { name:"Child's Pose with Lat Reach", cue:"Both arms forward, sink chest. Walk hands to each side for unilateral lat stretch. Slow breathing.", hold:"60 sec" },
-      { name:"Supine Spinal Twist", cue:"On back, one knee crosses body, arms out to sides. Let gravity do the work. Full thoracic and lumbar decompression.", hold:"45 sec each" },
-    ]
-  },
-};
-
-
-
-const STORE_KEY = 'travis_progress_v1';
-function loadLogs()    { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch { return {}; } }
-function saveLogs(l)   { localStorage.setItem(STORE_KEY, JSON.stringify(l)); }
-
-function e1rm(w,r)     { return Math.round(w * (1 + r/30)); }
-
-function logSet(ex, weight, reps) {
-  const logs = loadLogs();
-  if (!logs[ex]) logs[ex] = [];
-  const today = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  const entry = { date:today, ts:Date.now(), weight, reps, e1rm:e1rm(weight,reps) };
-  // Replace same-day entry only if new one is better
-  const sameDay = logs[ex].find(e=>e.date===today);
-  if (sameDay) {
-    if (weight > sameDay.weight || (weight===sameDay.weight && reps>sameDay.reps)) {
-      logs[ex] = logs[ex].filter(e=>e.date!==today);
-      logs[ex].push(entry);
+function getPhaseInfo(){
+  const msW=7*24*60*60*1000;
+  const totalW=Math.floor((Date.now()-PROGRAM_START)/msW);
+  const cycleLen=18;
+  const wic=totalW%cycleLen;
+  let acc=0;
+  for(let i=0;i<PHASES.length;i++){
+    if(wic<acc+PHASES[i].weeks){
+      const wip=wic-acc+1;
+      const wLeft=PHASES[i].weeks-wip+1;
+      const pct=((wip-1)/PHASES[i].weeks)*100;
+      return{phase:PHASES[i],phaseIdx:i,weekInPhase:wip,weeksLeft:wLeft,nextPhase:PHASES[(i+1)%PHASES.length],pct,totalWeeks:totalW+1};
     }
-  } else {
-    logs[ex].push(entry);
+    acc+=PHASES[i].weeks;
   }
-  logs[ex].sort((a,b)=>a.ts-b.ts);
-  saveLogs(logs);
+  return{phase:PHASES[0],phaseIdx:0,weekInPhase:1,weeksLeft:8,nextPhase:PHASES[1],pct:0,totalWeeks:1};
 }
-
-function isPR(ex, weight, reps) {
-  const logs = loadLogs();
-  if (!logs[ex] || !logs[ex].length) return true;
-  const best = Math.max(...logs[ex].map(e=>e.e1rm));
-  return e1rm(weight,reps) > best;
+const STORE_KEY='travis_progress_v1';
+const SESSION_KEY='travis_sessions_v1';
+function loadLogs(){try{return JSON.parse(localStorage.getItem(STORE_KEY))||{};}catch{return{};}}
+function saveLogs(l){localStorage.setItem(STORE_KEY,JSON.stringify(l));}
+function loadSessions(){try{return JSON.parse(localStorage.getItem(SESSION_KEY))||[];}catch{return[];}}
+function saveSessions(s){localStorage.setItem(SESSION_KEY,JSON.stringify(s));}
+function e1rm(w,r){return Math.round(w*(1+r/30));}
+function todayStr(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+function logSet(ex,weight,reps){
+  const logs=loadLogs();if(!logs[ex])logs[ex]=[];
+  const today=todayStr();const entry={date:today,ts:Date.now(),weight,reps,e1rm:e1rm(weight,reps)};
+  const sd=logs[ex].find(e=>e.date===today);
+  if(sd){if(weight>sd.weight||(weight===sd.weight&&reps>sd.reps)){logs[ex]=logs[ex].filter(e=>e.date!==today);logs[ex].push(entry);}}
+  else{logs[ex].push(entry);}
+  logs[ex].sort((a,b)=>a.ts-b.ts);saveLogs(logs);
 }
-
-function seedBaseline() {
-  const logs = loadLogs();
-  if (logs['_seeded']) return;
-  const date = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  logs['Incline Barbell Bench Press'] = [{date,ts:Date.now()-2000,weight:160,reps:6,e1rm:192}];
-  logs['Barbell Bench Press (Flat)']  = [{date,ts:Date.now()-1000,weight:192,reps:8,e1rm:243}];
-  logs['_seeded'] = true;
-  saveLogs(logs);
+function isPR(ex,weight,reps){
+  const logs=loadLogs();if(!logs[ex]||!logs[ex].length)return true;
+  return e1rm(weight,reps)>Math.max(...logs[ex].map(e=>e.e1rm));
 }
-
-// ── WORKOUT RENDER ────────────────────────────────────────────────────────────
-
-let currentDay=0, currentBlock="warmup";
-
-function tagHtml(tag) {
-  const m={tonal:['tag-tonal','Tonal'],custom:['tag-custom','Custom'],db:['tag-db','Dumbbell'],cardio:['tag-cardio','Cardio']};
-  const [c,l]=m[tag]||['tag-tonal','Tonal'];
-  return `<span class="ex-tag ${c}">${l}</span>`;
+function markSessionDone(di){
+  const s=loadSessions();const today=todayStr();const key=di+'-'+today;
+  if(!s.find(x=>x.key===key)){s.push({key,dayIdx:di,date:today,ts:Date.now()});saveSessions(s);}
 }
-
-function renderWarmup(dt) {
-  const w=WARMUPS[dt]; if(!w) return '';
-  return `
-    <div class="pw-card" style="background:#080d0f;border-color:#102030">
-      <div class="pw-title" style="color:#4a99cc">Morning Protocol</div>
-      <div class="pw-row"><span class="pw-time-badge">5:00</span><span class="pw-desc">C4 Pre-Workout + Rice cake w/ honey</span></div>
-      <div class="pw-row"><span class="pw-time-badge">5:10</span><span class="pw-desc">Creatine 5g · Multivitamin · Fish Oil</span></div>
-      <div class="pw-row"><span class="pw-time-badge">5:45</span><span class="pw-desc">Training begins · Amino Energy intra-workout</span></div>
-      <div class="pw-row"><span class="pw-time-badge">Post</span><span class="pw-desc">50g Whey · TRT cream ×2 daily</span></div>
-    </div>
-    <div class="timing-strip">
-      <div class="t-item"><div class="t-time">5:45</div><div class="t-label">Rower</div><div class="t-detail">5 min Zone 1</div></div>
-      <div class="t-item"><div class="t-time">5:50</div><div class="t-label">Mobility</div><div class="t-detail">6–7 min</div></div>
-      <div class="t-item"><div class="t-time">5:57</div><div class="t-label">Activate</div><div class="t-detail">3 min</div></div>
-      <div class="t-item"><div class="t-time">6:00</div><div class="t-label">Work</div><div class="t-detail">Sets begin</div></div>
-    </div>
-    <div class="section-label">Rower</div>
-    <div class="card"><div class="ex-row">
-      <div class="ex-top"><div class="ex-name">Concept 2 — 5 min easy</div></div>
-      <div class="ex-note">${w.rowerNote}</div><span class="ex-tag tag-cardio">Cardio</span>
-    </div></div>
-    <div class="section-label">Mobility</div>
-    <div class="card">${w.mobility.map(m=>`<div class="warmup-row"><div class="warmup-name">${m.name}</div><div class="warmup-detail">${m.detail}</div></div>`).join('')}</div>
-    <div class="section-label">Activation</div>
-    <div class="card"><div class="ex-row"><div class="ex-note">${w.activation}</div></div></div>`;
+function isSessionDone(di){const s=loadSessions();const today=todayStr();return!!s.find(x=>x.key===di+'-'+today);}
+function getStreakWeeks(){
+  const sessions=loadSessions();if(!sessions.length)return 0;
+  const msW=7*24*60*60*1000;
+  const weekOf=ts=>Math.floor((ts-PROGRAM_START.getTime())/msW);
+  const cur=weekOf(Date.now());let streak=0;
+  for(let w=cur;w>=0;w--){
+    const ws=sessions.filter(s=>weekOf(s.ts)===w);
+    if(ws.length>=5)streak++;else if(w===cur)continue;else break;
+  }
+  return streak;
 }
-
-function renderCooldown(type) {
-  const c = COOLDOWNS[type];
-  if (!c) return '';
-  const rows = c.stretches.map(s=>`
-    <div class="stretch-row">
-      <div class="stretch-left">
-        <div class="stretch-name">${s.name}</div>
-        <div class="stretch-cue">${s.cue}</div>
-      </div>
-      <div class="stretch-hold">${s.hold}</div>
-    </div>`).join('');
-  return `
-    <div class="cooldown-card">
-      <div class="cooldown-head">
-        <span style="font-size:16px">🧊</span>
-        <div class="cooldown-head-title">Post-Workout Stretch</div>
-        <div class="cooldown-head-sub">~5 min · Do these now</div>
-      </div>
-      ${rows}
-    </div>
-    <div class="cooldown-note">${c.note}</div>`;
+function getTotalSessions(){return loadSessions().length;}
+function getSuggestion(exName){
+  const logs=loadLogs();if(!logs[exName]||!logs[exName].length)return null;
+  const info=getPhaseInfo();
+  const bestE1rm=Math.max(...logs[exName].map(e=>e.e1rm));
+  const isComp=['Incline Barbell Bench Press','Barbell Bench Press (Flat)','Barbell OHP','Barbell Bent Over Row','Weighted Pull-Up / Chin-Up','Alt Lat Pulldown','Barbell Front Squat','Barbell RDL'].includes(exName);
+  const tr=info.phaseIdx===0?(isComp?7:12):info.phaseIdx===1?(isComp?4:8):(isComp?9:13);
+  return Math.round((bestE1rm*info.phase.suggestMult)/(1+tr/30)/2.5)*2.5;
 }
-
-function renderBlockContent(block, dt) {
-  if (block.isCooldown) return renderCooldown(block.cooldownType);
-  if (block.id==='warmup') return renderWarmup(dt);
-  if (block.isRecovery) return `
-    <div class="pw-card" style="background:#080d0f;border-color:#102030">
-      <div class="pw-title" style="color:#4a99cc">Morning Protocol</div>
-      <div class="pw-row"><span class="pw-time-badge">5:00</span><span class="pw-desc">C4 + Rice cake w/ honey</span></div>
-      <div class="pw-row"><span class="pw-time-badge">5:10</span><span class="pw-desc">Creatine · Multivitamin · Fish Oil</span></div>
-      <div class="pw-row"><span class="pw-time-badge">5:45</span><span class="pw-desc">Cardio begins</span></div>
-      <div class="pw-row"><span class="pw-time-badge">Post</span><span class="pw-desc">50g Whey · TRT cream ×2</span></div>
-    </div>
-    <div class="rec-card"><h4>🚣 Option A — Rower</h4><p>20–25 min easy Zone 2. Upper-body dominant — minimal knee load. Damper 3–5.</p></div>
-    <div class="rec-card"><h4>🔄 Option B — Elliptical</h4><p>25–30 min low resistance. Zero knee impact. Best if knee is beat up from the week.</p></div>
-    <div class="rec-card"><h4>🌡️ Sauna</h4><p>15–20 min post-cardio. Supports GH release, recovery, and cardiovascular adaptation. Synergistic with TRT and Tirzepatide.</p></div>
-    <div class="rec-card"><h4>📐 Mobility (10 min)</h4><p>90-90 Hip Stretch → Bretzel → Lying Hamstring Stretch → Cat-Cow. All in Tonal library.</p></div>
-    <div class="note-box" style="border-radius:12px">Recovery day does real work — don't skip it.</div>`;
-  let html='';
-  block.groups.forEach(g=>{
-    const inner=g.rows.map(r=>`
-      <div class="ex-row">
-        <div class="ex-top">
-          <div class="ex-name">${r.name}</div>
-          <div class="ex-pills">
-            <span class="pill pill-sets">${r.sets}</span>
-            <span class="pill pill-reps">${r.reps}</span>
-            ${r.rir!=='—'?`<span class="pill pill-rir">${r.rir}</span>`:''}
-          </div>
-        </div>
-        <div class="ex-note">${r.note}</div>${tagHtml(r.tag)}
-      </div>`).join('');
-    html += g.ss
-      ? `<div class="card"><div class="ss-bar"><div class="ss-dot"></div>${g.ssLabel} — No rest A→B</div>${inner}</div>`
-      : `<div class="card">${inner}</div>`;
+function seedBaseline(){
+  const logs=loadLogs();if(logs['_seeded'])return;
+  const date=new Date('2025-05-09').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  logs['Incline Barbell Bench Press']=[{date,ts:new Date('2025-05-09').getTime(),weight:160,reps:6,e1rm:192}];
+  logs['Barbell Bench Press (Flat)']=[{date,ts:new Date('2025-05-09').getTime()+500,weight:192,reps:8,e1rm:243}];
+  logs['_seeded']=true;saveLogs(logs);
+}
+const DAYS=[{dow:'Mon',name:'Push A',type:'push'},{dow:'Tue',name:'Pull A',type:'pull'},{dow:'Wed',name:'Legs A',type:'legs'},{dow:'Thu',name:'Arms',type:'arms'},{dow:'Fri',name:'Push B',type:'push'},{dow:'Sat',name:'Pull B',type:'pull'},{dow:'Sun',name:'Recovery',type:'recovery'}];
+const TRACK_EXERCISES=['Incline Barbell Bench Press','Barbell Bench Press (Flat)','Barbell OHP','Barbell Bent Over Row','Weighted Pull-Up / Chin-Up','Alt Lat Pulldown','Barbell Front Squat','Barbell RDL','Barbell Glute Bridge','Barbell Bicep Curl','SA Overhead Tricep Extension','Skull Crushers','Incline DB Curl'];
+const WARMUPS={push:{rowerNote:'5 min easy. Moderate stroke rate. Open thoracic spine with each drive.',mobility:[{name:'Wall Chest Opener',detail:'10 reps / 5 sec hold each'},{name:'Shoulder CARs',detail:'5 circles each dir. / arm'},{name:'Cat-Cow (Tonal)',detail:'10 reps - thoracic focus'},{name:'Reverse Fly light (Tonal)',detail:'2x15 - scapula activation'}],activation:'Pushup to Plank x10 or Incline Push-Up x15 - prime pecs and shoulder stabilizers before loading.'},pull:{rowerNote:'5 min easy. Lengthen the pull phase, feel lats engage at the catch.',mobility:[{name:'Reach and Rotate (Tonal)',detail:'10 reps each side'},{name:'Ninety Ninety Arm Sweep (Tonal)',detail:'10 reps - shoulder capsule'},{name:'Pulling Straps very light (Tonal)',detail:'2x12 - scapula activation'},{name:'Dead Hang / Lat Stretch',detail:'30 sec x2 - open lats'}],activation:'T-Pull light (Tonal) x15 - fires lower traps and rear delts before heavy rows.'},legs:{rowerNote:'5 min easy. Lower intensity - preserve knee freshness for squatting.',mobility:[{name:'90-90 Hip Stretch (Tonal)',detail:'60 sec each side'},{name:'Bretzel (Tonal)',detail:'30 sec each side'},{name:'Quad Hip Stretch (Tonal)',detail:'45 sec each side'},{name:'Marching Glute Bridge (Tonal)',detail:'2x15 - glute activation'}],activation:'Goblet Squat x15 bodyweight with 3-sec descent + squat wedges - groove pattern and warm the knee joint.'},arms:{rowerNote:'5 min easy. Light effort - lower CNS demand day.',mobility:[{name:'Int./Ext. Shoulder Rotation light (Tonal)',detail:'2x15 each - elbow health'},{name:'Wrist Circles + Flexor Stretch',detail:'30 sec each direction'},{name:'Floor Slides (Tonal)',detail:'2x12 - scapular control'},{name:'W Hold very light (Tonal)',detail:'2x15 - rear delt prep'}],activation:'Light Bicep Curl + Tricep Pushdown x15 each - blood into arms, establish mind-muscle connection.'}};
+const COOLDOWNS={push:{note:'<strong>Why these:</strong> Heavy pressing shortens the pec minor and anterior delt. These restore chest length, decompress the shoulder capsule, and release tricep tension.',stretches:[{name:'Doorway / Tonal Post Chest Stretch',cue:'Grab Tonal upright at shoulder height, step through and rotate away. Switch sides.',hold:'45 sec each'},{name:'Cross-Body Shoulder Stretch',cue:'Pull elbow across chest at shoulder height. Targets posterior capsule and rear delt.',hold:'30 sec each'},{name:'Overhead Tricep Stretch',cue:'Reach one hand down spine, use other hand to gently press elbow back. Long head of tricep.',hold:'30 sec each'},{name:'Thoracic Extension over Bench',cue:'Sit at edge of bench, hands behind head, gently arch upper back over the edge.',hold:'60 sec'}]},pull:{note:'<strong>Why these:</strong> Heavy rows and pulldowns compress the lats and fatigue the bicep tendon. These restore lat length, open the chest, and release elbow flexor tension.',stretches:[{name:'Overhead Lat Stretch',cue:'Grab Tonal upright overhead, sink hips back and away. Feel the entire lat lengthen from armpit to hip.',hold:'45 sec each'},{name:'Doorway Chest Opener',cue:'Arms at 90 degrees, press forearms into door frame and lean through. Counteracts the hunched position from rowing.',hold:'45 sec'},{name:'Supinated Bicep / Forearm Stretch',cue:'Arm straight, palm up, use other hand to gently press fingers down. Releases bicep tendon and forearm flexors.',hold:'30 sec each'},{name:"Child's Pose with Lat Reach",cue:'On knees, reach both arms forward on floor, sink chest down. Walk hands to each side for unilateral lat stretch.',hold:'45 sec each side'}]},legs:{note:'<strong>Why these:</strong> Squatting compresses the knee joint and hip flexors. Gentle decompression significantly improves next-session readiness - especially important with your meniscus history.',stretches:[{name:'Standing Quad / Hip Flexor Stretch',cue:'Stand on one leg, pull heel to glute. Keep hips level. Hold Tonal upright if needed.',hold:'45 sec each'},{name:'Supine Hamstring Stretch (Tonal)',cue:'On back, one leg straight up, gentle pull with hands. Passive length only, no forcing.',hold:'45 sec each'},{name:'Figure-Four Glute Stretch',cue:'On back, cross ankle over opposite knee, pull both legs toward chest. Deep glute and hip external rotator.',hold:'45 sec each'},{name:'Gentle Knee Decompression Hang',cue:'Sit at edge of bench, let one knee hang straight. No weight - passive joint decompression. Meniscus-safe.',hold:'60 sec each'}]},arms:{note:'<strong>Why these:</strong> High-volume bicep and tricep work creates significant elbow flexor/extensor fatigue and wrist tension. Most skipped - most directly prevent elbow issues long-term.',stretches:[{name:'Wrist Flexor Stretch',cue:'Arm straight in front, palm up, use other hand to gently press fingers toward floor.',hold:'30 sec each'},{name:'Wrist Extensor Stretch',cue:'Arm straight, palm down, gently press fingers toward floor. Forearm extensors and brachioradialis.',hold:'30 sec each'},{name:'Overhead Tricep Stretch',cue:'Reach one hand down spine, gently press elbow back with other hand. Long head of tricep.',hold:'30 sec each'},{name:'Cross-Body Shoulder / Bicep Stretch',cue:'Arm across chest at shoulder height, other hand gently presses elbow. Releases bicep tendon at shoulder.',hold:'30 sec each'}]},recovery:{note:'<strong>Recovery day:</strong> Run through this before sauna. The heat deepens the benefit of anything you have just stretched.',stretches:[{name:'90-90 Hip Stretch (Tonal)',cue:'Both hips at 90 degrees, sit tall, gently lean forward over front shin. Work both sides.',hold:'60 sec each'},{name:'Bretzel (Tonal)',cue:'Side-lying hip flexor and thoracic rotation combo. One of the best all-in-one recovery stretches.',hold:'45 sec each'},{name:"Child's Pose with Lat Reach",cue:'Both arms forward, sink chest. Walk hands to each side. Slow breathing.',hold:'60 sec'},{name:'Supine Spinal Twist',cue:'On back, one knee crosses body, arms out to sides. Let gravity do the work. Full thoracic and lumbar decompression.',hold:'45 sec each'}]}};
+const BLOCKS={0:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min'},{id:'b1',emoji:'&#127947;&#65039;',label:'Block 1',meta:'Compounds - 2-3 min rest',groups:[{ss:false,rows:[{name:'Incline Barbell Bench Press',note:'Custom - Load barbell on Tonal uprights at 30-45 degree bench. Superior upper chest stimulus at your strength level.',tag:'custom',sets:'4x',reps:'6-8',rir:'RIR 1-2'}]},{ss:false,rows:[{name:'Barbell Bench Press (Flat)',note:'Tonal - Primary compound. Shoulder blades retracted and depressed throughout.',tag:'tonal',sets:'3x',reps:'8-10',rir:'RIR 2'}]}],note:'<strong>Progression:</strong> Add weight when you hit top of rep range at target RIR for 2 consecutive sessions.'},{id:'b2',emoji:'&#128165;',label:'Block 2',meta:'Supersets - 90 sec rest',groups:[{ss:true,ssLabel:'Superset A - Upper Chest + Front Delt',rows:[{name:'Standing Incline Chest Press',note:'Tonal cable - Upper chest, full ROM',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 2'},{name:'Front Raise',note:'Tonal - Alternating, controlled negative',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 2'}]},{ss:true,ssLabel:'Superset B - Fly + Lateral Delt',rows:[{name:'Incline Chest Fly',note:'Tonal - Stretch-focused, slight elbow bend',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'},{name:'Lateral Raise',note:'Tonal - 3-sec negative, slight forward lean',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128170;',label:'Block 3',meta:'Triceps - 60 sec rest',groups:[{ss:true,ssLabel:'Superset C - Long Head + Lateral Head',rows:[{name:'Skull Crushers',note:'Tonal barbell - Elbows in, lower to forehead',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Reverse Grip Tricep Extension',note:'Tonal cable - Lateral head emphasis',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min',isCooldown:true,cooldownType:'push'}],1:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min'},{id:'b1',emoji:'&#127947;&#65039;',label:'Block 1',meta:'Compounds - 2-3 min rest',groups:[{ss:false,rows:[{name:'Barbell Bent Over Row',note:'Tonal - Pronated grip, hinge 45 degrees, elbows drive back. Primary thickness builder.',tag:'tonal',sets:'4x',reps:'6-8',rir:'RIR 1-2'}]},{ss:false,rows:[{name:'Weighted Pull-Up / Chin-Up',note:'Custom - Tonal counterweight assist or 50 lb KB between feet. Best lat builder at your level.',tag:'custom',sets:'3x',reps:'6-10',rir:'RIR 2'}]}],note:'<strong>Cue:</strong> Depress shoulder blade first, then drive elbow - keeps tension on lats, not biceps.'},{id:'b2',emoji:'&#129413;',label:'Block 2',meta:'Supersets - 90 sec rest',groups:[{ss:true,ssLabel:'Superset A - Pulldown + Row',rows:[{name:'Neutral Grip Lat Pulldown',note:'Tonal - Full stretch at top, squeeze at bottom',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 2'},{name:'Seated Row',note:'Tonal - Elbows tucked, 1-sec pause at contraction',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 2'}]},{ss:true,ssLabel:'Superset B - Isolation + Rear Delt',rows:[{name:'X Pulldown',note:'Tonal - Arms straight, pure lat isolation',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'},{name:'Reverse Fly',note:'Tonal - Rear delts, light weight, full arc',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128170;',label:'Block 3',meta:'Biceps - 60 sec rest',groups:[{ss:true,ssLabel:'Superset C - Peak + Brachialis',rows:[{name:'Seated Bicep Curl',note:'Tonal - Full ROM, no swing, squeeze at top',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Reverse Grip Bicep Curl',note:'Tonal - Brachialis + brachioradialis focus',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min',isCooldown:true,cooldownType:'pull'}],2:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min - Knee-conscious'},{id:'b1',emoji:'&#127947;&#65039;',label:'Block 1',meta:'Compounds - 2-3 min rest',groups:[{ss:false,rows:[{name:'Barbell Front Squat',note:'Tonal - Use squat wedges. Front rack reduces posterior knee shear.',tag:'tonal',sets:'4x',reps:'6-8',rir:'RIR 2'}]},{ss:false,rows:[{name:'Bulgarian Split Squat',note:'Tonal cable for balance. Rear foot elevated on bench.',tag:'tonal',sets:'3x',reps:'10-12 ea.',rir:'RIR 2'}]}],note:'<strong>Knee:</strong> Always use squat wedges. Swap Front Squat to Goblet Squat to Bench if knee aches.'},{id:'b2',emoji:'&#129463;',label:'Block 2',meta:'Posterior - 90 sec rest',groups:[{ss:true,ssLabel:'Superset A - Hip Hinge + Hip Extension',rows:[{name:'Barbell RDL',note:'Tonal - Hip hinge, feel hamstring stretch at bottom',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 2'},{name:'Barbell Glute Bridge',note:'Tonal - Use barbell pad. Full hip extension, 1-sec squeeze.',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'}]},{ss:true,ssLabel:'Superset B - Step + Calf',rows:[{name:'Resisted Step Up',note:'Tonal - 3-sec descent, knee tracks second toe',tag:'tonal',sets:'3x',reps:'12 ea.',rir:'RIR 2'},{name:'Resisted Calf Raise',note:'Tonal - Single leg, full ROM top to bottom',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128297;',label:'Block 3',meta:'Core - 45 sec rest',groups:[{ss:true,ssLabel:'Superset C - Anti-Rotation + Hip Flexor',rows:[{name:'Seated Pallof Press',note:'Tonal - Anti-rotation, elbows in, press straight out',tag:'tonal',sets:'2x',reps:'12 ea.',rir:'-'},{name:'Dead Bug',note:'Tonal or floor - Opposite arm/leg, lower back stays flat',tag:'tonal',sets:'2x',reps:'10 ea.',rir:'-'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min - Knee priority',isCooldown:true,cooldownType:'legs'}],3:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min - Elbow prep'},{id:'b1',emoji:'&#128170;',label:'Block 1',meta:'Biceps - 90 sec rest',groups:[{ss:false,rows:[{name:'Barbell Bicep Curl',note:'Tonal - Strict form, no body swing, full ROM.',tag:'tonal',sets:'4x',reps:'8-10',rir:'RIR 1'}]},{ss:true,ssLabel:'Superset A - Stretch + Brachialis',rows:[{name:'Incline DB Curl',note:'Dumbbells - 45-60 degree incline. Full stretch at bottom.',tag:'db',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Reverse Grip Bicep Curl',note:'Tonal - Brachialis and brachioradialis',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'}]}],note:'<strong>Arms strategy:</strong> 3x weekly stimulus - tris on Push A, bis on Pull A, full session here.'},{id:'b2',emoji:'&#128306;',label:'Block 2',meta:'Triceps - 90 sec rest',groups:[{ss:false,rows:[{name:'SA Overhead Tricep Extension',note:'Tonal - Long head stretch at top. Most important tricep head for size.',tag:'tonal',sets:'4x',reps:'10-12',rir:'RIR 1'}]},{ss:true,ssLabel:'Superset B - Medial + Lateral Head',rows:[{name:'Skull Crushers',note:'Tonal barbell - Elbows in, lower to forehead',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Tricep Kickback',note:'Tonal cable - 3-sec negative, lateral head pump',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128297;',label:'Block 3',meta:'Core - 45 sec rest',groups:[{ss:true,ssLabel:'Superset C - Stability Finisher',rows:[{name:'Seated Pallof Press',note:'Tonal - Anti-rotation core finisher',tag:'tonal',sets:'2x',reps:'12 ea.',rir:'-'},{name:'Bird Dog with Row',note:'Tonal - Single limb stability + row',tag:'tonal',sets:'2x',reps:'10 ea.',rir:'-'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min - Elbow focus',isCooldown:true,cooldownType:'arms'}],4:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min'},{id:'b1',emoji:'&#127947;&#65039;',label:'Block 1',meta:'Compounds - 2-3 min rest',groups:[{ss:false,rows:[{name:'Barbell OHP',note:'Tonal - Standing or seated. Push B is shoulder-dominant.',tag:'tonal',sets:'4x',reps:'6-8',rir:'RIR 1-2'}]},{ss:false,rows:[{name:'Half Kneeling SA OHP',note:'Tonal - Unilateral, core stability demand',tag:'tonal',sets:'3x',reps:'10-12 ea.',rir:'RIR 2'}]}],note:'<strong>Push B intent:</strong> Higher shoulder volume, less chest than Push A. Variation prevents accommodation.'},{id:'b2',emoji:'&#128165;',label:'Block 2',meta:'Supersets - 90 sec rest',groups:[{ss:true,ssLabel:'Superset A - Chest + Lateral Delt',rows:[{name:'Alt Bench Press',note:'Tonal - Single-arm alternating, shoulder-friendly ROM',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 2'},{name:'Lateral Raise',note:'Tonal - Drop set on final set',tag:'tonal',sets:'4x',reps:'12-15',rir:'RIR 1'}]},{ss:true,ssLabel:'Superset B - Fly + Rear Delt',rows:[{name:'Middle Chest Fly',note:'Tonal cable - Squeeze at center',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'},{name:'Reverse Fly',note:'Tonal - Rear delt, light, full arc',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128170;',label:'Block 3',meta:'Triceps - 60 sec rest',groups:[{ss:true,ssLabel:'Superset C - Overhead + Pump',rows:[{name:'SA Tricep Extension',note:'Tonal - Overhead, long head, elbow pointing up',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Tricep Kickback',note:'Tonal cable - Pump finisher, lateral head',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min',isCooldown:true,cooldownType:'push'}],5:[{id:'warmup',emoji:'&#128293;',label:'Warm-Up',meta:'15 min'},{id:'b1',emoji:'&#127947;&#65039;',label:'Block 1',meta:'Lat Width - 2-3 min rest',groups:[{ss:false,rows:[{name:'Alt Lat Pulldown',note:'Tonal - Wide grip. Pull B focuses on lat width vs Pull A thickness.',tag:'tonal',sets:'4x',reps:'8-10',rir:'RIR 2'}]},{ss:false,rows:[{name:'Rotational Row',note:'Tonal - Rotation at peak - longer ROM than standard rows',tag:'tonal',sets:'3x',reps:'10-12 ea.',rir:'RIR 2'}]}]},{id:'b2',emoji:'&#129413;',label:'Block 2',meta:'Supersets - 90 sec rest',groups:[{ss:true,ssLabel:'Superset A - Lat + Lower Trap',rows:[{name:'Straight Arm Pulldown',note:'Tonal - Arms straight, pure lat isolation',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'},{name:'Y Pull',note:'Tonal - Lower trap and posture',tag:'tonal',sets:'3x',reps:'15-20',rir:'RIR 1'}]},{ss:true,ssLabel:'Superset B - Rear Delt + Trap Shelf',rows:[{name:'W Hold',note:'Tonal - 2-sec hold at contraction',tag:'tonal',sets:'3x',reps:'15',rir:'RIR 1'},{name:'Shoulder Shrug',note:'Tonal - Full elevation, slow lower. Builds trap shelf.',tag:'tonal',sets:'3x',reps:'12-15',rir:'RIR 1'}]}]},{id:'b3',emoji:'&#128170;',label:'Block 3',meta:'Biceps - 60 sec rest',groups:[{ss:true,ssLabel:'Superset C - Peak + Alternate',rows:[{name:'Lying Bicep Curl',note:'Tonal cable - Unique stretch angle, peak contraction',tag:'tonal',sets:'3x',reps:'10-12',rir:'RIR 1'},{name:'Seated Alt Bicep Curl',note:'Tonal - Alternating, supinate at top',tag:'tonal',sets:'3x',reps:'12 ea.',rir:'RIR 1'}]}]},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min',isCooldown:true,cooldownType:'pull'}],6:[{id:'recovery',emoji:'&#129496;',label:'Recovery',meta:'30-45 min - No loading',isRecovery:true},{id:'cooldown',emoji:'&#129398;',label:'Cool-Down',meta:'5 min - Pre-sauna',isCooldown:true,cooldownType:'recovery'}]};
+let currentDay=0,currentBlock='warmup';
+function tagHtml(tag){const m={tonal:['tag-tonal','Tonal'],custom:['tag-custom','Custom'],db:['tag-db','Dumbbell'],cardio:['tag-cardio','Cardio']};const[c,l]=m[tag]||['tag-tonal','Tonal'];return '<span class="ex-tag '+c+'">'+l+'</span>';}
+function renderWarmup(dt){const w=WARMUPS[dt];if(!w)return '';return '<div class="pw-card" style="background:#080d0f;border-color:#102030"><div class="pw-title" style="color:#4a99cc">Morning Protocol</div><div class="pw-row"><span class="pw-time-badge">5:00</span><span class="pw-desc">C4 Pre-Workout + Rice cake w/ honey</span></div><div class="pw-row"><span class="pw-time-badge">5:10</span><span class="pw-desc">Creatine 5g - Multivitamin - Fish Oil</span></div><div class="pw-row"><span class="pw-time-badge">5:45</span><span class="pw-desc">Training begins - Amino Energy intra-workout</span></div><div class="pw-row"><span class="pw-time-badge">Post</span><span class="pw-desc">50g Whey - TRT cream x2 daily</span></div></div><div class="timing-strip"><div class="t-item"><div class="t-time">5:45</div><div class="t-label">Rower</div><div class="t-detail">5 min Zone 1</div></div><div class="t-item"><div class="t-time">5:50</div><div class="t-label">Mobility</div><div class="t-detail">6-7 min</div></div><div class="t-item"><div class="t-time">5:57</div><div class="t-label">Activate</div><div class="t-detail">3 min</div></div><div class="t-item"><div class="t-time">6:00</div><div class="t-label">Work</div><div class="t-detail">Sets begin</div></div></div><div class="section-label">Rower</div><div class="card"><div class="ex-row"><div class="ex-top"><div class="ex-name">Concept 2 - 5 min easy</div></div><div class="ex-note">'+w.rowerNote+'</div><span class="ex-tag tag-cardio">Cardio</span></div></div><div class="section-label">Mobility</div><div class="card">'+w.mobility.map(function(m){return '<div class="warmup-row"><div class="warmup-name">'+m.name+'</div><div class="warmup-detail">'+m.detail+'</div></div>';}).join('')+'</div><div class="section-label">Activation</div><div class="card"><div class="ex-row"><div class="ex-note">'+w.activation+'</div></div></div>';}
+function renderCooldown(type){const c=COOLDOWNS[type];if(!c)return '';return '<div class="cooldown-card"><div class="cooldown-head"><span style="font-size:16px">&#129398;</span><div class="cooldown-head-title">Post-Workout Stretch</div><div class="cooldown-head-sub">~5 min</div></div>'+c.stretches.map(function(s){return '<div class="stretch-row"><div class="stretch-left"><div class="stretch-name">'+s.name+'</div><div class="stretch-cue">'+s.cue+'</div></div><div class="stretch-hold">'+s.hold+'</div></div>';}).join('')+'</div><div class="cooldown-note">'+c.note+'</div>';}
+function renderBlockContent(block,dt){
+  if(block.isCooldown)return renderCooldown(block.cooldownType);
+  if(block.id==='warmup')return renderWarmup(dt);
+  if(block.isRecovery)return '<div class="pw-card" style="background:#080d0f;border-color:#102030"><div class="pw-title" style="color:#4a99cc">Morning Protocol</div><div class="pw-row"><span class="pw-time-badge">5:00</span><span class="pw-desc">C4 + Rice cake w/ honey</span></div><div class="pw-row"><span class="pw-time-badge">5:10</span><span class="pw-desc">Creatine - Multivitamin - Fish Oil</span></div><div class="pw-row"><span class="pw-time-badge">5:45</span><span class="pw-desc">Cardio begins</span></div><div class="pw-row"><span class="pw-time-badge">Post</span><span class="pw-desc">50g Whey - TRT cream x2</span></div></div><div class="rec-card"><h4>&#128675; Option A - Rower</h4><p>20-25 min easy Zone 2. Upper-body dominant - minimal knee load. Damper 3-5.</p></div><div class="rec-card"><h4>&#128260; Option B - Elliptical</h4><p>25-30 min low resistance. Zero knee impact. Best if knee is beat up from the week.</p></div><div class="rec-card"><h4>&#127973; Sauna</h4><p>15-20 min post-cardio. Supports GH release, recovery, and cardiovascular adaptation. Synergistic with TRT and Tirzepatide.</p></div><div class="rec-card"><h4>&#128208; Mobility (10 min)</h4><p>90-90 Hip Stretch to Bretzel to Lying Hamstring Stretch to Cat-Cow. All in Tonal library.</p></div><div class="note-box" style="border-radius:12px">Recovery day does real work - do not skip it.</div>';
+  var html='';
+  block.groups.forEach(function(g){
+    var inner=g.rows.map(function(r){
+      var sug=getSuggestion(r.name);
+      var sp=sug?'<span class="pill pill-suggest">Target: '+sug+' lb</span>':'';
+      return '<div class="ex-row"><div class="ex-top"><div class="ex-name">'+r.name+'</div><div class="ex-pills"><span class="pill pill-sets">'+r.sets+'</span><span class="pill pill-reps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill pill-rir">'+r.rir+'</span>':'')+sp+'</div></div><div class="ex-note">'+r.note+'</div>'+tagHtml(r.tag)+'</div>';
+    }).join('');
+    html+=g.ss?'<div class="card"><div class="ss-bar"><div class="ss-dot"></div>'+g.ssLabel+' - No rest A to B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
   });
-  if (block.note) html+=`<div class="note-box" style="border-radius:12px;margin-top:-2px">${block.note}</div>`;
+  if(block.note)html+='<div class="note-box" style="border-radius:12px;margin-top:-2px">'+block.note+'</div>';
+  var dayBlocks=BLOCKS[currentDay];
+  var lastWB=[].concat(dayBlocks).reverse().find(function(b){return!b.isCooldown&&!b.isRecovery&&b.id!=='warmup';});
+  if(block===lastWB){var done=isSessionDone(currentDay);html+='<button class="done-btn '+(done?'completed':'')+'" onclick="handleSessionDone()">'+(done?'&#10003; Session Logged':'&#9989; Mark Session Complete')+'</button>';}
   return html;
 }
-
-function buildDayScroll() {
-  document.getElementById('dayScroll').innerHTML=DAYS.map((d,i)=>`
-    <div class="day-chip ${i===currentDay?'active-'+d.type:'chip-'+d.type}" onclick="selectDay(${i})">
-      <div class="chip-dow">${d.dow}</div><div class="chip-name">${d.name}</div>
-    </div>`).join('');
-  setTimeout(()=>{
-    const c=document.querySelectorAll('.day-chip');
-    if(c[currentDay]) c[currentDay].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  },50);
-}
-
-function buildBlockTabs() {
-  const dt=DAYS[currentDay].type;
-  document.getElementById('blockTabs').innerHTML=BLOCKS[currentDay].map(b=>{
-    const a=b.id===currentBlock;
-    const cls=a?(b.id==='warmup'?'active-warmup':b.isCooldown?'active-cooldown':b.isRecovery?'active-recovery':'active-'+dt):'';
-    return `<div class="block-tab ${cls}" onclick="selectBlock('${b.id}')">${b.emoji} ${b.label}</div>`;
+function buildDayScroll(){document.getElementById('dayScroll').innerHTML=DAYS.map(function(d,i){var done=isSessionDone(i);return '<div class="day-chip '+(i===currentDay?'active-'+d.type:'chip-'+d.type)+'" onclick="selectDay('+i+')"><div class="chip-dow">'+d.dow+'</div><div class="chip-name">'+d.name+'</div>'+(done?'<div class="chip-done-dot"></div>':'')+'</div>';}).join('');setTimeout(function(){var c=document.querySelectorAll('.day-chip');if(c[currentDay])c[currentDay].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});},50);}
+function buildBlockTabs(){var dt=DAYS[currentDay].type;document.getElementById('blockTabs').innerHTML=BLOCKS[currentDay].map(function(b){var a=b.id===currentBlock;var cls=a?(b.isCooldown?'active-cooldown':b.id==='warmup'?'active-warmup':b.isRecovery?'active-recovery':'active-'+dt):'';return '<div class="block-tab '+cls+'" onclick="selectBlock(''+b.id+'')">'+b.emoji+' '+b.label+'</div>';}).join('');}
+function buildHeader(){var d=DAYS[currentDay];var badge=document.getElementById('headerBadge');badge.textContent=d.name;badge.className='header-badge badge-'+d.type;}
+function buildWorkoutContent(){var dt=DAYS[currentDay].type;var block=BLOCKS[currentDay].find(function(b){return b.id===currentBlock;})||BLOCKS[currentDay][0];var s=document.getElementById('mainScroll');s.innerHTML=renderBlockContent(block,dt);s.scrollTop=0;}
+function selectDay(i){currentDay=i;currentBlock=BLOCKS[i][0].id;buildHeader();buildDayScroll();buildBlockTabs();buildWorkoutContent();}
+function selectBlock(id){currentBlock=id;buildBlockTabs();buildWorkoutContent();}
+function handleSessionDone(){markSessionDone(currentDay);buildWorkoutContent();buildDayScroll();showToast('Session logged!');}
+function buildTrackerScreen(){
+  var logs=loadLogs();
+  var opts=TRACK_EXERCISES.map(function(e){return '<option value="'+e+'">'+e+'</option>';}).join('');
+  var withData=TRACK_EXERCISES.filter(function(e){return logs[e]&&logs[e].length>0;});
+  var histHtml=withData.length===0?'<div class="empty-state"><div class="empty-icon">&#128202;</div>No entries yet. Log your first set above!</div>':withData.map(function(exName){
+    var entries=logs[exName];
+    var best=entries.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},entries[0]);
+    var recent=entries.slice(-8);var maxW=Math.max.apply(null,recent.map(function(e){return e.weight;}));
+    var bars=recent.map(function(e){var h=Math.max(6,Math.round((e.weight/maxW)*44));var isL=e===recent[recent.length-1];return '<div class="chart-bar-wrap"><div class="chart-val">'+e.weight+'</div><div class="chart-bar" style="height:'+h+'px;background:'+(isL?'#4499dd':'#252525')+'"></div><div class="chart-date">'+e.date+'</div></div>';}).join('');
+    var rows=[].concat(entries).reverse().slice(0,5).map(function(e){var pm=e===best?'<span class="pr-badge">PR</span>':'';return '<div class="hist-row"><div class="hist-date">'+e.date+'</div><div style="text-align:right"><span class="hist-weight">'+e.weight+' x '+e.reps+'</span>'+pm+'<div class="hist-e1rm">e1RM ~'+e.e1rm+' lb</div></div></div>';}).join('');
+    return '<div class="ex-hist-card"><div class="ex-hist-head"><div class="ex-hist-name">'+exName+'</div><div class="ex-hist-best">Best: '+best.weight+'x'+best.reps+'</div></div><div class="mini-chart"><div class="chart-bars">'+bars+'</div></div>'+rows+'</div>';
   }).join('');
+  document.getElementById('trackerScroll').innerHTML='<div class="log-form-card"><div class="log-form-title">&#128221; Log Top Set</div><div class="log-row"><select class="log-select" id="logEx">'+opts+'</select></div><div class="log-row"><input class="log-input" id="logWeight" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="log-input" id="logReps" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div><button class="log-btn" onclick="handleLog()">Save Set</button></div>'+histHtml;
 }
-
-function buildHeader() {
-  const d=DAYS[currentDay];
-  const badge=document.getElementById('headerBadge');
-  badge.textContent=d.name; badge.className='header-badge badge-'+d.type;
+function handleLog(){var ex=document.getElementById('logEx').value;var weight=parseFloat(document.getElementById('logWeight').value);var reps=parseInt(document.getElementById('logReps').value);if(!ex||!weight||!reps||weight<=0||reps<=0){showToast('Enter weight and reps');return;}var pr=isPR(ex,weight,reps);logSet(ex,weight,reps);document.getElementById('logWeight').value='';document.getElementById('logReps').value='';showToast(pr?'&#127942; New PR! Logged.':'Set logged');buildTrackerScreen();}
+function buildDashboard(){
+  var info=getPhaseInfo();var p=info.phase;
+  var streakW=getStreakWeeks();var totalS=getTotalSessions();var logs=loadLogs();
+  document.getElementById('dashPhaseSub').textContent='Week '+info.weekInPhase+' of '+p.weeks+' - '+p.name;
+  var msW=7*24*60*60*1000;
+  var weekStart=new Date(PROGRAM_START.getTime()+(info.totalWeeks-1)*msW);
+  var sessions=loadSessions();
+  var thisWeek=sessions.filter(function(s){var d=new Date(s.ts);return d>=weekStart&&d<new Date(weekStart.getTime()+msW);});
+  var todayDow=new Date().getDay();var dayMap=[1,2,3,4,5,6,0];
+  var weekDots=DAYS.map(function(d,i){var done=thisWeek.some(function(s){return s.dayIdx===i;});var isToday=dayMap[i]===todayDow;return '<div class="week-dot"><div class="dot-circle '+(done?'done':isToday?'today')+'">'+(done?'&#10003;':d.dow[0])+'</div><div class="dot-label">'+d.name.split(' ')[0]+'</div></div>';}).join('');
+  var prRows=TRACK_EXERCISES.map(function(exName){if(!logs[exName]||!logs[exName].length)return null;var best=logs[exName].reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},logs[exName][0]);return '<div class="pr-row"><div class="pr-ex">'+exName+'</div><div class="pr-right"><div class="pr-val">'+best.weight+' x '+best.reps+'</div><div class="pr-e1rm">e1RM ~'+best.e1rm+' lb - <span class="pr-date">'+best.date+'</span></div></div></div>';}).filter(Boolean).join('');
+  var pct=Math.min(100,Math.round(info.pct));
+  var nextDate=new Date(Date.now()+info.weeksLeft*7*24*60*60*1000).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  document.getElementById('dashScroll').innerHTML='<div class="phase-card phase-'+p.color+'"><div class="phase-label">Current Phase</div><div class="phase-name">'+p.name+'</div><div class="phase-week">Week '+info.weekInPhase+' of '+p.weeks+' - '+info.weeksLeft+' week'+(info.weeksLeft!==1?'s':'')+' remaining</div><div class="phase-bar-bg"><div class="phase-bar-fill" style="width:'+pct+'%"></div></div><div class="phase-next">Next: '+info.nextPhase.name+' in '+info.weeksLeft+' week'+(info.weeksLeft!==1?'s':'')+' - ~'+nextDate+'</div></div><div class="phase-card phase-'+p.color+'"><div class="phase-label">Phase Guidance</div><div style="font-size:12px;margin-bottom:10px;opacity:.85">'+p.description+'</div><div style="display:flex;gap:16px;font-size:12px"><div><span style="color:var(--muted);font-size:10px;display:block;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Compounds</span><strong>'+p.repRanges.compound+' reps</strong></div><div><span style="color:var(--muted);font-size:10px;display:block;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Accessories</span><strong>'+p.repRanges.accessory+' reps</strong></div><div><span style="color:var(--muted);font-size:10px;display:block;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Intensity</span><strong>'+p.rirNote+'</strong></div></div></div><div class="streak-row"><div class="streak-card streak-fire"><div class="streak-num">'+streakW+'</div><div class="streak-label">Week Streak &#128293;</div></div><div class="streak-card streak-sessions"><div class="streak-num">'+totalS+'</div><div class="streak-label">Total Sessions</div></div></div><div class="week-dots-card"><div class="week-dots-title">This Week - Week '+info.weekInPhase+'</div><div class="week-dots">'+weekDots+'</div></div><div class="pr-wall-card"><div class="pr-wall-head"><div class="pr-wall-title">&#127942; PR Wall - All-Time Bests</div></div>'+(prRows||'<div class="pr-empty">Log sets in the Progress tab to see your PRs here.</div>')+'</div>';
 }
-
-function buildWorkoutContent() {
-  const dt=DAYS[currentDay].type;
-  const block=BLOCKS[currentDay].find(b=>b.id===currentBlock)||BLOCKS[currentDay][0];
-  const s=document.getElementById('mainScroll');
-  s.innerHTML=renderBlockContent(block,dt); s.scrollTop=0;
-}
-
-function selectDay(i){ currentDay=i; currentBlock=BLOCKS[i][0].id; buildHeader(); buildDayScroll(); buildBlockTabs(); buildWorkoutContent(); }
-function selectBlock(id){ currentBlock=id; buildBlockTabs(); buildWorkoutContent(); }
-
-// ── TRACKER RENDER ────────────────────────────────────────────────────────────
-
-function buildTrackerScreen() {
-  const logs=loadLogs();
-  const opts=TRACK_EXERCISES.map(e=>`<option value="${e}">${e}</option>`).join('');
-  const withData=TRACK_EXERCISES.filter(e=>logs[e]&&logs[e].length>0);
-
-  let histHtml = withData.length===0
-    ? `<div class="empty-state"><div class="empty-icon">📊</div>No entries yet.<br>Log your first set above after today's workout!</div>`
-    : withData.map(exName=>{
-        const entries=logs[exName];
-        const best=entries.reduce((b,e)=>e.e1rm>b.e1rm?e:b,entries[0]);
-        const recent=entries.slice(-8);
-        const maxW=Math.max(...recent.map(e=>e.weight));
-        const bars=recent.map(e=>{
-          const h=Math.max(6,Math.round((e.weight/maxW)*44));
-          const isLatest=e===recent[recent.length-1];
-          return `<div class="chart-bar-wrap">
-            <div class="chart-val">${e.weight}</div>
-            <div class="chart-bar" style="height:${h}px;background:${isLatest?'#4499dd':'#252525'}"></div>
-            <div class="chart-date">${e.date}</div>
-          </div>`;
-        }).join('');
-        const rows=[...entries].reverse().slice(0,6).map(e=>{
-          const prMark=e===best?`<span class="pr-badge">PR</span>`:'';
-          return `<div class="hist-row">
-            <div class="hist-date">${e.date}</div>
-            <div style="text-align:right">
-              <span class="hist-weight">${e.weight} × ${e.reps}</span>${prMark}
-              <div class="hist-e1rm">e1RM ~${e.e1rm} lb</div>
-            </div>
-          </div>`;
-        }).join('');
-        return `<div class="ex-hist-card">
-          <div class="ex-hist-head">
-            <div class="ex-hist-name">${exName}</div>
-            <div class="ex-hist-best">Best: ${best.weight}×${best.reps}</div>
-          </div>
-          <div class="mini-chart"><div class="chart-bars">${bars}</div></div>
-          ${rows}
-        </div>`;
-      }).join('');
-
-  document.getElementById('trackerScroll').innerHTML=`
-    <div class="log-form-card">
-      <div class="log-form-title">📝 Log Top Set</div>
-      <div class="log-row"><select class="log-select" id="logEx">${opts}</select></div>
-      <div class="log-row">
-        <input class="log-input" id="logWeight" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5">
-        <input class="log-input" id="logReps"   type="number" placeholder="reps" inputmode="numeric" min="1" max="30">
-      </div>
-      <button class="log-btn" onclick="handleLog()">Save Set</button>
-    </div>
-    ${histHtml}`;
-}
-
-function handleLog() {
-  const ex=document.getElementById('logEx').value;
-  const weight=parseFloat(document.getElementById('logWeight').value);
-  const reps=parseInt(document.getElementById('logReps').value);
-  if(!ex||!weight||!reps||weight<=0||reps<=0){showToast('Enter weight and reps');return;}
-  const pr=isPR(ex,weight,reps);
-  logSet(ex,weight,reps);
-  document.getElementById('logWeight').value='';
-  document.getElementById('logReps').value='';
-  showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');
-  buildTrackerScreen();
-}
-
-// ── NAV + TOAST ───────────────────────────────────────────────────────────────
-
-function switchScreen(name) {
-  document.getElementById('screenWorkout').classList.toggle('active',name==='workout');
-  document.getElementById('screenTracker').classList.toggle('active',name==='tracker');
-  document.getElementById('navWorkout').classList.toggle('active',name==='workout');
-  document.getElementById('navTracker').classList.toggle('active',name==='tracker');
-  if(name==='tracker') buildTrackerScreen();
-}
-
-let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
-
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{ navigator.serviceWorker.register('./sw.js').catch(()=>{}); });
-}
-
-seedBaseline();
-selectDay(0);
+function switchScreen(name){['workout','tracker','dash'].forEach(function(s){document.getElementById('screen'+s.charAt(0).toUpperCase()+s.slice(1)).classList.toggle('active',s===name);document.getElementById('nav'+s.charAt(0).toUpperCase()+s.slice(1)).classList.toggle('active',s===name);});if(name==='tracker')buildTrackerScreen();if(name==='dash')buildDashboard();}
+var toastTimer;
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show');},2200);}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}
+seedBaseline();selectDay(0);
 </script>
 </body>
 </html>
