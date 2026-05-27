@@ -201,6 +201,21 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .toast.show{opacity:1;}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .ms>*,.tscr>*{animation:fu .18s ease both;}
+.cdtimer{padding:12px 14px 10px;border-bottom:1px solid #0e2a2a;}
+.cdtimer-start{width:100%;background:#0a2a2a;border:1.5px solid #1a5a5a;color:#3abcbc;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:12px;border-radius:8px;cursor:pointer;}
+.cdtimer-start:active{background:#0d3a3a;}
+.cdtimer-live{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.cdtimer-phase{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2a8a8a;}
+.cdtimer-exname{font-size:15px;font-weight:700;color:#e0f0f0;text-align:center;line-height:1.3;max-width:280px;}
+.cdtimer-count{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:900;color:#3abcbc;line-height:1;}
+.cdtimer-track{width:100%;height:5px;background:#0e2a2a;border-radius:3px;overflow:hidden;}
+.cdtimer-fill{height:100%;border-radius:3px;background:#3abcbc;transition:width .9s linear;}
+.cdtimer-btns{display:flex;gap:8px;width:100%;margin-top:4px;}
+.cdtimer-btn{flex:1;padding:10px;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;}
+.cdtimer-skip{background:#0a2020;color:#3abcbc;border:1px solid #0e3a3a;}
+.cdtimer-stop{background:#1a0808;color:#cc4444;border:1px solid #2a1010;}
+.cdtimer-done{text-align:center;padding:10px 0 4px;color:#3abcbc;font-size:13px;font-weight:700;}
+.strow.cdactive{background:#060c0f;border-left:3px solid #3abcbc;}
 </style>
 </head>
 <body>
@@ -407,9 +422,13 @@ var BLOCKS={
 
 // ── STORAGE ──────────────────────────────────────────────────────────────────
 
-var SK='travis_progress_v1',SK2='travis_sessions_v1';
-function ll(){try{return JSON.parse(localStorage.getItem(SK))||{};}catch(e){return{};}}
-function sl(l){localStorage.setItem(SK,JSON.stringify(l));}
+var SK='travis_progress_v1',SKB='travis_progress_v1_bak',SK2='travis_sessions_v1';
+function ll(){
+  try{var d=localStorage.getItem(SK);if(d){var r=JSON.parse(d);if(r&&Object.keys(r).length)return r;}}catch(e){}
+  try{var b=localStorage.getItem(SKB);if(b){var rb=JSON.parse(b);if(rb&&Object.keys(rb).length){sl(rb);return rb;}}}catch(e2){}
+  return{};
+}
+function sl(l){var s=JSON.stringify(l);localStorage.setItem(SK,s);localStorage.setItem(SKB,s);}
 function ls(){try{return JSON.parse(localStorage.getItem(SK2))||{};}catch(e){return{};}}
 function ss(s){localStorage.setItem(SK2,JSON.stringify(s));}
 function e1rm(w,r){return Math.round(w*(1+r/30));}
@@ -427,8 +446,10 @@ function isPR(ex,w,r){var logs=ll();if(!logs[ex]||!logs[ex].length)return true;v
 function seedBaseline(){
   var logs=ll();if(logs['_seeded'])return;
   var d='May 9';
-  logs['Incline Barbell Bench Press']=[{date:d,ts:new Date('2025-05-09').getTime(),weight:160,reps:6,e1rm:192}];
-  logs['Barbell Bench Press (Flat)']=[{date:d,ts:new Date('2025-05-09').getTime()+500,weight:192,reps:8,e1rm:243}];
+  if(!logs['Incline Barbell Bench Press']||!logs['Incline Barbell Bench Press'].length)
+    logs['Incline Barbell Bench Press']=[{date:d,ts:new Date('2025-05-09').getTime(),weight:160,reps:6,e1rm:192}];
+  if(!logs['Barbell Bench Press (Flat)']||!logs['Barbell Bench Press (Flat)'].length)
+    logs['Barbell Bench Press (Flat)']=[{date:d,ts:new Date('2025-05-09').getTime()+500,weight:192,reps:8,e1rm:243}];
   logs['_seeded']=true;sl(logs);
 }
 
@@ -474,6 +495,78 @@ function streakCount(){
   var s=0;for(var i=0;i<wks.length;i++){if(wks[i].completed>=6)s++;else break;}return s;
 }
 
+// ── COOLDOWN TIMER ───────────────────────────────────────────────────────────
+
+var currentCDT='push',cdTimerState=null;
+function parseCDHold(h){var m=h.match(/(\d+)\s*sec/);return{secs:m?parseInt(m[1]):30,bilateral:/each|side/i.test(h)};}
+function cdSpeak(text){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.resume();
+  var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
+  window.speechSynthesis.speak(u);
+}
+function buildCDTimerHTML(){
+  if(!cdTimerState)return'<button class="cdtimer-start" onclick="startCDTimer(\''+currentCDT+'\')">▶ Start Cooldown Timer</button>';
+  if(cdTimerState.done)return'<div class="cdtimer-done">✅ Cooldown complete — great work!</div>';
+  var st=cdTimerState,s=st.stretches[st.idx];
+  var pct=Math.round(((st.total-st.remaining)/st.total)*100);
+  var side=s.bilateral?(st.side===0?' — Left':' — Right'):'';
+  return'<div class="cdtimer-live">'+
+    '<div class="cdtimer-phase">Stretch '+(st.idx+1)+' / '+st.stretches.length+side+'</div>'+
+    '<div class="cdtimer-exname">'+s.name+'</div>'+
+    '<div class="cdtimer-count">'+st.remaining+'</div>'+
+    '<div class="cdtimer-track"><div class="cdtimer-fill" style="width:'+pct+'%"></div></div>'+
+    '<div class="cdtimer-btns">'+
+    '<button class="cdtimer-btn cdtimer-skip" onclick="skipCDStep()">Skip →</button>'+
+    '<button class="cdtimer-btn cdtimer-stop" onclick="stopCDTimer()">■ Stop</button>'+
+    '</div></div>';
+}
+function startCDTimer(cdt){
+  if(cdTimerState)clearInterval(cdTimerState.intervalId);
+  var strs=CD[cdt].s.map(function(s){var p=parseCDHold(s.h);return{name:s.n,secs:p.secs,bilateral:p.bilateral};});
+  cdTimerState={cdt:cdt,stretches:strs,idx:0,side:0,total:strs[0].secs,remaining:strs[0].secs,done:false,intervalId:null};
+  var f=strs[0];cdSpeak(f.bilateral?f.name+'. Left side.':f.name);
+  cdTimerState.intervalId=setInterval(tickCDTimer,1000);
+  updateCDTimerUI();
+}
+function tickCDTimer(){
+  if(!cdTimerState||cdTimerState.done)return;
+  cdTimerState.remaining--;
+  if(cdTimerState.remaining<=0)advanceCDStep();
+  else updateCDTimerUI();
+}
+function advanceCDStep(){
+  var st=cdTimerState,curr=st.stretches[st.idx];
+  if(curr.bilateral&&st.side===0){
+    st.side=1;st.total=curr.secs;st.remaining=curr.secs;
+    cdSpeak('Switch. Right side.');updateCDTimerUI();return;
+  }
+  st.idx++;st.side=0;
+  if(st.idx>=st.stretches.length){
+    st.done=true;clearInterval(st.intervalId);
+    cdSpeak('Cooldown complete. Great work.');updateCDTimerUI();return;
+  }
+  var nxt=st.stretches[st.idx];
+  st.total=nxt.secs;st.remaining=nxt.secs;
+  cdSpeak(nxt.bilateral?nxt.name+'. Left side.':nxt.name);
+  updateCDTimerUI();
+}
+function skipCDStep(){if(cdTimerState)advanceCDStep();}
+function stopCDTimer(){
+  if(cdTimerState){clearInterval(cdTimerState.intervalId);cdTimerState=null;}
+  updateCDTimerUI();
+}
+function updateCDTimerUI(){
+  var wrap=document.getElementById('cdTimerWrap');
+  if(!wrap)return;
+  wrap.innerHTML=buildCDTimerHTML();
+  document.querySelectorAll('.strow[data-si]').forEach(function(el){
+    var si=parseInt(el.getAttribute('data-si'));
+    el.classList.toggle('cdactive',!!cdTimerState&&!cdTimerState.done&&si===cdTimerState.idx);
+  });
+}
+
 // ── RENDER HELPERS ───────────────────────────────────────────────────────────
 
 function tagH(tg){
@@ -500,9 +593,12 @@ function renderWU(dt){
     '<div class="slbl">Activation</div><div class="card"><div class="exrow"><div class="exnote">'+w.act+'</div></div></div>';
 }
 function renderCD(cdt){
+  currentCDT=cdt;
   var c=CD[cdt];if(!c)return'';
-  var rows=c.s.map(function(s){return'<div class="strow"><div class="stleft"><div class="stname">'+s.n+'</div><div class="stcue">'+s.c+'</div></div><div class="sthold">'+s.h+'</div></div>';}).join('');
-  return'<div class="cdcard"><div class="cdhd"><span style="font-size:16px">🧊</span><div class="cdtitle">Post-Workout Stretch</div><div class="cdsub">~5 min</div></div>'+rows+'</div><div class="cdnote">'+c.note+'</div>';
+  var rows=c.s.map(function(s,i){return'<div class="strow" data-si="'+i+'"><div class="stleft"><div class="stname">'+s.n+'</div><div class="stcue">'+s.c+'</div></div><div class="sthold">'+s.h+'</div></div>';}).join('');
+  return'<div class="cdcard"><div class="cdhd"><span style="font-size:16px">🧊</span><div class="cdtitle">Post-Workout Stretch</div><div class="cdsub">~5 min</div></div>'+
+    '<div class="cdtimer" id="cdTimerWrap">'+buildCDTimerHTML()+'</div>'+
+    rows+'</div><div class="cdnote">'+c.note+'</div>';
 }
 function renderBlock(block,di,dt){
   if(block.isWU)return renderWU(dt);
