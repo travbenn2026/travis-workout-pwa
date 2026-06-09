@@ -262,22 +262,24 @@ var DAYS=[
 var TRACK_EX=[
   // Push / Chest
   'Incline Barbell Bench Press','Barbell Bench Press (Flat)','Alt Bench Press',
-  'Standing Incline Chest Press','Incline Chest Fly','Middle Chest Fly',
+  'Standing Incline Chest Press','Middle Chest Fly','Perfect Push-Ups',
   // Shoulders
   'Barbell OHP','Half Kneeling SA OHP','Front Raise','Lateral Raise','Reverse Fly',
   // Triceps
   'Skull Crushers','SA Overhead Tricep Extension','SA Tricep Extension',
   'Reverse Grip Tricep Extension','Tricep Kickback',
   // Back / Pull
-  'Barbell Bent Over Row','Weighted Pull-Up / Chin-Up',
-  'Alt Lat Pulldown','Neutral Grip Lat Pulldown','Rotational Row',
+  'Barbell Bent Over Row','Weighted Pull-Up','Weighted Chin-Up',
+  'Neutral Grip Lat Pulldown','Rotational Row',
   'Seated Row','X Pulldown','Straight Arm Pulldown','Y Pull','W Hold','Shoulder Shrug',
   // Biceps
-  'Barbell Bicep Curl','Incline DB Curl','Seated Bicep Curl',
+  'DB Alternating Curl','Incline DB Curl','Seated Bicep Curl',
   'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl',
   // Legs
-  'Back Squat','Conventional Deadlift','Barbell Front Squat','Bulgarian Split Squat',
+  'Back Squat','Conventional Deadlift','Bulgarian Split Squat',
   'Barbell RDL','Barbell Glute Bridge','Resisted Step Up','Resisted Calf Raise',
+  // Core
+  'Weighted Incline Sit-Up',
 ];
 
 var PHASES=[
@@ -328,7 +330,7 @@ var BLOCKS={
     {id:'b2',e:'💥',lbl:'Block 2',meta:'Supersets · 90 sec rest',
       g:[
         {ss:true,ssl:'Superset A — Upper Chest + Front Delt',r:[{n:'Standing Incline Chest Press',nt:'Tonal cable · Upper chest, full ROM',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Standing Incline Chest Press'},{n:'Front Raise',nt:'Tonal · Alternating, controlled negative',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 2',tr:'Front Raise'}]},
-        {ss:true,ssl:'Superset B — Fly + Lateral Delt',r:[{n:'Incline Chest Fly',nt:'Tonal · Stretch-focused, slight elbow bend',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Incline Chest Fly'},{n:'Lateral Raise',nt:'Tonal · 3-sec negative, slight forward lean',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Lateral Raise'}]},
+        {ss:true,ssl:'Superset B — Chest + Lateral Delt',r:[{n:'Perfect Push-Ups',nt:'Equipment · Rotating handles allow natural wrist tracking — zero wrist stress. At 230 lb a full set is significant load. Control the 3-sec descent.',tg:'tcus',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Perfect Push-Ups'},{n:'Lateral Raise',nt:'Tonal · 3-sec negative, slight forward lean',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Lateral Raise'}]},
       ]},
     {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps · 60 sec rest',
       g:[{ss:true,ssl:'Superset C — Long Head + Lateral Head',r:[{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'},{n:'Reverse Grip Tricep Extension',nt:'Tonal cable · Lateral head emphasis',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Reverse Grip Tricep Extension'}]}]},
@@ -339,7 +341,7 @@ var BLOCKS={
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
       g:[
         {ss:false,r:[{n:'Barbell Bent Over Row',nt:'Tonal · Pronated grip, hinge ~45 degrees, elbows drive back. Primary thickness builder.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 1-2',tr:'Barbell Bent Over Row'}]},
-        {ss:false,r:[{n:'Weighted Pull-Up / Chin-Up',nt:'Custom · Use Tonal counterweight assist or clamp 50 lb KB between feet. Best lat builder at your level.',tg:'tcus',sets:'3x',reps:'6-10',rir:'RIR 2',tr:'Weighted Pull-Up / Chin-Up'}]},
+        {ss:false,r:[{n:'Weighted Pull-Up',nt:'REP PU-1100 · Overhand/pronated grip. Clamp 50 lb KB between feet or use dip belt. True co-compound — lat width and vertical pulling pattern.',tg:'tcus',sets:'4x',reps:'6-10',rir:'RIR 1-2',tr:'Weighted Pull-Up'}]},
       ],note:'<strong>Cue:</strong> Initiate every pull by depressing the shoulder blade first, then drive elbow — keeps tension on lats, not biceps.'},
     {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
       g:[
@@ -354,23 +356,23 @@ var BLOCKS={
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Knee-conscious',isWU:true},
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Barbell Front Squat',nt:'Tonal · Use squat wedges. Front rack reduces posterior knee shear.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 2',tr:'Barbell Front Squat'}]},
+        {ss:false,r:[{n:'Barbell Back Squat',nt:'Custom · Load barbell on Tonal uprights, bar on upper traps. Use squat wedges. No wrist loading — eliminates front rack stress entirely.',tg:'tcus',sets:'4x',reps:'6-8',rir:'RIR 2',tr:'Back Squat'}]},
         {ss:false,r:[{n:'Bulgarian Split Squat',nt:'Tonal cable for balance. Rear foot elevated on bench.',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'Bulgarian Split Squat'}]},
-      ],note:'Knee: Always use squat wedges. Swap Front Squat to Goblet Squat to Bench if knee aches.'},
+      ],note:'Knee: Always use squat wedges. Swap Back Squat to Goblet Squat to Bench if knee aches. Back squat eliminates all wrist stress vs front rack.'},
     {id:'b2',e:'🦵',lbl:'Block 2',meta:'Posterior · 90 sec rest',
       g:[
         {ss:true,ssl:'Superset A — Hip Hinge + Hip Extension',r:[{n:'Barbell RDL',nt:'Tonal · Hip hinge, feel hamstring stretch at bottom',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Barbell RDL'},{n:'Barbell Glute Bridge',nt:'Tonal · Use barbell pad. Full hip extension, 1-sec squeeze.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Barbell Glute Bridge'}]},
         {ss:true,ssl:'Superset B — Step + Calf',r:[{n:'Resisted Step Up',nt:'Tonal · 3-sec descent, knee tracks second toe',tg:'tton',sets:'3x',reps:'12 ea.',rir:'RIR 2',tr:'Resisted Step Up'},{n:'Resisted Calf Raise',nt:'Tonal · Single leg, full ROM top to bottom',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Resisted Calf Raise'}]},
       ]},
     {id:'b3',e:'🔩',lbl:'Block 3',meta:'Core · 45 sec rest',
-      g:[{ss:true,ssl:'Superset C — Anti-Rotation + Hip Flexor',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation, elbows in, press straight out',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Dead Bug',nt:'Tonal or floor · Opposite arm/leg, lower back stays flat',tg:'tton',sets:'2x',reps:'10 ea.',rir:'-'}]}]},
+      g:[{ss:true,ssl:'Superset C — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation, elbows in, press straight out',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Start bodyweight 3x12-15 with 2-sec descent. Add plate when 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Knee-priority',isCD:true,cdt:'legs'},
   ],
   3:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Elbow prep',isWU:true},
     {id:'b1',e:'💪',lbl:'Block 1',meta:'Biceps · 90 sec rest',
       g:[
-        {ss:false,r:[{n:'Barbell Bicep Curl',nt:'Tonal · Strict form, no body swing, full ROM.',tg:'tton',sets:'4x',reps:'8-10',rir:'RIR 1',tr:'Barbell Bicep Curl'}]},
+        {ss:false,r:[{n:'DB Alternating Curl',nt:'Dumbbells · Start neutral, supinate naturally through the rep. No locked wrist — joint tracks freely. Go heavy with the adjustables.',tg:'tdb',sets:'4x',reps:'8-10',rir:'RIR 1',tr:'DB Alternating Curl'}]},
         {ss:true,ssl:'Superset A — Stretch + Brachialis',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60 degree incline. Full stretch at bottom.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Incline DB Curl'},{n:'Reverse Grip Bicep Curl',nt:'Tonal · Brachialis and brachioradialis',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Reverse Grip Bicep Curl'}]},
       ],note:'<strong>Arms strategy:</strong> 3x weekly stimulus — tris on Push A, bis on Pull A, full session here.'},
     {id:'b2',e:'🔱',lbl:'Block 2',meta:'Triceps · 90 sec rest',
@@ -379,7 +381,7 @@ var BLOCKS={
         {ss:true,ssl:'Superset B — Medial + Lateral Head',r:[{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative, lateral head pump',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
       ]},
     {id:'b3',e:'🔩',lbl:'Block 3',meta:'Core · 45 sec rest',
-      g:[{ss:true,ssl:'Superset C — Stability Finisher',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation core finisher',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Bird Dog with Row',nt:'Tonal · Single limb stability + row',tg:'tton',sets:'2x',reps:'10 ea.',rir:'-'}]}]},
+      g:[{ss:true,ssl:'Superset C — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation core finisher',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Progress from bodyweight to plate hold once 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Elbow focus',isCD:true,cdt:'arms'},
   ],
   4:[
@@ -394,15 +396,18 @@ var BLOCKS={
         {ss:true,ssl:'Superset A — Chest + Lateral Delt',r:[{n:'Alt Bench Press',nt:'Tonal · Single-arm alternating, shoulder-friendly ROM',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Alt Bench Press'},{n:'Lateral Raise',nt:'Tonal · Drop set on final set',tg:'tton',sets:'4x',reps:'12-15',rir:'RIR 1',tr:'Lateral Raise'}]},
         {ss:true,ssl:'Superset B — Fly + Rear Delt',r:[{n:'Middle Chest Fly',nt:'Tonal cable · Squeeze at center',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Middle Chest Fly'},{n:'Reverse Fly',nt:'Tonal · Rear delt, light, full arc',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Reverse Fly'}]},
       ]},
-    {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps · 60 sec rest',
-      g:[{ss:true,ssl:'Superset C — Overhead + Pump',r:[{n:'SA Tricep Extension',nt:'Tonal · Overhead, long head, elbow pointing up',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'SA Tricep Extension'},{n:'Tricep Kickback',nt:'Tonal cable · Pump finisher, lateral head',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]}]},
+    {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps + Finisher · 60 sec rest',
+      g:[
+        {ss:true,ssl:'Superset C — Overhead + Pump',r:[{n:'SA Tricep Extension',nt:'Tonal · Overhead, long head, elbow pointing up',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'SA Tricep Extension'},{n:'Tricep Kickback',nt:'Tonal cable · Pump finisher, lateral head',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
+        {ss:false,r:[{n:'Perfect Push-Ups',nt:'Equipment · Rotating handles — wrist-neutral throughout. Sets to failure. Natural cap to a shoulder-heavy day. Serratus anterior activation bonus.',tg:'tcus',sets:'2x',reps:'To failure',rir:'-',tr:'Perfect Push-Ups'}]},
+      ]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'push'},
   ],
   5:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Lat Width · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Alt Lat Pulldown',nt:'Tonal · Wide grip. Pull B focuses on lat width vs Pull A thickness.',tg:'tton',sets:'4x',reps:'8-10',rir:'RIR 2',tr:'Alt Lat Pulldown'}]},
+        {ss:false,r:[{n:'Weighted Chin-Up',nt:'REP PU-1100 · Supinated or neutral grip. More bicep involvement than pull-up, slightly different lat angle. Complements Pull A pull-up directly.',tg:'tcus',sets:'4x',reps:'6-10',rir:'RIR 1-2',tr:'Weighted Chin-Up'}]},
         {ss:false,r:[{n:'Rotational Row',nt:'Tonal · Rotation at peak — longer ROM than standard rows',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'Rotational Row'}]},
       ]},
     {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
