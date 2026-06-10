@@ -270,7 +270,7 @@ var TRACK_EX=[
   'Reverse Grip Tricep Extension','Tricep Kickback',
   // Back / Pull
   'Barbell Bent Over Row','Weighted Pull-Up','Weighted Chin-Up',
-  'Neutral Grip Lat Pulldown','Rotational Row',
+  'Neutral Grip Lat Pulldown',
   'Seated Row','X Pulldown','Straight Arm Pulldown','Y Pull','W Hold','Shoulder Shrug',
   // Biceps
   'DB Alternating Curl','Incline DB Curl','Seated Bicep Curl',
@@ -341,7 +341,7 @@ var BLOCKS={
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
       g:[
         {ss:false,r:[{n:'Barbell Bent Over Row',nt:'Tonal · Pronated grip, hinge ~45 degrees, elbows drive back. Primary thickness builder.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 1-2',tr:'Barbell Bent Over Row'}]},
-        {ss:false,r:[{n:'Weighted Pull-Up',nt:'REP PU-1100 · Overhand/pronated grip. Clamp 50 lb KB between feet or use dip belt. True co-compound — lat width and vertical pulling pattern.',tg:'tcus',sets:'4x',reps:'6-10',rir:'RIR 1-2',tr:'Weighted Pull-Up'}]},
+        {ss:false,r:[{n:'Bodyweight Pull-Up',nt:'REP PU-1100 · Overhand grip, ~1-1.5x shoulder width. Building to 3x10 before adding load. Do 4 sets leaving 1-2 reps in the tank — do NOT train to failure. Add 1 rep per set each week.',tg:'tcus',sets:'4x',reps:'4-6',rir:'RIR 1-2',tr:'Weighted Pull-Up'}]},
       ],note:'<strong>Cue:</strong> Initiate every pull by depressing the shoulder blade first, then drive elbow — keeps tension on lats, not biceps.'},
     {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
       g:[
@@ -407,8 +407,8 @@ var BLOCKS={
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Lat Width · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Weighted Chin-Up',nt:'REP PU-1100 · Supinated or neutral grip. More bicep involvement than pull-up, slightly different lat angle. Complements Pull A pull-up directly.',tg:'tcus',sets:'4x',reps:'6-10',rir:'RIR 1-2',tr:'Weighted Chin-Up'}]},
-        {ss:false,r:[{n:'Rotational Row',nt:'Tonal · Rotation at peak — longer ROM than standard rows',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'Rotational Row'}]},
+        {ss:false,r:[{n:'Bodyweight Chin-Up',nt:'REP PU-1100 · Shoulder-width supinated grip. More bicep involvement than pull-up. Same progression: 4 sets submax, add 1 rep/week. Target 3x10 before adding load.',tg:'tcus',sets:'4x',reps:'4-6',rir:'RIR 1-2',tr:'Weighted Chin-Up'}]},
+        {ss:false,r:[{n:'SA Bent Over Row',nt:'Tonal · Single arm, hinge at hips, elbow drives straight back. Longer ROM than barbell row — feel the lat stretch at the bottom. Corrects left/right imbalances.',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2'}]},
       ]},
     {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
       g:[
@@ -588,7 +588,7 @@ function renderWU(dt){
     '<div class="pwrow"><span class="pwtb">5:00</span><span class="pwdesc">C4 Pre-Workout + Rice cake w/ honey</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:10</span><span class="pwdesc">Creatine 5g + Multivitamin + Fish Oil</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:45</span><span class="pwdesc">Training begins + Amino Energy intra-workout</span></div>'+
-    '<div class="pwrow"><span class="pwtb">Post</span><span class="pwdesc">50g Whey + TRT cream x2 daily</span></div></div>'+
+    '<div class="pwrow"><span class="pwtb">Post</span><span class="pwdesc">50g Whey · Creatine 5g</span></div></div>'+
     '<div class="tstrip"><div class="ti"><div class="ttime">5:45</div><div class="tlbl">Rower</div><div class="tdet">5 min Zone 1</div></div>'+
     '<div class="ti"><div class="ttime">5:50</div><div class="tlbl">Mobility</div><div class="tdet">6-7 min</div></div>'+
     '<div class="ti"><div class="ttime">5:57</div><div class="tlbl">Activate</div><div class="tdet">3 min</div></div>'+
@@ -615,10 +615,10 @@ function renderBlock(block,di,dt){
     '<div class="pwrow"><span class="pwtb">5:00</span><span class="pwdesc">C4 + Rice cake w/ honey</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:10</span><span class="pwdesc">Creatine + Multivitamin + Fish Oil</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:45</span><span class="pwdesc">Cardio begins</span></div>'+
-    '<div class="pwrow"><span class="pwtb">Post</span><span class="pwdesc">50g Whey + TRT cream x2</span></div></div>'+
+    '<div class="pwrow"><span class="pwtb">Post</span><span class="pwdesc">50g Whey · Creatine 5g</span></div></div>'+
     '<div class="reccard"><h4>🚣 Option A — Rower</h4><p>20-25 min easy Zone 2. Upper-body dominant — minimal knee load. Damper 3-5.</p></div>'+
     '<div class="reccard"><h4>🔄 Option B — Elliptical</h4><p>25-30 min low resistance. Zero knee impact. Best if knee is beat up from the week.</p></div>'+
-    '<div class="reccard"><h4>🌡️ Sauna</h4><p>15-20 min post-cardio. Supports GH release, recovery, and cardiovascular adaptation. Synergistic with TRT and Tirzepatide.</p></div>'+
+    '<div class="reccard"><h4>🌡️ Sauna</h4><p>15-20 min post-cardio. Supports GH release, muscle recovery, and cardiovascular adaptation.</p></div>'+
     '<div class="reccard"><h4>📐 Mobility (10 min)</h4><p>90-90 Hip Stretch → Bretzel → Lying Hamstring Stretch → Cat-Cow. All in Tonal library.</p></div>'+
     '<div class="nbox" style="border-radius:12px">Recovery day does real work — do not skip it.</div>';
   var html='';
