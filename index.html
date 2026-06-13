@@ -234,6 +234,11 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .cdtimer-stop{background:#1a0808;color:#cc4444;border:1px solid #2a1010;}
 .cdtimer-done{text-align:center;padding:10px 0 4px;color:#3abcbc;font-size:13px;font-weight:700;}
 .strow.cdactive{background:#060c0f;border-left:3px solid #3abcbc;}
+.avacard{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#151515,#0b0b0b);border:1px solid #242424;border-left:3px solid #d62828;border-radius:14px;padding:13px 15px;margin-bottom:12px;}
+.avaface{width:58px;height:58px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:2px solid #2c2c2c;}
+.avabody{flex:1;min-width:0;}
+.avaname{font-size:10px;font-weight:800;letter-spacing:2px;color:#d62828;margin-bottom:3px;}
+.avamsg{font-size:14px;line-height:1.35;color:#eaeaea;font-weight:500;}
 </style>
 </head>
 <body>
@@ -751,6 +756,42 @@ function handleLog(){
 
 // ── DASHBOARD ────────────────────────────────────────────────────────────────
 
+// ── AVA (text persona) ───────────────────────────────────────────────────────
+function avaDayStart(t){var d=new Date(t);d.setHours(0,0,0,0);return d.getTime();}
+function avaSameDay(a,b){return avaDayStart(a)===avaDayStart(b);}
+function avaPick(a){return a[Math.floor(Math.random()*a.length)];}
+function avaShortEx(ex){return ex.replace(/\s*\([^)]*\)/,'').trim();}
+function avaCtx(){
+  var sess=ls(),logs=ll(),phase=getPhase(),now=Date.now(),cw=progWeek();
+  var lastTs=0;Object.keys(sess).forEach(function(k){if(sess[k]&&sess[k].ts>lastTs)lastTs=sess[k].ts;});
+  var daysSince=lastTs?Math.round((avaDayStart(now)-avaDayStart(lastTs))/86400000):null;
+  var trainedToday=false;Object.keys(sess).forEach(function(k){if(sess[k]&&sess[k].ts&&avaSameDay(sess[k].ts,now))trainedToday=true;});
+  var todayIdx=(new Date().getDay()+6)%7,td=DAYS[todayIdx];
+  var weekDone=0;for(var d=0;d<6;d++){if(sess['w'+cw+'_d'+d])weekDone++;}
+  var prToday=null;
+  Object.keys(logs).forEach(function(ex){
+    var arr=logs[ex];if(!Array.isArray(arr)||arr.length<2)return;
+    var best=arr.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},arr[0]);
+    if(best.ts&&avaSameDay(best.ts,now)&&(!prToday||best.e1rm>prToday.e1rm))prToday={ex:ex,weight:best.weight,reps:best.reps,e1rm:best.e1rm};
+  });
+  return{daysSince:daysSince,trainedToday:trainedToday,todayName:td.name,isRecovery:td.type==='recovery',streak:streakCount(),weekDone:weekDone,totalW:phase.totalW,phaseName:phase.phase.name,nearPhaseEnd:phase.wip===phase.tot,prToday:prToday};
+}
+function avaMessage(c){
+  if(c.prToday)return avaPick(['New PR — '+avaShortEx(c.prToday.ex)+' at '+c.prToday.weight+'. That\'s the work showing.',c.prToday.weight+' on '+avaShortEx(c.prToday.ex)+'. New best — earned, not given.']);
+  if(c.trainedToday)return avaPick(['Today\'s logged. Recovery is part of the work now.','In the books. '+(c.weekDone>=6?'Full week — that\'s relentless.':c.weekDone+' down this week.'),'Done for today. Eat, sleep, repeat.']);
+  if(c.daysSince!==null&&c.daysSince>=3){
+    if(c.daysSince>=8)return avaPick(['Been '+c.daysSince+' days. The streak resets — the work doesn\'t. '+(c.isRecovery?'Recovery today; ease back in.':'Today\'s '+c.todayName+'.'),c.daysSince+' days out. You\'ve come back before. '+(c.isRecovery?'Reset today.':c.todayName+' is on deck.')]);
+    return avaPick([c.daysSince+' days off. '+(c.isRecovery?'Recovery today — good reset.':'Today\'s '+c.todayName+'. Let\'s not make it more.'),'Back at it. '+(c.isRecovery?'Recovery day.':c.todayName+' — pick up where you left off.')]);
+  }
+  if(c.isRecovery)return avaPick(['Recovery is programmed, not optional. Sauna, rower, mobility.','Rest day. Consolidate the work — you earned it.']);
+  if(c.nearPhaseEnd)return avaPick(['Final week of '+c.phaseName+'. Finish it, then we shift gears.','Last week of '+c.phaseName+'. Leave nothing in the tank.']);
+  return avaPick([c.todayName+' today. Week '+c.totalW+', '+c.phaseName+'. '+(c.streak>0?c.streak+'-week streak on the line.':'Build the streak.'),c.todayName+' on the board. Built strong. Stay relentless.','Week '+c.totalW+'. '+c.todayName+' today — show up, log it, move on.']);
+}
+function avaCard(){
+  var msg=avaMessage(avaCtx());
+  return '<div class="avacard"><img class="avaface" src="media/ava-portrait.png" alt="Ava">'+
+    '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
+}
 function buildDash(){
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
@@ -819,7 +860,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=syncHtml+phHtml+nxHtml+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=avaCard()+syncHtml+phHtml+nxHtml+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
