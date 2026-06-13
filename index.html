@@ -445,7 +445,7 @@ var BLOCKS={
 
 // ── STORAGE ──────────────────────────────────────────────────────────────────
 
-var SK='travis_progress_v1',SKB='travis_progress_v1_bak',SK2='travis_sessions_v1';
+var SK='travis_progress_v1',SKB='travis_progress_v1_bak',SK2='travis_sessions_v1',SK_SEED='travis_seeded';
 function ll(){
   try{var d=localStorage.getItem(SK);if(d){var r=JSON.parse(d);if(r&&Object.keys(r).length)return r;}}catch(e){}
   try{var b=localStorage.getItem(SKB);if(b){var rb=JSON.parse(b);if(rb&&Object.keys(rb).length){sl(rb);return rb;}}}catch(e2){}
@@ -454,6 +454,15 @@ function ll(){
 function sl(l){var s=JSON.stringify(l);localStorage.setItem(SK,s);localStorage.setItem(SKB,s);}
 function ls(){try{return JSON.parse(localStorage.getItem(SK2))||{};}catch(e){return{};}}
 function ss(s){localStorage.setItem(SK2,JSON.stringify(s));}
+function isSeeded(){return localStorage.getItem(SK_SEED)==='1';}
+function setSeeded(){localStorage.setItem(SK_SEED,'1');}
+function migrateSeed(){
+  try{
+    var raw=localStorage.getItem(SK);if(!raw)return;
+    var o=JSON.parse(raw);
+    if(o&&o._seeded!==undefined){if(o._seeded)setSeeded();delete o._seeded;sl(o);}
+  }catch(e){}
+}
 function e1rm(w,r){return Math.round(w*(1+r/30));}
 function today(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 
@@ -467,13 +476,14 @@ function logSet(ex,w,r){
 }
 function isPR(ex,w,r){var logs=ll();if(!logs[ex]||!logs[ex].length)return true;var best=Math.max.apply(null,logs[ex].map(function(e){return e.e1rm;}));return e1rm(w,r)>best;}
 function seedBaseline(){
-  var logs=ll();if(logs['_seeded'])return;
+  if(isSeeded())return;
+  var logs=ll();
   var d='May 9';
   if(!logs['Incline Barbell Bench Press']||!logs['Incline Barbell Bench Press'].length)
     logs['Incline Barbell Bench Press']=[{date:d,ts:new Date('2025-05-09').getTime(),weight:160,reps:6,e1rm:192}];
   if(!logs['Barbell Bench Press (Flat)']||!logs['Barbell Bench Press (Flat)'].length)
     logs['Barbell Bench Press (Flat)']=[{date:d,ts:new Date('2025-05-09').getTime()+500,weight:192,reps:8,e1rm:243}];
-  logs['_seeded']=true;sl(logs);
+  sl(logs);setSeeded();
 }
 
 // ── PHASE ───────────────────────────────────────────────────────────────────
@@ -837,7 +847,7 @@ function ghLoad(){
 }
 
 function ghSave(token){
-  var data={logs:ll(),sessions:ls(),lastSaved:new Date().toISOString(),version:1};
+  var data={logs:ll(),sessions:ls(),lastSaved:new Date().toISOString(),version:1,seeded:isSeeded()};
   var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
   return fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
     headers:{'Authorization':'Bearer '+token}
@@ -859,14 +869,16 @@ function ghSave(token){
 function mergeAndApply(ghData){
   if(!ghData)return false;
   var localLogs=ll(),ghLogs=ghData.logs||{},merged=JSON.parse(JSON.stringify(localLogs));
+  if(ghData.seeded||ghLogs._seeded)setSeeded();
   Object.keys(ghLogs).forEach(function(ex){
     var gv=ghLogs[ex];
-    if(!Array.isArray(gv)){if(!(ex in merged))merged[ex]=gv;return;}
+    if(!Array.isArray(gv))return;
     if(!Array.isArray(merged[ex])){merged[ex]=gv.slice();return;}
     var existing=new Set(merged[ex].map(function(e){return e.ts;}));
     gv.forEach(function(entry){if(!existing.has(entry.ts))merged[ex].push(entry);});
     merged[ex].sort(function(a,b){return a.ts-b.ts;});
   });
+  Object.keys(merged).forEach(function(k){if(!Array.isArray(merged[k]))delete merged[k];});
   sl(merged);
   var mergedSess=Object.assign({},ghData.sessions||{},ls());
   ss(mergedSess);
@@ -975,7 +987,7 @@ function buildHeader(){
   badge.className='hdr-badge '+(cm[d.type]||'bp');
 }
 
-seedBaseline();selDay(0);autoLoadFromGH();
+migrateSeed();seedBaseline();selDay(0);autoLoadFromGH();
 </script>
 </body>
 </html>
