@@ -199,6 +199,24 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .prsub{font-size:10px;color:var(--muted);}
 .toast{position:fixed;bottom:calc(76px + var(--sb));left:50%;transform:translateX(-50%);background:#1a2a10;border:1px solid #44aa22;color:#88dd44;font-size:13px;font-weight:600;padding:10px 20px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;z-index:200;}
 .toast.show{opacity:1;}
+.synccard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.synchd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--border);}
+.synctitle{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;color:#aaa;}
+.syncstat{font-size:12px;font-weight:600;}
+.syncbody{padding:12px 14px;}
+.synclast{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.syncbtns{display:flex;gap:8px;margin-bottom:6px;}
+.sbtn{flex:1;padding:10px 6px;border-radius:8px;border:none;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;text-align:center;-webkit-appearance:none;}
+.sbtn:active{opacity:.7;}
+.sb-save{background:#0a1a0a;color:#44cc44;border:1px solid #1a4a1a;}
+.sb-load{background:#0a0d1a;color:#4488dd;border:1px solid #1a2a4a;}
+.sb-export{background:#1a1208;color:#aa8830;border:1px solid #3a2810;}
+.sb-import{background:#1a0a1a;color:#aa44cc;border:1px solid #3a1a4a;display:flex;align-items:center;justify-content:center;}
+.synctok{margin-top:10px;}
+.synctok-in{background:#0d0d0d;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;padding:9px 12px;outline:none;width:100%;font-family:'Barlow',sans-serif;margin-bottom:6px;-webkit-appearance:none;}
+.synctok-in:focus{border-color:#4499dd;}
+.synctok-btn{width:100%;background:#4499dd;border:none;border-radius:8px;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;padding:10px;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;}
+.synctok-hint{font-size:11px;color:var(--muted);margin-top:8px;cursor:pointer;line-height:1.5;}
 @keyframes fu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .ms>*,.tscr>*{animation:fu .18s ease both;}
 .cdtimer{padding:12px 14px 10px;border-bottom:1px solid #0e2a2a;}
@@ -755,10 +773,156 @@ function buildDash(){
   }).filter(Boolean).join('');
   var prHtml=prRows?'<div class="prwall"><div class="prwhd"><div class="prwtitle">🏆 PR Wall</div></div>'+prRows+'</div>':'';
 
-  document.getElementById('dashScroll').innerHTML=phHtml+nxHtml+skHtml+slHtml+prHtml;
+  var meta=getSyncMeta();
+  var lastStr=meta.lastSaved?new Date(meta.lastSaved).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'Never synced';
+  var hasTok=!!getToken();
+  var syncHtml='<div class="synccard">'+
+    '<div class="synchd"><div class="synctitle">☁️ Cloud Sync</div><div class="syncstat" id="syncStatTxt">'+lastStr+'</div></div>'+
+    '<div class="syncbody">'+
+      '<div class="syncbtns">'+
+        '<button class="sbtn sb-save" onclick="syncSave()">💾 Save</button>'+
+        '<button class="sbtn sb-load" onclick="syncLoad()">📥 Load</button>'+
+        '<button class="sbtn sb-export" onclick="exportJSON()">📤 Export</button>'+
+        '<label class="sbtn sb-import">📂 Import<input type="file" accept=".json" style="display:none" onchange="importJSON(this.files[0])"></label>'+
+      '</div>'+
+      '<div id="syncTokSec" style="display:none;margin-top:10px">'+
+        '<input class="synctok-in" id="syncTokInput" type="password" placeholder="GitHub token (fine-grained · Contents R/W)">'+
+        '<button class="synctok-btn" onclick="syncSaveWithToken()">Save & Sync</button>'+
+        '<div class="synctok-hint">Generate at github.com/settings/tokens → Fine-grained → travis-workout-pwa → Contents: Read &amp; write</div>'+
+      '</div>'+
+      '<div class="synctok-hint" onclick="toggleSyncTok()" style="margin-top:8px">'+(hasTok?'Token stored: '+maskToken()+' · tap to update':'⚠️ No token stored · tap here to add (needed to Save)')+'</div>'+
+    '</div>'+
+  '</div>';
+
+  document.getElementById('dashScroll').innerHTML=syncHtml+phHtml+nxHtml+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
+
+// ── CLOUD SYNC ───────────────────────────────────────────────────────────────
+
+var GH_REPO='travbenn2026/travis-workout-pwa';
+var GH_FILE='workout-data.json';
+var SK_TOK='travis_gh_token';
+var SK_SYNC='travis_sync_meta';
+
+function getToken(){return localStorage.getItem(SK_TOK)||'';}
+function setToken(t){if(t)localStorage.setItem(SK_TOK,t.trim());}
+function maskToken(){var t=getToken();return t?'••••••'+t.slice(-6):'';}
+function getSyncMeta(){try{return JSON.parse(localStorage.getItem(SK_SYNC))||{};}catch(e){return{};}}
+function setSyncMeta(m){localStorage.setItem(SK_SYNC,JSON.stringify(m));}
+
+function ghLoad(){
+  var url='https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
+  return fetch(url).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+}
+
+function ghSave(token){
+  var data={logs:ll(),sessions:ls(),lastSaved:new Date().toISOString(),version:1};
+  var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
+  return fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+    headers:{'Authorization':'Bearer '+token}
+  }).then(function(r){return r.ok?r.json():null;})
+  .then(function(meta){
+    var payload={message:'Sync workout data '+new Date().toLocaleDateString(),content:encoded};
+    if(meta&&meta.sha)payload.sha=meta.sha;
+    return fetch('https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE,{
+      method:'PUT',
+      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+  }).then(function(r){
+    if(r.ok){setSyncMeta({lastSaved:data.lastSaved});setToken(token);return true;}
+    return false;
+  }).catch(function(){return false;});
+}
+
+function mergeAndApply(ghData){
+  if(!ghData)return false;
+  var localLogs=ll(),ghLogs=ghData.logs||{},merged=JSON.parse(JSON.stringify(localLogs));
+  Object.keys(ghLogs).forEach(function(ex){
+    if(!merged[ex]){merged[ex]=ghLogs[ex];}
+    else{
+      var existing=new Set(merged[ex].map(function(e){return e.ts;}));
+      ghLogs[ex].forEach(function(entry){if(!existing.has(entry.ts))merged[ex].push(entry);});
+      merged[ex].sort(function(a,b){return a.ts-b.ts;});
+    }
+  });
+  sl(merged);
+  var mergedSess=Object.assign({},ghData.sessions||{},ls());
+  ss(mergedSess);
+  setSyncMeta(Object.assign(getSyncMeta(),{lastSaved:ghData.lastSaved,lastLoaded:new Date().toISOString()}));
+  return true;
+}
+
+function exportJSON(){
+  var data={logs:ll(),sessions:ls(),exported:new Date().toISOString()};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;
+  a.download='workout-backup-'+new Date().toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'2-digit'}).replace(/\//g,'-')+'.json';
+  document.body.appendChild(a);a.click();
+  setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},100);
+}
+
+function importJSON(file){
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      if(data.logs)sl(data.logs);
+      if(data.sessions)ss(data.sessions);
+      setSyncMeta({lastSaved:data.exported||data.lastSaved||null});
+      showToast('✅ Backup imported');
+      if(document.getElementById('sD').classList.contains('active'))buildDash();
+      if(document.getElementById('sT').classList.contains('active'))buildTracker();
+    }catch(err){showToast('❌ Invalid backup file');}
+  };
+  reader.readAsText(file);
+}
+
+function autoLoadFromGH(){
+  ghLoad().then(function(data){
+    if(!data)return;
+    var meta=getSyncMeta();
+    var ghTime=data.lastSaved?new Date(data.lastSaved).getTime():0;
+    var localTime=meta.lastSaved?new Date(meta.lastSaved).getTime():0;
+    if(ghTime>localTime){mergeAndApply(data);showToast('☁️ Data synced from cloud');}
+  });
+}
+
+function syncSave(){
+  var token=getToken();
+  if(!token){showSyncTok();return;}
+  updSyncStat('⏳ Saving...');
+  ghSave(token).then(function(ok){
+    if(ok){showToast('☁️ Saved to GitHub');updSyncStat('✅ Saved');}
+    else{showToast('❌ Save failed — token may be expired');showSyncTok();updSyncStat('❌ Error');}
+    if(document.getElementById('sD').classList.contains('active'))buildDash();
+  });
+}
+
+function syncLoad(){
+  updSyncStat('⏳ Loading...');
+  ghLoad().then(function(data){
+    if(data){mergeAndApply(data);showToast('☁️ Loaded from GitHub');updSyncStat('✅ Loaded');}
+    else{showToast('❌ Load failed — check connection');updSyncStat('❌ Error');}
+    if(document.getElementById('sD').classList.contains('active'))buildDash();
+    if(document.getElementById('sT').classList.contains('active'))buildTracker();
+  });
+}
+
+function syncSaveWithToken(){
+  var input=document.getElementById('syncTokInput');
+  var token=input?input.value.trim():'';
+  if(!token){showToast('Enter a token first');return;}
+  setToken(token);hideSyncTok();syncSave();
+}
+
+function showSyncTok(){var s=document.getElementById('syncTokSec');if(s)s.style.display='block';}
+function hideSyncTok(){var s=document.getElementById('syncTokSec');if(s)s.style.display='none';}
+function toggleSyncTok(){var s=document.getElementById('syncTokSec');if(s)s.style.display=s.style.display==='none'?'block':'none';}
+function updSyncStat(msg){var el=document.getElementById('syncStatTxt');if(el)el.textContent=msg;}
 
 function goTo(s){
   ['W','T','D'].forEach(function(x){
@@ -790,7 +954,7 @@ function buildHeader(){
   badge.className='hdr-badge '+(cm[d.type]||'bp');
 }
 
-seedBaseline();selDay(0);
+seedBaseline();selDay(0);autoLoadFromGH();
 </script>
 </body>
 </html>
