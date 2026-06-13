@@ -860,12 +860,12 @@ function mergeAndApply(ghData){
   if(!ghData)return false;
   var localLogs=ll(),ghLogs=ghData.logs||{},merged=JSON.parse(JSON.stringify(localLogs));
   Object.keys(ghLogs).forEach(function(ex){
-    if(!merged[ex]){merged[ex]=ghLogs[ex];}
-    else{
-      var existing=new Set(merged[ex].map(function(e){return e.ts;}));
-      ghLogs[ex].forEach(function(entry){if(!existing.has(entry.ts))merged[ex].push(entry);});
-      merged[ex].sort(function(a,b){return a.ts-b.ts;});
-    }
+    var gv=ghLogs[ex];
+    if(!Array.isArray(gv)){if(!(ex in merged))merged[ex]=gv;return;}
+    if(!Array.isArray(merged[ex])){merged[ex]=gv.slice();return;}
+    var existing=new Set(merged[ex].map(function(e){return e.ts;}));
+    gv.forEach(function(entry){if(!existing.has(entry.ts))merged[ex].push(entry);});
+    merged[ex].sort(function(a,b){return a.ts-b.ts;});
   });
   sl(merged);
   var mergedSess=Object.assign({},ghData.sessions||{},ls());
