@@ -32,7 +32,6 @@
         "e1rm": 234
       }
     ],
-    "_seeded": true,
     "Alt Bench Press": [
       {
         "date": "Jun 13",
@@ -194,5 +193,6 @@
     }
   },
   "lastSaved": "2026-06-13T22:09:36.274Z",
-  "version": 1
+  "version": 1,
+  "seeded": true
 }
