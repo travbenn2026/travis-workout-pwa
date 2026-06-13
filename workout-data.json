@@ -1,0 +1,117 @@
+{
+  "logs": {
+    "Incline Barbell Bench Press": [
+      {
+        "date": "May 9",
+        "ts": 1746748800000,
+        "weight": 160,
+        "reps": 6,
+        "e1rm": 192
+      },
+      {
+        "date": "Jun 13",
+        "ts": 1781377052818,
+        "weight": 175,
+        "reps": 6,
+        "e1rm": 210
+      }
+    ],
+    "Barbell Bench Press (Flat)": [
+      {
+        "date": "May 9",
+        "ts": 1746748800500,
+        "weight": 192,
+        "reps": 8,
+        "e1rm": 243
+      },
+      {
+        "date": "Jun 13",
+        "ts": 1781377092946,
+        "weight": 185,
+        "reps": 8,
+        "e1rm": 234
+      }
+    ],
+    "_seeded": true,
+    "Alt Bench Press": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385350920,
+        "weight": 63,
+        "reps": 10,
+        "e1rm": 84
+      }
+    ],
+    "Standing Incline Chest Press": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385380863,
+        "weight": 47,
+        "reps": 10,
+        "e1rm": 63
+      }
+    ],
+    "Perfect Push-Ups": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385400425,
+        "weight": 230,
+        "reps": 15,
+        "e1rm": 345
+      }
+    ],
+    "Barbell OHP": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385427504,
+        "weight": 87,
+        "reps": 6,
+        "e1rm": 104
+      }
+    ],
+    "Half Kneeling SA OHP": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385442964,
+        "weight": 39,
+        "reps": 10,
+        "e1rm": 52
+      }
+    ],
+    "Front Raise": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385469814,
+        "weight": 15,
+        "reps": 12,
+        "e1rm": 21
+      }
+    ],
+    "Lateral Raise": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385480748,
+        "weight": 15,
+        "reps": 15,
+        "e1rm": 23
+      }
+    ],
+    "Skull Crushers": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385498878,
+        "weight": 40,
+        "reps": 10,
+        "e1rm": 53
+      }
+    ]
+  },
+  "sessions": {
+    "w5_d0": {
+      "date": "Jun 13",
+      "ts": 1781377148865
+    }
+  },
+  "lastSaved": "2026-06-13T21:21:15.523Z",
+  "version": 1
+}
