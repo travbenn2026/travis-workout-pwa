@@ -829,7 +829,11 @@ function setSyncMeta(m){localStorage.setItem(SK_SYNC,JSON.stringify(m));}
 
 function ghLoad(){
   var url='https://raw.githubusercontent.com/'+GH_REPO+'/main/'+GH_FILE+'?t='+Date.now();
-  return fetch(url).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+  var ctrl=new AbortController();
+  var to=setTimeout(function(){ctrl.abort();},8000);
+  return fetch(url,{signal:ctrl.signal,cache:'no-store'}).then(function(r){
+    clearTimeout(to);return r.ok?r.json():null;
+  }).catch(function(){clearTimeout(to);return null;});
 }
 
 function ghSave(token){
@@ -920,11 +924,13 @@ function syncSave(){
 function syncLoad(){
   updSyncStat('⏳ Loading...');
   ghLoad().then(function(data){
-    if(data){mergeAndApply(data);showToast('☁️ Loaded from GitHub');updSyncStat('✅ Loaded');}
-    else{showToast('❌ Load failed — check connection');updSyncStat('❌ Error');}
+    if(data){
+      try{mergeAndApply(data);showToast('☁️ Loaded from GitHub');updSyncStat('✅ Loaded');}
+      catch(err){showToast('❌ Load error — data not applied');updSyncStat('❌ Error');}
+    }else{showToast('❌ Load failed — check connection');updSyncStat('❌ Error');}
     if(document.getElementById('sD').classList.contains('active'))buildDash();
     if(document.getElementById('sT').classList.contains('active'))buildTracker();
-  });
+  }).catch(function(){updSyncStat('❌ Error');showToast('❌ Load failed');});
 }
 
 function syncSaveWithToken(){
