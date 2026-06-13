@@ -1,10 +1,11 @@
-const CACHE = 'travis-workout-v7';
+const CACHE = 'travis-workout-v8';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './media/session-complete.mp4',
 ];
 
 // Install: cache core assets
