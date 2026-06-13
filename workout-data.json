@@ -104,14 +104,95 @@
         "reps": 10,
         "e1rm": 53
       }
+    ],
+    "Barbell Bent Over Row": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385754327,
+        "weight": 93,
+        "reps": 6,
+        "e1rm": 112
+      }
+    ],
+    "Neutral Grip Lat Pulldown": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385779571,
+        "weight": 80,
+        "reps": 10,
+        "e1rm": 107
+      }
+    ],
+    "Weighted Pull-Up": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385790478,
+        "weight": 230,
+        "reps": 6,
+        "e1rm": 276
+      }
+    ],
+    "Weighted Chin-Up": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385807414,
+        "weight": 230,
+        "reps": 6,
+        "e1rm": 276
+      }
+    ],
+    "Seated Row": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385835572,
+        "weight": 86,
+        "reps": 10,
+        "e1rm": 115
+      }
+    ],
+    "X Pulldown": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385854425,
+        "weight": 54,
+        "reps": 12,
+        "e1rm": 76
+      }
+    ],
+    "Reverse Fly": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385866785,
+        "weight": 11,
+        "reps": 15,
+        "e1rm": 17
+      }
+    ],
+    "Seated Bicep Curl": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385883047,
+        "weight": 36,
+        "reps": 10,
+        "e1rm": 48
+      }
+    ],
+    "Reverse Grip Bicep Curl": [
+      {
+        "date": "Jun 13",
+        "ts": 1781385902829,
+        "weight": 23,
+        "reps": 12,
+        "e1rm": 32
+      }
     ]
   },
   "sessions": {
     "w5_d0": {
       "date": "Jun 13",
-      "ts": 1781377148865
+      "ts": 1781385964241
     }
   },
-  "lastSaved": "2026-06-13T21:21:27.527Z",
+  "lastSaved": "2026-06-13T22:09:36.274Z",
   "version": 1
 }
