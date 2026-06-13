@@ -1,4 +1,4 @@
-const CACHE = 'travis-workout-v8';
+const CACHE = 'travis-workout-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -26,25 +26,25 @@ self.addEventListener('activate', e => {
   );
 });
 
-// NETWORK-FIRST: always try network, fall back to cache when offline
+// NETWORK-FIRST for same-origin only. External requests (GitHub API,
+// raw content, CDNs) are left to the browser so cloud sync isn't intercepted.
 self.addEventListener('fetch', e => {
-  // Only handle GET requests
   if (e.request.method !== 'GET') return;
+  if (new URL(e.request.url).origin !== self.location.origin) return;
 
   e.respondWith(
     fetch(e.request)
       .then(response => {
-        // Cache a copy of fresh responses for our core assets
         if (response.ok && ASSETS.some(a => e.request.url.endsWith(a.replace('./', '')))) {
           const clone = response.clone();
           caches.open(CACHE).then(c => c.put(e.request, clone));
         }
         return response;
       })
-      .catch(() => {
-        // Offline fallback: serve from cache
-        return caches.match(e.request)
-          .then(cached => cached || caches.match('./index.html'));
-      })
+      .catch(() =>
+        caches.match(e.request).then(cached =>
+          cached || (e.request.mode === 'navigate' ? caches.match('./index.html') : Response.error())
+        )
+      )
   );
 });
