@@ -519,11 +519,12 @@ function getPhase(){
   if(cw<16)return{phase:PHASES[1],wip:cw-7,tot:8,totalW:totalW+1};
   return{phase:PHASES[2],wip:cw-15,tot:2,totalW:totalW+1};
 }
-function getSugg(ex){
+function lowReps(rs){var m=(''+rs).match(/\d+/);return m?parseInt(m[0],10):null;}
+function getSugg(ex,repRange){
   var logs=ll();if(!logs[ex]||!logs[ex].length)return null;
   var ph=getPhase();
   var best=logs[ex].reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},logs[ex][0]);
-  var tr=ph.phase.treps;
+  var tr=(repRange&&lowReps(repRange))||ph.phase.treps;
   var suggested=Math.round((best.e1rm/(1+tr/30))*ph.phase.wmult/2.5)*2.5;
   return{weight:suggested,reps:tr};
 }
@@ -717,8 +718,8 @@ function tagH(tg){
   var m={tton:['tton','Tonal'],tcus:['tcus','Custom'],tdb:['tdb','Dumbbell'],tcar:['tcar','Cardio']};
   var x=m[tg]||m.tton;return '<span class="extag '+x[0]+'">'+x[1]+'</span>';
 }
-function suggH(ex){
-  if(!ex)return'';var s=getSugg(ex);if(!s)return'';
+function suggH(ex,repRange){
+  if(!ex)return'';var s=getSugg(ex,repRange);if(!s)return'';
   return'<span class="pill psug">Target: '+s.weight+' lb x '+s.reps+' reps</span>';
 }
 function renderWU(dt){
@@ -764,7 +765,7 @@ function renderBlock(block,di,dt){
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
       return'<div class="exrow"><div class="extop"><div class="exname">'+r.n+'</div>'+
-        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\')">＋ Log set</button>':'')+'</div></div>'+
+        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,r.reps)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+r.reps+'\')">＋ Log set</button>':'')+'</div></div>'+
         '<div class="exnote">'+r.nt+'</div>'+tagH(r.tg)+'</div>';
     }).join('');
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
@@ -849,10 +850,10 @@ function handleLog(){
   var r=parseInt(document.getElementById('logR').value);
   commitLog(ex,w,r);
 }
-function quickLog(ev,ex){
+function quickLog(ev,ex,repRange){
   if(ev){ev.stopPropagation();ev.preventDefault();}
   if(document.querySelector('.ql-ov'))return;
-  var logs=ll(),last=(logs[ex]&&logs[ex].length)?logs[ex][logs[ex].length-1]:null,sug=getSugg(ex);
+  var logs=ll(),last=(logs[ex]&&logs[ex].length)?logs[ex][logs[ex].length-1]:null,sug=getSugg(ex,repRange);
   var wVal=sug?sug.weight:(last?last.weight:''),rVal=sug?sug.reps:(last?last.reps:'');
   var ov=document.createElement('div');ov.className='ql-ov';
   ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);padding:24px;box-sizing:border-box';
