@@ -120,15 +120,22 @@
         "weight": 80,
         "reps": 10,
         "e1rm": 107
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781442161273,
+        "weight": 82,
+        "reps": 10,
+        "e1rm": 109
       }
     ],
     "Weighted Pull-Up": [
       {
         "date": "Jun 13",
-        "ts": 1781385790478,
-        "weight": 230,
+        "ts": 1781398081743,
+        "weight": 231,
         "reps": 6,
-        "e1rm": 276
+        "e1rm": 277
       }
     ],
     "Weighted Chin-Up": [
@@ -147,12 +154,26 @@
         "weight": 86,
         "reps": 10,
         "e1rm": 115
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781442334830,
+        "weight": 88,
+        "reps": 10,
+        "e1rm": 117
       }
     ],
     "X Pulldown": [
       {
         "date": "Jun 13",
         "ts": 1781385854425,
+        "weight": 54,
+        "reps": 12,
+        "e1rm": 76
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781442969051,
         "weight": 54,
         "reps": 12,
         "e1rm": 76
@@ -165,6 +186,13 @@
         "weight": 11,
         "reps": 15,
         "e1rm": 17
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781442997289,
+        "weight": 12,
+        "reps": 15,
+        "e1rm": 18
       }
     ],
     "Seated Bicep Curl": [
@@ -174,6 +202,13 @@
         "weight": 36,
         "reps": 10,
         "e1rm": 48
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781443655586,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -183,6 +218,13 @@
         "weight": 23,
         "reps": 12,
         "e1rm": 32
+      },
+      {
+        "date": "Jun 14",
+        "ts": 1781443736841,
+        "weight": 25,
+        "reps": 12,
+        "e1rm": 35
       }
     ]
   },
@@ -190,9 +232,13 @@
     "w5_d0": {
       "date": "Jun 13",
       "ts": 1781385964241
+    },
+    "w5_d1": {
+      "date": "Jun 14",
+      "ts": 1781444065865
     }
   },
-  "lastSaved": "2026-06-13T22:47:00.175Z",
+  "lastSaved": "2026-06-14T13:35:07.297Z",
   "version": 1,
   "seeded": true
 }
