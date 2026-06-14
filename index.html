@@ -250,6 +250,13 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .ql-btns{display:flex;gap:10px}
 .ql-cancel{flex:1;background:#1c1c1c;border:1px solid #2e2e2e;color:#aaa;font-size:14px;font-weight:700;padding:12px;border-radius:10px;cursor:pointer}
 .ql-save{flex:2;background:linear-gradient(135deg,#d62828,#a01818);border:none;color:#fff;font-size:14px;font-weight:800;padding:12px;border-radius:10px;cursor:pointer}
+.avp-card{background:linear-gradient(160deg,#161616,#0a0a0a);border:1px solid #2a2a2a;border-top:3px solid #d62828;border-radius:18px;width:100%;max-width:300px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.65);text-align:center;padding-bottom:18px}
+.avp-img{width:100%;display:block;aspect-ratio:440/548;object-fit:cover}
+.avp-body{padding:14px 18px 0}
+.avp-name{font-size:20px;font-weight:800;letter-spacing:2px;color:#fff}
+.avp-role{font-size:10px;font-weight:800;letter-spacing:3px;color:#d62828;margin-top:1px}
+.avp-msg{font-size:15px;line-height:1.4;color:#e8e8e8;margin-top:12px}
+.avp-tag{font-size:11px;font-weight:700;letter-spacing:1px;color:#666;margin-top:14px;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -897,9 +904,21 @@ function avaMessage(c){
 }
 function avaCard(){
   var msg=avaMessage(avaCtx());
-  return '<div class="avacard"><img class="avaface" src="media/ava-portrait.png" alt="Ava">'+
+  return '<div class="avacard"><img class="avaface" src="media/ava-portrait.png" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
+function openAvaProfile(){
+  if(document.querySelector('.avp-ov'))return;
+  var msg=avaMessage(avaCtx());
+  var ov=document.createElement('div');ov.className='avp-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.8);padding:22px;box-sizing:border-box';
+  ov.innerHTML='<div class="avp-card"><img class="avp-img" src="media/ava-large.png" alt="Ava">'+
+    '<div class="avp-body"><div class="avp-name">AVA</div><div class="avp-role">YOUR TRAINER</div>'+
+    '<div class="avp-msg">'+msg+'</div><div class="avp-tag">Built strong. Stay relentless.</div></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeAvaProfile();});
+  document.body.appendChild(ov);
+}
+function closeAvaProfile(){var ov=document.querySelector('.avp-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 function buildDash(){
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
