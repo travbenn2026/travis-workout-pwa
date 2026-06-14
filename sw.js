@@ -1,4 +1,4 @@
-const CACHE = 'travis-workout-v11';
+const CACHE = 'travis-workout-v12';
 const ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,11 @@ const ASSETS = [
   './media/ava-portrait.png',
   './media/pr-1.mp4',
   './media/pr-2.mp4',
+  './media/welcome-back.mp4',
+  './media/streak.mp4',
+  './media/phase-change.mp4',
+  './media/deload-week.mp4',
+  './media/cycle-complete.mp4',
 ];
 
 // Install: cache core assets
