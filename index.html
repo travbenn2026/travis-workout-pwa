@@ -581,6 +581,57 @@ function playPRClip(ex,w,r){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,5500);});
 }
+function avaPlayClip(src,captionHtml){
+  if(document.querySelector('.ava-ov'))return;
+  var ov=document.createElement('div');ov.className='ava-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);opacity:0;transition:opacity .25s;padding:18px;box-sizing:border-box';
+  var wrap=document.createElement('div');
+  wrap.style.cssText='position:relative;display:flex;flex-direction:column;align-items:center;max-height:92%';
+  var v=document.createElement('video');
+  v.src=src;v.setAttribute('playsinline','');v.playsInline=true;
+  v.style.cssText='max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 12px 44px rgba(0,0,0,.55);display:block';
+  wrap.appendChild(v);
+  if(captionHtml){var cap=document.createElement('div');cap.style.cssText='margin-top:-58px;position:relative;z-index:2;width:86%;background:linear-gradient(135deg,#e02a2a,#a01818);color:#fff;border-radius:14px;padding:11px 16px 13px;text-align:center;box-shadow:0 10px 28px rgba(0,0,0,.5)';cap.innerHTML=captionHtml;wrap.appendChild(cap);}
+  ov.appendChild(wrap);document.body.appendChild(ov);
+  requestAnimationFrame(function(){ov.style.opacity='1';});
+  function close(){ov.style.opacity='0';setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},260);}
+  v.addEventListener('ended',close);ov.addEventListener('click',close);
+  var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,7000);});
+}
+var pendingAvaClip=null;
+function queueAvaClip(src,captionHtml){
+  pendingAvaClip={src:src,cap:captionHtml||null};
+  var fire=function(){var q=pendingAvaClip;pendingAvaClip=null;document.removeEventListener('pointerdown',fire);if(q)avaPlayClip(q.src,q.cap);};
+  document.addEventListener('pointerdown',fire,{once:true});
+}
+function avaEventCheck(){
+  try{
+    var rawW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/604800000));
+    var cycle=Math.floor(rawW/18),cw=rawW%18;
+    var phaseName=cw<8?'acc':(cw<16?'int':'del');
+    var phaseInst=cycle+'_'+phaseName;
+    if(localStorage.getItem('ava_phase_evt')!==phaseInst){
+      localStorage.setItem('ava_phase_evt',phaseInst);
+      if(phaseName==='int')return queueAvaClip('media/phase-change.mp4');
+      if(phaseName==='del')return queueAvaClip('media/deload-week.mp4');
+      if(phaseName==='acc'&&cycle>0)return queueAvaClip('media/cycle-complete.mp4');
+    }
+    var streak=streakCount(),mset=[52,26,12,8,4];
+    var shownMile=parseInt(localStorage.getItem('ava_mile_evt')||'0',10);
+    if(streak<shownMile){shownMile=0;localStorage.setItem('ava_mile_evt','0');}
+    for(var i=0;i<mset.length;i++){
+      if(streak>=mset[i]&&shownMile<mset[i]){
+        localStorage.setItem('ava_mile_evt',String(mset[i]));
+        return queueAvaClip('media/streak.mp4','<div style="font-size:11px;font-weight:800;letter-spacing:3px">CONSISTENCY</div><div style="font-size:22px;font-weight:800;margin-top:3px">'+mset[i]+'-WEEK STREAK</div>');
+      }
+    }
+    var c=avaCtx();
+    if(c.daysSince!==null&&c.daysSince>=3&&localStorage.getItem('ava_wb_evt')!==today()){
+      localStorage.setItem('ava_wb_evt',today());
+      return queueAvaClip('media/welcome-back.mp4');
+    }
+  }catch(e){}
+}
 function buildCDTimerHTML(){
   if(!cdTimerState)return'<button class="cdtimer-start" onclick="startCDTimer(\''+currentCDT+'\')">▶ Start Cooldown Timer</button>';
   if(cdTimerState.done)return'<div class="cdtimer-done">✅ Cooldown complete — great work!</div>';
@@ -979,12 +1030,13 @@ function importJSON(file){
 
 function autoLoadFromGH(){
   ghLoad().then(function(data){
-    if(!data)return;
-    var meta=getSyncMeta();
-    var ghTime=data.lastSaved?new Date(data.lastSaved).getTime():0;
-    var localTime=meta.lastSaved?new Date(meta.lastSaved).getTime():0;
-    if(ghTime>localTime){mergeAndApply(data);showToast('☁️ Data synced from cloud');}
-  });
+    if(data){
+      var meta=getSyncMeta();
+      var ghTime=data.lastSaved?new Date(data.lastSaved).getTime():0;
+      var localTime=meta.lastSaved?new Date(meta.lastSaved).getTime():0;
+      if(ghTime>localTime){mergeAndApply(data);showToast('☁️ Data synced from cloud');}
+    }
+  }).catch(function(){}).then(function(){avaEventCheck();});
 }
 
 function syncSave(){
