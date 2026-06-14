@@ -239,6 +239,17 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avabody{flex:1;min-width:0;}
 .avaname{font-size:10px;font-weight:800;letter-spacing:2px;color:#d62828;margin-bottom:3px;}
 .avamsg{font-size:14px;line-height:1.35;color:#eaeaea;font-weight:500;}
+.exlog{background:#1c1c1c;border:1px solid #d62828;color:#ff6b6b;font-size:11px;font-weight:700;padding:4px 11px;border-radius:8px;cursor:pointer;margin-left:auto}
+.exlog:active{background:#d62828;color:#fff}
+.ql-card{background:#121212;border:1px solid #2a2a2a;border-top:3px solid #d62828;border-radius:16px;padding:18px;width:100%;max-width:340px;box-shadow:0 16px 50px rgba(0,0,0,.6)}
+.ql-title{font-size:17px;font-weight:800;color:#fff;line-height:1.2}
+.ql-sub{font-size:12px;color:#888;margin:2px 0 14px}
+.ql-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ql-in{flex:1;background:#0a0a0a;border:1px solid #2e2e2e;border-radius:10px;color:#fff;font-size:20px;font-weight:700;text-align:center;padding:12px 8px;width:100%;box-sizing:border-box}
+.ql-x{color:#666;font-size:18px;font-weight:700}
+.ql-btns{display:flex;gap:10px}
+.ql-cancel{flex:1;background:#1c1c1c;border:1px solid #2e2e2e;color:#aaa;font-size:14px;font-weight:700;padding:12px;border-radius:10px;cursor:pointer}
+.ql-save{flex:2;background:linear-gradient(135deg,#d62828,#a01818);border:none;color:#fff;font-size:14px;font-weight:800;padding:12px;border-radius:10px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -746,7 +757,7 @@ function renderBlock(block,di,dt){
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
       return'<div class="exrow"><div class="extop"><div class="exname">'+r.n+'</div>'+
-        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null)+'</div></div>'+
+        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\')">＋ Log set</button>':'')+'</div></div>'+
         '<div class="exnote">'+r.nt+'</div>'+tagH(r.tg)+'</div>';
     }).join('');
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
@@ -817,16 +828,38 @@ function buildTracker(){
     }).join('');
   document.getElementById('trackerScroll').innerHTML='<div class="lfc"><div class="lftitle">📝 Log Top Set</div><div class="lfrow"><select class="lfsel" id="logEx">'+opts+'</select></div><div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div><button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+histH;
 }
+function commitLog(ex,w,r){
+  if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return false;}
+  var hadPrior=!!(ll()[ex]&&ll()[ex].length);
+  var pr=isPR(ex,w,r);logSet(ex,w,r);
+  showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
+  if(pr&&hadPrior)playPRClip(ex,w,r);
+  return true;
+}
 function handleLog(){
   var ex=document.getElementById('logEx').value;
   var w=parseFloat(document.getElementById('logW').value);
   var r=parseInt(document.getElementById('logR').value);
-  if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return;}
-  var hadPrior=!!(ll()[ex]&&ll()[ex].length);
-  var pr=isPR(ex,w,r);logSet(ex,w,r);
-  document.getElementById('logW').value='';document.getElementById('logR').value='';
-  showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
-  if(pr&&hadPrior)playPRClip(ex,w,r);
+  commitLog(ex,w,r);
+}
+function quickLog(ev,ex){
+  if(ev){ev.stopPropagation();ev.preventDefault();}
+  if(document.querySelector('.ql-ov'))return;
+  var logs=ll(),last=(logs[ex]&&logs[ex].length)?logs[ex][logs[ex].length-1]:null,sug=getSugg(ex);
+  var wVal=sug?sug.weight:(last?last.weight:''),rVal=sug?sug.reps:(last?last.reps:'');
+  var ov=document.createElement('div');ov.className='ql-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="ql-card"><div class="ql-title">'+ex+'</div><div class="ql-sub">Log your top set</div>'+
+    '<div class="ql-row"><input class="ql-in" id="qlW" type="number" inputmode="decimal" min="0" step="2.5" placeholder="lbs" value="'+wVal+'"><span class="ql-x">×</span><input class="ql-in" id="qlR" type="number" inputmode="numeric" min="1" max="30" placeholder="reps" value="'+rVal+'"></div>'+
+    '<div class="ql-btns"><button class="ql-cancel" onclick="closeQuickLog()">Cancel</button><button class="ql-save" onclick="saveQuickLog(\''+ex+'\')">Save Set</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeQuickLog();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('qlW');if(el)el.focus();},60);
+}
+function closeQuickLog(){var ov=document.querySelector('.ql-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
+function saveQuickLog(ex){
+  var w=parseFloat(document.getElementById('qlW').value),r=parseInt(document.getElementById('qlR').value);
+  if(commitLog(ex,w,r))closeQuickLog();
 }
 
 // ── DASHBOARD ────────────────────────────────────────────────────────────────
