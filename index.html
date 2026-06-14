@@ -257,6 +257,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avp-role{font-size:10px;font-weight:800;letter-spacing:3px;color:#d62828;margin-top:1px}
 .avp-msg{font-size:15px;line-height:1.4;color:#e8e8e8;margin-top:12px}
 .avp-tag{font-size:11px;font-weight:700;letter-spacing:1px;color:#666;margin-top:14px;text-transform:uppercase}
+.cddemo-vid{width:100%;max-width:230px;border-radius:14px;display:block;margin:0 auto 14px;box-shadow:0 6px 22px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>
@@ -325,7 +326,7 @@ var TRACK_EX=[
 
 var PHASES=[
   {name:'Accumulation',weeks:8,color:'#e8b840',desc:'High volume · RIR 1-2 · Building tissue and work capacity.',treps:8,wmult:1.0},
-  {name:'Intensification',weeks:8,color:'#e8622a',desc:'Lower reps · Heavier · Expressing strength built in Phase 1. Expect PRs.',treps:5,wmult:1.1},
+  {name:'Intensification',weeks:8,color:'#e8622a',desc:'Lower reps · Heavier · Expressing strength built in Phase 1. Expect PRs.',treps:5,wmult:1.0},
   {name:'Deload',weeks:2,color:'#4499dd',desc:'50% volume · Same movements · Body consolidates gains.',treps:8,wmult:0.85},
 ];
 
@@ -520,6 +521,15 @@ function getPhase(){
   return{phase:PHASES[2],wip:cw-15,tot:2,totalW:totalW+1};
 }
 function lowReps(rs){var m=(''+rs).match(/\d+/);return m?parseInt(m[0],10):null;}
+function highReps(rs){var m=(''+rs).match(/(\d+)\s*[-\u2013]\s*(\d+)/);return m?parseInt(m[2],10):lowReps(rs);}
+function phaseReps(base){
+  var ph=getPhase().phase.name;
+  if(ph!=='Intensification')return base;
+  var lo=lowReps(base);if(lo===null)return base;
+  var hi=highReps(base);
+  var nlo=Math.max(3,Math.round(lo*0.65)),nhi=Math.max(nlo+1,Math.round(hi*0.65));
+  return nlo+'-'+nhi;
+}
 function getSugg(ex,repRange){
   var logs=ll();if(!logs[ex]||!logs[ex].length)return null;
   var ph=getPhase();
@@ -565,11 +575,13 @@ function cdSpeak(text){
   var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
   window.speechSynthesis.speak(u);
 }
+var scClips=['media/session-complete.mp4','media/session-complete-2.mp4','media/session-complete-3.mp4'],scClipIdx=0;
 function playSessionCompleteClip(){
+  var src=scClips[scClipIdx%scClips.length];scClipIdx++;
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.82);opacity:0;transition:opacity .25s';
   var v=document.createElement('video');
-  v.src='media/session-complete.mp4';
+  v.src=src;
   v.setAttribute('playsinline','');v.playsInline=true;
   v.style.cssText='max-width:90%;max-height:80%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.5)';
   ov.appendChild(v);document.body.appendChild(ov);
@@ -578,7 +590,7 @@ function playSessionCompleteClip(){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
-var prClips=['media/pr-1.mp4','media/pr-2.mp4'],prClipIdx=0;
+var prClips=['media/pr-1.mp4','media/pr-2.mp4','media/pr-3.mp4','media/pr-4.mp4'],prClipIdx=0;
 function playPRClip(ex,w,r){
   var er=e1rm(w,r);
   var src=prClips[prClipIdx%prClips.length];prClipIdx++;
@@ -649,7 +661,32 @@ function avaEventCheck(){
       localStorage.setItem('ava_wb_evt',today());
       return queueAvaClip('media/welcome-back.mp4');
     }
+    if(DAYS[(new Date().getDay()+6)%7].type!=='recovery'&&!c.trainedToday&&localStorage.getItem('ava_start_evt')!==today()){
+      localStorage.setItem('ava_start_evt',today());
+      return queueAvaClip('media/session-start.mp4');
+    }
   }catch(e){}
+}
+function cdDemoFile(name){
+  var map={
+    'Overhead Tricep Stretch':'media/tricep-stretch.mp4',
+    'Overhead Lat Stretch':'media/overhead-lat-stretch.mp4',
+    'Cross-Body Shoulder Stretch':'media/cross-body-shoulder-stretch.mp4',
+    'Doorway Chest Opener':'media/doorway-chest-opener.mp4',
+    'Doorway / Tonal Post Chest Stretch':'media/doorway-chest-opener.mp4',
+    'Wall Chest Opener':'media/doorway-chest-opener.mp4',
+    'Standing Quad / Hip Flexor Stretch':'media/standing-quad-stretch.mp4'
+  };
+  return map[name]||null;
+}
+function updateCDDemo(){
+  var wrap=document.getElementById('cdDemoWrap');if(!wrap)return;
+  if(!cdTimerState||cdTimerState.done){if(wrap.innerHTML)wrap.innerHTML='';return;}
+  var f=cdDemoFile(cdTimerState.stretches[cdTimerState.idx].name);
+  var cur=wrap.querySelector('video'),curSrc=cur?cur.getAttribute('src'):null;
+  if(f&&curSrc===f)return;
+  if(!f&&!cur)return;
+  wrap.innerHTML=f?'<video class="cddemo-vid" src="'+f+'" autoplay loop muted playsinline></video>':'';
 }
 function buildCDTimerHTML(){
   if(!cdTimerState)return'<button class="cdtimer-start" onclick="startCDTimer(\''+currentCDT+'\')">▶ Start Cooldown Timer</button>';
@@ -710,6 +747,7 @@ function updateCDTimerUI(){
     var si=parseInt(el.getAttribute('data-si'));
     el.classList.toggle('cdactive',!!cdTimerState&&!cdTimerState.done&&si===cdTimerState.idx);
   });
+  updateCDDemo();
 }
 
 // ── RENDER HELPERS ───────────────────────────────────────────────────────────
@@ -742,6 +780,7 @@ function renderCD(cdt){
   var c=CD[cdt];if(!c)return'';
   var rows=c.s.map(function(s,i){return'<div class="strow" data-si="'+i+'"><div class="stleft"><div class="stname">'+s.n+'</div><div class="stcue">'+s.c+'</div></div><div class="sthold">'+s.h+'</div></div>';}).join('');
   return'<div class="cdcard"><div class="cdhd"><span style="font-size:16px">🧊</span><div class="cdtitle">Post-Workout Stretch</div><div class="cdsub">~5 min</div></div>'+
+    '<div id="cdDemoWrap"></div>'+
     '<div class="cdtimer" id="cdTimerWrap">'+buildCDTimerHTML()+'</div>'+
     rows+'</div><div class="cdnote">'+c.note+'</div>';
 }
@@ -764,8 +803,9 @@ function renderBlock(block,di,dt){
   var html='';
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
+      var rp=phaseReps(r.reps);
       return'<div class="exrow"><div class="extop"><div class="exname">'+r.n+'</div>'+
-        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+r.reps+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,r.reps)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+r.reps+'\')">＋ Log set</button>':'')+'</div></div>'+
+        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+rp+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,rp)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+rp+'\')">＋ Log set</button>':'')+'</div></div>'+
         '<div class="exnote">'+r.nt+'</div>'+tagH(r.tg)+'</div>';
     }).join('');
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
