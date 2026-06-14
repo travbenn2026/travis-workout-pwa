@@ -1,4 +1,4 @@
-const CACHE = 'travis-workout-v12';
+const CACHE = 'travis-workout-v13';
 const ASSETS = [
   './',
   './index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
   './icons/icon-512.png',
   './media/session-complete.mp4',
   './media/ava-portrait.png',
+  './media/ava-large.png',
   './media/pr-1.mp4',
   './media/pr-2.mp4',
   './media/welcome-back.mp4',
