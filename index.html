@@ -559,6 +559,28 @@ function playSessionCompleteClip(){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
+var prClips=['media/pr-1.mp4','media/pr-2.mp4'],prClipIdx=0;
+function playPRClip(ex,w,r){
+  var er=e1rm(w,r);
+  var src=prClips[prClipIdx%prClips.length];prClipIdx++;
+  var ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);opacity:0;transition:opacity .25s;padding:18px;box-sizing:border-box';
+  var wrap=document.createElement('div');
+  wrap.style.cssText='position:relative;display:flex;flex-direction:column;align-items:center;max-height:92%';
+  var v=document.createElement('video');
+  v.src=src;v.setAttribute('playsinline','');v.playsInline=true;
+  v.style.cssText='max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 12px 44px rgba(0,0,0,.55);display:block';
+  var cap=document.createElement('div');
+  cap.style.cssText='margin-top:-58px;position:relative;z-index:2;width:86%;background:linear-gradient(135deg,#e02a2a,#a01818);color:#fff;border-radius:14px;padding:11px 16px 13px;text-align:center;box-shadow:0 10px 28px rgba(0,0,0,.5)';
+  cap.innerHTML='<div style="font-size:11px;font-weight:800;letter-spacing:3px">🏆 NEW PR</div>'+
+    '<div style="font-size:17px;font-weight:800;line-height:1.2;margin-top:3px">'+ex+'</div>'+
+    '<div style="font-size:13px;font-weight:600;margin-top:3px;opacity:.95">'+w+' lb × '+r+' · e1RM '+er+'</div>';
+  wrap.appendChild(v);wrap.appendChild(cap);ov.appendChild(wrap);document.body.appendChild(ov);
+  requestAnimationFrame(function(){ov.style.opacity='1';});
+  function close(){ov.style.opacity='0';setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},260);}
+  v.addEventListener('ended',close);ov.addEventListener('click',close);
+  var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,5500);});
+}
 function buildCDTimerHTML(){
   if(!cdTimerState)return'<button class="cdtimer-start" onclick="startCDTimer(\''+currentCDT+'\')">▶ Start Cooldown Timer</button>';
   if(cdTimerState.done)return'<div class="cdtimer-done">✅ Cooldown complete — great work!</div>';
@@ -749,9 +771,11 @@ function handleLog(){
   var w=parseFloat(document.getElementById('logW').value);
   var r=parseInt(document.getElementById('logR').value);
   if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return;}
+  var hadPrior=!!(ll()[ex]&&ll()[ex].length);
   var pr=isPR(ex,w,r);logSet(ex,w,r);
   document.getElementById('logW').value='';document.getElementById('logR').value='';
   showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
+  if(pr&&hadPrior)playPRClip(ex,w,r);
 }
 
 // ── DASHBOARD ────────────────────────────────────────────────────────────────
