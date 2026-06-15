@@ -258,30 +258,27 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avp-msg{font-size:15px;line-height:1.4;color:#e8e8e8;margin-top:12px}
 .avp-tag{font-size:11px;font-weight:700;letter-spacing:1px;color:#666;margin-top:14px;text-transform:uppercase}
 .cddemo-vid{width:100%;max-width:230px;border-radius:14px;display:block;margin:0 auto 14px;box-shadow:0 6px 22px rgba(0,0,0,.4)}
-.exlogwrap{margin-top:7px;}
-.hd-ov{transition:background .25s}
-.hd-sheet{background:#111;border-radius:20px 20px 0 0;padding:0 0 32px;max-height:82vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1)}
-.hd-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:10px auto 0}
-.hd-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px 0}
-.hd-title{font-size:17px;font-weight:800;color:#fff}
-.hd-close{background:none;border:none;color:#666;font-size:18px;cursor:pointer;padding:4px 0 4px 16px}
-.hd-sub{font-size:11px;color:#555;letter-spacing:1px;text-transform:uppercase;padding:3px 18px 12px}
-.hd-rows{overflow-y:auto;flex:1;padding:0 18px}
-.hd-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1c1c1c}
-.hd-row-first{border-top:1px solid #1c1c1c}
-.hd-date{font-size:12px;color:#888;min-width:52px}
-.hd-mid{flex:1;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.hd-wt{font-size:15px;font-weight:700;color:#eee}
-.hd-pr{background:#d62828;color:#fff;font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 6px;border-radius:4px}
-.hd-vol{font-size:11px;color:#555}
-.hd-e1rm{font-size:11px;color:#666;text-align:right;min-width:64px}
-.hd-empty{padding:20px 0;color:#555;font-size:14px;text-align:center}
-.hd-ava{display:flex;align-items:flex-start;gap:10px;background:#0d0d0d;border-top:1px solid #1c1c1c;border-left:3px solid #d62828;padding:12px 16px;margin:0}
-.hd-avapic{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:0 0 auto;margin-top:2px}
-.hd-avatext{font-size:13px;line-height:1.4;color:#ccc}
-.hd-avatag{font-size:9px;font-weight:800;letter-spacing:2px;color:#d62828;display:block;margin-bottom:3px}
-.hd-sug{padding:11px 18px;background:#0a0a0a;border-top:1px solid #1a1a1a;font-size:13px;color:#888}
-.hd-sug strong{color:#eee}
+.ts-add{width:100%;margin-top:8px;padding:11px;background:#0d0d0d;border:1px dashed #2a2a2a;border-radius:10px;color:#666;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.5px}
+.ts-add:active{border-color:#d62828;color:#d62828}
+.ts-strip{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:8px;padding:10px 12px;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:10px}
+.ts-stat{font-size:12px;color:#aaa;display:flex;align-items:center;gap:4px}
+.ts-lbl{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#555;text-transform:uppercase}
+.ts-edit{margin-left:auto;background:none;border:none;color:#555;font-size:11px;cursor:pointer;padding:0}
+.ts-notes{padding:6px 12px 0;font-size:12px;color:#666;font-style:italic;border-top:none}
+.tsm-sheet{background:#111;border-radius:20px 20px 0 0;max-height:88vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);padding-bottom:env(safe-area-inset-bottom,16px)}
+.tsm-head{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 0}
+.tsm-title{font-size:16px;font-weight:800;color:#fff}
+.tsm-body{overflow-y:auto;flex:1;padding:12px 18px 4px}
+.tsm-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #1a1a1a}
+.tsm-notesrow{align-items:flex-start}
+.tsm-lbl{font-size:12px;color:#777;min-width:120px}
+.tsm-inp-wrap{display:flex;align-items:center;gap:6px;flex:1}
+.tsm-in{flex:1;background:#0a0a0a;border:1px solid #252525;border-radius:8px;color:#fff;font-size:16px;font-weight:700;text-align:right;padding:8px 10px;width:100%;box-sizing:border-box}
+.tsm-unit{font-size:11px;color:#555;min-width:24px}
+.tsm-notes{flex:1;background:#0a0a0a;border:1px solid #252525;border-radius:8px;color:#ccc;font-size:14px;padding:8px 10px;min-height:60px;resize:none;font-family:inherit}
+.tsm-foot{display:flex;gap:10px;padding:12px 18px}
+.tsm-skip{flex:1;background:#1a1a1a;border:1px solid #2a2a2a;color:#666;font-size:14px;font-weight:700;padding:13px;border-radius:10px;cursor:pointer}
+.tsm-save{flex:2;background:linear-gradient(135deg,#d62828,#a01818);border:none;color:#fff;font-size:14px;font-weight:800;padding:13px;border-radius:10px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -567,6 +564,58 @@ function getSugg(ex,repRange){
 
 function progWeek(){var msW=7*24*60*60*1000;return Math.max(1,Math.floor((Date.now()-PROGRAM_START)/msW)+1);}
 function isDone(di){return!!ls()['w'+progWeek()+'_d'+di];}
+function getTonalSummary(di){var s=ls()['w'+progWeek()+'_d'+di];return(s&&s.tonal)||null;}
+function tonalSummaryCard(di){
+  if(!isDone(di))return'';
+  var t=getTonalSummary(di);
+  if(t){
+    var parts=[];
+    if(t.volume)parts.push('<span class="ts-stat"><span class="ts-lbl">VOL</span>'+Number(t.volume).toLocaleString()+' lb</span>');
+    if(t.work)parts.push('<span class="ts-stat"><span class="ts-lbl">WORK</span>'+Number(t.work).toLocaleString()+' lb</span>');
+    if(t.cals)parts.push('<span class="ts-stat"><span class="ts-lbl">CAL</span>'+t.cals+'</span>');
+    if(t.avgHr||t.maxHr)parts.push('<span class="ts-stat"><span class="ts-lbl">HR</span>'+(t.avgHr?t.avgHr+' avg':'')+(t.avgHr&&t.maxHr?' / ':'')+( t.maxHr?t.maxHr+' max':'')+'</span>');
+    if(t.duration)parts.push('<span class="ts-stat"><span class="ts-lbl">TIME</span>'+t.duration+' min</span>');
+    var noteRow=t.notes?'<div class="ts-notes">'+t.notes+'</div>':'';
+    return'<div class="ts-strip">'+parts.join('')+'<button class="ts-edit" onclick="openTonalSummary('+di+')">Edit</button></div>'+noteRow;
+  }
+  return'<button class="ts-add" onclick="openTonalSummary('+di+')">📊 Add Tonal Summary</button>';
+}
+function openTonalSummary(di){
+  if(document.querySelector('.tsm-ov'))return;
+  var t=getTonalSummary(di)||{};
+  var f=function(id,lbl,unit,val){return'<div class="tsm-row"><label class="tsm-lbl">'+lbl+'</label><div class="tsm-inp-wrap"><input class="tsm-in" id="tsm'+id+'" type="number" inputmode="decimal" min="0" placeholder="—" value="'+(val||'')+'"><span class="tsm-unit">'+unit+'</span></div></div>';};
+  var ov=document.createElement('div');ov.className='tsm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)';
+  ov.innerHTML='<div class="tsm-sheet"><div class="hd-handle" style="margin-bottom:4px"></div>'+
+    '<div class="tsm-head"><span class="tsm-title">📊 Tonal Summary</span><button class="hd-close" onclick="closeTonalSummary()">✕</button></div>'+
+    '<div class="tsm-body">'+
+    f('Vol','Total Volume','lb',t.volume)+
+    f('Work','Total Work','lb',t.work)+
+    f('Cals','Calories','cal',t.cals)+
+    f('AvgHr','Avg Heart Rate','bpm',t.avgHr)+
+    f('MaxHr','Max Heart Rate','bpm',t.maxHr)+
+    f('Dur','Duration','min',t.duration)+
+    '<div class="tsm-row tsm-notesrow"><label class="tsm-lbl">Notes</label><textarea class="tsm-notes" id="tsmNotes" placeholder="How did it feel?">'+(t.notes||'')+'</textarea></div>'+
+    '</div>'+
+    '<div class="tsm-foot"><button class="tsm-skip" onclick="closeTonalSummary()">Skip</button><button class="tsm-save" onclick="saveTonalSummary('+di+')">Save</button></div>'+
+    '</div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeTonalSummary();});
+  document.body.appendChild(ov);
+  requestAnimationFrame(function(){ov.querySelector('.tsm-sheet').style.transform='translateY(0)';});
+}
+function closeTonalSummary(){
+  var ov=document.querySelector('.tsm-ov');if(!ov)return;
+  var sh=ov.querySelector('.tsm-sheet');sh.style.transform='translateY(100%)';
+  setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},280);
+}
+function saveTonalSummary(di){
+  var g=function(id){var el=document.getElementById('tsm'+id);return el&&el.value?parseFloat(el.value)||el.value:null;};
+  var tonal={volume:g('Vol'),work:g('Work'),cals:g('Cals'),avgHr:g('AvgHr'),maxHr:g('MaxHr'),duration:g('Dur'),notes:(document.getElementById('tsmNotes')||{}).value||null};
+  Object.keys(tonal).forEach(function(k){if(!tonal[k])delete tonal[k];});
+  var sess=ls(),key='w'+progWeek()+'_d'+di;
+  if(sess[key])sess[key].tonal=tonal;ss(sess);
+  closeTonalSummary();buildWC();showToast('✓ Tonal summary saved');
+}
 function toggleDone(di){
   var sess=ls();var key='w'+progWeek()+'_d'+di;
   var justCompleted=false;
@@ -839,7 +888,7 @@ function renderBlock(block,di,dt){
   if(block.isWU)return renderWU(dt);
   if(block.isCD){
     var done=isDone(di);
-    return renderCD(block.cdt)+'<button class="donebtn '+(done?'done':'pending')+'" onclick="toggleDone('+di+')">'+(done?'✅ Session Complete':'Mark Session Complete')+'</button>';
+    return renderCD(block.cdt)+'<button class="donebtn '+(done?'done':'pending')+'" onclick="toggleDone('+di+')">'+(done?'✅ Session Complete':'Mark Session Complete')+'</button>'+tonalSummaryCard(di);
   }
   if(block.isRec)return'<div class="pwcard"><div class="pwtitle" style="color:#4a99cc">Morning Protocol</div>'+
     '<div class="pwrow"><span class="pwtb">5:00</span><span class="pwdesc">C4 + Rice cake w/ honey</span></div>'+
@@ -855,11 +904,8 @@ function renderBlock(block,di,dt){
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
       var rp=phaseReps(r.reps);
-      var histBtn=r.tr?' onclick="openHistoryDrawer(\''+r.tr+'\')" style="cursor:pointer;text-decoration:underline;text-decoration-color:#333;text-underline-offset:3px"':'';
-      var logBtn=r.tr?'<div class="exlogwrap"><button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+rp+'\')">＋ Log set</button></div>':'';
-      return'<div class="exrow"><div class="extop"><div class="exname"'+histBtn+'>'+r.n+'</div>'+
-        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+rp+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,rp)+'</div>'+
-        logBtn+'</div>'+
+      return'<div class="exrow"><div class="extop"><div class="exname">'+r.n+'</div>'+
+        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+rp+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,rp)+(r.tr?'<button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+rp+'\')">＋ Log set</button>':'')+'</div></div>'+
         '<div class="exnote">'+r.nt+'</div>'+tagH(r.tg)+'</div>';
     }).join('');
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
@@ -1014,67 +1060,6 @@ function openAvaProfile(){
   document.body.appendChild(ov);
 }
 function closeAvaProfile(){var ov=document.querySelector('.avp-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
-// ── EXERCISE HISTORY DRAWER ──────────────────────────────────────────────────
-function histSessions(ex){
-  var logs=ll();if(!logs[ex]||!logs[ex].length)return[];
-  var byDate={};
-  logs[ex].forEach(function(e){
-    if(!byDate[e.date]||e.e1rm>byDate[e.date].e1rm)byDate[e.date]=e;
-  });
-  return Object.values(byDate).sort(function(a,b){return b.ts-a.ts;}).slice(0,5);
-}
-function avaHistoryLine(ex,sessions,sug){
-  if(!sessions.length)return'No sessions logged yet — this is your baseline to beat.';
-  if(sessions.length===1)return'First session logged. Build the baseline — the trend starts now.';
-  var latest=sessions[0],prev=sessions[1];
-  var allE=sessions.map(function(s){return s.e1rm;});
-  var bestE=Math.max.apply(null,allE),bestIdx=allE.indexOf(bestE);
-  var trend=latest.e1rm-prev.e1rm;
-  var rising=sessions.length>=3&&sessions[0].e1rm>sessions[1].e1rm&&sessions[1].e1rm>=sessions[2].e1rm;
-  var stalled=sessions.length>=3&&sessions[0].weight===sessions[1].weight&&sessions[1].weight===sessions[2].weight;
-  if(bestIdx===0)return'That\'s a PR session — '+latest.weight+' × '+latest.reps+' is your new ceiling. Now make it the floor.';
-  if(rising)return'Trending up three straight. Last time: '+prev.weight+' × '+prev.reps+'. Today, see if '+(prev.weight+2.5)+' × '+prev.reps+' or '+prev.weight+' × '+(prev.reps+1)+' is there.';
-  if(stalled)return'Same weight '+sessions.filter(function(s){return s.weight===latest.weight;}).length+' sessions running. Time to add 5 lbs and see what happens.';
-  if(trend>0)return'Up from last time — '+prev.weight+' × '+prev.reps+' to '+latest.weight+' × '+latest.reps+'. Keep that momentum.';
-  if(trend<0)return'Step back from your best. Lock in the form, then push the weight back up.';
-  return'Consistent at '+latest.weight+'. When '+(sessions.filter(function(s){return s.weight>=latest.weight;}).length)+' sets feel easy, add 5 lbs.';
-}
-function openHistoryDrawer(ex){
-  if(document.querySelector('.hd-ov'))return;
-  var sessions=histSessions(ex);
-  var logs=ll();var allE=logs[ex]&&logs[ex].length?logs[ex].map(function(e){return e.e1rm;}):[];
-  var prE=allE.length?Math.max.apply(null,allE):0;
-  var sug=getSugg(ex);
-  var rows=sessions.length?sessions.map(function(s,i){
-    var vol=Math.round(s.weight*s.reps);
-    var isPrRow=s.e1rm>=prE&&prE>0;
-    var badge=isPrRow?'<span class="hd-pr">PR</span>':'';
-    return'<div class="hd-row'+(i===0?' hd-row-first':'')+'">'+
-      '<div class="hd-date">'+s.date+'</div>'+
-      '<div class="hd-mid"><span class="hd-wt">'+s.weight+' × '+s.reps+'</span>'+badge+'<span class="hd-vol">'+vol+' lb vol</span></div>'+
-      '<div class="hd-e1rm">e1RM ~'+s.e1rm+'</div></div>';
-  }).join(''):'<div class="hd-empty">No sets logged yet — tap ＋ Log set to start.</div>';
-  var avaLine=avaHistoryLine(ex,sessions,sug);
-  var ov=document.createElement('div');ov.className='hd-ov';
-  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)';
-  ov.innerHTML='<div class="hd-sheet">'+
-    '<div class="hd-handle"></div>'+
-    '<div class="hd-head"><div class="hd-title">'+ex+'</div><button class="hd-close" onclick="closeHistoryDrawer()">✕</button></div>'+
-    '<div class="hd-sub">Last '+(sessions.length||0)+' session'+(sessions.length!==1?'s':'')+(sessions.length?'':' — no data yet')+'</div>'+
-    '<div class="hd-rows">'+rows+'</div>'+
-    '<div class="hd-ava"><img class="hd-avapic" src="media/ava-portrait.png"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
-    (sug?'<div class="hd-sug">Target today: <strong>'+sug.weight+' lb × '+sug.reps+' reps</strong></div>':'')+
-    '</div>';
-  ov.addEventListener('click',function(e){if(e.target===ov)closeHistoryDrawer();});
-  document.body.appendChild(ov);
-  requestAnimationFrame(function(){ov.querySelector('.hd-sheet').style.transform='translateY(0)';});
-}
-function closeHistoryDrawer(){
-  var ov=document.querySelector('.hd-ov');if(!ov)return;
-  var sh=ov.querySelector('.hd-sheet');
-  sh.style.transform='translateY(100%)';
-  setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},280);
-}
 function buildDash(){
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
