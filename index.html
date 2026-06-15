@@ -304,6 +304,18 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .hd-avatag{font-size:9px;font-weight:800;letter-spacing:2px;color:#d62828;display:block;margin-bottom:3px}
 .hd-sug{padding:11px 18px;background:#0a0a0a;border-top:1px solid #1a1a1a;font-size:13px;color:#888}
 .hd-sug strong{color:#eee}
+.hd-chart-wrap{padding:10px 18px 0;border-bottom:1px solid #1a1a1a}
+.hd-chart{padding:6px 0 0}
+.tsm-auto{flex:1;font-size:15px;font-weight:700;color:#4a9955;text-align:right;padding-right:4px}
+.bt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.bt-head{font-size:11px;font-weight:800;letter-spacing:2px;color:#d62828;padding:12px 14px 8px;border-bottom:1px solid var(--border)}
+.bt-row{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid #111;position:relative}
+.bt-row:last-child{border-bottom:none}
+.bt-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:#d62828}
+.bt-date{font-size:11px;color:#666;min-width:48px}
+.bt-ex{flex:1;font-size:12px;color:#aaa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bt-lift{font-size:13px;font-weight:700;color:#eee;text-align:right;white-space:nowrap}
+.bt-e1rm{font-size:10px;color:#555;font-weight:400;margin-left:4px}
 </style>
 </head>
 <body>
@@ -590,20 +602,33 @@ function getSugg(ex,repRange){
 function progWeek(){var msW=7*24*60*60*1000;return Math.max(1,Math.floor((Date.now()-PROGRAM_START)/msW)+1);}
 function isDone(di){return!!ls()['w'+progWeek()+'_d'+di];}
 function getTonalSummary(di){var s=ls()['w'+progWeek()+'_d'+di];return(s&&s.tonal)||null;}
+function calcSessionVolume(di){
+  var sess=ls(),key='w'+progWeek()+'_d'+di;
+  if(!sess[key])return 0;
+  var dateStr=sess[key].date,logs=ll(),total=0;
+  TRACK_EX.forEach(function(ex){
+    if(logs[ex])logs[ex].forEach(function(e){if(e.date===dateStr)total+=Math.round(e.weight*e.reps);});
+  });
+  return total;
+}
 function tonalSummaryCard(di){
   if(!isDone(di))return'';
   var t=getTonalSummary(di);
+  var sv=calcSessionVolume(di);
   if(t){
     var parts=[];
-    if(t.volume)parts.push('<span class="ts-stat"><span class="ts-lbl">VOL</span>'+Number(t.volume).toLocaleString()+' lb</span>');
-    if(t.work)parts.push('<span class="ts-stat"><span class="ts-lbl">WORK</span>'+Number(t.work).toLocaleString()+' lb</span>');
+    if(sv)parts.push('<span class="ts-stat"><span class="ts-lbl">IE VOL</span>'+sv.toLocaleString()+' lb</span>');
+    if(t.volume)parts.push('<span class="ts-stat"><span class="ts-lbl">TONAL VOL</span>'+Number(t.volume).toLocaleString()+' lb</span>');
+    if(t.work)parts.push('<span class="ts-stat"><span class="ts-lbl">WORK</span>'+Number(t.work).toLocaleString()+' kJ</span>');
     if(t.cals)parts.push('<span class="ts-stat"><span class="ts-lbl">CAL</span>'+t.cals+'</span>');
     if(t.avgHr||t.maxHr)parts.push('<span class="ts-stat"><span class="ts-lbl">HR</span>'+(t.avgHr?t.avgHr+' avg':'')+(t.avgHr&&t.maxHr?' / ':'')+( t.maxHr?t.maxHr+' max':'')+'</span>');
     if(t.duration)parts.push('<span class="ts-stat"><span class="ts-lbl">TIME</span>'+t.duration+' min</span>');
     var noteRow=t.notes?'<div class="ts-notes">'+t.notes+'</div>':'';
     return'<div class="ts-strip">'+parts.join('')+'<button class="ts-edit" onclick="openTonalSummary('+di+')">Edit</button></div>'+noteRow;
   }
-  return'<button class="ts-add" onclick="openTonalSummary('+di+')">📊 Add Tonal Summary</button>';
+  var svPre=sv?'<span class="ts-stat"><span class="ts-lbl">IE VOL</span>'+sv.toLocaleString()+' lb</span>':'';
+  return(svPre?'<div class="ts-strip ts-strip-pre">'+svPre+'</div>':'')+
+    '<button class="ts-add" onclick="openTonalSummary('+di+')">📊 Add Tonal Summary</button>';
 }
 function openTonalSummary(di){
   if(document.querySelector('.tsm-ov'))return;
@@ -614,8 +639,9 @@ function openTonalSummary(di){
   ov.innerHTML='<div class="tsm-sheet"><div class="hd-handle" style="margin-bottom:4px"></div>'+
     '<div class="tsm-head"><span class="tsm-title">📊 Tonal Summary</span><button class="hd-close" onclick="closeTonalSummary()">✕</button></div>'+
     '<div class="tsm-body">'+
-    f('Vol','Total Volume','lb',t.volume)+
-    f('Work','Total Work','lb',t.work)+
+    '<div class="tsm-row"><label class="tsm-lbl">IE Volume</label><div class="tsm-inp-wrap"><span class="tsm-auto">'+calcSessionVolume(di).toLocaleString()+' lb</span><span class="tsm-unit" style="color:#555">auto</span></div></div>'+
+    f('Volume','Tonal Volume','lb',t.volume)+
+    f('Work','Total Work','kJ',t.work)+
     f('Cals','Calories','cal',t.cals)+
     f('AvgHr','Avg Heart Rate','bpm',t.avgHr)+
     f('MaxHr','Max Heart Rate','bpm',t.maxHr)+
@@ -635,7 +661,7 @@ function closeTonalSummary(){
 }
 function saveTonalSummary(di){
   var g=function(id){var el=document.getElementById('tsm'+id);return el&&el.value?parseFloat(el.value)||el.value:null;};
-  var tonal={volume:g('Vol'),work:g('Work'),cals:g('Cals'),avgHr:g('AvgHr'),maxHr:g('MaxHr'),duration:g('Dur'),notes:(document.getElementById('tsmNotes')||{}).value||null};
+  var tonal={volume:g('Volume'),work:g('Work'),cals:g('Cals'),avgHr:g('AvgHr'),maxHr:g('MaxHr'),duration:g('Dur'),notes:(document.getElementById('tsmNotes')||{}).value||null};
   Object.keys(tonal).forEach(function(k){if(!tonal[k])delete tonal[k];});
   var sess=ls(),key='w'+progWeek()+'_d'+di;
   if(sess[key])sess[key].tonal=tonal;ss(sess);
@@ -979,6 +1005,17 @@ function selBlock(id){curBlock=id;buildBlockTabs();buildWC();}
 
 // ── TRACKER SCREEN ───────────────────────────────────────────────────────────
 
+function buildRecentPRs(){
+  var logs=ll(),prs=[];
+  TRACK_EX.forEach(function(ex){
+    if(!logs[ex]||!logs[ex].length)return;
+    var sorted=[].concat(logs[ex]).sort(function(a,b){return a.ts-b.ts;});
+    var maxE=0;
+    sorted.forEach(function(e){if(e.e1rm>maxE){maxE=e.e1rm;prs.push({ex:ex,e:e});}});
+  });
+  prs.sort(function(a,b){return b.e.ts-a.e.ts;});
+  return prs.slice(0,12);
+}
 function buildTracker(){
   var logs=ll();
   var opts=TRACK_EX.map(function(e){return'<option value="'+e+'">'+e+'</option>';}).join('');
@@ -1002,7 +1039,15 @@ function buildTracker(){
       var sugH2=sug?'<div style="padding:8px 14px;border-top:1px solid #181818"><span class="pill psug">Next target: '+sug.weight+' lb x '+sug.reps+' reps</span></div>':'';
       return'<div class="ehcard"><div class="ehhd"><div class="ehname">'+ex+'</div><div class="ehbest">Best: '+best.weight+'x'+best.reps+'</div></div><div class="mchart"><div class="cbars">'+bars+'</div></div>'+rows+sugH2+'</div>';
     }).join('');
-  document.getElementById('trackerScroll').innerHTML='<div class="lfc"><div class="lftitle">📝 Log Top Set</div><div class="lfrow"><select class="lfsel" id="logEx">'+opts+'</select></div><div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div><button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+histH;
+  var prs=buildRecentPRs();
+  var btH=prs.length?'<div class="bt-card"><div class="bt-head">🏆 Recent Breakthroughs</div>'+
+    prs.map(function(p,i){
+      return'<div class="bt-row">'+(i===0?'<div class="bt-bar"></div>':'')+
+        '<div class="bt-date">'+p.e.date+'</div>'+
+        '<div class="bt-ex">'+p.ex+'</div>'+
+        '<div class="bt-lift">'+p.e.weight+' × '+p.e.reps+'<span class="bt-e1rm"> e1RM '+p.e.e1rm+'</span></div></div>';
+    }).join('')+'</div>':'';
+  document.getElementById('trackerScroll').innerHTML='<div class="lfc"><div class="lftitle">📝 Log Top Set</div><div class="lfrow"><select class="lfsel" id="logEx">'+opts+'</select></div><div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div><button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+btH+histH;
 }
 function commitLog(ex,w,r){
   if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return false;}
@@ -1090,6 +1135,29 @@ function openAvaProfile(){
 function closeAvaProfile(){var ov=document.querySelector('.avp-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 
 // ── EXERCISE HISTORY DRAWER ──────────────────────────────────────────────────
+function e1rmSparkline(sessions){
+  var data=[].concat(sessions).reverse();
+  if(data.length<2)return'';
+  var W=300,H=72,padX=28,padY=14;
+  var vals=data.map(function(s){return s.e1rm;});
+  var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals);
+  var range=maxV-minV||1;
+  var pts=data.map(function(s,i){
+    return{x:padX+i*(W-2*padX)/(data.length-1),
+           y:H-padY-(s.e1rm-minV)/range*(H-2*padY),s:s};
+  });
+  var poly=pts.map(function(p){return p.x+','+p.y;}).join(' ');
+  var dots=pts.map(function(p){
+    var best=p.s.e1rm>=maxV;
+    return'<circle cx="'+p.x+'" cy="'+p.y+'" r="'+(best?4:2.5)+'" fill="'+(best?'#d62828':'#444')+'"/>'+(best?'<text x="'+p.x+'" y="'+(p.y-7)+'" fill="#d62828" font-size="9" text-anchor="middle">'+p.s.e1rm+'</text>':'');
+  }).join('');
+  var fl=pts[0],la=pts[pts.length-1];
+  var labels='<text x="'+fl.x+'" y="'+(H+2)+'" fill="#444" font-size="8" text-anchor="middle">'+fl.s.date+'</text>'+
+    '<text x="'+la.x+'" y="'+(H+2)+'" fill="#444" font-size="8" text-anchor="middle">'+la.s.date+'</text>';
+  return'<div class="hd-chart"><svg width="100%" viewBox="0 0 '+W+' '+(H+10)+'" style="overflow:visible">'+
+    '<polyline points="'+poly+'" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>'+
+    dots+labels+'</svg></div>';
+}
 function histSessions(ex){
   var logs=ll();if(!logs[ex]||!logs[ex].length)return[];
   var byDate={};
@@ -1098,6 +1166,14 @@ function histSessions(ex){
   });
   return Object.values(byDate).sort(function(a,b){return b.ts-a.ts;}).slice(0,5);
 }
+histSessions._all=function(ex){
+  var logs=ll();if(!logs[ex]||!logs[ex].length)return[];
+  var byDate={};
+  logs[ex].forEach(function(e){
+    if(!byDate[e.date]||e.e1rm>byDate[e.date].e1rm)byDate[e.date]=e;
+  });
+  return Object.values(byDate).sort(function(a,b){return a.ts-b.ts;});
+};
 function avaHistoryLine(ex,sessions,sug){
   if(!sessions.length)return'No sessions logged yet — this is your baseline to beat.';
   if(sessions.length===1)return'First session logged. Build the baseline — the trend starts now.';
@@ -1130,12 +1206,15 @@ function openHistoryDrawer(ex){
       '<div class="hd-e1rm">e1RM ~'+s.e1rm+'</div></div>';
   }).join(''):'<div class="hd-empty">No sets logged yet — tap ＋ Log set to start.</div>';
   var avaLine=avaHistoryLine(ex,sessions,sug);
+  var allSessions=histSessions._all(ex);
+  var chart=e1rmSparkline(allSessions);
   var ov=document.createElement('div');ov.className='hd-ov';
   ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)';
   ov.innerHTML='<div class="hd-sheet">'+
     '<div class="hd-handle"></div>'+
     '<div class="hd-head"><div class="hd-title">'+ex+'</div><button class="hd-close" onclick="closeHistoryDrawer()">✕</button></div>'+
     '<div class="hd-sub">Last '+(sessions.length||0)+' session'+(sessions.length!==1?'s':'')+(sessions.length?'':' — no data yet')+'</div>'+
+    (chart?'<div class="hd-chart-wrap">'+chart+'</div>':'')+
     '<div class="hd-rows">'+rows+'</div>'+
     '<div class="hd-ava"><img class="hd-avapic" src="media/ava-portrait.png"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
     (sug?'<div class="hd-sug">Target today: <strong>'+sug.weight+' lb × '+sug.reps+' reps</strong></div>':'')+
