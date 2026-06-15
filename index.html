@@ -1168,18 +1168,22 @@ function avaMessage(c){
 function avaCard(){
   var msg=avaMessage(avaCtx());
   var todayType=DAYS[(new Date().getDay()+6)%7].type;
-  var portraits={push:'media/ava-push.png',pull:'media/ava-portrait.png',legs:'media/ava-legs.png',arms:'media/ava-arms.png',recovery:'media/ava-rower.png'};
+  var portraits={push:'media/ava-push.png',pull:'media/ava-pull.png',legs:'media/ava-legs.png',arms:'media/ava-arms.png',recovery:'media/ava-rower.png'};
   var portrait=portraits[todayType]||'media/ava-portrait.png';
   return '<div class="avacard"><img class="avaface" src="'+portrait+'" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
 var avpPhotos=[
   {src:'media/ava-large.png',cap:'Your Trainer'},
+  {src:'media/ava-c-pulldown.png',cap:'Pull Day'},
   {src:'media/ava-push.png',cap:'Push Day'},
   {src:'media/ava-legs.png',cap:'Leg Day'},
   {src:'media/ava-arms.png',cap:'Arms Day'},
-  {src:'media/ava-rower.png',cap:'Recovery'},
-  {src:'media/ava-crosslegged.png',cap:'Cool Down'}
+  {src:'media/ava-c-barbell.png',cap:'Strength'},
+  {src:'media/ava-c-determined.png',cap:'Focused'},
+  {src:'media/ava-c-celebration.png',cap:'Victory'},
+  {src:'media/ava-crosslegged.png',cap:'Cool Down'},
+  {src:'media/ava-rower.png',cap:'Recovery'}
 ];
 var avpIdx=0;
 function openAvaProfile(){
@@ -1279,6 +1283,11 @@ function openHistoryDrawer(ex){
       '<div class="hd-e1rm">e1RM ~'+s.e1rm+'</div></div>';
   }).join(''):'<div class="hd-empty">No sets logged yet — tap ＋ Log set to start.</div>';
   var avaLine=avaHistoryLine(ex,sessions,sug);
+  var isPrSession=sessions.length>0&&sessions[0].e1rm>=prE&&prE>0;
+  var isRising=sessions.length>=3&&sessions[0].e1rm>sessions[1].e1rm&&sessions[1].e1rm>=sessions[2].e1rm;
+  var isStalled=sessions.length>=3&&sessions[0].weight===sessions[1].weight&&sessions[1].weight===sessions[2].weight;
+  var isDown=sessions.length>=2&&sessions[0].e1rm<sessions[1].e1rm;
+  var hdPortrait=(isPrSession||isRising)?'media/ava-celebration.png':(isStalled||isDown)?'media/ava-determined.png':'media/ava-portrait.png';
   var allSessions=histSessions._all(ex);
   var chart=e1rmSparkline(allSessions);
   var ov=document.createElement('div');ov.className='hd-ov';
@@ -1289,7 +1298,7 @@ function openHistoryDrawer(ex){
     '<div class="hd-sub">Last '+(sessions.length||0)+' session'+(sessions.length!==1?'s':'')+(sessions.length?'':' — no data yet')+'</div>'+
     (chart?'<div class="hd-chart-wrap">'+chart+'</div>':'')+
     '<div class="hd-rows">'+rows+'</div>'+
-    '<div class="hd-ava"><img class="hd-avapic" src="media/ava-portrait.png"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
+    '<div class="hd-ava"><img class="hd-avapic" src="'+hdPortrait+'"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
     (sug?'<div class="hd-sug">Target today: <strong>'+sug.weight+' lb × '+sug.reps+' reps</strong></div>':'')+
     '</div>';
   ov.addEventListener('click',function(e){if(e.target===ov)closeHistoryDrawer();});
