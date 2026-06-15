@@ -338,6 +338,14 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bwm-row{margin-bottom:16px}
 .bwm-in{width:100%;background:#0a0a0a;border:1px solid #2e2e2e;border-radius:10px;color:#fff;font-size:32px;font-weight:800;text-align:center;padding:14px 8px;box-sizing:border-box}
 .bwm-btns{display:flex;gap:10px}
+.rec-ava-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#080e0e;border:1px solid #1a2a2a;border-left:3px solid #4a9999;border-radius:12px;margin-bottom:10px}
+.rec-ava-vid{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+.avp-carousel{position:relative;width:100%;overflow:hidden;border-radius:14px 14px 0 0}
+.avp-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;font-size:24px;padding:6px 12px;cursor:pointer;z-index:2;border-radius:6px}
+.avp-prev{left:6px}.avp-next{right:6px}
+.avp-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}
+.avp-dot{width:5px;height:5px;border-radius:50%;background:#555;cursor:pointer;transition:background .2s}
+.avp-dot-a{background:#d62828}
 </style>
 </head>
 <body>
@@ -974,14 +982,15 @@ function renderCD(cdt){
     rows+'</div><div class="cdnote">'+c.note+'</div>';
 }
 function renderBlock(block,di,dt){
-  if(block.isWU)return renderWU(dt);
+  if(block.isWU)return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img" src="media/ava-warmup.png" alt="Ava">'+
+    '<div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Warm Up — let\'s prime it</span></div></div>'+renderWU(dt);
   if(block.isCD){
     var done=isDone(di);
     return '<div class="cd-ava-bar"><img class="cd-ava-img" src="media/ava-cooldown.png" alt="Ava">'+
            '<div class="cd-ava-text"><span class="cd-ava-name">AVA</span><span class="cd-ava-role">Recovery Coach · Cooldown</span></div></div>'+
            renderCD(block.cdt)+'<button class="donebtn '+(done?'done':'pending')+'" onclick="toggleDone('+di+')">'+(done?'✅ Session Complete':'Mark Session Complete')+'</button>'+tonalSummaryCard(di);
   }
-  if(block.isRec)return'<div class="pwcard"><div class="pwtitle" style="color:#4a99cc">Morning Protocol</div>'+
+  if(block.isRec)return'<div class="rec-ava-bar"><video class="rec-ava-vid" src="media/ava-rowing.mp4" autoplay loop muted playsinline></video><div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Recovery Coach · Let\'s go easy</span></div></div>'+'<div class="pwcard"><div class="pwtitle" style="color:#4a99cc">Morning Protocol</div>'+
     '<div class="pwrow"><span class="pwtb">5:00</span><span class="pwdesc">C4 + Rice cake w/ honey</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:10</span><span class="pwdesc">Creatine + Multivitamin + Fish Oil</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:45</span><span class="pwdesc">Cardio begins</span></div>'+
@@ -1159,20 +1168,42 @@ function avaMessage(c){
 function avaCard(){
   var msg=avaMessage(avaCtx());
   var todayType=DAYS[(new Date().getDay()+6)%7].type;
-  var portrait=todayType==='recovery'?'media/ava-recovery.png':'media/ava-portrait.png';
+  var portraits={push:'media/ava-push.png',pull:'media/ava-portrait.png',legs:'media/ava-legs.png',arms:'media/ava-arms.png',recovery:'media/ava-rower.png'};
+  var portrait=portraits[todayType]||'media/ava-portrait.png';
   return '<div class="avacard"><img class="avaface" src="'+portrait+'" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
+var avpPhotos=[
+  {src:'media/ava-large.png',cap:'Your Trainer'},
+  {src:'media/ava-push.png',cap:'Push Day'},
+  {src:'media/ava-legs.png',cap:'Leg Day'},
+  {src:'media/ava-arms.png',cap:'Arms Day'},
+  {src:'media/ava-rower.png',cap:'Recovery'},
+  {src:'media/ava-crosslegged.png',cap:'Cool Down'}
+];
+var avpIdx=0;
 function openAvaProfile(){
   if(document.querySelector('.avp-ov'))return;
   var msg=avaMessage(avaCtx());
+  avpIdx=0;
   var ov=document.createElement('div');ov.className='avp-ov';
   ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.8);padding:22px;box-sizing:border-box';
-  ov.innerHTML='<div class="avp-card"><img class="avp-img" src="media/ava-large.png" alt="Ava">'+
-    '<div class="avp-body"><div class="avp-name">AVA</div><div class="avp-role">YOUR TRAINER</div>'+
+  ov.innerHTML='<div class="avp-card">'+
+    '<div class="avp-carousel"><img class="avp-img" id="avpImg" src="'+avpPhotos[0].src+'" alt="Ava">'+
+    '<button class="avp-arr avp-prev" onclick="avpNav(-1)">‹</button>'+
+    '<button class="avp-arr avp-next" onclick="avpNav(1)">›</button>'+
+    '<div class="avp-dots" id="avpDots">'+avpPhotos.map(function(_,i){return'<span class="avp-dot'+(i===0?' avp-dot-a':'')+'" onclick="avpGo('+i+')"></span>';}).join('')+'</div></div>'+
+    '<div class="avp-body"><div class="avp-name">AVA</div><div class="avp-role" id="avpCap">YOUR TRAINER</div>'+
     '<div class="avp-msg">'+msg+'</div><div class="avp-tag">Built strong. Stay relentless.</div></div></div>';
   ov.addEventListener('click',function(e){if(e.target===ov)closeAvaProfile();});
   document.body.appendChild(ov);
+}
+function avpNav(dir){avpGo((avpIdx+dir+avpPhotos.length)%avpPhotos.length);}
+function avpGo(i){
+  avpIdx=i;var p=avpPhotos[i];
+  var img=document.getElementById('avpImg');if(img)img.src=p.src;
+  var cap=document.getElementById('avpCap');if(cap)cap.textContent=p.cap.toUpperCase();
+  document.querySelectorAll('.avp-dot').forEach(function(d,j){d.classList.toggle('avp-dot-a',j===i);});
 }
 function closeAvaProfile(){var ov=document.querySelector('.avp-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 
