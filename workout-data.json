@@ -226,6 +226,51 @@
         "reps": 12,
         "e1rm": 35
       }
+    ],
+    "Bulgarian Split Squat": [
+      {
+        "date": "Jun 15",
+        "ts": 1781527865081,
+        "weight": 31,
+        "reps": 10,
+        "e1rm": 41
+      }
+    ],
+    "Back Squat": [
+      {
+        "date": "Jun 15",
+        "ts": 1781527733206,
+        "weight": 150,
+        "reps": 6,
+        "e1rm": 180
+      }
+    ],
+    "Barbell Glute Bridge": [
+      {
+        "date": "Jun 15",
+        "ts": 1781528281014,
+        "weight": 198,
+        "reps": 12,
+        "e1rm": 277
+      }
+    ],
+    "Barbell RDL": [
+      {
+        "date": "Jun 15",
+        "ts": 1781528913351,
+        "weight": 175,
+        "reps": 10,
+        "e1rm": 233
+      }
+    ],
+    "Resisted Step Up": [
+      {
+        "date": "Jun 15",
+        "ts": 1781529647997,
+        "weight": 37,
+        "reps": 12,
+        "e1rm": 52
+      }
     ]
   },
   "sessions": {
@@ -236,9 +281,13 @@
     "w5_d1": {
       "date": "Jun 14",
       "ts": 1781444065865
+    },
+    "w5_d2": {
+      "date": "Jun 15",
+      "ts": 1781531413021
     }
   },
-  "lastSaved": "2026-06-14T20:58:54.067Z",
+  "lastSaved": "2026-06-15T14:50:13.000Z",
   "version": 1,
   "seeded": true
 }
