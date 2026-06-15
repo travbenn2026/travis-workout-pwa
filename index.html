@@ -316,6 +316,28 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bt-ex{flex:1;font-size:12px;color:#aaa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bt-lift{font-size:13px;font-weight:700;color:#eee;text-align:right;white-space:nowrap}
 .bt-e1rm{font-size:10px;color:#555;font-weight:400;margin-left:4px}
+.cd-ava-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#0d0d0d;border:1px solid #1e1e1e;border-left:3px solid #4a9999;border-radius:12px;margin-bottom:10px}
+.cd-ava-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.cd-ava-text{display:flex;flex-direction:column}
+.cd-ava-name{font-size:10px;font-weight:800;letter-spacing:2px;color:#4a9999}
+.cd-ava-role{font-size:11px;color:#555;margin-top:1px}
+.wvc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+.wvc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.wvc-title{font-size:12px;font-weight:800;letter-spacing:1px;color:#aaa;text-transform:uppercase}
+.wvc-cur{font-size:12px;color:#d62828;font-weight:700}
+.bwcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+.bwcard-top{display:flex;align-items:flex-start;justify-content:space-between}
+.bwcard-lbl{font-size:10px;font-weight:800;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:4px}
+.bwcard-val{font-size:24px;font-weight:800;color:#fff;line-height:1}
+.bwcard-trend{font-size:18px}
+.bwcard-delta{font-size:12px;color:#888;font-weight:400}
+.bwcard-total{font-size:11px;color:#44cc44;margin-top:3px}
+.bwcard-btn{background:#1a1a1a;border:1px solid #2a2a2a;color:#d62828;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.bwm-card{background:#121212;border:1px solid #2a2a2a;border-top:3px solid #d62828;border-radius:16px;padding:20px;width:100%;max-width:300px}
+.bwm-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:16px}
+.bwm-row{margin-bottom:16px}
+.bwm-in{width:100%;background:#0a0a0a;border:1px solid #2e2e2e;border-radius:10px;color:#fff;font-size:32px;font-weight:800;text-align:center;padding:14px 8px;box-sizing:border-box}
+.bwm-btns{display:flex;gap:10px}
 </style>
 </head>
 <body>
@@ -667,13 +689,25 @@ function saveTonalSummary(di){
   if(sess[key])sess[key].tonal=tonal;ss(sess);
   closeTonalSummary();buildWC();showToast('✓ Tonal summary saved');
 }
+function isWeekComplete(){
+  var sess=ls(),cw=progWeek(),count=0;
+  for(var i=0;i<6;i++){if(sess['w'+cw+'_d'+i])count++;}
+  return count>=6;
+}
 function toggleDone(di){
   var sess=ls();var key='w'+progWeek()+'_d'+di;
   var justCompleted=false;
   if(sess[key])delete sess[key];else{sess[key]={date:today(),ts:Date.now()};justCompleted=true;}
   ss(sess);buildDayScroll();buildWC();
   if(document.getElementById('sD').classList.contains('active'))buildDash();
-  if(justCompleted)playSessionCompleteClip();
+  if(justCompleted){
+    var wkTag='w'+progWeek();
+    var wkDone=isWeekComplete()&&localStorage.getItem('ava_wkc_evt')!==wkTag;
+    playSessionCompleteClip(wkDone?function(){
+      localStorage.setItem('ava_wkc_evt',wkTag);
+      avaPlayClip('media/week-complete.mp4');
+    }:null);
+  }
 }
 function streakWeeks(){
   var sess=ls();var cw=progWeek();var weeks=[];
@@ -700,7 +734,7 @@ function cdSpeak(text){
   window.speechSynthesis.speak(u);
 }
 var scClips=['media/session-complete.mp4','media/session-complete-2.mp4','media/session-complete-3.mp4'],scClipIdx=0;
-function playSessionCompleteClip(){
+function playSessionCompleteClip(onEnd){
   var src=scClips[scClipIdx%scClips.length];scClipIdx++;
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.82);opacity:0;transition:opacity .25s';
@@ -710,7 +744,7 @@ function playSessionCompleteClip(){
   v.style.cssText='max-width:90%;max-height:80%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.5)';
   ov.appendChild(v);document.body.appendChild(ov);
   requestAnimationFrame(function(){ov.style.opacity='1';});
-  function close(){ov.style.opacity='0';setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},260);}
+  function close(){ov.style.opacity='0';setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);if(onEnd)onEnd();},260);}
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
@@ -803,6 +837,7 @@ function cdDemoFile(name){
     'Wall Chest Opener':'media/doorway-chest-opener.mp4',
     'Standing Quad / Hip Flexor Stretch':'media/standing-quad-stretch.mp4',
     'Thoracic Extension over Bench':'media/thoracic-extension.mp4',
+    'Supinated Bicep / Forearm Stretch':'media/wrist-flexor-stretch.mp4',
     'Wrist Flexor Stretch':'media/wrist-flexor-stretch.mp4',
     'Wrist Circles + Flexor Stretch':'media/wrist-flexor-stretch.mp4',
     'Wrist Extensor Stretch':'media/wrist-flexor-stretch.mp4',
@@ -942,7 +977,9 @@ function renderBlock(block,di,dt){
   if(block.isWU)return renderWU(dt);
   if(block.isCD){
     var done=isDone(di);
-    return renderCD(block.cdt)+'<button class="donebtn '+(done?'done':'pending')+'" onclick="toggleDone('+di+')">'+(done?'✅ Session Complete':'Mark Session Complete')+'</button>'+tonalSummaryCard(di);
+    return '<div class="cd-ava-bar"><img class="cd-ava-img" src="media/ava-cooldown.png" alt="Ava">'+
+           '<div class="cd-ava-text"><span class="cd-ava-name">AVA</span><span class="cd-ava-role">Recovery Coach · Cooldown</span></div></div>'+
+           renderCD(block.cdt)+'<button class="donebtn '+(done?'done':'pending')+'" onclick="toggleDone('+di+')">'+(done?'✅ Session Complete':'Mark Session Complete')+'</button>'+tonalSummaryCard(di);
   }
   if(block.isRec)return'<div class="pwcard"><div class="pwtitle" style="color:#4a99cc">Morning Protocol</div>'+
     '<div class="pwrow"><span class="pwtb">5:00</span><span class="pwdesc">C4 + Rice cake w/ honey</span></div>'+
@@ -1121,7 +1158,9 @@ function avaMessage(c){
 }
 function avaCard(){
   var msg=avaMessage(avaCtx());
-  return '<div class="avacard"><img class="avaface" src="media/ava-portrait.png" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
+  var todayType=DAYS[(new Date().getDay()+6)%7].type;
+  var portrait=todayType==='recovery'?'media/ava-recovery.png':'media/ava-portrait.png';
+  return '<div class="avacard"><img class="avaface" src="'+portrait+'" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
 function openAvaProfile(){
@@ -1232,6 +1271,91 @@ function closeHistoryDrawer(){
   sh.style.transform='translateY(100%)';
   setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},280);
 }
+// ── WEEK VOLUME CHART ────────────────────────────────────────────────────────
+function getWeeklyVolume(n){
+  var logs=ll(),msW=7*24*60*60*1000;
+  var curW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/msW));
+  var startW=Math.max(0,curW-n+1),data=[];
+  for(var w=startW;w<=curW;w++){
+    var ws=PROGRAM_START+w*msW,we=ws+msW,vol=0;
+    TRACK_EX.forEach(function(ex){if(logs[ex])logs[ex].forEach(function(e){if(e.ts>=ws&&e.ts<we)vol+=Math.round(e.weight*e.reps);});});
+    data.push({w:w,vol:vol,label:'W'+(w+1),cur:w===curW});
+  }
+  return data;
+}
+function weekVolumeCard(){
+  var data=getWeeklyVolume(8);
+  if(!data.some(function(d){return d.vol>0;}))return'';
+  var maxV=Math.max.apply(null,data.map(function(d){return d.vol;}));
+  var bw=28,gap=7,H=80;
+  var bars=data.map(function(d,i){
+    var bh=maxV?Math.max(4,Math.round(d.vol/maxV*(H-22))):4;
+    var x=i*(bw+gap),y=H-bh-14;
+    var fill=d.cur?'#d62828':(d.vol?'#1e1e1e':'transparent');
+    var stroke=d.cur?'none':'#2a2a2a';
+    var vl=d.vol>0?'<text x="'+(x+bw/2)+'" y="'+(y-3)+'" fill="'+(d.cur?'#d62828':'#555')+'" font-size="7.5" text-anchor="middle">'+(d.vol>=1000?Math.round(d.vol/1000)+'k':d.vol)+'</text>':'';
+    return'<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="3" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1"/>'+vl+
+      '<text x="'+(x+bw/2)+'" y="'+(H-1)+'" fill="'+(d.cur?'#888':'#3a3a3a')+'" font-size="7.5" text-anchor="middle">'+d.label+'</text>';
+  }).join('');
+  var tw=(bw+gap)*data.length-gap;
+  var cur=data[data.length-1];
+  return'<div class="wvc"><div class="wvc-head"><span class="wvc-title">📈 Weekly Volume</span>'+
+    '<span class="wvc-cur">'+(cur.vol?Number(cur.vol).toLocaleString()+' lb this week':'building...')+'</span></div>'+
+    '<svg width="100%" viewBox="0 0 '+tw+' '+H+'" preserveAspectRatio="none" style="overflow:visible">'+bars+'</svg></div>';
+}
+// ── BODY WEIGHT LOG ──────────────────────────────────────────────────────────
+function bwLog(){try{return JSON.parse(localStorage.getItem('bw_log')||'[]');}catch(e){return[];}}
+function saveBW(w){
+  var log=bwLog(),entry={date:today(),ts:Date.now(),w:parseFloat(w)};
+  log=log.filter(function(e){return e.date!==today();});
+  log.push(entry);log.sort(function(a,b){return a.ts-b.ts;});
+  localStorage.setItem('bw_log',JSON.stringify(log));
+}
+function openBWModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var last=bwLog();last=last.length?last[last.length-1]:null;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">⚖️ Log Body Weight</div>'+
+    '<div class="bwm-row"><input class="bwm-in" id="bwIn" type="number" inputmode="decimal" step="0.1" min="50" max="500" placeholder="lbs" value="'+(last?last.w:'')+'"></div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBWModal()">Cancel</button><button class="tsm-save" onclick="saveBWEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBWModal();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('bwIn');if(el){el.focus();el.select();}},60);
+}
+function closeBWModal(){var ov=document.querySelector('.bwm-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
+function saveBWEntry(){
+  var w=parseFloat(document.getElementById('bwIn').value);
+  if(!w||w<50||w>500){showToast('Enter a valid weight');return;}
+  saveBW(w);closeBWModal();buildDash();showToast('✓ Weight logged');
+}
+function bodyWeightCard(){
+  var log=bwLog().slice(-60);
+  var latest=log.length?log[log.length-1]:null;
+  var prev=log.length>1?log[log.length-2]:null;
+  var delta=latest&&prev?(latest.w-prev.w):null;
+  var trend=delta===null?null:(delta<0?'↓':delta>0?'↑':'→');
+  var tCol=trend==='↓'?'#44cc44':trend==='↑'?'#cc4444':'#888';
+  var startW=log.length?log[0].w:null;
+  var totalLost=startW&&latest?(startW-latest.w):null;
+  var sparkH='';
+  if(log.length>1){
+    var vals=log.map(function(e){return e.w;}),W=260,H=40;
+    var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
+    var pts=log.map(function(e,i){return[(4+i*(W-8)/(log.length-1)),(H-4-(e.w-minV)/range*(H-10))];});
+    var poly=pts.map(function(p){return p[0]+','+p[1];}).join(' ');
+    sparkH='<svg width="100%" viewBox="0 0 '+W+' '+H+'" style="display:block;margin-top:8px;overflow:visible">'+
+      '<polyline points="'+poly+'" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>'+
+      '<circle cx="'+pts[pts.length-1][0]+'" cy="'+pts[pts.length-1][1]+'" r="3" fill="#d62828"/></svg>';
+  }
+  return'<div class="bwcard"><div class="bwcard-top">'+
+    '<div><div class="bwcard-lbl">BODY WEIGHT</div>'+
+    (latest?'<div class="bwcard-val">'+latest.w+' lb<span class="bwcard-trend" style="color:'+tCol+'"> '+( trend||'')+'</span>'+(delta?'<span class="bwcard-delta"> ('+( delta>0?'+':'')+delta.toFixed(1)+')</span>':'')+'</div>':
+    '<div class="bwcard-val" style="color:#555">Not logged yet</div>')+
+    (totalLost&&totalLost>0?'<div class="bwcard-total">−'+totalLost.toFixed(1)+' lb since first entry</div>':'')+
+    '</div><button class="bwcard-btn" onclick="openBWModal()">'+(latest?'Update':'+ Log')+'</button></div>'+
+    sparkH+'</div>';
+}
 function buildDash(){
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
@@ -1300,7 +1424,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=avaCard()+syncHtml+phHtml+nxHtml+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=avaCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
