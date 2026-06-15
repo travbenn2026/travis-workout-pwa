@@ -662,10 +662,10 @@ function avaEventCheck(){
       return queueAvaClip('media/welcome-back.mp4');
     }
     var todayType=DAYS[(new Date().getDay()+6)%7].type;
-    if(todayType!=='recovery'&&!c.trainedToday&&localStorage.getItem('ava_start_evt')!==today()){
+    var startClips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
+    if(localStorage.getItem('ava_start_evt')!==today()&&(todayType==='recovery'||!c.trainedToday)){
       localStorage.setItem('ava_start_evt',today());
-      var startClip={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4'}[todayType]||'media/session-start.mp4';
-      return queueAvaClip(startClip);
+      return queueAvaClip(startClips[todayType]||'media/session-start.mp4');
     }
   }catch(e){}
 }
@@ -677,7 +677,12 @@ function cdDemoFile(name){
     'Doorway Chest Opener':'media/doorway-chest-opener.mp4',
     'Doorway / Tonal Post Chest Stretch':'media/doorway-chest-opener.mp4',
     'Wall Chest Opener':'media/doorway-chest-opener.mp4',
-    'Standing Quad / Hip Flexor Stretch':'media/standing-quad-stretch.mp4'
+    'Standing Quad / Hip Flexor Stretch':'media/standing-quad-stretch.mp4',
+    'Thoracic Extension over Bench':'media/thoracic-extension.mp4',
+    'Wrist Flexor Stretch':'media/wrist-flexor-stretch.mp4',
+    'Wrist Extensor Stretch':'media/wrist-flexor-stretch.mp4',
+    "Child's Pose":'media/childs-pose.mp4',
+    'Cat-Cow':'media/childs-pose.mp4'
   };
   return map[name]||null;
 }
@@ -714,11 +719,27 @@ function startCDTimer(cdt){
   cdTimerState.intervalId=setInterval(tickCDTimer,1000);
   updateCDTimerUI();
 }
+function cdChime(pitch){
+  try{
+    var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    var osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.type='sine';osc.frequency.value=pitch||880;
+    gain.gain.setValueAtTime(0,ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.18,ctx.currentTime+0.015);
+    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);
+    osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.35);
+  }catch(e){}
+}
 function tickCDTimer(){
   if(!cdTimerState||cdTimerState.done)return;
   cdTimerState.remaining--;
-  if(cdTimerState.remaining<=0)advanceCDStep();
-  else updateCDTimerUI();
+  var r=cdTimerState.remaining;
+  if(r<=0){advanceCDStep();return;}
+  if(r===3)cdChime(660);
+  else if(r===2)cdChime(770);
+  else if(r===1)cdChime(880);
+  updateCDTimerUI();
 }
 function advanceCDStep(){
   var st=cdTimerState,curr=st.stretches[st.idx];
