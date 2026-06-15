@@ -319,7 +319,7 @@ var TRACK_EX=[
   'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl',
   // Legs
   'Back Squat','Conventional Deadlift','Bulgarian Split Squat',
-  'Barbell RDL','Barbell Glute Bridge','Resisted Step Up','Resisted Calf Raise',
+  'Barbell RDL','Barbell Hip Thrust','Resisted Step Up','Resisted Calf Raise',
   // Core
   'Weighted Incline Sit-Up',
 ];
@@ -403,7 +403,7 @@ var BLOCKS={
       ],note:'Knee: Always use squat wedges. Swap Back Squat to Goblet Squat to Bench if knee aches. Back squat eliminates all wrist stress vs front rack.'},
     {id:'b2',e:'🦵',lbl:'Block 2',meta:'Posterior · 90 sec rest',
       g:[
-        {ss:true,ssl:'Superset A — Hip Hinge + Hip Extension',r:[{n:'Barbell RDL',nt:'Tonal · Hip hinge, feel hamstring stretch at bottom',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Barbell RDL'},{n:'Barbell Glute Bridge',nt:'Tonal · Use barbell pad. Full hip extension, 1-sec squeeze.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Barbell Glute Bridge'}]},
+        {ss:true,ssl:'Superset A — Hip Hinge + Hip Extension',r:[{n:'Barbell RDL',nt:'Tonal · Hip hinge, feel hamstring stretch at bottom',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Barbell RDL'},{n:'Barbell Hip Thrust',nt:'Tonal · Use barbell pad. Drive hips to full extension, 1-sec squeeze at top.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Barbell Hip Thrust'}]},
         {ss:true,ssl:'Superset B — Step + Calf',r:[{n:'Resisted Step Up',nt:'Tonal · 3-sec descent, knee tracks second toe',tg:'tton',sets:'3x',reps:'12 ea.',rir:'RIR 2',tr:'Resisted Step Up'},{n:'Resisted Calf Raise',nt:'Tonal · Single leg, full ROM top to bottom',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Resisted Calf Raise'}]},
       ]},
     {id:'b3',e:'🔩',lbl:'Block 3',meta:'Core · 45 sec rest',
@@ -661,9 +661,11 @@ function avaEventCheck(){
       localStorage.setItem('ava_wb_evt',today());
       return queueAvaClip('media/welcome-back.mp4');
     }
-    if(DAYS[(new Date().getDay()+6)%7].type!=='recovery'&&!c.trainedToday&&localStorage.getItem('ava_start_evt')!==today()){
+    var todayType=DAYS[(new Date().getDay()+6)%7].type;
+    if(todayType!=='recovery'&&!c.trainedToday&&localStorage.getItem('ava_start_evt')!==today()){
       localStorage.setItem('ava_start_evt',today());
-      return queueAvaClip('media/session-start.mp4');
+      var startClip={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4'}[todayType]||'media/session-start.mp4';
+      return queueAvaClip(startClip);
     }
   }catch(e){}
 }
