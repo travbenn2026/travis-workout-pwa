@@ -102,6 +102,13 @@
         "weight": 40,
         "reps": 10,
         "e1rm": 53
+      },
+      {
+        "date": "Jun 16",
+        "ts": 1781612353696,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Barbell Bent Over Row": [
@@ -225,6 +232,13 @@
         "weight": 25,
         "reps": 12,
         "e1rm": 35
+      },
+      {
+        "date": "Jun 16",
+        "ts": 1781611036675,
+        "weight": 25,
+        "reps": 12,
+        "e1rm": 35
       }
     ],
     "Bulgarian Split Squat": [
@@ -297,6 +311,49 @@
         "weight": 1,
         "reps": 20,
         "e1rm": 2
+      },
+      {
+        "date": "Jun 16",
+        "ts": 1781613397164,
+        "weight": 22,
+        "reps": 15,
+        "e1rm": 33
+      }
+    ],
+    "DB Alternating Curl": [
+      {
+        "date": "Jun 16",
+        "ts": 1781610778978,
+        "weight": 38.5,
+        "reps": 8,
+        "e1rm": 49
+      }
+    ],
+    "Incline DB Curl": [
+      {
+        "date": "Jun 16",
+        "ts": 1781611196088,
+        "weight": 33,
+        "reps": 10,
+        "e1rm": 44
+      }
+    ],
+    "SA Overhead Tricep Extension": [
+      {
+        "date": "Jun 16",
+        "ts": 1781611962101,
+        "weight": 82,
+        "reps": 10,
+        "e1rm": 109
+      }
+    ],
+    "Tricep Kickback": [
+      {
+        "date": "Jun 16",
+        "ts": 1781612427884,
+        "weight": 22,
+        "reps": 15,
+        "e1rm": 33
       }
     ]
   },
@@ -321,9 +378,21 @@
         "duration": 71,
         "notes": "Good, room to go up on squat. "
       }
+    },
+    "w5_d3": {
+      "date": "Jun 16",
+      "ts": 1781613905383,
+      "tonal": {
+        "volume": 12083,
+        "work": 33.4,
+        "cals": 453,
+        "avgHr": 119,
+        "maxHr": 144,
+        "duration": 66
+      }
     }
   },
-  "lastSaved": "2026-06-16T01:59:56.093Z",
+  "lastSaved": "2026-06-16T12:46:35.414Z",
   "version": 1,
   "seeded": true
 }
