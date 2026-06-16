@@ -360,11 +360,27 @@
   "sessions": {
     "w5_d0": {
       "date": "Jun 13",
-      "ts": 1781385964241
+      "ts": 1781385964241,
+      "tonal": {
+        "volume": 18022,
+        "work": 50,
+        "cals": 464,
+        "avgHr": 128,
+        "maxHr": 163,
+        "duration": 63
+      }
     },
     "w5_d1": {
       "date": "Jun 14",
-      "ts": 1781444065865
+      "ts": 1781444065865,
+      "tonal": {
+        "volume": 23160,
+        "work": 60,
+        "cals": 436,
+        "avgHr": 129,
+        "maxHr": 164,
+        "duration": 59
+      }
     },
     "w5_d2": {
       "date": "Jun 15",
@@ -392,7 +408,7 @@
       }
     }
   },
-  "lastSaved": "2026-06-16T14:45:58.019Z",
+  "lastSaved": "2026-06-16T18:46:12.614Z",
   "version": 1,
   "seeded": true
 }
