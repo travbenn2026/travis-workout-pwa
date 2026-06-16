@@ -271,6 +271,33 @@
         "reps": 12,
         "e1rm": 52
       }
+    ],
+    "Barbell Hip Thrust": [
+      {
+        "date": "Jun 15",
+        "ts": 1781551305052,
+        "weight": 200,
+        "reps": 12,
+        "e1rm": 280
+      }
+    ],
+    "Resisted Calf Raise": [
+      {
+        "date": "Jun 15",
+        "ts": 1781551324390,
+        "weight": 100,
+        "reps": 15,
+        "e1rm": 150
+      }
+    ],
+    "Weighted Incline Sit-Up": [
+      {
+        "date": "Jun 15",
+        "ts": 1781551342739,
+        "weight": 1,
+        "reps": 20,
+        "e1rm": 2
+      }
     ]
   },
   "sessions": {
@@ -284,10 +311,19 @@
     },
     "w5_d2": {
       "date": "Jun 15",
-      "ts": 1781531413021
+      "ts": 1781531413021,
+      "tonal": {
+        "volume": 35014,
+        "work": 62,
+        "cals": 653,
+        "avgHr": 134,
+        "maxHr": 162,
+        "duration": 71,
+        "notes": "Good, room to go up on squat. "
+      }
     }
   },
-  "lastSaved": "2026-06-15T16:29:27.348Z",
+  "lastSaved": "2026-06-16T01:59:56.093Z",
   "version": 1,
   "seeded": true
 }
