@@ -314,10 +314,10 @@
       },
       {
         "date": "Jun 16",
-        "ts": 1781613397164,
-        "weight": 22,
+        "ts": 1781614021184,
+        "weight": 27.5,
         "reps": 15,
-        "e1rm": 33
+        "e1rm": 41
       }
     ],
     "DB Alternating Curl": [
@@ -392,7 +392,7 @@
       }
     }
   },
-  "lastSaved": "2026-06-16T12:46:35.414Z",
+  "lastSaved": "2026-06-16T14:45:58.019Z",
   "version": 1,
   "seeded": true
 }
