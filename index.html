@@ -69,7 +69,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .ssdot{width:5px;height:5px;border-radius:50%;background:#8844cc;}
 .exrow{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
 .exrow:last-child{border-bottom:none;}
-.exmain{flex:1;min-width:0;}.exactions{display:flex;flex-direction:column;gap:6px;flex:0 0 auto;align-items:stretch;padding-top:2px;}
+.exmain{flex:1;min-width:0;}.exactions{display:flex;flex-direction:column;gap:6px;flex:0 0 auto;padding-top:2px;}
 .exname{font-size:15px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:5px;}
 .expills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;}
 .pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
@@ -239,7 +239,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avabody{flex:1;min-width:0;}
 .avaname{font-size:10px;font-weight:800;letter-spacing:2px;color:#d62828;margin-bottom:3px;}
 .avamsg{font-size:14px;line-height:1.35;color:#eaeaea;font-weight:500;}
-.exlog{background:#1c1c1c;border:1px solid #d62828;color:#ff6b6b;font-size:11px;font-weight:700;padding:7px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;text-align:center;}
+.exlog{background:#1c1c1c;border:1px solid #d62828;color:#ff6b6b;font-size:11px;font-weight:700;padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;}
 .exlog:active{background:#d62828;color:#fff}
 .ql-card{background:#121212;border:1px solid #2a2a2a;border-top:3px solid #d62828;border-radius:16px;padding:18px;width:100%;max-width:340px;box-shadow:0 16px 50px rgba(0,0,0,.6)}
 .ql-title{font-size:17px;font-weight:800;color:#fff;line-height:1.2}
@@ -280,7 +280,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .tsm-skip{flex:1;background:#1a1a1a;border:1px solid #2a2a2a;color:#666;font-size:14px;font-weight:700;padding:13px;border-radius:10px;cursor:pointer}
 .tsm-save{flex:2;background:linear-gradient(135deg,#d62828,#a01818);border:none;color:#fff;font-size:14px;font-weight:800;padding:13px;border-radius:10px;cursor:pointer}
 
-
+.exlogwrap{margin-top:7px;}
 .hd-ov{transition:background .25s}
 .hd-sheet{background:#111;border-radius:20px 20px 0 0;padding:0 0 32px;max-height:82vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1)}
 .hd-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:10px auto 0}
@@ -346,7 +346,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avp-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}
 .avp-dot{width:5px;height:5px;border-radius:50%;background:#555;cursor:pointer;transition:background .2s}
 .avp-dot-a{background:#d62828}
-.exswap{background:#141414;border:1px solid #2a2a2a;color:#666;font-size:11px;font-weight:700;padding:7px 9px;border-radius:8px;cursor:pointer;text-align:center;}
+.exswap{background:#141414;border:1px solid #2a2a2a;color:#666;font-size:13px;font-weight:700;padding:5px 9px;border-radius:8px;cursor:pointer;}
 .exswap-on{border-color:#d62828;color:#d62828}
 .ex-sub-badge{font-size:9px;font-weight:800;letter-spacing:1px;color:#d62828;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:middle;border:1px solid #d62828}
 .sw-sheet{background:#111;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);padding-bottom:24px}
@@ -825,12 +825,12 @@ var EXERCISE_ALTS={
     {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Seated, alternate arms'},
     {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, full ROM'},
     {n:'Incline DB Curl',tr:'Incline DB Curl',note:'Dumbbells · 45-60 deg incline, deep stretch'},
-    {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Incline position, peak contraction'},
-    {n:'Reverse Grip Bicep Curl',tr:'Reverse Grip Bicep Curl',note:'Tonal · Brachialis + brachioradialis'},
+    {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Incline, peak contraction'},
+    {n:'Reverse Grip Bicep Curl',tr:'Reverse Grip Bicep Curl',note:'Tonal · Brachialis and brachioradialis'},
   ],
   'Incline DB Curl':[
     {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Alternate arms, similar ROM'},
-    {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, constant cable tension'},
+    {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, cable tension'},
     {n:'DB Alternating Curl',tr:'DB Alternating Curl',note:'Dumbbells · Standing, full supination'},
     {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Long-head stretch, incline'},
   ],
@@ -1129,12 +1129,13 @@ function renderBlock(block,di,dt){
     var inner=g.r.map(function(r){
       var er=getEffectiveEx(r,di);
       var rp=phaseReps(er.reps);
-      var histBtn=er.tr?' onclick=\"openHistoryDrawer(\\\''+er.tr+'\\\')\" style=\"cursor:pointer;text-decoration:underline;text-decoration-color:#2a2a2a;text-underline-offset:3px\"':'';
-      var subBadge=er.swapped?'<span class=\"ex-sub-badge\">SUB</span>':'';
-      var swapBtn=EXERCISE_ALTS[er.origN]?'<button class=\"exswap'+(er.swapped?' exswap-on':'')+'" data-orig=\"'+er.origN+'\" data-di=\"'+di+'\" onclick=\"openSwapDrawer(this.dataset.orig,+this.dataset.di)\">'+(er.swapped?'\u21a9':'\u21d4')+'</button>':'';
-      var logBtn=er.tr?'<button class=\"exlog\" onclick=\"quickLog(event,\\\''+er.tr+'\\\',\\\''+rp+'\\\')\">+ Log</button>':'';
-      return'<div class=\"exrow\"><div class=\"exmain\"><div class=\"exname\"'+histBtn+'>'+er.n+subBadge+'</div><div class=\"expills\"><span class=\"pill psets\">'+er.sets+'</span><span class=\"pill preps\">'+rp+'</span>'+(er.rir!=='-'?'<span class=\"pill prix\">'+er.rir+'</span>':'')+suggH(er.tr||null,rp)+'</div><div class=\"exnote\">'+er.nt+'</div>'+tagH(er.tg)+'</div><div class=\"exactions\">'+swapBtn+logBtn+'</div></div>';
+      var histBtn=er.tr?' onclick="openHistoryDrawer(\''+er.tr+'\')" style="cursor:pointer;text-decoration:underline;text-decoration-color:#2a2a2a;text-underline-offset:3px"':'';
+      var subBadge=er.swapped?'<span class="ex-sub-badge">SUB</span>':'';
+      var swapBtn=EXERCISE_ALTS[er.origN]?'<button class="exswap'+(er.swapped?' exswap-on':'')+'" data-orig="'+er.origN+'" data-di="'+di+'" onclick="openSwapDrawer(this.dataset.orig,+this.dataset.di)">'+(er.swapped?'↩':'↔')+'</button>':'';
+      var logBtn=er.tr?'<button class="exlog" onclick="quickLog(event,\''+er.tr+'\',\''+rp+'\')">+ Log</button>':'';
+      return'<div class="exrow"><div class="exmain"><div class="exname"'+histBtn+'>'+er.n+subBadge+'</div><div class="expills"><span class="pill psets">'+er.sets+'</span><span class="pill preps">'+rp+'</span>'+(er.rir!=='-'?'<span class="pill prix">'+er.rir+'</span>':'')+suggH(er.tr||null,rp)+'</div><div class="exnote">'+er.nt+'</div>'+tagH(er.tg)+'</div><div class="exactions">'+swapBtn+logBtn+'</div></div>';
     }).join('');
+
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
   });
   if(block.note)html+='<div class="nbox" style="border-radius:12px;margin-top:-2px">'+block.note+'</div>';
