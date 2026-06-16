@@ -346,6 +346,18 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .avp-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px}
 .avp-dot{width:5px;height:5px;border-radius:50%;background:#555;cursor:pointer;transition:background .2s}
 .avp-dot-a{background:#d62828}
+.exswap{background:#141414;border:1px solid #2a2a2a;color:#666;font-size:11px;font-weight:700;padding:4px 9px;border-radius:8px;cursor:pointer;margin-right:6px;flex:0 0 auto}
+.exswap-on{border-color:#d62828;color:#d62828}
+.ex-sub-badge{font-size:9px;font-weight:800;letter-spacing:1px;color:#d62828;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:middle;border:1px solid #d62828}
+.sw-sheet{background:#111;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,0,1);padding-bottom:24px}
+.sw-body{padding:0 18px;max-height:60vh;overflow-y:auto}
+.sw-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #1c1c1c}
+.sw-active{background:linear-gradient(90deg,rgba(214,40,40,.06),transparent)}
+.sw-info{flex:1}
+.sw-name{font-size:14px;font-weight:700;color:#eee}
+.sw-note{font-size:11px;color:#666;margin-top:2px}
+.sw-use{background:#1c1c1c;border:1px solid #2a2a2a;color:#d62828;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.sw-reset{width:100%;margin-top:12px;padding:12px;background:#0d0d0d;border:1px dashed #2a2a2a;color:#888;font-size:13px;font-weight:600;border-radius:10px;cursor:pointer;box-sizing:border-box}
 </style>
 </head>
 <body>
@@ -801,6 +813,92 @@ function queueAvaClip(src,captionHtml){
   var fire=function(){var q=pendingAvaClip;pendingAvaClip=null;document.removeEventListener('pointerdown',fire);if(q)avaPlayClip(q.src,q.cap);};
   document.addEventListener('pointerdown',fire,{once:true});
 }
+function nextWorkoutDay(){
+  var sess=ls(),cw=progWeek();
+  for(var i=0;i<7;i++){if(!sess['w'+cw+'_d'+i])return i;}
+  return 6;
+}
+// ── SESSION SWAPS ─────────────────────────────────────────────────────────────
+var sessionSwaps={};
+var EXERCISE_ALTS={
+  'DB Alternating Curl':[
+    {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Seated, alternate arms'},
+    {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, full ROM'},
+    {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Incline, peak contraction'},
+    {n:'Reverse Grip Bicep Curl',tr:'Reverse Grip Bicep Curl',note:'Tonal · Hits brachialis'},
+  ],
+  'Weighted Pull-Up':[
+    {n:'Neutral Grip Lat Pulldown',tr:'Neutral Grip Lat Pulldown',note:'Tonal · Same pattern, neutral grip'},
+    {n:'X Pulldown',tr:'X Pulldown',note:'Tonal · Wide lat sweep'},
+    {n:'Straight Arm Pulldown',tr:'Straight Arm Pulldown',note:'Tonal · Lat isolation, no elbow'},
+  ],
+  'Weighted Chin-Up':[
+    {n:'Neutral Grip Lat Pulldown',tr:'Neutral Grip Lat Pulldown',note:'Tonal · High volume alternative'},
+    {n:'Weighted Pull-Up',tr:'Weighted Pull-Up',note:'REP Bar · Overhand variation'},
+    {n:'X Pulldown',tr:'X Pulldown',note:'Tonal · Wide lat focus'},
+  ],
+  'Barbell Back Squat':[
+    {n:'Bulgarian Split Squat',tr:'Bulgarian Split Squat',note:'Tonal · Unilateral, knee-conscious'},
+    {n:'Resisted Step Up',tr:'Resisted Step Up',note:'Tonal · Low joint stress, full extension'},
+  ],
+  'Incline Barbell Bench Press':[
+    {n:'Standing Incline Chest Press',tr:'Standing Incline Chest Press',note:'Tonal · Cable, constant tension'},
+    {n:'Alt Bench Press',tr:'Alt Bench Press',note:'Tonal · Alternate arms, core stability'},
+    {n:'Middle Chest Fly',tr:'Middle Chest Fly',note:'Tonal · Isolation, full stretch'},
+  ],
+  'Barbell Bent Over Row':[
+    {n:'Seated Row',tr:'Seated Row',note:'Tonal · Horizontal pull, mid-back focus'},
+    {n:'Neutral Grip Lat Pulldown',tr:'Neutral Grip Lat Pulldown',note:'Tonal · Vertical pull alternative'},
+  ],
+  'Barbell RDL':[
+    {n:'Conventional Deadlift',tr:'Conventional Deadlift',note:'Tonal · Full pull from floor'},
+  ],
+  'Barbell Hip Thrust':[
+    {n:'Resisted Glute Bridge',tr:'Resisted Glute Bridge',note:'Tonal · Same pattern, more stable'},
+  ],
+  'Skull Crushers':[
+    {n:'SA Overhead Tricep Extension',tr:'SA Overhead Tricep Extension',note:'Tonal · Unilateral long-head focus'},
+    {n:'Reverse Grip Tricep Extension',tr:'Reverse Grip Tricep Extension',note:'Tonal · Lateral head focus'},
+    {n:'Tricep Kickback',tr:'Tricep Kickback',note:'Tonal · Peak contraction'},
+  ],
+};
+function getEffectiveEx(r,di){
+  if(sessionSwaps[di]&&sessionSwaps[di][r.n]){
+    var sw=sessionSwaps[di][r.n];
+    return{n:sw.n,tr:sw.tr,nt:'↔ Subbing for '+r.n+' · '+sw.note,tg:r.tg,sets:r.sets,reps:r.reps,rir:r.rir,swapped:true,origN:r.n};
+  }
+  return{n:r.n,tr:r.tr,nt:r.nt,tg:r.tg,sets:r.sets,reps:r.reps,rir:r.rir,swapped:false,origN:r.n};
+}
+function openSwapDrawer(origN,di){
+  if(document.querySelector('.sw-ov'))return;
+  var alts=EXERCISE_ALTS[origN]||[];var curSwap=sessionSwaps[di]&&sessionSwaps[di][origN];
+  var ov=document.createElement('div');ov.className='sw-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6)';
+  var rows=alts.map(function(a){
+    var active=curSwap&&curSwap.n===a.n;
+    return'<div class="sw-row'+(active?' sw-active':'')+'">'+
+      '<div class="sw-info"><div class="sw-name">'+a.n+(active?' ✓':'')+'</div><div class="sw-note">'+a.note+'</div></div>'+
+      '<button class="sw-use" onclick="applySwap('+di+',\''+origN+'\',\''+a.n.replace(/'/g,'')+'\',\''+a.tr.replace(/'/g,'')+'\',\''+a.note.replace(/'/g,'').replace(/·/g,'·')+'\')">'+(active?'Active':'Use')+'</button></div>';
+  }).join('');
+  var resetRow=curSwap?'<button class="sw-reset" onclick="applySwap('+di+',\''+origN+'\',null,null,null)">↩ Reset to original</button>':'';
+  ov.innerHTML='<div class="sw-sheet"><div class="hd-handle"></div>'+
+    '<div class="hd-head"><div class="hd-title">↔ Sub: '+origN+'</div><button class="hd-close" onclick="closeSwapDrawer()">✕</button></div>'+
+    '<div class="sw-body">'+rows+resetRow+'</div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeSwapDrawer();});
+  document.body.appendChild(ov);
+  requestAnimationFrame(function(){ov.querySelector('.sw-sheet').style.transform='translateY(0)';});
+}
+function applySwap(di,origN,newName,newTr,note){
+  if(!sessionSwaps[di])sessionSwaps[di]={};
+  if(newName)sessionSwaps[di][origN]={n:newName,tr:newTr,note:note};
+  else delete sessionSwaps[di][origN];
+  closeSwapDrawer();buildWC();showToast(newName?'↔ Subbed: '+newName:'↩ Reset to '+origN);
+}
+function closeSwapDrawer(){
+  var ov=document.querySelector('.sw-ov');if(!ov)return;
+  var sh=ov.querySelector('.sw-sheet');sh.style.transform='translateY(100%)';
+  setTimeout(function(){if(ov.parentNode)ov.parentNode.removeChild(ov);},280);
+}
 function avaEventCheck(){
   try{
     var rawW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/604800000));
@@ -827,11 +925,12 @@ function avaEventCheck(){
       localStorage.setItem('ava_wb_evt',today());
       return queueAvaClip('media/welcome-back.mp4');
     }
-    var todayType=DAYS[(new Date().getDay()+6)%7].type;
-    var startClips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
-    if(localStorage.getItem('ava_start_evt')!==today()&&(todayType==='recovery'||!c.trainedToday)){
-      localStorage.setItem('ava_start_evt',today());
-      return queueAvaClip(startClips[todayType]||'media/session-start.mp4');
+    var nextDi=nextWorkoutDay();
+    var wkStartKey='ava_sd_w'+progWeek()+'_d'+nextDi;
+    if(!localStorage.getItem(wkStartKey)&&!c.trainedToday){
+      localStorage.setItem(wkStartKey,'1');
+      var startClips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
+      return queueAvaClip(startClips[DAYS[nextDi].type]||'media/session-start.mp4');
     }
   }catch(e){}
 }
@@ -1003,13 +1102,16 @@ function renderBlock(block,di,dt){
   var html='';
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
-      var rp=phaseReps(r.reps);
-      var histBtn=r.tr?' onclick="openHistoryDrawer(\''+r.tr+'\')" style="cursor:pointer;text-decoration:underline;text-decoration-color:#333;text-underline-offset:3px"':'';
-      var logBtn=r.tr?'<div class="exlogwrap"><button class="exlog" onclick="quickLog(event,\''+r.tr+'\',\''+rp+'\')">＋ Log set</button></div>':'';
-      return'<div class="exrow"><div class="extop"><div class="exname"'+histBtn+'>'+r.n+'</div>'+
-        '<div class="expills"><span class="pill psets">'+r.sets+'</span><span class="pill preps">'+rp+'</span>'+(r.rir!=='-'?'<span class="pill prix">'+r.rir+'</span>':'')+suggH(r.tr||null,rp)+'</div>'+
+      var er=getEffectiveEx(r,di);
+      var rp=phaseReps(er.reps);
+      var histBtn=er.tr?' onclick="openHistoryDrawer(\''+er.tr+'\')" style="cursor:pointer;text-decoration:underline;text-decoration-color:#333;text-underline-offset:3px"':'';
+      var swapBtn=EXERCISE_ALTS[er.origN]?'<button class="exswap'+(er.swapped?' exswap-on':'')+'" onclick="openSwapDrawer(\''+er.origN+'\','+di+')">'+( er.swapped?'↩':'↔')+'</button>':'';
+      var logBtn=er.tr?'<div class="exlogwrap">'+swapBtn+'<button class="exlog" onclick="quickLog(event,\''+er.tr+'\',\''+rp+'\')">＋ Log set</button></div>':'';
+      var subBadge=er.swapped?'<span class="ex-sub-badge">SUB</span>':'';
+      return'<div class="exrow"><div class="extop"><div class="exname"'+histBtn+'>'+er.n+subBadge+'</div>'+
+        '<div class="expills"><span class="pill psets">'+er.sets+'</span><span class="pill preps">'+rp+'</span>'+(er.rir!=='-'?'<span class="pill prix">'+er.rir+'</span>':'')+suggH(er.tr||null,rp)+'</div>'+
         logBtn+'</div>'+
-        '<div class="exnote">'+r.nt+'</div>'+tagH(r.tg)+'</div>';
+        '<div class="exnote">'+er.nt+'</div>'+tagH(er.tg)+'</div>';
     }).join('');
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
   });
@@ -1025,7 +1127,7 @@ function buildDayScroll(){
   document.getElementById('dayScroll').innerHTML=DAYS.map(function(d,i){
     var done=isDone(i);
     var ac=i===curDay?'a'+d.type:'c'+d.type;
-    return'<div class="dc '+ac+'" onclick="selDay('+i+')"><div class="dow">'+d.dow+'</div><div class="dname">'+d.name+'</div>'+(done?'<div class="cdone">✅</div>':'')+'</div>';
+    return'<div class="dc '+ac+'" onclick="selDay('+i+',true)"><div class="dow">'+d.dow+'</div><div class="dname">'+d.name+'</div>'+(done?'<div class="cdone">✅</div>':'')+'</div>';
   }).join('');
   setTimeout(function(){var c=document.querySelectorAll('.dc');if(c[curDay])c[curDay].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});},50);
 }
@@ -1049,7 +1151,17 @@ function buildWC(){
   if(!block)block=BLOCKS[curDay][0];
   var s=document.getElementById('mainScroll');s.innerHTML=renderBlock(block,curDay,dt);s.scrollTop=0;
 }
-function selDay(i){curDay=i;curBlock=BLOCKS[i][0].id;buildHeader();buildDayScroll();buildBlockTabs();buildWC();}
+function selDay(i,userTap){
+  curDay=i;curBlock=BLOCKS[i][0].id;buildHeader();buildDayScroll();buildBlockTabs();buildWC();
+  if(userTap&&!isDone(i)){
+    var wkKey='ava_sd_w'+progWeek()+'_d'+i;
+    if(!localStorage.getItem(wkKey)){
+      localStorage.setItem(wkKey,'1');
+      var clips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
+      avaPlayClip(clips[DAYS[i].type]||'media/session-start.mp4');
+    }
+  }
+}
 function selBlock(id){curBlock=id;buildBlockTabs();buildWC();}
 
 // ── TRACKER SCREEN ───────────────────────────────────────────────────────────
