@@ -39,6 +39,13 @@
         "weight": 63,
         "reps": 10,
         "e1rm": 84
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781698690502,
+        "weight": 65,
+        "reps": 10,
+        "e1rm": 87
       }
     ],
     "Standing Incline Chest Press": [
@@ -57,6 +64,13 @@
         "weight": 230,
         "reps": 15,
         "e1rm": 345
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781700283190,
+        "weight": 230,
+        "reps": 20,
+        "e1rm": 383
       }
     ],
     "Barbell OHP": [
@@ -66,6 +80,13 @@
         "weight": 87,
         "reps": 6,
         "e1rm": 104
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781697834647,
+        "weight": 89,
+        "reps": 6,
+        "e1rm": 107
       }
     ],
     "Half Kneeling SA OHP": [
@@ -75,6 +96,13 @@
         "weight": 39,
         "reps": 10,
         "e1rm": 52
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781697996757,
+        "weight": 41,
+        "reps": 10,
+        "e1rm": 55
       }
     ],
     "Front Raise": [
@@ -93,6 +121,13 @@
         "weight": 15,
         "reps": 15,
         "e1rm": 23
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781698776196,
+        "weight": 18,
+        "reps": 12,
+        "e1rm": 25
       }
     ],
     "Skull Crushers": [
@@ -197,6 +232,13 @@
       {
         "date": "Jun 14",
         "ts": 1781442997289,
+        "weight": 12,
+        "reps": 15,
+        "e1rm": 18
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781699464574,
         "weight": 12,
         "reps": 15,
         "e1rm": 18
@@ -354,6 +396,31 @@
         "weight": 22,
         "reps": 15,
         "e1rm": 33
+      },
+      {
+        "date": "Jun 17",
+        "ts": 1781700087865,
+        "weight": 24,
+        "reps": 15,
+        "e1rm": 36
+      }
+    ],
+    "Middle Chest Fly": [
+      {
+        "date": "Jun 17",
+        "ts": 1781699389480,
+        "weight": 39,
+        "reps": 12,
+        "e1rm": 55
+      }
+    ],
+    "Tricep Extension": [
+      {
+        "date": "Jun 17",
+        "ts": 1781699998730,
+        "weight": 85,
+        "reps": 10,
+        "e1rm": 113
       }
     ]
   },
@@ -406,9 +473,21 @@
         "maxHr": 144,
         "duration": 66
       }
+    },
+    "w5_d4": {
+      "date": "Jun 17",
+      "ts": 1781700586729,
+      "tonal": {
+        "volume": 18106,
+        "work": 49.3,
+        "cals": 460,
+        "avgHr": 114,
+        "maxHr": 150,
+        "duration": 59
+      }
     }
   },
-  "lastSaved": "2026-06-16T18:46:12.614Z",
+  "lastSaved": "2026-06-17T13:14:02.387Z",
   "version": 1,
   "seeded": true
 }
