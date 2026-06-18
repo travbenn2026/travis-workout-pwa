@@ -358,6 +358,22 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .sw-note{font-size:11px;color:#666;margin-top:2px}
 .sw-use{background:#1c1c1c;border:1px solid #2a2a2a;color:#d62828;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
 .sw-reset{width:100%;margin-top:12px;padding:12px;background:#0d0d0d;border:1px dashed #2a2a2a;color:#888;font-size:13px;font-weight:600;border-radius:10px;cursor:pointer;box-sizing:border-box}
+.avtcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.avt-hd{padding:12px 14px;border-bottom:1px solid var(--border);}
+.avt-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;color:#aaa;}
+.avt-row{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-bottom:1px solid #151515;}
+.avt-row:last-child{border-bottom:none;}
+.avt-status{width:22px;height:22px;border-radius:50%;background:#111;border:1px solid #222;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:2px;}
+.avt-s-active{background:rgba(155,45,232,.2);border-color:var(--arms);}
+.avt-s-pending{background:rgba(232,184,64,.1);border-color:#664400;}
+.avt-info{flex:1;min-width:0;}
+.avt-name{font-size:13px;font-weight:700;color:#ccc;margin-bottom:2px;}
+.avt-row-active .avt-name{color:#d8b8ff;}
+.avt-desc{font-size:11px;color:var(--muted);line-height:1.4;}
+.avt-pill{font-size:10px;font-weight:700;letter-spacing:.3px;white-space:nowrap;flex-shrink:0;padding:3px 8px;border-radius:99px;margin-top:1px;}
+.avt-pill-active{background:rgba(155,45,232,.2);color:#c09af0;}
+.avt-pill-pending{background:rgba(100,80,0,.3);color:#998840;}
+.avt-pill-locked{background:#111;color:#333;border:1px solid #1e1e1e;}
 .bdgcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
 .bdg-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--border);}
 .bdg-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;color:#aaa;}
@@ -1469,6 +1485,52 @@ function buildXPCard(){
 }
 
 // ── AVA (text persona) ───────────────────────────────────────────────────────
+
+// ── AVA UNLOCK GATES ─────────────────────────────────────────────────────────
+// Bump AVA_ASSETS_TIER to 2/3/4/5 when new asset sets are generated and deployed
+var AVA_ASSETS_TIER=1;
+var AVA_TIERS=[
+  {tier:1,level:1,name:'Default',      desc:'Charcoal athletic set · Day-specific action portraits & session clips',icon:'🎽'},
+  {tier:2,level:3,name:'Competition Prep',desc:'Racerback, hair up, chalk hands · High-intensity energy for push/pull days',icon:'🏆'},
+  {tier:3,level:4,name:'Coach Mode',   desc:'Clipboard & whiteboard · Form cues, strategy clips, and coach-tone messages',icon:'📋'},
+  {tier:4,level:5,name:'Edge',         desc:'Dynamic celebration set · High-energy milestone and PR moments',icon:'⚡'},
+  {tier:5,level:6,name:'Elite',        desc:'Crown set · Reserved for Iron Edge Elite only — full content suite',icon:'👑'},
+];
+var AVA_TIER_PORTRAITS={
+  1:{push:'media/ava-push.png',pull:'media/ava-pull.png',legs:'media/ava-legs.png',arms:'media/ava-arms.png',recovery:'media/ava-rower.png',default:'media/ava-portrait.png'},
+  2:{push:'media/ava-t2-push.png',pull:'media/ava-t2-pull.png',legs:'media/ava-t2-legs.png',arms:'media/ava-t2-arms.png',recovery:'media/ava-t2-rower.png',default:'media/ava-t2-portrait.png'},
+  3:{push:'media/ava-t3-push.png',pull:'media/ava-t3-pull.png',legs:'media/ava-t3-legs.png',arms:'media/ava-t3-arms.png',recovery:'media/ava-t3-rower.png',default:'media/ava-t3-portrait.png'},
+  4:{push:'media/ava-t4-push.png',pull:'media/ava-t4-pull.png',legs:'media/ava-t4-legs.png',arms:'media/ava-t4-arms.png',recovery:'media/ava-t4-rower.png',default:'media/ava-t4-portrait.png'},
+  5:{push:'media/ava-t5-push.png',pull:'media/ava-t5-pull.png',legs:'media/ava-t5-legs.png',arms:'media/ava-t5-arms.png',recovery:'media/ava-t5-rower.png',default:'media/ava-t5-portrait.png'},
+};
+function avaUnlockedTier(){
+  var lv=xpLevel().level,t=1;
+  AVA_TIERS.forEach(function(tier){if(lv>=tier.level)t=tier.tier;});
+  return t;
+}
+function avaActiveTier(){return Math.min(avaUnlockedTier(),AVA_ASSETS_TIER);}
+function avaPortrait(type){
+  var at=avaActiveTier();
+  var map=AVA_TIER_PORTRAITS[at]||AVA_TIER_PORTRAITS[1];
+  return map[type]||map.default;
+}
+function buildAvaUnlockCard(){
+  var lv=xpLevel().level,unlockedT=avaUnlockedTier(),activeT=avaActiveTier();
+  var rows=AVA_TIERS.map(function(t){
+    var isUnlocked=lv>=t.level,isActive=t.tier<=activeT;
+    var statusCls=isActive?'avt-s-active':isUnlocked?'avt-s-pending':'';
+    var statusIco=isActive?'✓':isUnlocked?'⏳':'🔒';
+    var pillCls=isActive?'avt-pill-active':isUnlocked?'avt-pill-pending':'avt-pill-locked';
+    var pillTxt=isActive?'Active':isUnlocked?'Assets pending':'Lv '+t.level+' · '+IE_LEVELS[t.level-1].name;
+    return'<div class="avt-row'+(isActive?' avt-row-active':'')+'">'+
+      '<div class="avt-status '+statusCls+'">'+statusIco+'</div>'+
+      '<div class="avt-info"><div class="avt-name">'+t.icon+' '+t.name+'</div><div class="avt-desc">'+t.desc+'</div></div>'+
+      '<div class="avt-pill '+pillCls+'">'+pillTxt+'</div>'+
+    '</div>';
+  }).join('');
+  return'<div class="avtcard"><div class="avt-hd"><div class="avt-title">⭐ Ava Unlocks</div></div>'+rows+'</div>';
+}
+
 function avaDayStart(t){var d=new Date(t);d.setHours(0,0,0,0);return d.getTime();}
 function avaSameDay(a,b){return avaDayStart(a)===avaDayStart(b);}
 function avaPick(a){return a[Math.floor(Math.random()*a.length)];}
@@ -1502,8 +1564,7 @@ function avaMessage(c){
 function avaCard(){
   var msg=avaMessage(avaCtx());
   var todayType=DAYS[(new Date().getDay()+6)%7].type;
-  var portraits={push:'media/ava-push.png',pull:'media/ava-pull.png',legs:'media/ava-legs.png',arms:'media/ava-arms.png',recovery:'media/ava-rower.png'};
-  var portrait=portraits[todayType]||'media/ava-portrait.png';
+  var portrait=avaPortrait(todayType);
   return '<div class="avacard"><img class="avaface" src="'+portrait+'" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
@@ -1800,7 +1861,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
