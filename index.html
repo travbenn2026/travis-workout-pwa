@@ -358,6 +358,34 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .sw-note{font-size:11px;color:#666;margin-top:2px}
 .sw-use{background:#1c1c1c;border:1px solid #2a2a2a;color:#d62828;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
 .sw-reset{width:100%;margin-top:12px;padding:12px;background:#0d0d0d;border:1px dashed #2a2a2a;color:#888;font-size:13px;font-weight:600;border-radius:10px;cursor:pointer;box-sizing:border-box}
+.xpcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.xpcard-h{display:flex;align-items:center;gap:12px;padding:14px 14px 10px;border-bottom:1px solid var(--border);}
+.xp-lv-ring{width:46px;height:46px;border-radius:50%;background:rgba(155,45,232,.15);border:2px solid var(--arms);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.xp-lv-label{font-size:8px;font-weight:700;letter-spacing:1px;color:var(--arms);text-transform:uppercase;}
+.xp-lv-num{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--arms);line-height:1;}
+.xp-title-col{flex:1;}
+.xp-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;color:var(--text);letter-spacing:.5px;}
+.xp-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.xp-bar-wrap{padding:12px 14px;border-bottom:1px solid var(--border);}
+.xp-bar-track{height:6px;background:#1a1a1a;border-radius:4px;overflow:hidden;margin-bottom:6px;}
+.xp-bar-fill{height:100%;background:var(--arms);border-radius:4px;}
+.xp-bar-leg{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);}
+.xp-bar-leg .xp-next{color:var(--arms);font-weight:700;}
+.xp-stat-row{display:flex;border-bottom:1px solid var(--border);}
+.xp-stat{flex:1;padding:10px 14px;border-right:1px solid var(--border);text-align:center;}
+.xp-stat:last-child{border-right:none;}
+.xp-stat-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--arms);line-height:1;margin-bottom:2px;}
+.xp-stat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.xp-unlock{padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.xp-unlock-ico{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
+.xp-unlock-txt{font-size:11px;color:#6a4488;line-height:1.4;}
+.xp-unlock-txt strong{color:#9b60e8;display:block;font-size:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1px;}
+.xp-feed{padding:8px 14px 10px;}
+.xp-feed-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #141414;}
+.xp-feed-row:last-child{border-bottom:none;}
+.xp-feed-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.xp-feed-note{font-size:12px;color:#bbb;flex:1;}
+.xp-feed-amt{font-size:11px;font-weight:700;color:var(--arms);}
 </style>
 </head>
 <body>
@@ -721,7 +749,12 @@ function toggleDone(di){
   ss(sess);buildDayScroll();buildWC();
   if(document.getElementById('sD').classList.contains('active'))buildDash();
   if(justCompleted){
+    xpAward('session',50,DAYS[di].name+' complete');
     var wkTag='w'+progWeek();
+    if(isWeekComplete()&&localStorage.getItem('ie_xp_wkc')!==wkTag){
+      localStorage.setItem('ie_xp_wkc',wkTag);
+      setTimeout(function(){xpAward('week6',100,'Week '+progWeek()+' — full week bonus');},500);
+    }
     var wkDone=isWeekComplete()&&localStorage.getItem('ava_wkc_evt')!==wkTag;
     playSessionCompleteClip(wkDone?function(){
       localStorage.setItem('ava_wkc_evt',wkTag);
@@ -1239,6 +1272,7 @@ function commitLog(ex,w,r){
   var pr=isPR(ex,w,r);logSet(ex,w,r);
   showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
   if(pr&&hadPrior)playPRClip(ex,w,r);
+  if(pr)xpAward('pr',25,ex+' — new PR');
   return true;
 }
 function handleLog(){
@@ -1268,6 +1302,69 @@ function saveQuickLog(ex){
 }
 
 // ── DASHBOARD ────────────────────────────────────────────────────────────────
+
+// ── XP ENGINE ────────────────────────────────────────────────────────────────
+var IE_LEVELS=[
+  {level:1,name:'Recruit',xp:0},
+  {level:2,name:'Iron',xp:750},
+  {level:3,name:'Steel',xp:2000},
+  {level:4,name:'Titanium',xp:4500},
+  {level:5,name:'Edge',xp:8000},
+  {level:6,name:'Iron Edge Elite',xp:15000}
+];
+function xpGetLog(){try{return JSON.parse(localStorage.getItem('ie_xp_log')||'[]');}catch(e){return[];}}
+function xpSaveLog(log){localStorage.setItem('ie_xp_log',JSON.stringify(log));}
+function xpTotal(){return xpGetLog().reduce(function(t,e){return t+e.amt;},0);}
+function xpLevel(){
+  var total=xpTotal();
+  var cur=IE_LEVELS[0],next=null;
+  for(var i=0;i<IE_LEVELS.length;i++){if(total>=IE_LEVELS[i].xp)cur=IE_LEVELS[i];}
+  for(var j=0;j<IE_LEVELS.length;j++){if(IE_LEVELS[j].xp>total){next=IE_LEVELS[j];break;}}
+  var pct=next?Math.round(((total-cur.xp)/(next.xp-cur.xp))*100):100;
+  return{level:cur.level,name:cur.name,xp:total,curXp:cur.xp,nextXp:next?next.xp:null,nextName:next?next.name:null,pct:Math.min(100,Math.max(0,pct))};
+}
+function xpAward(type,amt,note){
+  var log=xpGetLog();
+  var prevTotal=log.reduce(function(t,e){return t+e.amt;},0);
+  log.push({ts:Date.now(),type:type,amt:amt,note:note||''});
+  xpSaveLog(log);
+  var newTotal=prevTotal+amt;
+  var prevLv=IE_LEVELS[0],newLv=IE_LEVELS[0];
+  for(var i=0;i<IE_LEVELS.length;i++){if(prevTotal>=IE_LEVELS[i].xp)prevLv=IE_LEVELS[i];}
+  for(var j=0;j<IE_LEVELS.length;j++){if(newTotal>=IE_LEVELS[j].xp)newLv=IE_LEVELS[j];}
+  var lvUp=newLv.level>prevLv.level;
+  var msg=lvUp?('⚡ LEVEL UP — '+newLv.name.toUpperCase()+'!'):('⚡ +'+amt+' XP');
+  var delay=type==='pr'?2600:type==='week6'?500:0;
+  if(delay){setTimeout(function(){showToast(msg);},delay);}else{showToast(msg);}
+}
+function xpPRCount(){return xpGetLog().filter(function(e){return e.type==='pr';}).length;}
+function buildXPCard(){
+  var lv=xpLevel();
+  var log=xpGetLog();
+  var feed=log.slice(-3).reverse().map(function(e){
+    var dot=e.type==='pr'?'var(--arms)':e.type==='week6'?'#e8b840':'var(--pull)';
+    return'<div class="xp-feed-row"><div class="xp-feed-dot" style="background:'+dot+'"></div><div class="xp-feed-note">'+e.note+'</div><div class="xp-feed-amt">+'+e.amt+' XP</div></div>';
+  }).join('');
+  var nextHint=lv.nextName
+    ?'<div class="xp-unlock"><span class="xp-unlock-ico">🔒</span><div class="xp-unlock-txt"><strong>Next unlock · Level '+(lv.level+1)+' '+lv.nextName+' · '+lv.nextXp.toLocaleString()+' XP</strong>New Ava portrait set + session clips</div></div>'
+    :'<div class="xp-unlock"><span class="xp-unlock-ico">👑</span><div class="xp-unlock-txt"><strong>Iron Edge Elite — Maximum Level</strong>All Ava content unlocked.</div></div>';
+  return'<div class="xpcard">'+
+    '<div class="xpcard-h">'+
+      '<div class="xp-lv-ring"><div class="xp-lv-label">LV</div><div class="xp-lv-num">'+lv.level+'</div></div>'+
+      '<div class="xp-title-col"><div class="xp-title">'+lv.name+'</div><div class="xp-sub">'+lv.xp.toLocaleString()+' XP total</div></div>'+
+    '</div>'+
+    '<div class="xp-bar-wrap">'+
+      '<div class="xp-bar-track"><div class="xp-bar-fill" style="width:'+lv.pct+'%"></div></div>'+
+      '<div class="xp-bar-leg"><span>Lv '+lv.level+' · '+(lv.curXp||0).toLocaleString()+' XP</span>'+(lv.nextXp?'<span class="xp-next">'+lv.nextXp.toLocaleString()+' → '+lv.nextName+'</span>':'<span class="xp-next">MAX</span>')+'</div>'+
+    '</div>'+
+    '<div class="xp-stat-row">'+
+      '<div class="xp-stat"><div class="xp-stat-val">'+lv.xp.toLocaleString()+'</div><div class="xp-stat-lbl">Total XP</div></div>'+
+      '<div class="xp-stat"><div class="xp-stat-val">'+xpPRCount()+'</div><div class="xp-stat-lbl">PR Events</div></div>'+
+    '</div>'+
+    nextHint+
+    (feed?'<div class="xp-feed">'+feed+'</div>':'')+
+  '</div>';
+}
 
 // ── AVA (text persona) ───────────────────────────────────────────────────────
 function avaDayStart(t){var d=new Date(t);d.setHours(0,0,0,0);return d.getTime();}
@@ -1599,7 +1696,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=avaCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+avaCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
