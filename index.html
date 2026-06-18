@@ -774,6 +774,27 @@ function streakCount(){
   var wks=streakWeeks().filter(function(w){return!w.cur;}).reverse();
   var s=0;for(var i=0;i<wks.length;i++){if(wks[i].completed>=6)s++;else break;}return s;
 }
+function flexStreakCount(){
+  var sess=ls();var cw=progWeek();var s=0;
+  for(var w=cw-1;w>=1;w--){
+    var c=0;for(var d=0;d<6;d++){if(sess['w'+w+'_d'+d])c++;}
+    if(c>=5)s++;else break;
+  }
+  return s;
+}
+function checkStreakMilestones(){
+  var fs=flexStreakCount();
+  var miles=[{n:4,xp:150},{n:8,xp:250},{n:12,xp:400},{n:20,xp:600}];
+  for(var i=0;i<miles.length;i++){
+    var m=miles[i];
+    if(fs>=m.n&&!localStorage.getItem('ie_streak_mile_'+m.n)){
+      localStorage.setItem('ie_streak_mile_'+m.n,'1');
+      (function(mn,mx,delay){
+        setTimeout(function(){xpAward('streak',mx,mn+'-week streak milestone');},delay);
+      })(m.n,m.xp,i*700);
+    }
+  }
+}
 
 // ── COOLDOWN TIMER ───────────────────────────────────────────────────────────
 
@@ -1360,6 +1381,7 @@ function buildXPCard(){
     '<div class="xp-stat-row">'+
       '<div class="xp-stat"><div class="xp-stat-val">'+lv.xp.toLocaleString()+'</div><div class="xp-stat-lbl">Total XP</div></div>'+
       '<div class="xp-stat"><div class="xp-stat-val">'+xpPRCount()+'</div><div class="xp-stat-lbl">PR Events</div></div>'+
+      '<div class="xp-stat"><div class="xp-stat-val" style="color:#e8622a">'+flexStreakCount()+'</div><div class="xp-stat-lbl">Wk Streak</div></div>'+
     '</div>'+
     nextHint+
     (feed?'<div class="xp-feed">'+feed+'</div>':'')+
@@ -1629,6 +1651,7 @@ function bodyWeightCard(){
     sparkH+'</div>';
 }
 function buildDash(){
+  checkStreakMilestones();
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
   var nextD=new Date();nextD.setDate(nextD.getDate()+wLeft*7);
