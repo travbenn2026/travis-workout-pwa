@@ -14,6 +14,13 @@
         "weight": 175,
         "reps": 6,
         "e1rm": 210
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781968173083,
+        "weight": 176,
+        "reps": 6,
+        "e1rm": 211
       }
     ],
     "Barbell Bench Press (Flat)": [
@@ -30,6 +37,13 @@
         "weight": 185,
         "reps": 8,
         "e1rm": 234
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781968190395,
+        "weight": 193,
+        "reps": 8,
+        "e1rm": 244
       }
     ],
     "Alt Bench Press": [
@@ -55,6 +69,13 @@
         "weight": 47,
         "reps": 10,
         "e1rm": 63
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781968653516,
+        "weight": 49,
+        "reps": 10,
+        "e1rm": 65
       }
     ],
     "Perfect Push-Ups": [
@@ -68,6 +89,13 @@
       {
         "date": "Jun 17",
         "ts": 1781700283190,
+        "weight": 230,
+        "reps": 20,
+        "e1rm": 383
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781969411176,
         "weight": 230,
         "reps": 20,
         "e1rm": 383
@@ -112,6 +140,13 @@
         "weight": 15,
         "reps": 12,
         "e1rm": 21
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781968991348,
+        "weight": 15,
+        "reps": 12,
+        "e1rm": 21
       }
     ],
     "Lateral Raise": [
@@ -128,6 +163,13 @@
         "weight": 18,
         "reps": 12,
         "e1rm": 25
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781969422761,
+        "weight": 17,
+        "reps": 15,
+        "e1rm": 26
       }
     ],
     "Skull Crushers": [
@@ -144,6 +186,13 @@
         "weight": 38,
         "reps": 10,
         "e1rm": 51
+      },
+      {
+        "date": "Jun 20",
+        "ts": 1781969607375,
+        "weight": 40,
+        "reps": 10,
+        "e1rm": 53
       }
     ],
     "Barbell Bent Over Row": [
@@ -422,6 +471,69 @@
         "reps": 10,
         "e1rm": 113
       }
+    ],
+    "SA Bent Over Row": [
+      {
+        "date": "Jun 19",
+        "ts": 1781872110190,
+        "weight": 99,
+        "reps": 8,
+        "e1rm": 125
+      }
+    ],
+    "Straight Arm Pulldown": [
+      {
+        "date": "Jun 19",
+        "ts": 1781872779286,
+        "weight": 36,
+        "reps": 12,
+        "e1rm": 50
+      }
+    ],
+    "Y Pull": [
+      {
+        "date": "Jun 19",
+        "ts": 1781872872068,
+        "weight": 34,
+        "reps": 15,
+        "e1rm": 51
+      }
+    ],
+    "W Hold": [
+      {
+        "date": "Jun 19",
+        "ts": 1781873389772,
+        "weight": 1,
+        "reps": 12,
+        "e1rm": 1
+      }
+    ],
+    "Shoulder Shrug": [
+      {
+        "date": "Jun 19",
+        "ts": 1781873396335,
+        "weight": 100,
+        "reps": 12,
+        "e1rm": 140
+      }
+    ],
+    "Lying Bicep Curl": [
+      {
+        "date": "Jun 19",
+        "ts": 1781873885139,
+        "weight": 32,
+        "reps": 10,
+        "e1rm": 43
+      }
+    ],
+    "Reverse Grip Tricep Extension": [
+      {
+        "date": "Jun 20",
+        "ts": 1781969688743,
+        "weight": 29,
+        "reps": 12,
+        "e1rm": 41
+      }
     ]
   },
   "sessions": {
@@ -485,9 +597,25 @@
         "maxHr": 150,
         "duration": 59
       }
+    },
+    "w5_d5": {
+      "date": "Jun 19",
+      "ts": 1781874938109
+    },
+    "w6_d0": {
+      "date": "Jun 20",
+      "ts": 1781970564744,
+      "tonal": {
+        "volume": 19038,
+        "work": 52.1,
+        "cals": 485,
+        "avgHr": 126,
+        "maxHr": 161,
+        "duration": 69
+      }
     }
   },
-  "lastSaved": "2026-06-19T12:25:27.650Z",
+  "lastSaved": "2026-06-20T15:50:48.419Z",
   "version": 1,
   "seeded": true
 }
