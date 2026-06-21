@@ -576,6 +576,8 @@ var BLOCKS={
         {ss:false,r:[{n:'SA Overhead Tricep Extension',nt:'Tonal · Long head stretch at top. Most important tricep head for size.',tg:'tton',sets:'4x',reps:'10-12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
         {ss:true,ssl:'Superset B — Medial + Lateral Head',r:[{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative, lateral head pump',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
       ]},
+    {id:'b3',e:'🔩',lbl:'Block 3',meta:'Core · 45 sec rest',
+      g:[{ss:true,ssl:'Superset C — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation core finisher',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Progress from bodyweight to plate hold once 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Elbow focus',isCD:true,cdt:'arms'},
   ],
   4:[
@@ -595,8 +597,6 @@ var BLOCKS={
         {ss:true,ssl:'Superset C — Overhead + Pump',r:[{n:'SA Tricep Extension',nt:'Tonal · Overhead, long head, elbow pointing up',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'SA Tricep Extension'},{n:'Tricep Kickback',nt:'Tonal cable · Pump finisher, lateral head',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
         {ss:false,r:[{n:'Perfect Push-Ups',nt:'Equipment · Rotating handles — wrist-neutral throughout. Sets to failure. Natural cap to a shoulder-heavy day. Serratus anterior activation bonus.',tg:'tcus',sets:'2x',reps:'To failure',rir:'-',tr:'Perfect Push-Ups'}]},
       ]},
-    {id:'b4',e:'🔩',lbl:'Block 4',meta:'Core · 45 sec rest',
-      g:[{ss:true,ssl:'Superset D — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation core finisher',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Progress from bodyweight to plate hold once 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'push'},
   ],
   5:[
@@ -1488,7 +1488,7 @@ function buildXPCard(){
 
 // ── AVA UNLOCK GATES ─────────────────────────────────────────────────────────
 // Bump AVA_ASSETS_TIER to 2/3/4/5 when new asset sets are generated and deployed
-var AVA_ASSETS_TIER=4;
+var AVA_ASSETS_TIER=5;
 var AVA_TIERS=[
   {tier:1,level:1,name:'Default',      desc:'Charcoal athletic set · Day-specific action portraits & session clips',icon:'🎽'},
   {tier:2,level:3,name:'Competition Prep',desc:'Racerback, hair up, chalk hands · High-intensity energy for push/pull days',icon:'🏆'},
@@ -1501,7 +1501,7 @@ var AVA_TIER_PORTRAITS={
   2:{push:'media/ava-t2-push.jpg',pull:'media/ava-t2-pull.jpg',legs:'media/ava-t2-legs.jpg',arms:'media/ava-t2-arms.jpg',recovery:'media/ava-t2-rower.jpg',default:'media/ava-t2-portrait.jpg'},
   3:{push:'media/ava-t3-push.jpg',pull:'media/ava-t3-pull.jpg',legs:'media/ava-t3-legs.jpg',arms:'media/ava-t3-arms.jpg',recovery:'media/ava-t3-rower.jpg',default:'media/ava-t3-portrait.jpg'},
   4:{push:'media/ava-t4-push.jpg',pull:'media/ava-t4-pull.jpg',legs:'media/ava-t4-legs.jpg',arms:'media/ava-t4-arms.jpg',recovery:'media/ava-t4-rower.jpg',default:'media/ava-t4-portrait.jpg'},
-  5:{push:'media/ava-t5-push.png',pull:'media/ava-t5-pull.png',legs:'media/ava-t5-legs.png',arms:'media/ava-t5-arms.png',recovery:'media/ava-t5-rower.png',default:'media/ava-t5-portrait.png'},
+  5:{push:'media/ava-t5-push.jpg',pull:'media/ava-t5-pull.jpg',legs:'media/ava-t5-legs.jpg',arms:'media/ava-t5-arms.jpg',recovery:'media/ava-t5-rower.jpg',default:'media/ava-t5-portrait.jpg'},
 };
 function avaUnlockedTier(){
   var lv=xpLevel().level,t=1;
