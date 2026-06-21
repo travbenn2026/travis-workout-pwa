@@ -202,6 +202,13 @@
         "weight": 93,
         "reps": 6,
         "e1rm": 112
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782046293377,
+        "weight": 95,
+        "reps": 6,
+        "e1rm": 114
       }
     ],
     "Neutral Grip Lat Pulldown": [
@@ -218,6 +225,13 @@
         "weight": 82,
         "reps": 10,
         "e1rm": 109
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782046796434,
+        "weight": 82,
+        "reps": 10,
+        "e1rm": 109
       }
     ],
     "Weighted Pull-Up": [
@@ -227,6 +241,13 @@
         "weight": 231,
         "reps": 6,
         "e1rm": 277
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782046313282,
+        "weight": 230,
+        "reps": 7,
+        "e1rm": 284
       }
     ],
     "Weighted Chin-Up": [
@@ -252,6 +273,13 @@
         "weight": 88,
         "reps": 10,
         "e1rm": 117
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782046921678,
+        "weight": 88,
+        "reps": 10,
+        "e1rm": 117
       }
     ],
     "X Pulldown": [
@@ -268,6 +296,13 @@
         "weight": 54,
         "reps": 12,
         "e1rm": 76
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782048228035,
+        "weight": 59,
+        "reps": 12,
+        "e1rm": 83
       }
     ],
     "Reverse Fly": [
@@ -291,6 +326,13 @@
         "weight": 12,
         "reps": 15,
         "e1rm": 18
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782047811431,
+        "weight": 14,
+        "reps": 15,
+        "e1rm": 21
       }
     ],
     "Seated Bicep Curl": [
@@ -307,6 +349,13 @@
         "weight": 38,
         "reps": 10,
         "e1rm": 51
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782048488107,
+        "weight": 39,
+        "reps": 10,
+        "e1rm": 52
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -327,6 +376,13 @@
       {
         "date": "Jun 16",
         "ts": 1781611036675,
+        "weight": 25,
+        "reps": 12,
+        "e1rm": 35
+      },
+      {
+        "date": "Jun 21",
+        "ts": 1782048550510,
         "weight": 25,
         "reps": 12,
         "e1rm": 35
@@ -613,9 +669,21 @@
         "maxHr": 161,
         "duration": 69
       }
+    },
+    "w6_d1": {
+      "date": "Jun 21",
+      "ts": 1782049360345,
+      "tonal": {
+        "volume": 23786,
+        "work": 63.7,
+        "cals": 458,
+        "avgHr": 124,
+        "maxHr": 155,
+        "duration": 64
+      }
     }
   },
-  "lastSaved": "2026-06-20T15:50:48.419Z",
+  "lastSaved": "2026-06-21T21:34:55.649Z",
   "version": 1,
   "seeded": true
 }
