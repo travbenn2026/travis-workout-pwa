@@ -395,6 +395,13 @@
         "weight": 31,
         "reps": 10,
         "e1rm": 41
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782130278165,
+        "weight": 31,
+        "reps": 10,
+        "e1rm": 41
       }
     ],
     "Back Squat": [
@@ -404,6 +411,13 @@
         "weight": 150,
         "reps": 6,
         "e1rm": 180
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782129903148,
+        "weight": 165,
+        "reps": 6,
+        "e1rm": 198
       }
     ],
     "Barbell Glute Bridge": [
@@ -431,6 +445,13 @@
         "weight": 37,
         "reps": 12,
         "e1rm": 52
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782132086518,
+        "weight": 38,
+        "reps": 12,
+        "e1rm": 53
       }
     ],
     "Barbell Hip Thrust": [
@@ -440,12 +461,26 @@
         "weight": 200,
         "reps": 12,
         "e1rm": 280
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782131517914,
+        "weight": 200,
+        "reps": 12,
+        "e1rm": 280
       }
     ],
     "Resisted Calf Raise": [
       {
         "date": "Jun 15",
         "ts": 1781551324390,
+        "weight": 100,
+        "reps": 15,
+        "e1rm": 150
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782131664004,
         "weight": 100,
         "reps": 15,
         "e1rm": 150
@@ -465,6 +500,13 @@
         "weight": 27.5,
         "reps": 15,
         "e1rm": 41
+      },
+      {
+        "date": "Jun 22",
+        "ts": 1782133116030,
+        "weight": 38.5,
+        "reps": 15,
+        "e1rm": 58
       }
     ],
     "DB Alternating Curl": [
@@ -681,9 +723,21 @@
         "maxHr": 155,
         "duration": 64
       }
+    },
+    "w6_d2": {
+      "date": "Jun 22",
+      "ts": 1782133538204,
+      "tonal": {
+        "volume": 35856,
+        "work": 62.1,
+        "cals": 656,
+        "avgHr": 128,
+        "maxHr": 157,
+        "duration": 75
+      }
     }
   },
-  "lastSaved": "2026-06-22T03:28:45.085Z",
+  "lastSaved": "2026-06-22T13:06:36.944Z",
   "version": 1,
   "seeded": true
 }
