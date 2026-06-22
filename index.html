@@ -784,7 +784,7 @@ function toggleDone(di){
     var wkDone=isWeekComplete()&&localStorage.getItem('ava_wkc_evt')!==wkTag;
     playSessionCompleteClip(wkDone?function(){
       localStorage.setItem('ava_wkc_evt',wkTag);
-      avaPlayClip('media/week-complete.mp4');
+      avaPlayClip('media/ava-t'+avaActiveTier()+'-week-complete.mp4');
     }:null);
   }
 }
