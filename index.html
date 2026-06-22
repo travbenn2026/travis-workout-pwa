@@ -841,8 +841,16 @@ function cdSpeak(text){
   var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
   window.speechSynthesis.speak(u);
 }
+var scClipIdx=0;
 function playSessionCompleteClip(onEnd){
-  var src='media/ava-t'+avaActiveTier()+'-session-complete.mp4';
+  var at=avaActiveTier();
+  var src;
+  if(at>=5){
+    var pool=['media/ava-t1-session-complete.mp4','media/ava-t2-session-complete.mp4','media/ava-t3-session-complete.mp4','media/ava-t4-session-complete.mp4','media/ava-t5-session-complete.mp4'];
+    src=pool[scClipIdx%pool.length];scClipIdx++;
+  }else{
+    src='media/ava-t'+at+'-session-complete.mp4';
+  }
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.82);opacity:0;transition:opacity .25s';
   var v=document.createElement('video');
@@ -855,9 +863,12 @@ function playSessionCompleteClip(onEnd){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
+var prClipIdx=0;
 function playPRClip(ex,w,r){
   var er=e1rm(w,r);
-  var src='media/ava-t'+avaActiveTier()+'-pr.mp4';
+  var at=avaActiveTier();
+  var pool=[];for(var t=1;t<=at;t++)pool.push('media/ava-t'+t+'-pr.mp4');
+  var src=pool[prClipIdx%pool.length];prClipIdx++;
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);opacity:0;transition:opacity .25s;padding:18px;box-sizing:border-box';
   var wrap=document.createElement('div');
@@ -1038,7 +1049,9 @@ function avaEventCheck(){
     }
     var nextDi=nextWorkoutDay();
     var wkStartKey='ava_sd_w'+progWeek()+'_d'+nextDi;
-    if(!localStorage.getItem(wkStartKey)&&!c.trainedToday){
+    var hr=new Date().getHours();
+    var inMorningWindow=hr>=4&&hr<14;
+    if(!localStorage.getItem(wkStartKey)&&!c.trainedToday&&inMorningWindow){
       localStorage.setItem(wkStartKey,'1');
       var startClips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
       return queueAvaClip(startClips[DAYS[nextDi].type]||'media/session-start.mp4');
