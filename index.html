@@ -821,6 +821,14 @@ function checkStreakMilestones(){
     }
   }
 }
+function checkTierUnlocks(){
+  var unlockedT=avaUnlockedTier();
+  var seenT=parseInt(localStorage.getItem('ie_seen_tier')||'1',10);
+  if(unlockedT>seenT&&unlockedT<=AVA_ASSETS_TIER){
+    localStorage.setItem('ie_seen_tier',String(unlockedT));
+    queueAvaClip('media/ava-t'+unlockedT+'-unlock.mp4');
+  }
+}
 
 // ── COOLDOWN TIMER ───────────────────────────────────────────────────────────
 
@@ -833,9 +841,8 @@ function cdSpeak(text){
   var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
   window.speechSynthesis.speak(u);
 }
-var scClips=['media/session-complete.mp4','media/session-complete-2.mp4','media/session-complete-3.mp4'],scClipIdx=0;
 function playSessionCompleteClip(onEnd){
-  var src=scClips[scClipIdx%scClips.length];scClipIdx++;
+  var src='media/ava-t'+avaActiveTier()+'-session-complete.mp4';
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.82);opacity:0;transition:opacity .25s';
   var v=document.createElement('video');
@@ -848,10 +855,9 @@ function playSessionCompleteClip(onEnd){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
-var prClips=['media/pr-1.mp4','media/pr-2.mp4','media/pr-3.mp4','media/pr-4.mp4'],prClipIdx=0;
 function playPRClip(ex,w,r){
   var er=e1rm(w,r);
-  var src=prClips[prClipIdx%prClips.length];prClipIdx++;
+  var src='media/ava-t'+avaActiveTier()+'-pr.mp4';
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);opacity:0;transition:opacity .25s;padding:18px;box-sizing:border-box';
   var wrap=document.createElement('div');
@@ -1794,6 +1800,7 @@ function bodyWeightCard(){
 function buildDash(){
   checkStreakMilestones();
   badgesCheck();
+  checkTierUnlocks();
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
   var nextD=new Date();nextD.setDate(nextD.getDate()+wLeft*7);
