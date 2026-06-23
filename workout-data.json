@@ -193,6 +193,13 @@
         "weight": 40,
         "reps": 10,
         "e1rm": 53
+      },
+      {
+        "date": "Jun 23",
+        "ts": 1782217763624,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Barbell Bent Over Row": [
@@ -359,10 +366,10 @@
       },
       {
         "date": "Jun 23",
-        "ts": 1782215633046,
-        "weight": 39,
+        "ts": 1782216228526,
+        "weight": 40,
         "reps": 10,
-        "e1rm": 52
+        "e1rm": 53
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -548,6 +555,13 @@
         "weight": 82,
         "reps": 10,
         "e1rm": 109
+      },
+      {
+        "date": "Jun 23",
+        "ts": 1782216609784,
+        "weight": 84,
+        "reps": 10,
+        "e1rm": 112
       }
     ],
     "Tricep Kickback": [
@@ -767,9 +781,21 @@
         "maxHr": 157,
         "duration": 75
       }
+    },
+    "w6_d3": {
+      "date": "Jun 23",
+      "ts": 1782218071083,
+      "tonal": {
+        "volume": 14750,
+        "work": 42.6,
+        "cals": 386,
+        "avgHr": 107,
+        "maxHr": 141,
+        "duration": 58
+      }
     }
   },
-  "lastSaved": "2026-06-23T11:56:57.175Z",
+  "lastSaved": "2026-06-23T12:35:30.591Z",
   "version": 1,
   "seeded": true
 }
