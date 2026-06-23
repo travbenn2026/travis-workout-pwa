@@ -356,6 +356,13 @@
         "weight": 39,
         "reps": 10,
         "e1rm": 52
+      },
+      {
+        "date": "Jun 23",
+        "ts": 1782215633046,
+        "weight": 39,
+        "reps": 10,
+        "e1rm": 52
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -383,6 +390,13 @@
       {
         "date": "Jun 21",
         "ts": 1782048550510,
+        "weight": 25,
+        "reps": 12,
+        "e1rm": 35
+      },
+      {
+        "date": "Jun 23",
+        "ts": 1782215761707,
         "weight": 25,
         "reps": 12,
         "e1rm": 35
@@ -641,6 +655,15 @@
         "reps": 10,
         "e1rm": 125
       }
+    ],
+    "Seated Alt Bicep Curl": [
+      {
+        "date": "Jun 23",
+        "ts": 1782215440978,
+        "weight": 33,
+        "reps": 8,
+        "e1rm": 42
+      }
     ]
   },
   "sessions": {
@@ -746,7 +769,7 @@
       }
     }
   },
-  "lastSaved": "2026-06-22T14:58:08.032Z",
+  "lastSaved": "2026-06-23T11:56:57.175Z",
   "version": 1,
   "seeded": true
 }
