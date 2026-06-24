@@ -689,7 +689,7 @@ function getSugg(ex,repRange){
   var ph=getPhase();
   var best=logs[ex].reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},logs[ex][0]);
   var tr=(repRange&&lowReps(repRange))||ph.phase.treps;
-  var suggested=Math.round((best.e1rm/(1+tr/30))*ph.phase.wmult/2.5)*2.5;
+  var suggested=Math.round((best.e1rm/(1+tr/30))*ph.phase.wmult);
   return{weight:suggested,reps:tr};
 }
 
