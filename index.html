@@ -1682,12 +1682,26 @@ function avaHistoryLine(ex,sessions,sug){
   if(trend<0)return'Step back from your best. Lock in the form, then push the weight back up.';
   return'Consistent at '+latest.weight+'. When '+sessions.filter(function(s){return s.weight>=latest.weight;}).length+' sets feel easy, add 5 lbs.';
 }
+function getExRepRange(ex){
+  var days=Object.keys(BLOCKS);
+  for(var d=0;d<days.length;d++){
+    var blocks=BLOCKS[days[d]];
+    for(var b=0;b<blocks.length;b++){
+      var g=blocks[b].g;if(!g)continue;
+      for(var i=0;i<g.length;i++){
+        var r=g[i].r;
+        for(var j=0;j<r.length;j++){if(r[j].tr===ex)return r[j].reps;}
+      }
+    }
+  }
+  return null;
+}
 function openHistoryDrawer(ex){
   if(document.querySelector('.hd-ov'))return;
   var sessions=histSessions(ex);
   var logs=ll();var allE=logs[ex]&&logs[ex].length?logs[ex].map(function(e){return e.e1rm;}):[];
   var prE=allE.length?Math.max.apply(null,allE):0;
-  var sug=getSugg(ex);
+  var sug=getSugg(ex,phaseReps(getExRepRange(ex)||''));
   var rows=sessions.length?sessions.map(function(s,i){
     var vol=Math.round(s.weight*s.reps);
     var isPrRow=s.e1rm>=prE&&prE>0;
