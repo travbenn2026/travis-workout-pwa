@@ -741,6 +741,15 @@
         "reps": 8,
         "e1rm": 42
       }
+    ],
+    "Seated Pallof Press": [
+      {
+        "date": "Jun 24",
+        "ts": 1782306191549,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
+      }
     ]
   },
   "sessions": {
@@ -868,7 +877,7 @@
       }
     }
   },
-  "lastSaved": "2026-06-24T13:01:35.199Z",
+  "lastSaved": "2026-06-24T14:17:17.037Z",
   "version": 1,
   "seeded": true
 }
