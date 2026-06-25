@@ -325,6 +325,27 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .wvc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .wvc-title{font-size:12px;font-weight:800;letter-spacing:1px;color:#aaa;text-transform:uppercase}
 .wvc-cur{font-size:12px;color:#d62828;font-weight:700}
+.metcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.metcard-top{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 10px;}
+.metcard-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.metcard-date{font-size:11px;color:var(--muted);}
+.metcard-btn{background:#1c1c1c;border:1px solid #2a2a2a;color:#aaa;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.met-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);}
+.met-tile{padding:10px 14px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.met-tile:nth-child(2n){border-right:none;}
+.met-tile:nth-last-child(-n+2){border-bottom:none;}
+.met-name{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.met-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--text);line-height:1;}
+.met-unit{font-size:12px;font-weight:400;color:var(--muted);}
+.met-delta{font-size:10px;margin-top:3px;}
+.metm-card{background:#111;border:1px solid #222;border-radius:16px;padding:20px;width:100%;max-width:380px;box-sizing:border-box;}
+.metm-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;color:#eee;margin-bottom:16px;}
+.metm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.metm-field{display:flex;flex-direction:column;gap:4px;}
+.metm-lbl{font-size:11px;color:#777;font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+.metm-hint{font-size:10px;color:#444;margin-top:2px;}
+.metm-in{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#eee;font-size:18px;font-weight:700;padding:10px 12px;width:100%;box-sizing:border-box;font-family:inherit;}
+.metm-in:focus{outline:none;border-color:#444;}
 .bwcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
 .bwcard-top{display:flex;align-items:flex-start;justify-content:space-between}
 .bwcard-lbl{font-size:10px;font-weight:800;letter-spacing:2px;color:#555;text-transform:uppercase;margin-bottom:4px}
@@ -1774,6 +1795,108 @@ function weekVolumeCard(){
 }
 // ── BODY WEIGHT LOG ──────────────────────────────────────────────────────────
 function bwLog(){try{return JSON.parse(localStorage.getItem('bw_log')||'[]');}catch(e){return[];}}
+// ── METRICS ENGINE ───────────────────────────────────────────────────────────
+var METRICS=[
+  {key:'biceps',    label:'Biceps',    hint:'Flexed, dominant arm'},
+  {key:'chest',     label:'Chest',     hint:'Across nipple line, relaxed'},
+  {key:'shoulders', label:'Shoulders', hint:'Widest point across delts'},
+  {key:'waist',     label:'Waist',     hint:'At navel, relaxed'},
+  {key:'hips',      label:'Hips',      hint:'Widest point'},
+  {key:'quads',     label:'Quads',     hint:'Mid-thigh, flexed'},
+];
+// Waist/hips: down is good. Everything else: up is good.
+var METRIC_REVERSE={waist:true,hips:true};
+function getMetrics(){try{return JSON.parse(localStorage.getItem('ie_metrics')||'{"entries":[]}');}catch(e){return{entries:[]};}}
+function saveMetrics(d){localStorage.setItem('ie_metrics',JSON.stringify(d));}
+function latestMetricEntry(){var e=getMetrics().entries;return e.length?e[e.length-1]:null;}
+function prevMetricEntry(){var e=getMetrics().entries;return e.length>1?e[e.length-2]:null;}
+function metricSparkline(key){
+  var entries=getMetrics().entries.filter(function(e){return e[key]!=null;}).slice(-8);
+  if(entries.length<2)return'';
+  var vals=entries.map(function(e){return parseFloat(e[key]);});
+  var min=Math.min.apply(null,vals),max=Math.max.apply(null,vals),range=max-min||0.5;
+  var W=54,H=20,pad=2;
+  var pts=vals.map(function(v,i){
+    var x=pad+(i/(vals.length-1))*(W-2*pad);
+    var y=H-pad-((v-min)/range)*(H-2*pad);
+    return x.toFixed(1)+','+y.toFixed(1);
+  }).join(' ');
+  return'<svg width="'+W+'" height="'+H+'" style="display:block;margin-top:5px;overflow:visible">'+
+    '<polyline points="'+pts+'" fill="none" stroke="var(--arms)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+function openMetricsModal(){
+  if(document.querySelector('.metm-ov'))return;
+  var last=latestMetricEntry();
+  var ov=document.createElement('div');ov.className='metm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.82);padding:20px;box-sizing:border-box;overflow-y:auto;';
+  var fields=METRICS.map(function(m){
+    var val=last&&last[m.key]!=null?last[m.key]:'';
+    return'<div class="metm-field">'+
+      '<div class="metm-lbl">'+m.label+'</div>'+
+      '<input class="metm-in" id="met_'+m.key+'" type="number" inputmode="decimal" step="0.25" min="1" max="120" placeholder="in" value="'+val+'">'+
+      '<div class="metm-hint">'+m.hint+'</div>'+
+    '</div>';
+  }).join('');
+  ov.innerHTML='<div class="metm-card">'+
+    '<div class="metm-title">📏 Body Metrics</div>'+
+    '<div class="metm-grid">'+fields+'</div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeMetricsModal()">Cancel</button>'+
+    '<button class="tsm-save" onclick="saveMetricsEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeMetricsModal();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('met_biceps');if(el){el.focus();el.select();}},60);
+}
+function closeMetricsModal(){var ov=document.querySelector('.metm-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
+function saveMetricsEntry(){
+  var data=getMetrics(),entry={date:today(),ts:Date.now()},hasVal=false;
+  METRICS.forEach(function(m){
+    var el=document.getElementById('met_'+m.key);
+    var v=el&&el.value?parseFloat(el.value):null;
+    if(v&&v>0){entry[m.key]=v;hasVal=true;}
+  });
+  if(!hasVal){showToast('Enter at least one measurement');return;}
+  data.entries=data.entries.filter(function(e){return e.date!==today();});
+  data.entries.push(entry);
+  data.entries.sort(function(a,b){return a.ts-b.ts;});
+  saveMetrics(data);closeMetricsModal();buildDash();showToast('✓ Measurements saved');
+}
+function buildMetricsCard(){
+  var last=latestMetricEntry(),prev=prevMetricEntry();
+  var daysSince=last?Math.floor((Date.now()-new Date(last.date).getTime())/86400000):null;
+  var dueStr=daysSince===null?'No entries yet':daysSince===0?'Logged today':daysSince===1?'Yesterday':daysSince+' days ago';
+  var tiles='';
+  if(last){
+    tiles=METRICS.map(function(m){
+      var val=last[m.key],pval=prev?prev[m.key]:null;
+      var delta=(val!=null&&pval!=null)?Math.round((val-pval)*100)/100:null;
+      var dStr='',dCol='#555';
+      if(delta!==null&&delta!==0){
+        var good=METRIC_REVERSE[m.key]?delta<0:delta>0;
+        dCol=good?'#44cc44':'#cc4444';
+        dStr=(delta>0?'↑ +':'↓ ')+Math.abs(delta).toFixed(2)+' in';
+      } else if(delta===0){
+        dStr='→ no change';dCol='#555';
+      }
+      return'<div class="met-tile">'+
+        '<div class="met-name">'+m.label+'</div>'+
+        (val!=null?'<div class="met-val">'+val+'<span class="met-unit"> in</span></div>':
+          '<div class="met-val" style="color:#333">—</div>')+
+        (dStr?'<div class="met-delta" style="color:'+dCol+'">'+dStr+'</div>':'')+
+        metricSparkline(m.key)+
+      '</div>';
+    }).join('');
+  }
+  return'<div class="metcard">'+
+    '<div class="metcard-top">'+
+      '<div><div class="metcard-lbl">Body Metrics</div>'+
+      '<div class="metcard-date">'+dueStr+'</div></div>'+
+      '<button class="metcard-btn" onclick="openMetricsModal()">📏 Log</button>'+
+    '</div>'+
+    (tiles?'<div class="met-grid">'+tiles+'</div>':
+      '<div style="padding:14px;font-size:13px;color:#444;border-top:1px solid var(--border)">Tap Log to record your first measurements.</div>')+
+  '</div>';
+}
+
 function saveBW(w){
   var log=bwLog(),entry={date:today(),ts:Date.now(),w:parseFloat(w)};
   log=log.filter(function(e){return e.date!==today();});
@@ -1896,7 +2019,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+buildMetricsCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
