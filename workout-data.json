@@ -299,6 +299,13 @@
         "weight": 230,
         "reps": 6,
         "e1rm": 276
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782389775687,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
       }
     ],
     "Seated Row": [
@@ -668,12 +675,26 @@
         "weight": 99,
         "reps": 8,
         "e1rm": 125
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782390245755,
+        "weight": 99,
+        "reps": 8,
+        "e1rm": 125
       }
     ],
     "Straight Arm Pulldown": [
       {
         "date": "Jun 19",
         "ts": 1781872779286,
+        "weight": 36,
+        "reps": 12,
+        "e1rm": 50
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782390707565,
         "weight": 36,
         "reps": 12,
         "e1rm": 50
@@ -686,6 +707,13 @@
         "weight": 34,
         "reps": 15,
         "e1rm": 51
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782390878861,
+        "weight": 35,
+        "reps": 15,
+        "e1rm": 53
       }
     ],
     "W Hold": [
@@ -710,6 +738,13 @@
       {
         "date": "Jun 19",
         "ts": 1781873885139,
+        "weight": 32,
+        "reps": 10,
+        "e1rm": 43
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782392294150,
         "weight": 32,
         "reps": 10,
         "e1rm": 43
@@ -740,6 +775,13 @@
         "weight": 33,
         "reps": 8,
         "e1rm": 42
+      },
+      {
+        "date": "Jun 25",
+        "ts": 1782392246866,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
       }
     ],
     "Seated Pallof Press": [
@@ -875,9 +917,21 @@
         "cals": 462,
         "duration": 63
       }
+    },
+    "w6_d5": {
+      "date": "Jun 25",
+      "ts": 1782393294470,
+      "tonal": {
+        "volume": 20103,
+        "work": 48.9,
+        "cals": 443,
+        "avgHr": 121,
+        "maxHr": 148,
+        "duration": 62
+      }
     }
   },
-  "lastSaved": "2026-06-24T14:17:17.037Z",
+  "lastSaved": "2026-06-25T13:15:57.115Z",
   "version": 1,
   "seeded": true
 }
