@@ -73,6 +73,9 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .exname{font-size:15px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:5px;}
 .expills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;}
 .pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;}
+.pstall{background:rgba(232,184,64,.1);color:#c8a020;border:1px solid rgba(232,184,64,.25);}
+.prev-note{background:rgba(255,255,255,.03);border:1px solid #1e1e1e;border-left:3px solid #555;border-radius:0 8px 8px 0;padding:8px 12px;margin-bottom:10px;font-size:12px;color:#777;line-height:1.5;}
+.prev-note strong{color:#999;font-size:10px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px;}
 .psets{background:var(--subtle);color:#bbb;}
 .preps{background:var(--subtle);color:#bbb;}
 .prix{background:#1a1208;color:#aa8830;}
@@ -1095,6 +1098,7 @@ function cdDemoFile(name){
     'Wrist Circles + Flexor Stretch':'media/wrist-flexor-stretch.mp4',
     'Wrist Extensor Stretch':'media/wrist-flexor-stretch.mp4',
     "Child's Pose":'media/childs-pose.mp4',
+    "Child's Pose with Lat Reach":'media/childs-pose.mp4',
     'Cat-Cow (Tonal)':'media/childs-pose.mp4',
     'Figure-Four Glute Stretch':'media/glute-stretch.mp4',
     'Supine Hamstring Stretch':'media/supine-hamstring-stretch.mp4'
@@ -1198,9 +1202,17 @@ function tagH(tg){
   var m={tton:['tton','Tonal'],tcus:['tcus','Custom'],tdb:['tdb','Dumbbell'],tcar:['tcar','Cardio']};
   var x=m[tg]||m.tton;return '<span class="extag '+x[0]+'">'+x[1]+'</span>';
 }
+function stallCount(ex){
+  var logs=ll()[ex];if(!logs||!logs.length)return 0;
+  var last=logs[logs.length-1].weight,count=0;
+  for(var i=logs.length-1;i>=0;i--){if(logs[i].weight===last)count++;else break;}
+  return count;
+}
 function suggH(ex,repRange){
   if(!ex)return'';var s=getSugg(ex,repRange);if(!s)return'';
-  return'<span class="pill psug">Target: '+s.weight+' lb x '+s.reps+' reps</span>';
+  var sc=stallCount(ex);
+  var stall=sc>=3?'<span class="pill pstall">⚠ '+sc+'× same weight — push it</span>':'';
+  return'<span class="pill psug">Target: '+s.weight+' lb x '+s.reps+' reps</span>'+stall;
 }
 function renderWU(dt){
   var w=WU[dt];if(!w)return'';
@@ -1226,6 +1238,12 @@ function renderCD(cdt){
     '<div class="cdtimer" id="cdTimerWrap">'+buildCDTimerHTML()+'</div>'+
     rows+'</div><div class="cdnote">'+c.note+'</div>';
 }
+function prevDayNotes(di){
+  var sess=ls(),prevWk=progWeek()-1;
+  if(prevWk<1)return null;
+  var key='w'+prevWk+'_d'+di;
+  return sess[key]&&sess[key].tonal&&sess[key].tonal.notes?sess[key].tonal.notes:null;
+}
 function renderBlock(block,di,dt){
   if(block.isWU)return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img" src="media/ava-warmup.png" alt="Ava">'+
     '<div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Warm Up — let\'s prime it</span></div></div>'+renderWU(dt);
@@ -1240,12 +1258,16 @@ function renderBlock(block,di,dt){
     '<div class="pwrow"><span class="pwtb">5:10</span><span class="pwdesc">Creatine + Multivitamin + Fish Oil</span></div>'+
     '<div class="pwrow"><span class="pwtb">5:45</span><span class="pwdesc">Cardio begins</span></div>'+
     '<div class="pwrow"><span class="pwtb">Post</span><span class="pwdesc">50g Whey · Creatine 5g</span></div></div>'+
-    '<div class="reccard"><h4>🚣 Option A — Rower</h4><p>20-25 min easy Zone 2. Upper-body dominant — minimal knee load. Damper 3-5.</p></div>'+
-    '<div class="reccard"><h4>🔄 Option B — Elliptical</h4><p>25-30 min low resistance. Zero knee impact. Best if knee is beat up from the week.</p></div>'+
+    '<div class="reccard"><h4>🚣 Option A — Rower</h4><p>20-25 min easy Zone 2. Upper-body dominant — minimal knee load. Damper 3-5. Follow your current rowing program week if active.</p></div>'+
+    '<div class="reccard"><h4>🔄 Option B — Elliptical</h4><p>25-30 min low resistance. Zero knee impact. Best option if knee is beat up from the week.</p></div>'+
+    '<div class="reccard"><h4>🔋 Option C — Vibration Plate</h4><p>10-15 min: split stance holds, calf raises, isometric squats. Circulation and neuromuscular activation without joint load. Good stack before sauna.</p></div>'+
     '<div class="reccard"><h4>🌡️ Sauna</h4><p>15-20 min post-cardio. Supports GH release, muscle recovery, and cardiovascular adaptation.</p></div>'+
     '<div class="reccard"><h4>📐 Mobility (10 min)</h4><p>90-90 Hip Stretch → Bretzel → Lying Hamstring Stretch → Cat-Cow. All in Tonal library.</p></div>'+
-    '<div class="nbox" style="border-radius:12px">Recovery day does real work — do not skip it.</div>';
   var html='';
+  if(block.id==='b1'){
+    var pn=prevDayNotes(di);
+    if(pn)html+='<div class="prev-note"><strong>📝 Last session note</strong>'+pn+'</div>';
+  }
   block.g.forEach(function(g){
     var inner=g.r.map(function(r){
       var er=getEffectiveEx(r,di);
