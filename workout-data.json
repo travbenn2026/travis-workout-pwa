@@ -21,6 +21,13 @@
         "weight": 176,
         "reps": 6,
         "e1rm": 211
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782567096165,
+        "weight": 180,
+        "reps": 6,
+        "e1rm": 216
       }
     ],
     "Barbell Bench Press (Flat)": [
@@ -83,6 +90,13 @@
         "weight": 49,
         "reps": 10,
         "e1rm": 65
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782568276982,
+        "weight": 51,
+        "reps": 10,
+        "e1rm": 68
       }
     ],
     "Perfect Push-Ups": [
@@ -113,6 +127,13 @@
         "weight": 230,
         "reps": 20,
         "e1rm": 383
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782569069701,
+        "weight": 260,
+        "reps": 15,
+        "e1rm": 390
       }
     ],
     "Barbell OHP": [
@@ -175,6 +196,13 @@
         "weight": 15,
         "reps": 12,
         "e1rm": 21
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782568133475,
+        "weight": 15,
+        "reps": 12,
+        "e1rm": 21
       }
     ],
     "Lateral Raise": [
@@ -204,6 +232,13 @@
         "ts": 1782302981057,
         "weight": 19,
         "reps": 12,
+        "e1rm": 27
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782568601416,
+        "weight": 18,
+        "reps": 15,
         "e1rm": 27
       }
     ],
@@ -235,6 +270,13 @@
         "weight": 38,
         "reps": 10,
         "e1rm": 51
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782569422860,
+        "weight": 40,
+        "reps": 10,
+        "e1rm": 53
       }
     ],
     "Barbell Bent Over Row": [
@@ -757,6 +799,13 @@
         "weight": 29,
         "reps": 12,
         "e1rm": 41
+      },
+      {
+        "date": "Jun 27",
+        "ts": 1782569424926,
+        "weight": 29,
+        "reps": 12,
+        "e1rm": 41
       }
     ],
     "RDL": [
@@ -929,9 +978,26 @@
         "maxHr": 148,
         "duration": 62
       }
+    },
+    "w6_d6": {
+      "date": "Jun 26",
+      "ts": 1782479938654
+    },
+    "w7_d0": {
+      "date": "Jun 27",
+      "ts": 1782570529409,
+      "tonal": {
+        "volume": 18865,
+        "work": 51.8,
+        "cals": 509,
+        "avgHr": 123,
+        "maxHr": 155,
+        "duration": 77,
+        "notes": "Tough, but doable"
+      }
     }
   },
-  "lastSaved": "2026-06-25T23:51:47.511Z",
+  "lastSaved": "2026-06-27T14:29:56.278Z",
   "version": 1,
   "seeded": true
 }
