@@ -328,6 +328,16 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .wvc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .wvc-title{font-size:12px;font-weight:800;letter-spacing:1px;color:#aaa;text-transform:uppercase}
 .wvc-cur{font-size:12px;color:#d62828;font-weight:700}
+.mrcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.mrcard-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;cursor:pointer;user-select:none;-webkit-user-select:none;}
+.mrcard-lbl{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.mrcard-sub{font-size:13px;letter-spacing:4px;line-height:1;}
+.mr-chevron{font-size:10px;color:var(--muted);margin-left:8px;flex-shrink:0;}
+.mr-group{margin-bottom:10px;}
+.mr-group:last-child{margin-bottom:0;}
+.mr-glbl{font-size:10px;font-weight:800;letter-spacing:1px;margin-bottom:6px;}
+.mr-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.mr-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid;background:rgba(255,255,255,.03);}
 .metcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
 .metcard-top{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 10px;}
 .metcard-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
@@ -1818,6 +1828,146 @@ function weekVolumeCard(){
 }
 // ── BODY WEIGHT LOG ──────────────────────────────────────────────────────────
 function bwLog(){try{return JSON.parse(localStorage.getItem('bw_log')||'[]');}catch(e){return[];}}
+// ── MUSCLE READINESS ─────────────────────────────────────────────────────────
+var MUSCLE_DAY_MAP={
+  0:['chest','shoulders','triceps'],
+  1:['back','rear_delts','biceps'],
+  2:['quads','hamstrings','glutes','calves','abs','obliques'],
+  3:['biceps','triceps'],
+  4:['chest','shoulders','triceps','abs','obliques'],
+  5:['back','rear_delts','biceps'],
+  6:[]
+};
+var MUSCLE_LABELS={
+  chest:'Chest',shoulders:'Shoulders',triceps:'Triceps',
+  back:'Back',rear_delts:'Rear Delts',biceps:'Biceps',
+  quads:'Quads',hamstrings:'Hamstrings',glutes:'Glutes',
+  calves:'Calves',abs:'Abs',obliques:'Obliques'
+};
+var MR_FATIGUED_HRS=24,MR_RECOVERING_HRS=48;
+function getMuscleStates(){
+  var sess=ls(),now=Date.now(),cw=progWeek(),lastMs={};
+  for(var w=Math.max(1,cw-4);w<=cw;w++){
+    for(var d=0;d<6;d++){
+      var k='w'+w+'_d'+d,e=sess[k];
+      if(e&&e.ts&&(!lastMs[d]||e.ts>lastMs[d]))lastMs[d]=e.ts;
+    }
+  }
+  var mh={};
+  Object.keys(lastMs).forEach(function(di){
+    var hrs=(now-lastMs[di])/3600000;
+    (MUSCLE_DAY_MAP[parseInt(di)]||[]).forEach(function(m){
+      if(mh[m]===undefined||hrs<mh[m])mh[m]=hrs;
+    });
+  });
+  var states={};
+  Object.keys(MUSCLE_LABELS).forEach(function(m){
+    var h=mh[m];
+    states[m]=h===undefined?'fresh':h<MR_FATIGUED_HRS?'fatigued':h<MR_RECOVERING_HRS?'recovering':'fresh';
+  });
+  return states;
+}
+function mrCol(s){return s==='fresh'?'#27b872':s==='recovering'?'#e8b840':'#d62828';}
+function muscleBodySVG(states){
+  var SK='#252525';
+  function c(m){return mrCol(states[m]||'fresh');}
+  var f=65,b=200;
+  var s='<svg viewBox="0 0 265 268" width="100%" style="max-height:220px" xmlns="http://www.w3.org/2000/svg">';
+  s+='<text x="'+f+'" y="265" text-anchor="middle" fill="#3a3a3a" font-size="9" font-family="sans-serif" letter-spacing="1">FRONT</text>';
+  s+='<text x="'+b+'" y="265" text-anchor="middle" fill="#3a3a3a" font-size="9" font-family="sans-serif" letter-spacing="1">BACK</text>';
+  // Helper to build both figures (base shapes, then overlays)
+  function fig(x,back){
+    // Base silhouette
+    s+='<circle cx="'+x+'" cy="20" r="15" fill="'+SK+'"/>';
+    s+='<rect x="'+(x-5)+'" y="34" width="10" height="11" rx="2" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-27)+',44 Q'+x+',42 '+(x+27)+',44 L'+(x+24)+',125 L'+(x-24)+',125 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-24)+',122 L'+(x+24)+',122 L'+(x+22)+',145 L'+(x-22)+',145 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-40)+',50 L'+(x-26)+',48 L'+(x-23)+',94 L'+(x-39)+',92 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x+26)+',48 L'+(x+40)+',50 L'+(x+39)+',92 L'+(x+23)+',94 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-40)+',94 L'+(x-23)+',97 L'+(x-20)+',131 L'+(x-37)+',129 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x+23)+',97 L'+(x+40)+',94 L'+(x+37)+',129 L'+(x+20)+',131 Z" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x-28)+'" cy="139" rx="7" ry="10" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x+28)+'" cy="139" rx="7" ry="10" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-22)+',143 L'+(x-2)+',143 L'+(x-4)+',197 L'+(x-24)+',197 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x+2)+',143 L'+(x+22)+',143 L'+(x+24)+',197 L'+(x+4)+',197 Z" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x-13)+'" cy="199" rx="10" ry="6" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x+13)+'" cy="199" rx="10" ry="6" fill="'+SK+'"/>';
+    s+='<path d="M'+(x-23)+',203 L'+(x-4)+',203 L'+(x-6)+',252 L'+(x-25)+',252 Z" fill="'+SK+'"/>';
+    s+='<path d="M'+(x+4)+',203 L'+(x+23)+',203 L'+(x+25)+',252 L'+(x+6)+',252 Z" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x-15)+'" cy="255" rx="12" ry="6" fill="'+SK+'"/>';
+    s+='<ellipse cx="'+(x+15)+'" cy="255" rx="12" ry="6" fill="'+SK+'"/>';
+    if(!back){
+      // FRONT overlays
+      s+='<ellipse cx="'+(x-11)+'" cy="67" rx="12" ry="13" fill="'+c('chest')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+11)+'" cy="67" rx="12" ry="13" fill="'+c('chest')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-34)+'" cy="55" rx="9" ry="9" fill="'+c('shoulders')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+34)+'" cy="55" rx="9" ry="9" fill="'+c('shoulders')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-31)+'" cy="75" rx="7" ry="13" fill="'+c('biceps')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+31)+'" cy="75" rx="7" ry="13" fill="'+c('biceps')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x-9)+'" y="86" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x+1)+'" y="86" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x-9)+'" y="98" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x+1)+'" y="98" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x-9)+'" y="110" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x+1)+'" y="110" width="8" height="9" rx="3" fill="'+c('abs')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-20)+'" cy="104" rx="6" ry="14" fill="'+c('obliques')+'" opacity="0.8"/>';
+      s+='<ellipse cx="'+(x+20)+'" cy="104" rx="6" ry="14" fill="'+c('obliques')+'" opacity="0.8"/>';
+      s+='<ellipse cx="'+(x-12)+'" cy="168" rx="9" ry="24" fill="'+c('quads')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+12)+'" cy="168" rx="9" ry="24" fill="'+c('quads')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-14)+'" cy="228" rx="8" ry="17" fill="'+c('calves')+'" opacity="0.75"/>';
+      s+='<ellipse cx="'+(x+14)+'" cy="228" rx="8" ry="17" fill="'+c('calves')+'" opacity="0.75"/>';
+    }else{
+      // BACK overlays
+      s+='<path d="M'+(x-18)+',46 L'+(x+18)+',46 L'+(x+20)+',68 L'+(x-20)+',68 Z" fill="'+c('back')+'" opacity="0.88"/>';
+      s+='<path d="M'+(x-23)+',68 L'+(x-8)+',72 L'+(x-10)+',120 L'+(x-25)+',113 Z" fill="'+c('back')+'" opacity="0.88"/>';
+      s+='<path d="M'+(x+8)+',72 L'+(x+23)+',68 L'+(x+25)+',113 L'+(x+10)+',120 Z" fill="'+c('back')+'" opacity="0.88"/>';
+      s+='<rect x="'+(x-14)+'" y="118" width="28" height="12" rx="3" fill="'+c('back')+'" opacity="0.8"/>';
+      s+='<ellipse cx="'+(x-34)+'" cy="55" rx="9" ry="9" fill="'+c('rear_delts')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+34)+'" cy="55" rx="9" ry="9" fill="'+c('rear_delts')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-31)+'" cy="76" rx="7" ry="14" fill="'+c('triceps')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+31)+'" cy="76" rx="7" ry="14" fill="'+c('triceps')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-11)+'" cy="135" rx="11" ry="11" fill="'+c('glutes')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+11)+'" cy="135" rx="11" ry="11" fill="'+c('glutes')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-12)+'" cy="168" rx="9" ry="24" fill="'+c('hamstrings')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x+12)+'" cy="168" rx="9" ry="24" fill="'+c('hamstrings')+'" opacity="0.88"/>';
+      s+='<ellipse cx="'+(x-14)+'" cy="228" rx="8" ry="19" fill="'+c('calves')+'" opacity="0.85"/>';
+      s+='<ellipse cx="'+(x+14)+'" cy="228" rx="8" ry="19" fill="'+c('calves')+'" opacity="0.85"/>';
+    }
+  }
+  fig(f,false);fig(b,true);
+  s+='</svg>';
+  return s;
+}
+function buildMuscleReadinessCard(){
+  var states=getMuscleStates();
+  var expanded=!!localStorage.getItem('ie_mr_exp');
+  var counts={fresh:0,recovering:0,fatigued:0};
+  Object.keys(states).forEach(function(m){counts[states[m]]=(counts[states[m]]||0)+1;});
+  var dots=(counts.fresh?'<span style="color:#27b872">●</span>':'')+(counts.recovering?' <span style="color:#e8b840">●</span>':'')+(counts.fatigued?' <span style="color:#d62828">●</span>':'');
+  var body='';
+  if(expanded){
+    body+='<div style="padding:10px 14px 0">'+muscleBodySVG(states)+'</div>';
+    var groups={fresh:[],recovering:[],fatigued:[]};
+    Object.keys(states).forEach(function(m){if(groups[states[m]])groups[states[m]].push(MUSCLE_LABELS[m]);});
+    body+='<div style="padding:10px 14px 14px">';
+    if(groups.fresh.length)body+='<div class="mr-group"><div class="mr-glbl" style="color:#27b872">FRESH</div><div class="mr-chips">'+groups.fresh.map(function(l){return'<span class="mr-chip" style="border-color:#27b872;color:#27b872">'+l+'</span>';}).join('')+'</div></div>';
+    if(groups.recovering.length)body+='<div class="mr-group"><div class="mr-glbl" style="color:#e8b840">RECOVERING</div><div class="mr-chips">'+groups.recovering.map(function(l){return'<span class="mr-chip" style="border-color:#e8b840;color:#e8b840">'+l+'</span>';}).join('')+'</div></div>';
+    if(groups.fatigued.length)body+='<div class="mr-group"><div class="mr-glbl" style="color:#d62828">FATIGUED</div><div class="mr-chips">'+groups.fatigued.map(function(l){return'<span class="mr-chip" style="border-color:#d62828;color:#d62828">'+l+'</span>';}).join('')+'</div></div>';
+    body+='</div>';
+  }
+  return'<div class="mrcard">'+
+    '<div class="mrcard-hd" onclick="toggleMR()">'+
+      '<div><div class="mrcard-lbl">💪 Muscle Readiness</div>'+
+      '<div class="mrcard-sub">'+dots+'</div></div>'+
+      '<span class="mr-chevron">'+(expanded?'▲':'▼')+'</span>'+
+    '</div>'+body+'</div>';
+}
+function toggleMR(){
+  if(localStorage.getItem('ie_mr_exp')){localStorage.removeItem('ie_mr_exp');}
+  else{localStorage.setItem('ie_mr_exp','1');}
+  buildDash();
+}
+
 // ── METRICS ENGINE ───────────────────────────────────────────────────────────
 var METRICS=[
   {key:'biceps',    label:'Biceps',    hint:'Flexed, dominant arm'},
@@ -2042,7 +2192,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+buildMetricsCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+buildMetricsCard()+buildMuscleReadinessCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
