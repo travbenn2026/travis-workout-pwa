@@ -504,7 +504,7 @@ var TRACK_EX=[
   'Seated Row','X Pulldown','Straight Arm Pulldown','Y Pull','W Hold','Shoulder Shrug',
   // Biceps
   'DB Alternating Curl','Incline DB Curl','Seated Bicep Curl',
-  'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl',
+  'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl','Hammer Curl',
   // Legs
   'Back Squat','Conventional Deadlift','Bulgarian Split Squat',
   'Barbell RDL','Barbell Hip Thrust','Resisted Step Up','Resisted Calf Raise',
@@ -600,15 +600,15 @@ var BLOCKS={
   ],
   3:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Elbow prep',isWU:true},
-    {id:'b1',e:'💪',lbl:'Block 1',meta:'Biceps · 90 sec rest',
+    {id:'b1',e:'💪',lbl:'Block 1',meta:'Openers · 90 sec rest',
       g:[
         {ss:false,r:[{n:'DB Alternating Curl',nt:'Dumbbells · Start neutral, supinate naturally through the rep. No locked wrist — joint tracks freely. Go heavy with the adjustables.',tg:'tdb',sets:'4x',reps:'8-10',rir:'RIR 1',tr:'DB Alternating Curl'}]},
-        {ss:true,ssl:'Superset A — Stretch + Brachialis',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60 degree incline. Full stretch at bottom.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Incline DB Curl'},{n:'Reverse Grip Bicep Curl',nt:'Tonal · Brachialis and brachioradialis',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Reverse Grip Bicep Curl'}]},
-      ],note:'<strong>Arms strategy:</strong> 3x weekly stimulus — tris on Push A, bis on Pull A, full session here.'},
-    {id:'b2',e:'🔱',lbl:'Block 2',meta:'Triceps · 90 sec rest',
+        {ss:false,r:[{n:'SA Overhead Tricep Extension',nt:'Tonal · Long head stretch at top. Most important tricep head for size. Full ROM — feel the stretch.',tg:'tton',sets:'4x',reps:'10-12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
+      ],note:'<strong>Arms strategy:</strong> Heavy solo openers first, then antagonist supersets — bicep rest while triceps work and vice versa. Shorter rest, higher quality output.'},
+    {id:'b2',e:'🔱',lbl:'Block 2',meta:'Antagonist Supersets · 90 sec between pairs',
       g:[
-        {ss:false,r:[{n:'SA Overhead Tricep Extension',nt:'Tonal · Long head stretch at top. Most important tricep head for size.',tg:'tton',sets:'4x',reps:'10-12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
-        {ss:true,ssl:'Superset B — Medial + Lateral Head',r:[{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative, lateral head pump',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
+        {ss:true,ssl:'Superset A — Long Head (Bi + Tri)',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60 degree incline. Full stretch at bottom — long head emphasis.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Incline DB Curl'},{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead. Long head matches the incline curl — antagonist pair.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'}]},
+        {ss:true,ssl:'Superset B — Brachialis + Medial (Bi + Tri)',r:[{n:'Hammer Curl',nt:'Dumbbells or Tonal cable · Neutral grip throughout — no supination. Loads brachialis and brachioradialis, pushes bicep peak higher.',tg:'tdb',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Hammer Curl'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative. Lateral head. Paired with hammer curl — arm fully extended on both movements.',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
       ]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Elbow focus',isCD:true,cdt:'arms'},
   ],
@@ -966,9 +966,14 @@ var EXERCISE_ALTS={
     {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Long-head stretch, incline'},
   ],
   'Reverse Grip Bicep Curl':[
+    {n:'Hammer Curl',tr:'Hammer Curl',note:'Dumbbells · Neutral grip, brachialis emphasis'},
     {n:'DB Alternating Curl',tr:'DB Alternating Curl',note:'Dumbbells · Neutral to supinated rotation'},
     {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Alternate arms, cable'},
     {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, full ROM'},
+  ],
+  'Hammer Curl':[
+    {n:'Reverse Grip Bicep Curl',tr:'Reverse Grip Bicep Curl',note:'Tonal · Similar brachialis focus, cable'},
+    {n:'DB Alternating Curl',tr:'DB Alternating Curl',note:'Dumbbells · Add supination for more bicep'},
   ],
   'Skull Crushers':[
     {n:'Tricep Extension',tr:'Tricep Extension',note:'Tonal · Cable pushdown, overhand grip'},
