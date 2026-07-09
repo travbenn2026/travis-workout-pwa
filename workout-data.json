@@ -498,6 +498,13 @@
         "weight": 25,
         "reps": 12,
         "e1rm": 35
+      },
+      {
+        "date": "Jul 9",
+        "ts": 1783600860147,
+        "weight": 26,
+        "reps": 12,
+        "e1rm": 36
       }
     ],
     "Bulgarian Split Squat": [
@@ -1016,7 +1023,7 @@
       "ts": 1783514479396
     }
   },
-  "lastSaved": "2026-07-09T12:29:09.884Z",
+  "lastSaved": "2026-07-09T12:44:19.872Z",
   "version": 1,
   "seeded": true
 }
