@@ -947,9 +947,10 @@ function queueAvaClip(src,captionHtml){
   document.addEventListener('pointerdown',fire,{once:true});
 }
 var warmupClipIdx=0;
-var warmupClipPool=['media/ava-warmup-hype-1.mp4','media/ava-warmup-hype-2.mp4','media/ava-warmup-hype-3.mp4'];
 function playWarmupClip(){
-  var src=warmupClipPool[warmupClipIdx%warmupClipPool.length];warmupClipIdx++;
+  var at=avaActiveTier();
+  var pool=[];for(var t=1;t<=at;t++){for(var i=1;i<=3;i++)pool.push('media/ava-t'+t+'-warmup-hype-'+i+'.mp4');}
+  var src=pool[warmupClipIdx%pool.length];warmupClipIdx++;
   var cap='<div style="font-size:11px;font-weight:800;letter-spacing:3px">WARM-UP</div>'+
     '<div style="font-size:17px;font-weight:800;line-height:1.2;margin-top:3px">Let\'s prime it</div>';
   var probe=document.createElement('video');
