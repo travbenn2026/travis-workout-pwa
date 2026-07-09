@@ -277,6 +277,13 @@
         "weight": 40,
         "reps": 10,
         "e1rm": 53
+      },
+      {
+        "date": "Jul 9",
+        "ts": 1783602689165,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Barbell Bent Over Row": [
@@ -674,6 +681,13 @@
         "weight": 84,
         "reps": 10,
         "e1rm": 112
+      },
+      {
+        "date": "Jul 9",
+        "ts": 1783601139998,
+        "weight": 84,
+        "reps": 10,
+        "e1rm": 112
       }
     ],
     "Tricep Kickback": [
@@ -687,6 +701,13 @@
       {
         "date": "Jun 17",
         "ts": 1781700087865,
+        "weight": 24,
+        "reps": 15,
+        "e1rm": 36
+      },
+      {
+        "date": "Jul 9",
+        "ts": 1783602698804,
         "weight": 24,
         "reps": 15,
         "e1rm": 36
@@ -1021,9 +1042,22 @@
     "w8_d2": {
       "date": "Jul 8",
       "ts": 1783514479396
+    },
+    "w8_d3": {
+      "date": "Jul 9",
+      "ts": 1783603052787,
+      "tonal": {
+        "volume": 15373,
+        "work": 41.6,
+        "cals": 387,
+        "avgHr": 110,
+        "maxHr": 149,
+        "duration": 57,
+        "notes": "Feel like I’m getting back to normal after trip. "
+      }
     }
   },
-  "lastSaved": "2026-07-09T12:44:19.872Z",
+  "lastSaved": "2026-07-09T13:18:41.136Z",
   "version": 1,
   "seeded": true
 }
