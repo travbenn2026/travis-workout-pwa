@@ -321,6 +321,8 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bt-e1rm{font-size:10px;color:#555;font-weight:400;margin-left:4px}
 .cd-ava-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#0d0d0d;border:1px solid #1e1e1e;border-left:3px solid #4a9999;border-radius:12px;margin-bottom:10px}
 .cd-ava-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.cd-ava-img-wu{cursor:pointer;animation:avaWuPulse 2.2s ease-in-out infinite}
+@keyframes avaWuPulse{0%,100%{box-shadow:0 0 0 0 rgba(74,153,204,.55)}50%{box-shadow:0 0 0 6px rgba(74,153,204,0)}}
 .cd-ava-text{display:flex;flex-direction:column}
 .cd-ava-name{font-size:10px;font-weight:800;letter-spacing:2px;color:#4a9999}
 .cd-ava-role{font-size:11px;color:#555;margin-top:1px}
@@ -944,6 +946,17 @@ function queueAvaClip(src,captionHtml){
   var fire=function(){var q=pendingAvaClip;pendingAvaClip=null;document.removeEventListener('pointerdown',fire);if(q)avaPlayClip(q.src,q.cap);};
   document.addEventListener('pointerdown',fire,{once:true});
 }
+var warmupClipIdx=0;
+var warmupClipPool=['media/ava-warmup-hype.mp4'];
+function playWarmupClip(){
+  var src=warmupClipPool[warmupClipIdx%warmupClipPool.length];warmupClipIdx++;
+  var cap='<div style="font-size:11px;font-weight:800;letter-spacing:3px">WARM-UP</div>'+
+    '<div style="font-size:17px;font-weight:800;line-height:1.2;margin-top:3px">Let\'s prime it</div>';
+  var probe=document.createElement('video');
+  probe.src=src;probe.muted=true;probe.preload='metadata';
+  probe.addEventListener('loadedmetadata',function(){avaPlayClip(src,cap);});
+  probe.addEventListener('error',function(){showToast('🔥 Warm-up hype clip coming soon');});
+}
 function nextWorkoutDay(){
   var sess=ls(),cw=progWeek();
   for(var i=0;i<7;i++){if(!sess['w'+cw+'_d'+i])return i;}
@@ -1260,7 +1273,7 @@ function prevDayNotes(di){
   return sess[key]&&sess[key].tonal&&sess[key].tonal.notes?sess[key].tonal.notes:null;
 }
 function renderBlock(block,di,dt){
-  if(block.isWU)return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img" src="media/ava-warmup.png" alt="Ava">'+
+  if(block.isWU)return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img cd-ava-img-wu" src="media/ava-warmup.png" alt="Ava" onclick="playWarmupClip()">'+
     '<div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Warm Up — let\'s prime it</span></div></div>'+renderWU(dt);
   if(block.isCD){
     var done=isDone(di);
