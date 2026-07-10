@@ -74,6 +74,13 @@
         "weight": 65,
         "reps": 10,
         "e1rm": 87
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783687442290,
+        "weight": 67,
+        "reps": 10,
+        "e1rm": 89
       }
     ],
     "Standing Incline Chest Press": [
@@ -134,6 +141,13 @@
         "weight": 260,
         "reps": 15,
         "e1rm": 390
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783689699157,
+        "weight": 260,
+        "reps": 12,
+        "e1rm": 364
       }
     ],
     "Barbell OHP": [
@@ -157,6 +171,13 @@
         "weight": 105,
         "reps": 6,
         "e1rm": 126
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783686872845,
+        "weight": 109,
+        "reps": 6,
+        "e1rm": 131
       }
     ],
     "Half Kneeling SA OHP": [
@@ -177,6 +198,13 @@
       {
         "date": "Jun 24",
         "ts": 1782302430316,
+        "weight": 43,
+        "reps": 10,
+        "e1rm": 57
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783686327988,
         "weight": 43,
         "reps": 10,
         "e1rm": 57
@@ -438,6 +466,13 @@
         "weight": 12,
         "reps": 15,
         "e1rm": 18
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783688293825,
+        "weight": 12,
+        "reps": 15,
+        "e1rm": 18
       }
     ],
     "Seated Bicep Curl": [
@@ -640,6 +675,13 @@
         "weight": 38.5,
         "reps": 15,
         "e1rm": 58
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783689823928,
+        "weight": 44,
+        "reps": 12,
+        "e1rm": 62
       }
     ],
     "DB Alternating Curl": [
@@ -727,6 +769,13 @@
         "weight": 41,
         "reps": 12,
         "e1rm": 57
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783688188253,
+        "weight": 42,
+        "reps": 12,
+        "e1rm": 59
       }
     ],
     "Tricep Extension": [
@@ -743,6 +792,13 @@
         "weight": 85,
         "reps": 10,
         "e1rm": 113
+      },
+      {
+        "date": "Jul 10",
+        "ts": 1783688886104,
+        "weight": 73,
+        "reps": 15,
+        "e1rm": 110
       }
     ],
     "SA Bent Over Row": [
@@ -875,6 +931,24 @@
         "weight": 28,
         "reps": 12,
         "e1rm": 39
+      }
+    ],
+    "Hammer Curl": [
+      {
+        "date": "Jul 9",
+        "ts": 1783627022267,
+        "weight": 80,
+        "reps": 10,
+        "e1rm": 107
+      }
+    ],
+    "SA Tricep Extension": [
+      {
+        "date": "Jul 10",
+        "ts": 1783689042091,
+        "weight": 30,
+        "reps": 10,
+        "e1rm": 40
       }
     ]
   },
@@ -1055,9 +1129,22 @@
         "duration": 57,
         "notes": "Feel like I’m getting back to normal after trip. "
       }
+    },
+    "w8_d4": {
+      "date": "Jul 10",
+      "ts": 1783690582010,
+      "tonal": {
+        "volume": 21079,
+        "work": 55.8,
+        "cals": 518,
+        "avgHr": 124,
+        "maxHr": 153,
+        "duration": 74,
+        "notes": "Tough by good"
+      }
     }
   },
-  "lastSaved": "2026-07-09T13:18:41.136Z",
+  "lastSaved": "2026-07-10T18:33:22.718Z",
   "version": 1,
   "seeded": true
 }
