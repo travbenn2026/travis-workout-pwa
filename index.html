@@ -451,6 +451,9 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 </style>
 </head>
 <body>
+<div id="appIntro" style="position:fixed;inset:0;z-index:99999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:opacity .4s" onclick="dismissAppIntro()">
+  <video id="appIntroVid" src="media/iron-edge-intro.mp4" autoplay muted playsinline webkit-playsinline style="width:100%;height:100%;object-fit:cover"></video>
+</div>
 <div class="shell">
   <div class="screen active" id="sW">
     <div class="hdr">
@@ -2364,6 +2367,23 @@ function showToast(msg){
   var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(toastTmr);toastTmr=setTimeout(function(){t.classList.remove('show');},2400);
 }
+
+// ── APP INTRO SPLASH ────────────────────────────────────────────────────────
+var appIntroDismissed=false;
+function dismissAppIntro(){
+  if(appIntroDismissed)return;appIntroDismissed=true;
+  var el=document.getElementById('appIntro');
+  if(!el)return;
+  el.style.opacity='0';
+  setTimeout(function(){if(el&&el.parentNode)el.parentNode.removeChild(el);},420);
+}
+(function(){
+  var v=document.getElementById('appIntroVid');
+  if(!v){dismissAppIntro();return;}
+  v.addEventListener('ended',dismissAppIntro);
+  v.addEventListener('error',dismissAppIntro);
+  setTimeout(dismissAppIntro,4000); // fallback if autoplay is blocked or video hangs
+})();
 
 // ── INIT ─────────────────────────────────────────────────────────────────────
 
