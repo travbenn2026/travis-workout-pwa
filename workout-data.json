@@ -845,6 +845,13 @@
         "weight": 36,
         "reps": 12,
         "e1rm": 50
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783777224187,
+        "weight": 37,
+        "reps": 12,
+        "e1rm": 52
       }
     ],
     "Y Pull": [
@@ -858,6 +865,13 @@
       {
         "date": "Jun 25",
         "ts": 1782390878861,
+        "weight": 35,
+        "reps": 15,
+        "e1rm": 53
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783777133465,
         "weight": 35,
         "reps": 15,
         "e1rm": 53
@@ -879,6 +893,13 @@
         "weight": 100,
         "reps": 12,
         "e1rm": 140
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783778234887,
+        "weight": 100,
+        "reps": 12,
+        "e1rm": 140
       }
     ],
     "Lying Bicep Curl": [
@@ -892,6 +913,13 @@
       {
         "date": "Jun 25",
         "ts": 1782392294150,
+        "weight": 32,
+        "reps": 10,
+        "e1rm": 43
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783778483393,
         "weight": 32,
         "reps": 10,
         "e1rm": 43
@@ -936,6 +964,13 @@
         "weight": 28,
         "reps": 12,
         "e1rm": 39
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783778597655,
+        "weight": 29,
+        "reps": 12,
+        "e1rm": 41
       }
     ],
     "Seated Pallof Press": [
@@ -1158,7 +1193,7 @@
       }
     }
   },
-  "lastSaved": "2026-07-11T13:22:32.918Z",
+  "lastSaved": "2026-07-11T14:05:21.556Z",
   "version": 1,
   "seeded": true
 }
