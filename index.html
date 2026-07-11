@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Iron Edge">
@@ -22,6 +22,14 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .nav-btn.ntrk.active{color:#4499dd;}
 .nav-btn.ndsh.active{color:#e8b840;}
 .nav-icon{font-size:20px;margin-bottom:3px;}
+.nav-icon svg{width:21px;height:21px;display:block;}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#dashScroll>div{animation:cardIn .32s ease both}
+#dashScroll>div:nth-child(2){animation-delay:.04s}#dashScroll>div:nth-child(3){animation-delay:.08s}#dashScroll>div:nth-child(4){animation-delay:.12s}#dashScroll>div:nth-child(5){animation-delay:.16s}#dashScroll>div:nth-child(6){animation-delay:.2s}#dashScroll>div:nth-child(7){animation-delay:.24s}#dashScroll>div:nth-child(8){animation-delay:.28s}#dashScroll>div:nth-child(n+9){animation-delay:.32s}
+@keyframes fillIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.phfill,.xp-bar-fill{transform-origin:left;animation:fillIn .7s ease both}
+@keyframes cfall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--rot));opacity:0}}
+.cf-piece{position:fixed;left:50%;top:32%;width:7px;height:11px;border-radius:2px;z-index:10001;pointer-events:none;animation:cfall .95s ease-out forwards}
 .nav-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;}
 .screen{display:none;flex-direction:column;flex:1;overflow:hidden;}
 .screen.active{display:flex;}
@@ -475,9 +483,9 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
     <div class="tscr" id="dashScroll"></div>
   </div>
   <div class="bottom-nav">
-    <button class="nav-btn active" id="nW" onclick="goTo('W')"><div class="nav-icon">🏋️</div><div class="nav-label">Program</div></button>
-    <button class="nav-btn ntrk" id="nT" onclick="goTo('T')"><div class="nav-icon">📈</div><div class="nav-label">Progress</div></button>
-    <button class="nav-btn ndsh" id="nD" onclick="goTo('D')"><div class="nav-icon">🏆</div><div class="nav-label">Dashboard</div></button>
+    <button class="nav-btn active" id="nW" onclick="goTo('W')" aria-label="Program"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M10 5v14M14 5v14M18 7v10M2 12h2M10 12h4M20 12h2"/></svg></div><div class="nav-label">Program</div></button>
+    <button class="nav-btn ntrk" id="nT" onclick="goTo('T')" aria-label="Progress"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><div class="nav-label">Progress</div></button>
+    <button class="nav-btn ndsh" id="nD" onclick="goTo('D')" aria-label="Dashboard"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 2 4h1M17 6h3a2 2 0 0 1-2 4h-1"/></svg></div><div class="nav-label">Dashboard</div></button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -502,9 +510,9 @@ var TRACK_EX=[
   'Barbell OHP','Half Kneeling SA OHP','Front Raise','Lateral Raise','Reverse Fly',
   // Triceps
   'Skull Crushers','SA Overhead Tricep Extension','SA Tricep Extension',
-  'Reverse Grip Tricep Extension','Tricep Kickback',
+  'Reverse Grip Tricep Extension','Tricep Kickback','Tricep Extension',
   // Back / Pull
-  'Barbell Bent Over Row','Weighted Pull-Up','Weighted Chin-Up',
+  'Barbell Bent Over Row','SA Bent Over Row','Weighted Pull-Up','Weighted Chin-Up',
   'Neutral Grip Lat Pulldown',
   'Seated Row','X Pulldown','Straight Arm Pulldown','Y Pull','W Hold','Shoulder Shrug',
   // Biceps
@@ -512,9 +520,9 @@ var TRACK_EX=[
   'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl','Hammer Curl',
   // Legs
   'Back Squat','Conventional Deadlift','Bulgarian Split Squat',
-  'Barbell RDL','Barbell Hip Thrust','Resisted Step Up','Resisted Calf Raise',
+  'Barbell RDL','RDL','Barbell Hip Thrust','Resisted Glute Bridge','Resisted Step Up','Resisted Calf Raise',
   // Core
-  'Weighted Incline Sit-Up',
+  'Weighted Incline Sit-Up','Seated Pallof Press',
 ];
 
 var PHASES=[
@@ -680,7 +688,7 @@ function migrateSeed(){
     if(o&&o._seeded!==undefined){if(o._seeded)setSeeded();delete o._seeded;sl(o);}
   }catch(e){}
 }
-function e1rm(w,r){return Math.round(w*(1+r/30));}
+function e1rm(w,r){return Math.round(w*(1+Math.min(r,12)/30));} // rep term capped at 12 — Epley overestimates badly at high reps
 function today(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 
 function logSet(ex,w,r){
@@ -705,9 +713,10 @@ function seedBaseline(){
 
 // ── PHASE ───────────────────────────────────────────────────────────────────
 
+// Single source of truth for elapsed program weeks — all week/phase math flows through here
+function weeksSinceStart(){return Math.max(0,Math.floor((Date.now()-PROGRAM_START)/(7*24*60*60*1000)));}
 function getPhase(){
-  var msW=7*24*60*60*1000;
-  var totalW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/msW));
+  var totalW=weeksSinceStart();
   var cw=totalW%18;
   if(cw<8)return{phase:PHASES[0],wip:cw+1,tot:8,totalW:totalW+1};
   if(cw<16)return{phase:PHASES[1],wip:cw-7,tot:8,totalW:totalW+1};
@@ -715,6 +724,11 @@ function getPhase(){
 }
 function lowReps(rs){var m=(''+rs).match(/\d+/);return m?parseInt(m[0],10):null;}
 function highReps(rs){var m=(''+rs).match(/(\d+)\s*[-\u2013]\s*(\d+)/);return m?parseInt(m[2],10):lowReps(rs);}
+function phaseSets(base){
+  if(getPhase().phase.name!=='Deload')return base;
+  var m=(''+base).match(/^(\d+)x$/);if(!m)return base;
+  return Math.max(1,Math.ceil(parseInt(m[1],10)/2))+'x'; // deload = ~50% volume: halve sets, same movements
+}
 function phaseReps(base){
   var ph=getPhase().phase.name;
   if(ph!=='Intensification')return base;
@@ -724,9 +738,11 @@ function phaseReps(base){
   return nlo+'-'+nhi;
 }
 function getSugg(ex,repRange){
+  if(ex==='Perfect Push-Ups')return null; // bodyweight-only — a weight target isn't actionable
   var logs=ll();if(!logs[ex]||!logs[ex].length)return null;
   var ph=getPhase();
-  var best=logs[ex].reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},logs[ex][0]);
+  var recent=logs[ex].slice(-5); // anchor to recent form, not all-time peak — auto-regulates after layoffs
+  var best=recent.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},recent[0]);
   var tr=(repRange&&lowReps(repRange))||ph.phase.treps;
   var suggested=Math.round((best.e1rm/(1+tr/30))*ph.phase.wmult);
   return{weight:suggested,reps:tr};
@@ -734,7 +750,7 @@ function getSugg(ex,repRange){
 
 // ── SESSION ──────────────────────────────────────────────────────────────────
 
-function progWeek(){var msW=7*24*60*60*1000;return Math.max(1,Math.floor((Date.now()-PROGRAM_START)/msW)+1);}
+function progWeek(){return weeksSinceStart()+1;}
 function isDone(di){return!!ls()['w'+progWeek()+'_d'+di];}
 function getTonalSummary(di){var s=ls()['w'+progWeek()+'_d'+di];return(s&&s.tonal)||null;}
 function calcSessionVolume(di){
@@ -810,7 +826,7 @@ function isWeekComplete(){
 function toggleDone(di){
   var sess=ls();var key='w'+progWeek()+'_d'+di;
   var justCompleted=false;
-  if(sess[key])delete sess[key];else{sess[key]={date:today(),ts:Date.now()};justCompleted=true;}
+  if(sess[key]){delete sess[key];xpAward('session_undo',-50,DAYS[di].name+' unmarked');}else{sess[key]={date:today(),ts:Date.now()};justCompleted=true;}
   ss(sess);buildDayScroll();buildWC();
   if(document.getElementById('sD').classList.contains('active'))buildDash();
   if(justCompleted){
@@ -879,6 +895,22 @@ function cdSpeak(text){
   window.speechSynthesis.resume();
   var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
   window.speechSynthesis.speak(u);
+}
+function prBurst(){
+  var colors=['#d62828','#e8b840','#27b872','#9b2de8','#4499dd','#fff'];
+  var wrap=document.createElement('div');wrap.style.cssText='position:fixed;inset:0;z-index:10001;pointer-events:none';
+  for(var i=0;i<26;i++){
+    var p=document.createElement('div');p.className='cf-piece';
+    var ang=(Math.random()*2-1)*Math.PI*0.9,dist=90+Math.random()*180;
+    p.style.background=colors[i%colors.length];
+    p.style.setProperty('--dx',Math.round(Math.sin(ang)*dist)+'px');
+    p.style.setProperty('--dy',Math.round(120+Math.random()*220)+'px');
+    p.style.setProperty('--rot',Math.round((Math.random()*2-1)*540)+'deg');
+    p.style.animationDelay=(Math.random()*0.12)+'s';
+    wrap.appendChild(p);
+  }
+  document.body.appendChild(wrap);
+  setTimeout(function(){if(wrap.parentNode)wrap.parentNode.removeChild(wrap);},1300);
 }
 function nextClipIdx(key,poolLen){
   var v=parseInt(localStorage.getItem(key)||'0',10);
@@ -1083,7 +1115,7 @@ function closeSwapDrawer(){
 }
 function avaEventCheck(){
   try{
-    var rawW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/604800000));
+    var rawW=weeksSinceStart();
     var cycle=Math.floor(rawW/18),cw=rawW%18;
     var phaseName=cw<8?'acc':(cw<16?'int':'del');
     var phaseInst=cycle+'_'+phaseName;
@@ -1301,6 +1333,7 @@ function renderBlock(block,di,dt){
     '<div class="nbox" style="border-radius:12px">Recovery day does real work — do not skip it.</div>';
   var html='';
   if(block.id==='b1'){
+    if(getPhase().phase.name==='Deload')html+='<div class="prev-note" style="border-left-color:#4499dd"><strong style="color:#4499dd">🔵 Deload Week</strong>Sets cut ~50% and target loads reduced 15% below. Same movements, easy quality reps — this week is consolidation, not stimulation.</div>';
     var pn=prevDayNotes(di);
     if(pn)html+='<div class="prev-note"><strong>📝 Last session note</strong>'+pn+'</div>';
   }
@@ -1312,7 +1345,7 @@ function renderBlock(block,di,dt){
       var subBadge=er.swapped?'<span class="ex-sub-badge">SUB</span>':'';
       var swapBtn=EXERCISE_ALTS[er.origN]?'<button class="exswap'+(er.swapped?' exswap-on':'')+'" data-orig="'+er.origN+'" data-di="'+di+'" onclick="openSwapDrawer(this.dataset.orig,+this.dataset.di)">'+(er.swapped?'↩':'↔')+'</button>':'';
       var logBtn=er.tr?'<button class="exlog" onclick="quickLog(event,\''+er.tr+'\',\''+rp+'\')">+ Log</button>':'';
-      return'<div class="exrow"><div class="exmain"><div class="exname"'+histBtn+'>'+er.n+subBadge+'</div><div class="expills"><span class="pill psets">'+er.sets+'</span><span class="pill preps">'+rp+'</span>'+(er.rir!=='-'?'<span class="pill prix">'+er.rir+'</span>':'')+suggH(er.tr||null,rp)+'</div><div class="exnote">'+er.nt+'</div>'+tagH(er.tg)+'</div><div class="exactions">'+swapBtn+logBtn+'</div></div>';
+      return'<div class="exrow"><div class="exmain"><div class="exname"'+histBtn+'>'+er.n+subBadge+'</div><div class="expills"><span class="pill psets">'+phaseSets(er.sets)+'</span><span class="pill preps">'+rp+'</span>'+(er.rir!=='-'?'<span class="pill prix">'+er.rir+'</span>':'')+suggH(er.tr||null,rp)+'</div><div class="exnote">'+er.nt+'</div>'+tagH(er.tg)+'</div><div class="exactions">'+swapBtn+logBtn+'</div></div>';
     }).join('');
 
     html+=g.ss?'<div class="card"><div class="ssbar"><div class="ssdot"></div>'+g.ssl+' — No rest A→B</div>'+inner+'</div>':'<div class="card">'+inner+'</div>';
@@ -1416,9 +1449,8 @@ function commitLog(ex,w,r){
   if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return false;}
   var hadPrior=!!(ll()[ex]&&ll()[ex].length);
   var pr=isPR(ex,w,r);logSet(ex,w,r);
-  showToast(pr?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
-  if(pr&&hadPrior)playPRClip(ex,w,r);
-  if(pr)xpAward('pr',25,ex+' — new PR');
+  showToast(pr&&hadPrior?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
+  if(pr&&hadPrior){playPRClip(ex,w,r);prBurst();xpAward('pr',25,ex+' — new PR');}
   return true;
 }
 function handleLog(){
@@ -1549,7 +1581,7 @@ function xpAward(type,amt,note){
   for(var i=0;i<IE_LEVELS.length;i++){if(prevTotal>=IE_LEVELS[i].xp)prevLv=IE_LEVELS[i];}
   for(var j=0;j<IE_LEVELS.length;j++){if(newTotal>=IE_LEVELS[j].xp)newLv=IE_LEVELS[j];}
   var lvUp=newLv.level>prevLv.level;
-  var msg=lvUp?('⚡ LEVEL UP — '+newLv.name.toUpperCase()+'!'):('⚡ +'+amt+' XP');
+  var msg=lvUp?('⚡ LEVEL UP — '+newLv.name.toUpperCase()+'!'):(amt>=0?('⚡ +'+amt+' XP'):('↩ −'+Math.abs(amt)+' XP'));
   var delay=type==='pr'?2600:type==='week6'?500:0;
   if(delay){setTimeout(function(){showToast(msg);},delay);}else{showToast(msg);}
 }
@@ -1723,9 +1755,12 @@ function e1rmSparkline(sessions){
     return'<circle cx="'+p.x+'" cy="'+p.y+'" r="'+(best?4:2.5)+'" fill="'+(best?'#d62828':'#444')+'"/>'+(best?'<text x="'+p.x+'" y="'+(p.y-7)+'" fill="#d62828" font-size="9" text-anchor="middle">'+p.s.e1rm+'</text>':'');
   }).join('');
   var fl=pts[0],la=pts[pts.length-1];
+  var area=poly+' '+la.x+','+(H-2)+' '+fl.x+','+(H-2);
   var labels='<text x="'+fl.x+'" y="'+(H+2)+'" fill="#444" font-size="8" text-anchor="middle">'+fl.s.date+'</text>'+
     '<text x="'+la.x+'" y="'+(H+2)+'" fill="#444" font-size="8" text-anchor="middle">'+la.s.date+'</text>';
   return'<div class="hd-chart"><svg width="100%" viewBox="0 0 '+W+' '+(H+10)+'" style="overflow:visible">'+
+    '<defs><linearGradient id="sparkgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d62828" stop-opacity="0.18"/><stop offset="1" stop-color="#d62828" stop-opacity="0"/></linearGradient></defs>'+
+    '<polygon points="'+area+'" fill="url(#sparkgrad)"/>'+
     '<polyline points="'+poly+'" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>'+
     dots+labels+'</svg></div>';
 }
@@ -1822,7 +1857,7 @@ function closeHistoryDrawer(){
 // ── WEEK VOLUME CHART ────────────────────────────────────────────────────────
 function getWeeklyVolume(n){
   var logs=ll(),msW=7*24*60*60*1000;
-  var curW=Math.max(0,Math.floor((Date.now()-PROGRAM_START)/msW));
+  var curW=weeksSinceStart();
   var startW=Math.max(0,curW-n+1),data=[];
   for(var w=startW;w<=curW;w++){
     var ws=PROGRAM_START+w*msW,we=ws+msW,vol=0;
@@ -1847,7 +1882,7 @@ function weekVolumeCard(){
   }).join('');
   var tw=(bw+gap)*data.length-gap;
   var cur=data[data.length-1];
-  return'<div class="wvc"><div class="wvc-head"><span class="wvc-title">📈 Weekly Volume</span>'+
+  return'<div class="wvc"><div class="wvc-head"><span class="wvc-title">📈 Top-Set Volume</span>'+
     '<span class="wvc-cur">'+(cur.vol?Number(cur.vol).toLocaleString()+' lb this week':'building...')+'</span></div>'+
     '<svg width="100%" viewBox="0 0 '+tw+' '+H+'" preserveAspectRatio="none" style="overflow:visible">'+bars+'</svg></div>';
 }
@@ -2383,6 +2418,14 @@ function dismissAppIntro(){
 (function(){
   var v=document.getElementById('appIntroVid');
   if(!v){dismissAppIntro();return;}
+  var dkey='ie_intro_day',ds=new Date().toDateString();
+  if(localStorage.getItem(dkey)===ds){ // already played today — skip instantly, no fade
+    appIntroDismissed=true;
+    var el=document.getElementById('appIntro');
+    if(el&&el.parentNode)el.parentNode.removeChild(el);
+    return;
+  }
+  localStorage.setItem(dkey,ds);
   v.addEventListener('ended',dismissAppIntro);
   v.addEventListener('error',dismissAppIntro);
   setTimeout(dismissAppIntro,4000); // fallback if autoplay is blocked or video hangs
