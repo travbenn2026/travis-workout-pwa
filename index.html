@@ -880,13 +880,18 @@ function cdSpeak(text){
   var u=new SpeechSynthesisUtterance(text);u.rate=0.85;u.pitch=1.0;
   window.speechSynthesis.speak(u);
 }
-var scClipIdx=0;
+function nextClipIdx(key,poolLen){
+  var v=parseInt(localStorage.getItem(key)||'0',10);
+  if(isNaN(v)||v<0)v=0;
+  localStorage.setItem(key,String(v+1));
+  return v%poolLen;
+}
 function playSessionCompleteClip(onEnd){
   var at=avaActiveTier();
   var src;
   if(at>=5){
     var pool=['media/ava-t1-session-complete.mp4','media/ava-t2-session-complete.mp4','media/ava-t3-session-complete.mp4','media/ava-t4-session-complete.mp4','media/ava-t5-session-complete.mp4'];
-    src=pool[scClipIdx%pool.length];scClipIdx++;
+    src=pool[nextClipIdx('sc_clip_idx',pool.length)];
   }else{
     src='media/ava-t'+at+'-session-complete.mp4';
   }
@@ -902,12 +907,11 @@ function playSessionCompleteClip(onEnd){
   v.addEventListener('ended',close);ov.addEventListener('click',close);
   var p=v.play();if(p&&p.catch)p.catch(function(){setTimeout(close,4000);});
 }
-var prClipIdx=0;
 function playPRClip(ex,w,r){
   var er=e1rm(w,r);
   var at=avaActiveTier();
   var pool=[];for(var t=1;t<=at;t++)pool.push('media/ava-t'+t+'-pr.mp4');
-  var src=pool[prClipIdx%pool.length];prClipIdx++;
+  var src=pool[nextClipIdx('pr_clip_idx',pool.length)];
   var ov=document.createElement('div');
   ov.style.cssText='position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);opacity:0;transition:opacity .25s;padding:18px;box-sizing:border-box';
   var wrap=document.createElement('div');
@@ -949,11 +953,10 @@ function queueAvaClip(src,captionHtml){
   var fire=function(){var q=pendingAvaClip;pendingAvaClip=null;document.removeEventListener('pointerdown',fire);if(q)avaPlayClip(q.src,q.cap);};
   document.addEventListener('pointerdown',fire,{once:true});
 }
-var warmupClipIdx=0;
 function playWarmupClip(){
   var at=avaActiveTier();
   var pool=[];for(var t=1;t<=at;t++){for(var i=1;i<=3;i++)pool.push('media/ava-t'+t+'-warmup-hype-'+i+'.mp4');}
-  var src=pool[warmupClipIdx%pool.length];warmupClipIdx++;
+  var src=pool[nextClipIdx('warmup_clip_idx',pool.length)];
   var cap='<div style="font-size:11px;font-weight:800;letter-spacing:3px">WARM-UP</div>'+
     '<div style="font-size:17px;font-weight:800;line-height:1.2;margin-top:3px">Let\'s prime it</div>';
   var probe=document.createElement('video');
