@@ -1707,7 +1707,7 @@ function closeAvaProfile(){var ov=document.querySelector('.avp-ov');if(ov&&ov.pa
 
 // ── EXERCISE HISTORY DRAWER ──────────────────────────────────────────────────
 function e1rmSparkline(sessions){
-  var data=[].concat(sessions).reverse();
+  var data=[].concat(sessions);
   if(data.length<2)return'';
   var W=300,H=72,padX=28,padY=14;
   var vals=data.map(function(s){return s.e1rm;});
