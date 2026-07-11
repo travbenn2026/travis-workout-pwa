@@ -383,6 +383,13 @@
         "weight": 230,
         "reps": 8,
         "e1rm": 291
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783776099774,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
       }
     ],
     "Seated Row": [
@@ -815,6 +822,13 @@
         "weight": 99,
         "reps": 8,
         "e1rm": 125
+      },
+      {
+        "date": "Jul 11",
+        "ts": 1783776122421,
+        "weight": 97,
+        "reps": 10,
+        "e1rm": 129
       }
     ],
     "Straight Arm Pulldown": [
@@ -1140,11 +1154,11 @@
         "avgHr": 124,
         "maxHr": 153,
         "duration": 74,
-        "notes": "Tough by good"
+        "notes": "Tough but good"
       }
     }
   },
-  "lastSaved": "2026-07-10T18:33:22.718Z",
+  "lastSaved": "2026-07-11T13:22:32.918Z",
   "version": 1,
   "seeded": true
 }
