@@ -919,10 +919,10 @@
       },
       {
         "date": "Jul 11",
-        "ts": 1783778483393,
-        "weight": 32,
+        "ts": 1783779163836,
+        "weight": 33,
         "reps": 10,
-        "e1rm": 43
+        "e1rm": 44
       }
     ],
     "Reverse Grip Tricep Extension": [
@@ -967,10 +967,10 @@
       },
       {
         "date": "Jul 11",
-        "ts": 1783778597655,
-        "weight": 29,
+        "ts": 1783779039317,
+        "weight": 30,
         "reps": 12,
-        "e1rm": 41
+        "e1rm": 42
       }
     ],
     "Seated Pallof Press": [
@@ -1191,9 +1191,29 @@
         "duration": 74,
         "notes": "Tough but good"
       }
+    },
+    "w8_d5": {
+      "date": "Jul 11",
+      "ts": 1783779612999,
+      "tonal": {
+        "volume": 21335,
+        "work": 52.1,
+        "cals": 462,
+        "avgHr": 120,
+        "maxHr": 153,
+        "duration": 66,
+        "notes": "Great!"
+      }
+    },
+    "w8_d6": {
+      "date": "Jul 12",
+      "ts": 1783863381006,
+      "tonal": {
+        "notes": "20 min row. 30 min elliptical. "
+      }
     }
   },
-  "lastSaved": "2026-07-11T14:05:21.556Z",
+  "lastSaved": "2026-07-12T13:40:49.374Z",
   "version": 1,
   "seeded": true
 }
