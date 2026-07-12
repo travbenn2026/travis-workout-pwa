@@ -12,7 +12,7 @@
 <title>Iron Edge</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080808;--card:#111;--border:#1e1e1e;--text:#efefef;--muted:#5a5a5a;--subtle:#2a2a2a;--push:#e8622a;--pull:#27b872;--legs:#e8a82a;--arms:#9b2de8;--recovery:#3a88cc;--sb:env(safe-area-inset-bottom,16px);--st:env(safe-area-inset-top,0px);}
+:root{--bg:#080808;--card:#111;--border:#1e1e1e;--text:#efefef;--muted:#5a5a5a;--subtle:#2a2a2a;--push:#e8622a;--pull:#27b872;--legs:#e8a82a;--arms:#9b2de8;--recovery:#3a88cc;--protein:#14b8a6;--sb:env(safe-area-inset-bottom,16px);--st:env(safe-area-inset-top,0px);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
 .shell{display:flex;flex-direction:column;height:100dvh;padding-top:var(--st);}
@@ -21,6 +21,34 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .nav-btn.active{color:var(--push);}
 .nav-btn.ntrk.active{color:#4499dd;}
 .nav-btn.ndsh.active{color:#e8b840;}
+.nav-btn.npro.active{color:var(--protein);}
+.pr-top{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#151515,#0b0b0b);border:1px solid #242424;border-left:3px solid var(--protein);border-radius:14px;padding:16px;margin-bottom:12px;}
+.pr-ring text{font-family:'Barlow Condensed',sans-serif;}
+.pr-info{flex:1;min-width:0;}
+.pr-remain{font-size:15px;font-weight:700;color:#eee;margin-bottom:4px;}
+.pr-goal-row{font-size:11px;color:var(--muted);}
+.pr-goal-edit{color:var(--protein);text-decoration:underline;text-decoration-style:dotted;cursor:pointer;}
+.pr-ava{font-size:12.5px;color:#bbb;margin-top:10px;line-height:1.4;border-top:1px solid #1e1e1e;padding-top:9px;}
+.pr-quickrow{display:flex;gap:8px;margin-bottom:10px;}
+.pr-qbtn{flex:1;background:var(--card);border:1px solid var(--border);color:#ddd;font-size:14px;font-weight:800;padding:12px 0;border-radius:10px;cursor:pointer;text-align:center;}
+.pr-qbtn:active{background:#1a1a1a;}
+.pr-qbtn-custom{color:var(--protein);border-color:rgba(20,184,166,.4);}
+.pr-mealtoggle{font-size:12px;color:var(--muted);text-align:center;padding:9px 0 11px;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;}
+.pr-meals{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px 14px;margin-bottom:10px;}
+.pr-meal-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1a1a1a;}
+.pr-meal-row:last-child{border-bottom:none;}
+.pr-meal-name{font-size:13px;color:#ccc;font-weight:600;}
+.pr-meal-add{display:flex;gap:6px;align-items:center;}
+.pr-meal-in{width:56px;background:#0a0a0a;border:1px solid #252525;border-radius:6px;color:#fff;font-size:13px;text-align:center;padding:6px 2px;}
+.pr-meal-btn{background:rgba(20,184,166,.15);border:1px solid rgba(20,184,166,.4);color:var(--protein);font-size:16px;font-weight:800;width:30px;height:30px;border-radius:6px;cursor:pointer;line-height:1;}
+.pr-entries{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
+.pr-erow{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #181818;gap:10px;}
+.pr-erow:last-child{border-bottom:none;}
+.pr-eamt{font-size:14px;font-weight:800;color:#eee;min-width:40px;}
+.pr-emeal{font-size:10px;color:var(--protein);background:rgba(20,184,166,.12);padding:2px 7px;border-radius:5px;font-weight:700;text-transform:uppercase;}
+.pr-etime{font-size:11px;color:#555;flex:1;text-align:right;}
+.pr-edel{background:none;border:none;color:#444;font-size:16px;cursor:pointer;padding:2px 6px;}
+.pr-empty{padding:16px 14px;font-size:12.5px;color:#444;text-align:center;}
 .nav-icon{font-size:20px;margin-bottom:3px;}
 .nav-icon svg{width:21px;height:21px;display:block;}
 @keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -482,10 +510,15 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
     <div class="thdr"><div class="ttitle">Dashboard</div><div class="tsub">Phase · Streak · Sessions · PRs</div></div>
     <div class="tscr" id="dashScroll"></div>
   </div>
+  <div class="screen" id="sP">
+    <div class="thdr"><div class="ttitle">Protein</div><div class="tsub">Daily intake · Quick-add or by meal</div></div>
+    <div class="tscr" id="proteinScroll"></div>
+  </div>
   <div class="bottom-nav">
     <button class="nav-btn active" id="nW" onclick="goTo('W')" aria-label="Program"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M10 5v14M14 5v14M18 7v10M2 12h2M10 12h4M20 12h2"/></svg></div><div class="nav-label">Program</div></button>
     <button class="nav-btn ntrk" id="nT" onclick="goTo('T')" aria-label="Progress"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><div class="nav-label">Progress</div></button>
     <button class="nav-btn ndsh" id="nD" onclick="goTo('D')" aria-label="Dashboard"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 2 4h1M17 6h3a2 2 0 0 1-2 4h-1"/></svg></div><div class="nav-label">Dashboard</div></button>
+    <button class="nav-btn npro" id="nP" onclick="goTo('P')" aria-label="Protein"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8l-1 4.2H9L8 2z"/><path d="M9 6.2l-1.6 13a2 2 0 0 0 2 2.3h5.2a2 2 0 0 0 2-2.3l-1.6-13"/><path d="M7.3 13.5h9.4"/></svg></div><div class="nav-label">Protein</div></button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -1902,6 +1935,145 @@ function weekVolumeCard(){
 }
 // ── BODY WEIGHT LOG ──────────────────────────────────────────────────────────
 function bwLog(){try{return JSON.parse(localStorage.getItem('bw_log')||'[]');}catch(e){return[];}}
+// ── PROTEIN TRACKER ──────────────────────────────────────────────────────────
+// Local-only (like bwLog/metrics) — not part of ghSave's synced payload.
+var PK='ie_protein_log',PK_GOAL='ie_protein_goal';
+var PROTEIN_MEALS=['Breakfast','Lunch','Dinner','Snacks'];
+var proteinMealsOpen=false;
+function proteinLog(){try{return JSON.parse(localStorage.getItem(PK))||{};}catch(e){return{};}}
+function proteinGoal(){
+  var g=localStorage.getItem(PK_GOAL);
+  if(g)return parseInt(g,10);
+  var bw=bwLog();
+  return Math.round(bw.length?bw[bw.length-1].w:230); // ~1g/lb default until you set your own
+}
+function setProteinGoal(v){localStorage.setItem(PK_GOAL,String(Math.max(50,Math.min(500,Math.round(v)))));}
+function todayProteinEntries(){var log=proteinLog();return log[today()]||[];}
+function todayProteinTotal(){return todayProteinEntries().reduce(function(s,e){return s+e.amt;},0);}
+function addProteinEntry(amt,meal){
+  amt=Math.round(parseFloat(amt));
+  if(!amt||amt<=0){showToast('Enter a valid amount');return;}
+  var log=proteinLog(),k=today();
+  if(!log[k])log[k]=[];
+  log[k].push({amt:amt,meal:meal||null,ts:Date.now()});
+  localStorage.setItem(PK,JSON.stringify(log));
+  buildProtein();showToast('+'+amt+'g protein logged');
+}
+function deleteProteinEntry(idx){
+  var log=proteinLog(),k=today();
+  if(!log[k]||!log[k][idx])return;
+  log[k].splice(idx,1);
+  localStorage.setItem(PK,JSON.stringify(log));
+  buildProtein();
+}
+function toggleProteinMeals(){proteinMealsOpen=!proteinMealsOpen;buildProtein();}
+function proteinHistory(n){ // oldest→newest, chronological left-to-right
+  var log=proteinLog(),out=[];
+  for(var i=n-1;i>=0;i--){
+    var d=new Date();d.setDate(d.getDate()-i);
+    var key=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    var tot=(log[key]||[]).reduce(function(s,e){return s+e.amt;},0);
+    out.push({label:key,total:tot,cur:i===0});
+  }
+  return out;
+}
+function proteinAvaLine(total,goal){
+  var remain=goal-total;
+  if(total===0)return"Nothing logged yet today — first entry starts the count.";
+  if(remain<=0){var over=total-goal;return over>0?("Goal hit and "+over+"g over — solid day."):"Goal hit right on the number.";}
+  if(remain<=20)return"So close — "+remain+"g left. One more scoop gets you there.";
+  if(total/goal>=0.6)return"Good pace — "+total+"g of "+goal+"g so far. Keep it rolling.";
+  return"Early in the day — "+total+"g logged. Front-load protein when you can.";
+}
+function proteinRing(total,goal){
+  var r=42,C=2*Math.PI*r,pct=Math.min(1,goal>0?total/goal:0),over=total>goal;
+  var dash=(C*pct).toFixed(1),color=over?'var(--pull)':'var(--protein)';
+  return'<svg class="pr-ring" width="112" height="112" viewBox="0 0 100 100">'+
+    '<circle cx="50" cy="50" r="'+r+'" fill="none" stroke="#1c1c1c" stroke-width="9"/>'+
+    '<circle cx="50" cy="50" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="9" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+(C-dash).toFixed(1)+'" transform="rotate(-90 50 50)" style="transition:stroke-dashoffset .5s ease"/>'+
+    '<text x="50" y="48" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">'+total+'</text>'+
+    '<text x="50" y="64" text-anchor="middle" font-size="8" fill="#666" letter-spacing="1">of '+goal+'g</text></svg>';
+}
+function proteinTrendCard(){
+  var data=proteinHistory(7),goal=proteinGoal();
+  if(!data.some(function(d){return d.total>0;}))return'';
+  var maxV=Math.max(goal,Math.max.apply(null,data.map(function(d){return d.total;})));
+  var bw=36,gap=10,H=80;
+  var goalY=H-14-Math.round(goal/maxV*(H-22));
+  var bars=data.map(function(d,i){
+    var bh=maxV?Math.max(3,Math.round(d.total/maxV*(H-22))):3;
+    var x=i*(bw+gap),y=H-bh-14;
+    var fill=d.cur?'var(--protein)':(d.total?'#1e1e1e':'transparent');
+    var stroke=d.cur?'none':'#2a2a2a';
+    var vl=d.total>0?'<text x="'+(x+bw/2)+'" y="'+(y-3)+'" fill="'+(d.cur?'var(--protein)':'#555')+'" font-size="7.5" text-anchor="middle">'+d.total+'</text>':'';
+    return'<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="3" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1"/>'+vl+
+      '<text x="'+(x+bw/2)+'" y="'+(H-1)+'" fill="'+(d.cur?'#888':'#3a3a3a')+'" font-size="7.5" text-anchor="middle">'+d.label.split(' ')[1]+'</text>';
+  }).join('');
+  var tw=(bw+gap)*data.length-gap;
+  return'<div class="wvc"><div class="wvc-head"><span class="wvc-title">📈 7-Day Protein</span><span class="wvc-cur">goal '+goal+'g/day</span></div>'+
+    '<svg width="100%" viewBox="0 0 '+tw+' '+H+'" preserveAspectRatio="none" style="overflow:visible">'+
+    '<line x1="0" y1="'+goalY+'" x2="'+tw+'" y2="'+goalY+'" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>'+bars+'</svg></div>';
+}
+function buildProtein(){
+  var goal=proteinGoal(),entries=todayProteinEntries(),total=todayProteinTotal();
+  var remain=goal-total;
+  var remainLine=remain>0?(remain+'g remaining today'):('Goal reached · +'+(-remain)+'g over');
+  var quickRow='<div class="pr-quickrow">'+
+    [15,25,40].map(function(a){return'<button class="pr-qbtn" onclick="addProteinEntry('+a+',null)">+'+a+'g</button>';}).join('')+
+    '<button class="pr-qbtn pr-qbtn-custom" onclick="openProteinCustomModal()">Custom</button></div>';
+  var mealRows=PROTEIN_MEALS.map(function(m,i){
+    return'<div class="pr-meal-row"><span class="pr-meal-name">'+m+'</span>'+
+      '<div class="pr-meal-add"><input class="pr-meal-in" id="prMealIn'+i+'" type="number" inputmode="numeric" placeholder="g">'+
+      '<button class="pr-meal-btn" onclick="addProteinEntry(document.getElementById(\'prMealIn'+i+'\').value,\''+m+'\');document.getElementById(\'prMealIn'+i+'\').value=\'\'">+</button></div></div>';
+  }).join('');
+  var mealSection=proteinMealsOpen?('<div class="pr-meals">'+mealRows+'</div>'):'';
+  var mealToggle='<div class="pr-mealtoggle" onclick="toggleProteinMeals()">'+(proteinMealsOpen?'▲ Hide meal breakdown':'▼ Log by meal instead')+'</div>';
+  var entryRows=entries.length?entries.map(function(e,i){return{e:e,i:i};}).reverse().map(function(o){
+    var e=o.e,idx=o.i;
+    var t=new Date(e.ts).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    return'<div class="pr-erow"><span class="pr-eamt">'+e.amt+'g</span>'+(e.meal?'<span class="pr-emeal">'+e.meal+'</span>':'')+'<span class="pr-etime">'+t+'</span><button class="pr-edel" onclick="deleteProteinEntry('+idx+')">✕</button></div>';
+  }).join(''):'<div class="pr-empty">No entries yet today — add your first one above.</div>';
+  document.getElementById('proteinScroll').innerHTML=
+    '<div class="pr-top">'+proteinRing(total,goal)+
+    '<div class="pr-info"><div class="pr-remain">'+remainLine+'</div>'+
+    '<div class="pr-goal-row">Goal: '+goal+'g/day · <span class="pr-goal-edit" onclick="openProteinGoalModal()">edit</span></div>'+
+    '<div class="pr-ava"><strong style="color:var(--protein)">AVA</strong> '+proteinAvaLine(total,goal)+'</div></div></div>'+
+    quickRow+mealToggle+mealSection+
+    '<div class="pr-entries">'+entryRows+'</div>'+
+    proteinTrendCard();
+}
+function openProteinCustomModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">🥤 Add Protein</div>'+
+    '<div class="bwm-row"><input class="bwm-in" id="prCustIn" type="number" inputmode="numeric" placeholder="g"></div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBwmOv()">Cancel</button><button class="tsm-save" onclick="saveProteinCustom()">Add</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBwmOv();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('prCustIn');if(el){el.focus();}},60);
+}
+function saveProteinCustom(){
+  var v=document.getElementById('prCustIn').value;
+  closeBwmOv();addProteinEntry(v,null);
+}
+function openProteinGoalModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">🎯 Daily Protein Goal</div>'+
+    '<div class="bwm-row"><input class="bwm-in" id="prGoalIn" type="number" inputmode="numeric" value="'+proteinGoal()+'"></div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBwmOv()">Cancel</button><button class="tsm-save" onclick="saveProteinGoalEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBwmOv();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('prGoalIn');if(el){el.focus();el.select();}},60);
+}
+function saveProteinGoalEntry(){
+  var v=parseFloat(document.getElementById('prGoalIn').value);
+  if(!v||v<50||v>500){showToast('Enter a valid goal');return;}
+  setProteinGoal(v);closeBwmOv();buildProtein();showToast('✓ Goal updated');
+}
+function closeBwmOv(){var ov=document.querySelector('.bwm-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 // ── MUSCLE READINESS ─────────────────────────────────────────────────────────
 var MUSCLE_DAY_MAP={
   0:['chest','shoulders','triceps','abs','obliques'],
@@ -2406,12 +2578,13 @@ function toggleSyncTok(){var s=document.getElementById('syncTokSec');if(s)s.styl
 function updSyncStat(msg){var el=document.getElementById('syncStatTxt');if(el)el.textContent=msg;}
 
 function goTo(s){
-  ['W','T','D'].forEach(function(x){
+  ['W','T','D','P'].forEach(function(x){
     document.getElementById('s'+x).classList.toggle('active',x===s);
     document.getElementById('n'+x).classList.toggle('active',x===s);
   });
   if(s==='T')buildTracker();
   if(s==='D')buildDash();
+  if(s==='P')buildProtein();
 }
 
 var toastTmr;
