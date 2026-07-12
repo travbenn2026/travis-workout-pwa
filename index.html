@@ -1699,23 +1699,32 @@ function avaCard(){
   return '<div class="avacard"><img class="avaface" src="'+portrait+'" alt="Ava" onclick="openAvaProfile()" style="cursor:pointer">'+
     '<div class="avabody"><div class="avaname">AVA</div><div class="avamsg">'+msg+'</div></div></div>';
 }
-var avpPhotos=[
-  {src:'media/ava-large.png',cap:'Your Trainer'},
-  {src:'media/ava-c-squat.png',cap:'Leg Day'},
-  {src:'media/ava-c-incline.png',cap:'Push Day'},
-  {src:'media/ava-c-pulldown.png',cap:'Pull Day'},
-  {src:'media/ava-c-arms.png',cap:'Arms Day'},
-  {src:'media/ava-c-barbell.png',cap:'Strength'},
-  {src:'media/ava-c-determined.png',cap:'Focused'},
-  {src:'media/ava-c-celebration.png',cap:'Victory'},
-  {src:'media/ava-crosslegged.png',cap:'Cool Down'},
-  {src:'media/ava-c-rower.png',cap:'Recovery'}
+var AVA_CAROUSEL_KEYS=[
+  {key:'large',cap:'Your Trainer'},
+  {key:'c-squat',cap:'Leg Day'},
+  {key:'c-incline',cap:'Push Day'},
+  {key:'c-pulldown',cap:'Pull Day'},
+  {key:'c-arms',cap:'Arms Day'},
+  {key:'c-barbell',cap:'Strength'},
+  {key:'c-determined',cap:'Focused'},
+  {key:'c-celebration',cap:'Victory'},
+  {key:'crosslegged',cap:'Cool Down'},
+  {key:'c-rower',cap:'Recovery'}
 ];
+function avaCarouselPhotos(){
+  var t=avaActiveTier();
+  return AVA_CAROUSEL_KEYS.map(function(k){
+    var fallback='media/ava-'+k.key+'.png';
+    var src=t>1?'media/ava-t'+t+'-'+k.key+'.jpg':fallback;
+    return{src:src,fallback:fallback,cap:k.cap};
+  });
+}
+var avpPhotos=[];
 var avpIdx=0;
 function openAvaProfile(){
   if(document.querySelector('.avp-ov'))return;
   var msg=avaMessage(avaCtx());
-  avpIdx=0;
+  avpIdx=0;avpPhotos=avaCarouselPhotos();
   var ov=document.createElement('div');ov.className='avp-ov';
   ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.8);padding:22px;box-sizing:border-box';
   ov.innerHTML='<div class="avp-card">'+
@@ -1727,11 +1736,13 @@ function openAvaProfile(){
     '<div class="avp-msg">'+msg+'</div><div class="avp-tag">Built strong. Stay relentless.</div></div></div>';
   ov.addEventListener('click',function(e){if(e.target===ov)closeAvaProfile();});
   document.body.appendChild(ov);
+  avpGo(0); // wires the tier-specific-image-load-fails-fall-back-to-tier1 handler for the first slide too
 }
 function avpNav(dir){avpGo((avpIdx+dir+avpPhotos.length)%avpPhotos.length);}
 function avpGo(i){
   avpIdx=i;var p=avpPhotos[i];
-  var img=document.getElementById('avpImg');if(img)img.src=p.src;
+  var img=document.getElementById('avpImg');
+  if(img){img.onerror=function(){img.onerror=null;img.src=p.fallback;};img.src=p.src;}
   var cap=document.getElementById('avpCap');if(cap)cap.textContent=p.cap.toUpperCase();
   document.querySelectorAll('.avp-dot').forEach(function(d,j){d.classList.toggle('avp-dot-a',j===i);});
 }
@@ -1830,7 +1841,10 @@ function openHistoryDrawer(ex){
   var isRising=sessions.length>=3&&sessions[0].e1rm>sessions[1].e1rm&&sessions[1].e1rm>=sessions[2].e1rm;
   var isStalled=sessions.length>=3&&sessions[0].weight===sessions[1].weight&&sessions[1].weight===sessions[2].weight;
   var isDown=sessions.length>=2&&sessions[0].e1rm<sessions[1].e1rm;
-  var hdPortrait=(isPrSession||isRising)?'media/ava-celebration.png':(isStalled||isDown)?'media/ava-determined.png':'media/ava-portrait.png';
+  var moodKey=(isPrSession||isRising)?'celebration':(isStalled||isDown)?'determined':null;
+  var t=avaActiveTier();
+  var hdFallback=moodKey?'media/ava-'+moodKey+'.png':AVA_TIER_PORTRAITS[1].default;
+  var hdPortrait=moodKey?(t>1?'media/ava-t'+t+'-'+moodKey+'.jpg':hdFallback):AVA_TIER_PORTRAITS[t].default;
   var allSessions=histSessions._all(ex);
   var chart=e1rmSparkline(allSessions);
   var ov=document.createElement('div');ov.className='hd-ov';
@@ -1841,7 +1855,7 @@ function openHistoryDrawer(ex){
     '<div class="hd-sub">Last '+(sessions.length||0)+' session'+(sessions.length!==1?'s':'')+(sessions.length?'':' — no data yet')+'</div>'+
     (chart?'<div class="hd-chart-wrap">'+chart+'</div>':'')+
     '<div class="hd-rows">'+rows+'</div>'+
-    '<div class="hd-ava"><img class="hd-avapic" src="'+hdPortrait+'"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
+    '<div class="hd-ava"><img class="hd-avapic" src="'+hdPortrait+'" onerror="this.onerror=null;this.src=\''+hdFallback+'\'"><div class="hd-avatext"><span class="hd-avatag">AVA</span> '+avaLine+'</div></div>'+
     (sug?'<div class="hd-sug">Target today: <strong>'+sug.weight+' lb × '+sug.reps+' reps</strong></div>':'')+
     '</div>';
   ov.addEventListener('click',function(e){if(e.target===ov)closeHistoryDrawer();});
