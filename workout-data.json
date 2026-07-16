@@ -28,6 +28,13 @@
         "weight": 180,
         "reps": 6,
         "e1rm": 216
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783945937776,
+        "weight": 191,
+        "reps": 4,
+        "e1rm": 216
       }
     ],
     "Barbell Bench Press (Flat)": [
@@ -51,6 +58,13 @@
         "weight": 193,
         "reps": 8,
         "e1rm": 244
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783946064603,
+        "weight": 200,
+        "reps": 7,
+        "e1rm": 247
       }
     ],
     "Alt Bench Press": [
@@ -104,6 +118,13 @@
         "weight": 51,
         "reps": 10,
         "e1rm": 68
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783946241118,
+        "weight": 56,
+        "reps": 7,
+        "e1rm": 69
       }
     ],
     "Perfect Push-Ups": [
@@ -145,6 +166,13 @@
       {
         "date": "Jul 10",
         "ts": 1783689699157,
+        "weight": 260,
+        "reps": 12,
+        "e1rm": 364
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783946815736,
         "weight": 260,
         "reps": 12,
         "e1rm": 364
@@ -231,6 +259,13 @@
         "weight": 15,
         "reps": 12,
         "e1rm": 21
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783946303432,
+        "weight": 18,
+        "reps": 8,
+        "e1rm": 23
       }
     ],
     "Lateral Raise": [
@@ -268,6 +303,13 @@
         "weight": 18,
         "reps": 15,
         "e1rm": 27
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783946881401,
+        "weight": 22,
+        "reps": 10,
+        "e1rm": 29
       }
     ],
     "Skull Crushers": [
@@ -312,6 +354,13 @@
         "weight": 38,
         "reps": 10,
         "e1rm": 51
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783947621462,
+        "weight": 43,
+        "reps": 7,
+        "e1rm": 53
       }
     ],
     "Barbell Bent Over Row": [
@@ -328,6 +377,13 @@
         "weight": 95,
         "reps": 6,
         "e1rm": 114
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784029689862,
+        "weight": 100,
+        "reps": 4,
+        "e1rm": 113
       }
     ],
     "Neutral Grip Lat Pulldown": [
@@ -351,6 +407,13 @@
         "weight": 82,
         "reps": 10,
         "e1rm": 109
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784030590011,
+        "weight": 91,
+        "reps": 7,
+        "e1rm": 112
       }
     ],
     "Weighted Pull-Up": [
@@ -367,6 +430,13 @@
         "weight": 230,
         "reps": 7,
         "e1rm": 284
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784029803995,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
       }
     ],
     "Weighted Chin-Up": [
@@ -413,6 +483,13 @@
         "weight": 88,
         "reps": 10,
         "e1rm": 117
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784030730227,
+        "weight": 100,
+        "reps": 7,
+        "e1rm": 123
       }
     ],
     "X Pulldown": [
@@ -436,6 +513,13 @@
         "weight": 59,
         "reps": 12,
         "e1rm": 83
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784031363036,
+        "weight": 69,
+        "reps": 8,
+        "e1rm": 87
       }
     ],
     "Reverse Fly": [
@@ -480,6 +564,13 @@
         "weight": 12,
         "reps": 15,
         "e1rm": 18
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784031648477,
+        "weight": 16,
+        "reps": 10,
+        "e1rm": 21
       }
     ],
     "Seated Bicep Curl": [
@@ -509,6 +600,13 @@
         "ts": 1782216228526,
         "weight": 40,
         "reps": 10,
+        "e1rm": 53
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784032071792,
+        "weight": 43,
+        "reps": 7,
         "e1rm": 53
       }
     ],
@@ -554,6 +652,13 @@
         "weight": 26,
         "reps": 12,
         "e1rm": 36
+      },
+      {
+        "date": "Jul 14",
+        "ts": 1784032479002,
+        "weight": 29,
+        "reps": 8,
+        "e1rm": 37
       }
     ],
     "Bulgarian Split Squat": [
@@ -570,6 +675,13 @@
         "weight": 31,
         "reps": 10,
         "e1rm": 41
+      },
+      {
+        "date": "Jul 16",
+        "ts": 1784205092727,
+        "weight": 37,
+        "reps": 7,
+        "e1rm": 46
       }
     ],
     "Back Squat": [
@@ -586,6 +698,13 @@
         "weight": 165,
         "reps": 6,
         "e1rm": 198
+      },
+      {
+        "date": "Jul 16",
+        "ts": 1784204866202,
+        "weight": 185,
+        "reps": 5,
+        "e1rm": 216
       }
     ],
     "Barbell Glute Bridge": [
@@ -705,6 +824,13 @@
         "weight": 39,
         "reps": 8,
         "e1rm": 49
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784116982905,
+        "weight": 42,
+        "reps": 6,
+        "e1rm": 50
       }
     ],
     "Incline DB Curl": [
@@ -714,6 +840,13 @@
         "weight": 33,
         "reps": 10,
         "e1rm": 44
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784118551842,
+        "weight": 37,
+        "reps": 7,
+        "e1rm": 46
       }
     ],
     "SA Overhead Tricep Extension": [
@@ -737,6 +870,13 @@
         "weight": 84,
         "reps": 10,
         "e1rm": 112
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784117104803,
+        "weight": 91,
+        "reps": 7,
+        "e1rm": 112
       }
     ],
     "Tricep Kickback": [
@@ -759,6 +899,13 @@
         "ts": 1783602698804,
         "weight": 24,
         "reps": 15,
+        "e1rm": 36
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784118863335,
+        "weight": 27,
+        "reps": 10,
         "e1rm": 36
       }
     ],
@@ -806,6 +953,13 @@
         "weight": 73,
         "reps": 15,
         "e1rm": 110
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784118159223,
+        "weight": 92,
+        "reps": 7,
+        "e1rm": 113
       }
     ],
     "SA Bent Over Row": [
@@ -939,6 +1093,13 @@
         "weight": 29,
         "reps": 12,
         "e1rm": 41
+      },
+      {
+        "date": "Jul 13",
+        "ts": 1783947560744,
+        "weight": 33,
+        "reps": 8,
+        "e1rm": 42
       }
     ],
     "RDL": [
@@ -948,6 +1109,13 @@
         "weight": 94,
         "reps": 10,
         "e1rm": 125
+      },
+      {
+        "date": "Jul 16",
+        "ts": 1784205260106,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -989,6 +1157,13 @@
         "weight": 80,
         "reps": 10,
         "e1rm": 107
+      },
+      {
+        "date": "Jul 15",
+        "ts": 1784118799972,
+        "weight": 85,
+        "reps": 8,
+        "e1rm": 108
       }
     ],
     "SA Tricep Extension": [
@@ -1211,9 +1386,48 @@
       "tonal": {
         "notes": "20 min row. 30 min elliptical. "
       }
+    },
+    "w9_d0": {
+      "date": "Jul 13",
+      "ts": 1783949102859,
+      "tonal": {
+        "volume": 15362,
+        "work": 42.8,
+        "cals": 470,
+        "avgHr": 126,
+        "maxHr": 159,
+        "duration": 66,
+        "notes": "Good. Little room to go up. "
+      }
+    },
+    "w9_d1": {
+      "date": "Jul 14",
+      "ts": 1784032782495,
+      "tonal": {
+        "volume": 18384,
+        "work": 47.2,
+        "cals": 411,
+        "avgHr": 122,
+        "maxHr": 154,
+        "duration": 57,
+        "notes": "Tough, but doable"
+      }
+    },
+    "w9_d2": {
+      "date": "Jul 15",
+      "ts": 1784119550268,
+      "tonal": {
+        "volume": 12499,
+        "work": 37.4,
+        "cals": 326,
+        "avgHr": 116,
+        "maxHr": 140,
+        "duration": 47,
+        "notes": "Some forearm and elbow discomfort. Switch to pushdown if elbow hurts. "
+      }
     }
   },
-  "lastSaved": "2026-07-12T13:40:49.374Z",
+  "lastSaved": "2026-07-16T12:57:36.202Z",
   "version": 1,
   "seeded": true
 }
