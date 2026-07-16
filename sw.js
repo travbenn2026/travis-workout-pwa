@@ -1,4 +1,4 @@
-const CACHE = 'travis-workout-v31';
+const CACHE = 'travis-workout-v23';
 const ASSETS = [
   './',
   './index.html',
@@ -25,7 +25,6 @@ const ASSETS = [
   './media/session-start-legs.mp4',
   './media/session-start-arms.mp4',
   './media/session-start-recovery.mp4',
-  './media/iron-edge-intro.mp4',
 ];
 
 self.addEventListener('install', e => {
