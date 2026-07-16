@@ -359,6 +359,9 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .cd-ava-img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:0 0 auto}
 .cd-ava-img-wu{cursor:pointer;animation:avaWuPulse 2.2s ease-in-out infinite}
 @keyframes avaWuPulse{0%,100%{box-shadow:0 0 0 0 rgba(74,153,204,.55)}50%{box-shadow:0 0 0 6px rgba(74,153,204,0)}}
+.qod{background:rgba(74,153,204,.06);border-left:3px solid #4a99cc;border-radius:0 10px 10px 0;padding:12px 14px;margin:0 0 10px;}
+.qod-txt{font-size:13px;font-style:italic;color:#ccc;line-height:1.5;}
+.qod-auth{font-size:11px;color:#4a99cc;font-weight:700;margin-top:5px;text-align:right;}
 .cd-ava-text{display:flex;flex-direction:column}
 .cd-ava-name{font-size:10px;font-weight:800;letter-spacing:2px;color:#4a9999}
 .cd-ava-role{font-size:11px;color:#555;margin-top:1px}
@@ -722,6 +725,52 @@ function migrateSeed(){
   }catch(e){}
 }
 function e1rm(w,r){return Math.round(w*(1+Math.min(r,12)/30));} // rep term capped at 12 — Epley overestimates badly at high reps
+var QUOTES=[
+  {q:'You already know what the right thing to do is. You just gotta do it.',a:'Jocko Willink'},
+  {q:'Discipline equals freedom.',a:'Jocko Willink'},
+  {q:'We suffer more often in imagination than in reality.',a:'Seneca'},
+  {q:'The impediment to action advances action. What stands in the way becomes the way.',a:'Marcus Aurelius'},
+  {q:'You have power over your mind — not outside events. Realize this, and you will find strength.',a:'Marcus Aurelius'},
+  {q:'It is not that we have a short time to live, but that we waste a lot of it.',a:'Seneca'},
+  {q:'The pain of discipline weighs ounces. The pain of regret weighs tons.',a:'Jim Rohn'},
+  {q:'How we spend our days is, of course, how we spend our lives.',a:'Annie Dillard'},
+  {q:'I hated every minute of training, but I said, don\\'t quit. Suffer now and live the rest of your life as a champion.',a:'Muhammad Ali'},
+  {q:'It\\'s not whether you get knocked down. It\\'s whether you get up.',a:'Vince Lombardi'},
+  {q:'Champions keep playing until they get it right.',a:'Billie Jean King'},
+  {q:'The body achieves what the mind believes.',a:'Napoleon Hill'},
+  {q:'Amateurs sit and wait for inspiration. The rest of us just get up and go to work.',a:'Stephen King'},
+  {q:'You don\\'t have to be great to start, but you have to start to be great.',a:'Zig Ziglar'},
+  {q:'Motivation is what gets you started. Habit is what keeps you going.',a:'Jim Ryun'},
+  {q:'Waking up early is the first victory of the day.',a:'David Goggins'},
+  {q:'Nobody cares. Work harder.',a:'David Goggins'},
+  {q:'Under discipline, freedom comes at last.',a:'Robert Browning'},
+  {q:'The obstacle is not what stops us. Fear of the obstacle is.',a:'Ryan Holiday'},
+  {q:'A river cuts through rock not because of its power, but its persistence.',a:'Jim Watkins'},
+  {q:'What we do now echoes in eternity.',a:'Marcus Aurelius'},
+  {q:'The best time to plant a tree was 20 years ago. The second best time is now.',a:'Chinese Proverb'},
+  {q:'You will never always be motivated, so you must learn to be disciplined.',a:'Unknown'},
+  {q:'Every morning you have two choices: continue to sleep with your dreams, or wake up and chase them.',a:'Unknown'},
+  {q:'Iron sharpens iron.',a:'Proverbs 27:17'},
+  {q:'The man who moves a mountain begins by carrying away small stones.',a:'Confucius'},
+  {q:'It is the mark of an educated mind to entertain a thought without accepting it.',a:'Aristotle'},
+  {q:'We are what we repeatedly do. Excellence, then, is not an act, but a habit.',a:'Will Durant, on Aristotle'},
+  {q:'Focus on what you can control.',a:'Epictetus'},
+  {q:'No man is free who is not master of himself.',a:'Epictetus'},
+  {q:'Fatigue makes cowards of us all.',a:'Vince Lombardi'},
+  {q:'Set your goals high, and don\\'t stop till you get there.',a:'Bo Jackson'},
+  {q:'Strength does not come from winning. Your struggles develop your strengths.',a:'Arnold Schwarzenegger'},
+  {q:'The last three or four reps is what makes the muscle grow.',a:'Arnold Schwarzenegger'},
+  {q:'I\\'m not telling you it is going to be easy — I\\'m telling you it\\'s going to be worth it.',a:'Art Williams'},
+  {q:'Comfort is the enemy of progress.',a:'P.T. Barnum'},
+  {q:'You can\\'t build a reputation on what you are going to do.',a:'Henry Ford'},
+  {q:'Whether you think you can or think you can\\'t, you\\'re right.',a:'Henry Ford'},
+  {q:'The successful warrior is the average man, with laser-like focus.',a:'Bruce Lee'},
+  {q:'A goal without a plan is just a wish.',a:'Antoine de Saint-Exupéry'},
+];
+function quoteOfDay(){
+  var d=new Date(),seed=d.getFullYear()*372+d.getMonth()*31+d.getDate();
+  return QUOTES[seed%QUOTES.length];
+}
 function today(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 
 function logSet(ex,w,r){
@@ -1345,8 +1394,12 @@ function prevDayNotes(di){
   return sess[key]&&sess[key].tonal&&sess[key].tonal.notes?sess[key].tonal.notes:null;
 }
 function renderBlock(block,di,dt){
-  if(block.isWU)return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img cd-ava-img-wu" src="media/ava-warmup.png" alt="Ava" onclick="playWarmupClip()">'+
-    '<div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Warm Up — let\'s prime it</span></div></div>'+renderWU(dt);
+  if(block.isWU){
+    var qd=quoteOfDay();
+    return'<div class="cd-ava-bar" style="border-left-color:#4a99cc"><img class="cd-ava-img cd-ava-img-wu" src="media/ava-warmup.png" alt="Ava" onclick="playWarmupClip()">'+
+    '<div class="cd-ava-text"><span class="cd-ava-name" style="color:#4a99cc">AVA</span><span class="cd-ava-role">Warm Up — let\'s prime it</span></div></div>'+
+    '<div class="qod"><div class="qod-txt">"'+qd.q+'"</div><div class="qod-auth">— '+qd.a+'</div></div>'+renderWU(dt);
+  }
   if(block.isCD){
     var done=isDone(di);
     return '<div class="cd-ava-bar"><img class="cd-ava-img" src="media/ava-cooldown.png" alt="Ava">'+
