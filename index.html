@@ -553,7 +553,7 @@ var TRACK_EX=[
   // Pull
   'Weighted Pull-Up','Chest-Supported Row','Neutral Grip Lat Pulldown','Face Pull','Seated Row','Middle Chest Fly',
   // Arms
-  'Incline DB Curl','Skull Crusher','Seated Bicep Curl','Tricep Extension','Y Pull',
+  'Incline Curl','Skull Crusher','Seated Bicep Curl','Tricep Extension','Y Pull',
   'Reverse Grip Bicep Curl','Hammer Curl','Seated Alt Bicep Curl','Tricep Kickback',
   // Core
   'Cable Crunch','Hanging Knee Raise','Wood Chop',
@@ -665,7 +665,7 @@ var BLOCKS={
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Elbow prep',isWU:true},
     {id:'b1',e:'💪',lbl:'Block 1',meta:'Openers · Antagonist Superset · 90 sec',
       g:[
-        {ss:true,ssl:'Superset A — Long Head Pair (Bi + Tri)',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60° incline. Full stretch at bottom — long head emphasis. Runs ~70-75% of standing curl weight.',tg:'tdb',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Incline DB Curl'},{n:'Skull Crusher',nt:'Tonal · Handles (default attachment) — wrist-safe path. Lower past the forehead for max long-head stretch.',tg:'tton',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Skull Crusher'}]},
+        {ss:true,ssl:'Superset A — Long Head Pair (Bi + Tri)',r:[{n:'Incline Curl',nt:'Tonal custom · Handles, bench backed up to the Tonal at 45-60°. Full stretch at bottom — long head emphasis. Runs ~70-75% of standing curl weight.',tg:'tcus',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Incline Curl'},{n:'Skull Crusher',nt:'Tonal · Handles (default attachment) — wrist-safe path. Lower past the forehead for max long-head stretch.',tg:'tton',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Skull Crusher'}]},
       ],note:'<strong>Arms strategy:</strong> Antagonist pairs — biceps rest while triceps work. All curls stay DB, rope, or single-handle. Zero straight-bar supination.'},
     {id:'b2',e:'🔱',lbl:'Block 2',meta:'Cable Pair + Y-Raise · 60-90 sec',
       g:[
@@ -1103,11 +1103,11 @@ var EXERCISE_ALTS={
   'DB Alternating Curl':[
     {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Seated, alternate arms'},
     {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, full ROM'},
-    {n:'Incline DB Curl',tr:'Incline DB Curl',note:'Dumbbells · 45-60 deg incline, deep stretch'},
+    {n:'Incline Curl',tr:'Incline Curl',note:'Tonal custom · Bench at Tonal, 45-60 deg incline'},
     {n:'Lying Bicep Curl',tr:'Lying Bicep Curl',note:'Tonal · Incline, peak contraction'},
     {n:'Reverse Grip Bicep Curl',tr:'Reverse Grip Bicep Curl',note:'Tonal · Brachialis and brachioradialis'},
   ],
-  'Incline DB Curl':[
+  'Incline Curl':[
     {n:'Seated Alt Bicep Curl',tr:'Seated Alt Bicep Curl',note:'Tonal · Alternate arms, similar ROM'},
     {n:'Seated Bicep Curl',tr:'Seated Bicep Curl',note:'Tonal · Both arms, cable tension'},
     {n:'DB Alternating Curl',tr:'DB Alternating Curl',note:'Dumbbells · Standing, full supination'},
