@@ -12,7 +12,7 @@
 <title>Iron Edge</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080808;--card:#111;--border:#1e1e1e;--text:#efefef;--muted:#5a5a5a;--subtle:#2a2a2a;--push:#e8622a;--pull:#27b872;--legs:#e8a82a;--arms:#9b2de8;--recovery:#3a88cc;--protein:#14b8a6;--sb:env(safe-area-inset-bottom,16px);--st:env(safe-area-inset-top,0px);}
+:root{--bg:#080808;--card:#111;--border:#1e1e1e;--text:#efefef;--muted:#5a5a5a;--subtle:#2a2a2a;--push:#e8622a;--pull:#27b872;--legs:#e8a82a;--arms:#9b2de8;--recovery:#3a88cc;--upper:#2aa8e8;--protein:#14b8a6;--sb:env(safe-area-inset-bottom,16px);--st:env(safe-area-inset-top,0px);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
 .shell{display:flex;flex-direction:column;height:100dvh;padding-top:var(--st);}
@@ -70,6 +70,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bpu{background:rgba(39,184,114,.15);color:var(--pull);}
 .bl{background:rgba(232,168,42,.15);color:var(--legs);}
 .ba{background:rgba(155,45,232,.15);color:var(--arms);}
+.bu{background:rgba(42,168,232,.15);color:var(--upper);}
 .br{background:rgba(58,136,204,.15);color:var(--recovery);}
 .dscw{flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--border);}
 .dscw::-webkit-scrollbar{display:none;}
@@ -79,6 +80,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .dc.apull{border-color:var(--pull);background:rgba(39,184,114,.08);}
 .dc.alegs{border-color:var(--legs);background:rgba(232,168,42,.08);}
 .dc.aarms{border-color:var(--arms);background:rgba(155,45,232,.08);}
+.dc.aupper{border-color:var(--upper);background:rgba(42,168,232,.08);}
 .dc.arec{border-color:var(--recovery);background:rgba(58,136,204,.08);}
 .dow{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .dname{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;white-space:nowrap;}
@@ -86,6 +88,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .dc.apull .dname,.cpull .dname{color:var(--pull);}
 .dc.alegs .dname,.clegs .dname{color:var(--legs);}
 .dc.aarms .dname,.carms .dname{color:var(--arms);}
+.dc.aupper .dname,.cupper .dname{color:var(--upper);}
 .dc.arec .dname,.crec .dname{color:var(--recovery);}
 .cdone{font-size:10px;margin-top:2px;}
 .btw{flex-shrink:0;overflow-x:auto;scrollbar-width:none;background:var(--card);border-bottom:1px solid var(--border);}
@@ -96,6 +99,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bt.apull{border-bottom-color:var(--pull);color:var(--pull);}
 .bt.alegs{border-bottom-color:var(--legs);color:var(--legs);}
 .bt.aarms{border-bottom-color:var(--arms);color:var(--arms);}
+.bt.aupper{border-bottom-color:var(--upper);color:var(--upper);}
 .bt.arec{border-bottom-color:var(--recovery);color:var(--recovery);}
 .bt.awu{border-bottom-color:#888;color:#aaa;}
 .bt.acd{border-bottom-color:#3abcbc;color:#3abcbc;}
@@ -497,8 +501,8 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
   <div class="screen active" id="sW">
     <div class="hdr">
       <div class="hdr-row">
-        <div><div class="hdr-title">Iron Edge</div><div class="hdr-sub">Hypertrophy · PPL + Arms · 7-Day</div></div>
-        <div class="hdr-badge bp" id="hBadge">Push A</div>
+        <div><div class="hdr-title">Iron Edge</div><div class="hdr-sub">IE2 · Recomp · 6-Day + Conditioning</div></div>
+        <div class="hdr-badge bl" id="hBadge">Lower A</div>
       </div>
     </div>
     <div class="dscw"><div class="dsc" id="dayScroll"></div></div>
@@ -506,7 +510,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
     <div class="ms" id="mainScroll"></div>
   </div>
   <div class="screen" id="sT">
-    <div class="thdr"><div class="ttitle">Progression Tracker</div><div class="tsub">Top working set · e1RM · Auto-saved</div></div>
+    <div class="thdr"><div class="ttitle">Exercise Library</div><div class="tsub">Any movement · Full history · Ad-hoc logging</div></div>
     <div class="tscr" id="trackerScroll"></div>
   </div>
   <div class="screen" id="sD">
@@ -519,7 +523,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
   </div>
   <div class="bottom-nav">
     <button class="nav-btn active" id="nW" onclick="goTo('W')" aria-label="Program"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M10 5v14M14 5v14M18 7v10M2 12h2M10 12h4M20 12h2"/></svg></div><div class="nav-label">Program</div></button>
-    <button class="nav-btn ntrk" id="nT" onclick="goTo('T')" aria-label="Progress"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><div class="nav-label">Progress</div></button>
+    <button class="nav-btn ntrk" id="nT" onclick="goTo('T')" aria-label="Progress"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><div class="nav-label">Library</div></button>
     <button class="nav-btn ndsh" id="nD" onclick="goTo('D')" aria-label="Dashboard"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 2 4h1M17 6h3a2 2 0 0 1-2 4h-1"/></svg></div><div class="nav-label">Dashboard</div></button>
     <button class="nav-btn npro" id="nP" onclick="goTo('P')" aria-label="Protein"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8l-1 4.2H9L8 2z"/><path d="M9 6.2l-1.6 13a2 2 0 0 0 2 2.3h5.2a2 2 0 0 0 2-2.3l-1.6-13"/><path d="M7.3 13.5h9.4"/></svg></div><div class="nav-label">Protein</div></button>
   </div>
@@ -529,45 +533,46 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 // ── STATIC DATA ──────────────────────────────────────────────────────────────
 
 var DAYS=[
-  {dow:'Mon',name:'Push A',type:'push'},
-  {dow:'Tue',name:'Pull A',type:'pull'},
-  {dow:'Wed',name:'Arms',type:'arms'},
-  {dow:'Thu',name:'Legs A',type:'legs'},
-  {dow:'Fri',name:'Push B',type:'push'},
-  {dow:'Sat',name:'Pull B',type:'pull'},
+  {dow:'Mon',name:'Lower A',type:'legs'},
+  {dow:'Tue',name:'Push A',type:'push'},
+  {dow:'Wed',name:'Pull A',type:'pull'},
+  {dow:'Thu',name:'Arms + Delts',type:'arms'},
+  {dow:'Fri',name:'Lower B',type:'legs'},
+  {dow:'Sat',name:'Upper B',type:'upper'},
   {dow:'Sun',name:'Recovery',type:'recovery'},
 ];
 
 var TRACK_EX=[
-  // Push / Chest
-  'Incline Barbell Bench Press','Barbell Bench Press (Flat)','Alt Bench Press',
-  'Standing Incline Chest Press','Middle Chest Fly','Perfect Push-Ups',
-  // Shoulders
-  'Barbell OHP','Half Kneeling SA OHP','Front Raise','Lateral Raise','Reverse Fly',
-  // Triceps
-  'Skull Crushers','SA Overhead Tricep Extension','SA Tricep Extension',
-  'Reverse Grip Tricep Extension','Tricep Kickback','Tricep Extension',
-  // Back / Pull
-  'Barbell Bent Over Row','SA Bent Over Row','Weighted Pull-Up','Weighted Chin-Up',
-  'Neutral Grip Lat Pulldown',
-  'Seated Row','X Pulldown','Straight Arm Pulldown','Y Pull','W Hold','Shoulder Shrug',
-  // Biceps
-  'DB Alternating Curl','Incline DB Curl','Seated Bicep Curl',
-  'Reverse Grip Bicep Curl','Lying Bicep Curl','Seated Alt Bicep Curl','Hammer Curl',
-  // Legs
-  'Back Squat','Conventional Deadlift','Bulgarian Split Squat',
-  'Barbell RDL','RDL','Barbell Hip Thrust','Resisted Glute Bridge','Resisted Step Up','Resisted Calf Raise',
+  // ── IE2 current program ──
+  // Lower
+  'Goblet Squat','Barbell RDL','DB Reverse Lunge','DB Single-Leg RDL','Resisted Calf Raise',
+  'Conventional Deadlift','Barbell Hip Thrust','KB Swing','Seated Calf Raise',
+  // Push
+  'Barbell Bench Press (Flat)','Seated DB Shoulder Press','Incline DB Press','Lateral Raise','DB Lateral Raise',
+  'SA Overhead Tricep Extension','Perfect Push-Ups',
+  // Pull
+  'Weighted Pull-Up','Chest-Supported DB Row','Neutral Grip Lat Pulldown','Face Pull','Seated Row','Middle Chest Fly',
+  // Arms
+  'Incline DB Curl','DB Skull Crusher','Seated Bicep Curl','Tricep Extension','Y Pull',
+  'DB Reverse Curl','DB Overhead Tricep Extension','Hammer Curl','Seated Alt Bicep Curl','Tricep Kickback',
   // Core
+  'Cable Crunch','Hanging Knee Raise','Wood Chop',
+  // ── IE1 legacy (history preserved) ──
+  'Incline Barbell Bench Press','Alt Bench Press','Standing Incline Chest Press',
+  'Barbell OHP','Half Kneeling SA OHP','Front Raise','Reverse Fly',
+  'Skull Crushers','SA Tricep Extension','Reverse Grip Tricep Extension',
+  'Barbell Bent Over Row','SA Bent Over Row','Weighted Chin-Up','X Pulldown','Straight Arm Pulldown','W Hold','Shoulder Shrug',
+  'DB Alternating Curl','Reverse Grip Bicep Curl','Lying Bicep Curl',
+  'Back Squat','Bulgarian Split Squat','RDL','Resisted Glute Bridge','Resisted Step Up',
   'Weighted Incline Sit-Up','Seated Pallof Press',
 ];
 
 var PHASES=[
-  {name:'Accumulation',weeks:8,color:'#e8b840',desc:'High volume · RIR 1-2 · Building tissue and work capacity.',treps:8,wmult:1.0},
-  {name:'Intensification',weeks:8,color:'#e8622a',desc:'Lower reps · Heavier · Expressing strength built in Phase 1. Expect PRs.',treps:5,wmult:1.0},
-  {name:'Deload',weeks:2,color:'#4499dd',desc:'50% volume · Same movements · Body consolidates gains.',treps:8,wmult:0.85},
+  {name:'Build',weeks:3,color:'#e8b840',desc:'Double progression · Top of rep range on all sets → add weight. Three weeks up, then the wave resets.',treps:8,wmult:1.0},
+  {name:'Deload',weeks:1,color:'#4499dd',desc:'50% volume · Loads ~10% lighter · One week of consolidation — sets are halved automatically below.',treps:8,wmult:0.9},
 ];
 
-var PROGRAM_START=new Date(2026,4,18).getTime(); // Mon May 18 2026, local time (was Sat May 16 via UTC-parsed ISO string — caused week/phase to roll over 2 days early)
+var PROGRAM_START=new Date(2026,6,20).getTime(); // Mon Jul 20 2026, local time — IE2 recomp program (4-week waves: 3 Build + 1 Deload)
 
 var WU={
   push:{row:'5 min easy. Moderate stroke rate. Open thoracic spine with each drive.',
@@ -582,6 +587,9 @@ var WU={
   arms:{row:'5 min easy. Light effort — lower CNS demand day.',
     mob:[{n:'Int/Ext Shoulder Rotation light (Tonal)',d:'2x15 each — elbow health'},{n:'Wrist Circles + Flexor Stretch',d:'30 sec each direction'},{n:'Floor Slides (Tonal)',d:'2x12 — scapular control'},{n:'W Hold very light (Tonal)',d:'2x15 — rear delt prep'}],
     act:'Light Bicep Curl + Tricep Pushdown x15 each — blood into arms, establish mind-muscle connection.'},
+  upper:{row:'5 min easy. Moderate stroke rate — today hits the whole upper body, so warm push and pull together.',
+    mob:[{n:'Wall Chest Opener',d:'10 reps / 5 sec hold each'},{n:'Reach and Rotate (Tonal)',d:'10 reps each side'},{n:'Shoulder CARs',d:'5 circles each dir / arm'},{n:'Reverse Fly light (Tonal)',d:'2x12 — scapula activation'}],
+    act:'Incline Push-Up x12 + T-Pull light (Tonal) x12 — prime pressing and pulling patterns back-to-back, same as the supersets ahead.'},
 };
 
 var CD={
@@ -593,110 +601,120 @@ var CD={
     s:[{n:'Standing Quad / Hip Flexor Stretch',c:'Stand on one leg, pull heel to glute. Hold Tonal upright for balance.',h:'45 sec each'},{n:'Supine Hamstring Stretch',c:'On back, one leg straight up, gentle pull with hands. Passive length only.',h:'45 sec each'},{n:'Figure-Four Glute Stretch',c:'On back, cross ankle over opposite knee, pull both legs toward chest. Deep glute stretch.',h:'45 sec each'},{n:'Gentle Knee Decompression Hang',c:'Sit at bench edge, let leg hang straight. Passive joint decompression. Meniscus-safe.',h:'60 sec each'}]},
   arms:{note:'<strong>Why these:</strong> High-volume arm work creates elbow and wrist tension. These are the stretches most lifters skip that most directly prevent elbow issues long-term.',
     s:[{n:'Wrist Flexor Stretch',c:'Arm straight, palm up, gently press fingers down. Forearm flexors and bicep tendon.',h:'30 sec each'},{n:'Wrist Extensor Stretch',c:'Arm straight, palm down, gently press fingers down. Forearm extensors and brachioradialis.',h:'30 sec each'},{n:'Overhead Tricep Stretch',c:'Reach one hand down spine, press elbow back. Long head of tricep — most worked today.',h:'30 sec each'},{n:'Cross-Body Shoulder Stretch',c:'Arm across chest, other hand presses elbow. Releases bicep tendon at shoulder.',h:'30 sec each'}]},
+  upper:{note:'<strong>Why these:</strong> Upper B loads chest, back, and arms in one session. This sequence restores pec and lat length and releases elbow flexor tension from the pump work.',
+    s:[{n:'Doorway / Tonal Post Chest Stretch',c:'Grab Tonal upright at shoulder height, step through and rotate away. Full pec stretch. Switch sides.',h:'45 sec each'},{n:'Overhead Lat Stretch',c:'Grab Tonal upright overhead, sink hips back and away. Lat lengthens from armpit to hip.',h:'45 sec each'},{n:'Supinated Bicep / Forearm Stretch',c:'Arm straight, palm up, gently press fingers down. Bicep tendon and forearm flexors.',h:'30 sec each'},{n:'Cross-Body Shoulder Stretch',c:'Pull elbow across chest at shoulder height. Posterior capsule and rear delt.',h:'30 sec each'}]},
   recovery:{note:'<strong>Recovery day:</strong> Run through this after cardio and before sauna. The heat will deepen the benefit of anything you just stretched.',
     s:[{n:'90-90 Hip Stretch (Tonal)',c:'Both hips at 90 degrees, sit tall, lean forward over front shin. Work both sides.',h:'60 sec each'},{n:'Bretzel (Tonal)',c:'Side-lying hip flexor and thoracic rotation combo. One of the best all-in-one recovery stretches.',h:'45 sec each'},{n:"Child's Pose with Lat Reach",c:'Both arms forward, sink chest. Walk hands to each side. Slow breathing.',h:'60 sec'},{n:'Supine Spinal Twist',c:'On back, one knee crosses body, arms out to sides. Let gravity do the work.',h:'45 sec each'}]},
 };
 
-// BLOCKS data
+// BLOCKS data — IE2 (Recomp · started Jul 20 2026)
 var BLOCKS={
   0:[
-    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
+    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Knee-conscious',isWU:true},
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Incline Barbell Bench Press',nt:'Custom · Load barbell on Tonal uprights at 30-45 degree bench angle. Superior upper chest stimulus.',tg:'tcus',sets:'4x',reps:'6-8',rir:'RIR 1-2',tr:'Incline Barbell Bench Press'}]},
-        {ss:false,r:[{n:'Barbell Bench Press (Flat)',nt:'Tonal · Primary compound. Shoulder blades retracted and depressed throughout.',tg:'tton',sets:'3x',reps:'8-10',rir:'RIR 2',tr:'Barbell Bench Press (Flat)'}]},
-      ],note:'<strong>Progression:</strong> Add weight when you hit top of rep range at target RIR for 2 consecutive sessions.'},
-    {id:'b2',e:'💥',lbl:'Block 2',meta:'Supersets · 90 sec rest',
+        {ss:false,r:[{n:'Goblet Squat',nt:'Tonal · Squat wedges under heels. Elbows inside knees, chest tall. Quad-dominant, knee-friendly loading.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 2',tr:'Goblet Squat'}]},
+        {ss:false,r:[{n:'Barbell RDL',nt:'Tonal · Hip hinge, soft knees, bar drags the thighs. Full hamstring stretch at bottom — no lumbar rounding.',tg:'tton',sets:'3x',reps:'8-10',rir:'RIR 2',tr:'Barbell RDL'}]},
+      ],note:'<strong>Double progression:</strong> Hit the top of the rep range on all sets, then add weight next session. Weeks 1-3 build, week 4 auto-deloads.'},
+    {id:'b2',e:'🦵',lbl:'Block 2',meta:'Unilateral · Superset · 90 sec rest',
       g:[
-        {ss:true,ssl:'Superset A — Upper Chest + Front Delt',r:[{n:'Standing Incline Chest Press',nt:'Tonal cable · Upper chest, full ROM',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Standing Incline Chest Press'},{n:'Front Raise',nt:'Tonal · Alternating, controlled negative',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 2',tr:'Front Raise'}]},
-        {ss:true,ssl:'Superset B — Chest + Lateral Delt',r:[{n:'Perfect Push-Ups',nt:'Equipment · Rotating handles allow natural wrist tracking — zero wrist stress. At 230 lb a full set is significant load. Control the 3-sec descent.',tg:'tcus',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Perfect Push-Ups'},{n:'Lateral Raise',nt:'Tonal · 3-sec negative, slight forward lean',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Lateral Raise'}]},
+        {ss:true,ssl:'Superset A — Lunge + Single-Leg Hinge',r:[{n:'DB Reverse Lunge',nt:'Dumbbells · Step back, front shin vertical. More knee-friendly than Bulgarians — swap in Bulgarians only on quiet-knee weeks.',tg:'tdb',sets:'3x',reps:'8-10 ea.',rir:'RIR 2',tr:'DB Reverse Lunge'},{n:'DB Single-Leg RDL',nt:'Dumbbells · Opposite-hand DB, hips square. Balance + hamstring + glute med in one move.',tg:'tdb',sets:'3x',reps:'10 ea.',rir:'RIR 2',tr:'DB Single-Leg RDL'}]},
       ]},
-    {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps · 60 sec rest',
-      g:[{ss:true,ssl:'Superset C — Long Head + Lateral Head',r:[{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'},{n:'Reverse Grip Tricep Extension',nt:'Tonal cable · Lateral head emphasis',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Reverse Grip Tricep Extension'}]}]},
-    {id:'b4',e:'🔩',lbl:'Block 4',meta:'Core · 45 sec rest',
-      g:[{ss:true,ssl:'Superset D — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation, elbows in, press straight out',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-',tr:'Seated Pallof Press'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Progress from bodyweight to plate hold once 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
-    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'push'},
+    {id:'b3',e:'🔩',lbl:'Block 3',meta:'Calves + Core · 60 sec rest',
+      g:[
+        {ss:true,ssl:'Superset B — Calf + Loaded Flexion',r:[{n:'Resisted Calf Raise',nt:'Tonal · Full ROM — deep stretch at bottom, 2-sec squeeze at top.',tg:'tton',sets:'4x',reps:'12-15',rir:'RIR 1',tr:'Resisted Calf Raise'},{n:'Cable Crunch',nt:'Tonal · Kneeling, hips locked — flex the spine, not the hips. Run as a custom move if not in your library.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Cable Crunch'}]},
+      ]},
+    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Knee-priority',isCD:true,cdt:'legs'},
   ],
   1:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
     {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Barbell Bent Over Row',nt:'Tonal · Pronated grip, hinge ~45 degrees, elbows drive back. Primary thickness builder.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 1-2',tr:'Barbell Bent Over Row'}]},
-        {ss:false,r:[{n:'Bodyweight Pull-Up',nt:'REP PU-1100 · Overhand grip, ~1-1.5x shoulder width. Building to 3x10 before adding load. Do 4 sets leaving 1-2 reps in the tank — do NOT train to failure. Add 1 rep per set each week.',tg:'tcus',sets:'4x',reps:'4-6',rir:'RIR 1-2',tr:'Weighted Pull-Up'}]},
-      ],note:'<strong>Cue:</strong> Initiate every pull by depressing the shoulder blade first, then drive elbow — keeps tension on lats, not biceps.'},
-    {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
+        {ss:false,r:[{n:'Barbell Bench Press (Flat)',nt:'Tonal · Primary strength lift. Shoulder blades retracted and depressed, feet planted.',tg:'tton',sets:'4x',reps:'5-8',rir:'RIR 1-2',tr:'Barbell Bench Press (Flat)'}]},
+        {ss:false,r:[{n:'Seated DB Shoulder Press',nt:'Dumbbells · Nighthawk near-vertical. Neutral-to-45° grip — zero wrist stress. Press to lockout, no clang at top.',tg:'tdb',sets:'3x',reps:'6-9',rir:'RIR 2',tr:'Seated DB Shoulder Press'}]},
+      ],note:'<strong>Push A intent:</strong> Heavy pressing strength. The pump work lives on Saturday — here you move big loads with full rest.'},
+    {id:'b2',e:'💥',lbl:'Block 2',meta:'Superset · 90 sec rest',
       g:[
-        {ss:true,ssl:'Superset A — Pulldown + Row',r:[{n:'Neutral Grip Lat Pulldown',nt:'Tonal · Full stretch at top, squeeze at bottom',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Neutral Grip Lat Pulldown'},{n:'Seated Row',nt:'Tonal · Elbows tucked, 1-sec pause at contraction',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Seated Row'}]},
-        {ss:true,ssl:'Superset B — Isolation + Rear Delt',r:[{n:'X Pulldown',nt:'Tonal · Arms straight, pure lat isolation',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'X Pulldown'},{n:'Reverse Fly',nt:'Tonal · Rear delts, light weight, full arc',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Reverse Fly'}]},
+        {ss:true,ssl:'Superset A — Upper Chest + Side Delt',r:[{n:'Incline DB Press',nt:'Dumbbells · Nighthawk at 30-45°. Deep stretch at bottom, press up and slightly back.',tg:'tdb',sets:'3x',reps:'8-10',rir:'RIR 2',tr:'Incline DB Press'},{n:'Lateral Raise',nt:'Tonal · 3-sec negative, slight forward lean. Side delts are a priority — every rep strict.',tg:'tton',sets:'4x',reps:'12-15',rir:'RIR 1',tr:'Lateral Raise'}]},
       ]},
-    {id:'b3',e:'💪',lbl:'Block 3',meta:'Biceps · 60 sec rest',
-      g:[{ss:true,ssl:'Superset C — Peak + Brachialis',r:[{n:'Seated Bicep Curl',nt:'Tonal · Full ROM, no swing, squeeze at top',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Seated Bicep Curl'},{n:'Reverse Grip Bicep Curl',nt:'Tonal · Brachialis + brachioradialis focus',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Reverse Grip Bicep Curl'}]}]},
-    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'pull'},
+    {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps + Finisher · 60-90 sec rest',
+      g:[
+        {ss:false,r:[{n:'SA Overhead Tricep Extension',nt:'Tonal · Long head under full stretch at the top — the most important tricep head for size.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
+        {ss:false,r:[{n:'Perfect Push-Ups',nt:'Equipment + 15 lb vest · Rotating handles, wrist-neutral. Log bodyweight + vest (245) in the weight field. Two all-out sets cap the day.',tg:'tcus',sets:'2x',reps:'AMRAP',rir:'-',tr:'Perfect Push-Ups'}]},
+      ]},
+    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'push'},
   ],
   2:[
+    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
+    {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
+      g:[
+        {ss:false,r:[{n:'Bodyweight Pull-Up',nt:'REP PU-1100 · Overhand, ~1-1.5x shoulder width. Linear progression continues: 4 submax sets, add 1 rep per set weekly. Vest comes when 4x10 is owned clean.',tg:'tcus',sets:'4x',reps:'6-10',rir:'RIR 1-2',tr:'Weighted Pull-Up'}]},
+        {ss:false,r:[{n:'Chest-Supported DB Row',nt:'Dumbbells · Nighthawk at ~30°, chest down. Zero lower-back fatigue — pure upper-back thickness. Drive elbows back and squeeze.',tg:'tdb',sets:'4x',reps:'8-10',rir:'RIR 1-2',tr:'Chest-Supported DB Row'}]},
+      ],note:'<strong>Cue:</strong> Depress the shoulder blade first, then drive the elbow — keeps tension on lats, not biceps.'},
+    {id:'b2',e:'🦅',lbl:'Block 2',meta:'Superset · 90 sec rest',
+      g:[
+        {ss:true,ssl:'Superset A — Lat + Rear Delt',r:[{n:'Neutral Grip Lat Pulldown',nt:'Tonal · Full stretch at top, drive elbows to hips.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Neutral Grip Lat Pulldown'},{n:'Face Pull',nt:'Tonal · Pull to eye level, external rotate at the end. Rear delts + rotator cuff health. Swap to Reverse Fly if you prefer.',tg:'tton',sets:'3x',reps:'15',rir:'RIR 1',tr:'Face Pull'}]},
+      ]},
+    {id:'b3',e:'💪',lbl:'Block 3',meta:'Arms + Core · 60 sec rest',
+      g:[
+        {ss:true,ssl:'Superset B — Brachialis + Lower Abs',r:[{n:'Hammer Curl',nt:'Dumbbells · Neutral grip throughout — brachialis and brachioradialis. Heavy and strict.',tg:'tdb',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Hammer Curl'},{n:'Hanging Knee Raise',nt:'REP PU-1100 · Dead hang, no swing, knees to chest with a posterior pelvic tilt at the top. Progress to straight legs.',tg:'tcus',sets:'3x',reps:'10-15',rir:'-',tr:'Hanging Knee Raise'}]},
+      ]},
+    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'pull'},
+  ],
+  3:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Elbow prep',isWU:true},
-    {id:'b1',e:'💪',lbl:'Block 1',meta:'Openers · 90 sec rest',
+    {id:'b1',e:'💪',lbl:'Block 1',meta:'Openers · Antagonist Superset · 90 sec',
       g:[
-        {ss:false,r:[{n:'DB Alternating Curl',nt:'Dumbbells · Start neutral, supinate naturally through the rep. No locked wrist — joint tracks freely. Go heavy with the adjustables.',tg:'tdb',sets:'4x',reps:'8-10',rir:'RIR 1',tr:'DB Alternating Curl'}]},
-        {ss:false,r:[{n:'SA Overhead Tricep Extension',nt:'Tonal · Long head stretch at top. Most important tricep head for size. Full ROM — feel the stretch.',tg:'tton',sets:'4x',reps:'10-12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
-      ],note:'<strong>Arms strategy:</strong> Heavy solo openers first, then antagonist supersets — bicep rest while triceps work and vice versa. Shorter rest, higher quality output.'},
-    {id:'b2',e:'🔱',lbl:'Block 2',meta:'Antagonist Supersets · 90 sec between pairs',
+        {ss:true,ssl:'Superset A — Long Head Pair (Bi + Tri)',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60° incline. Full stretch at bottom — long head emphasis. Runs ~70-75% of standing curl weight.',tg:'tdb',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'Incline DB Curl'},{n:'DB Skull Crusher',nt:'Dumbbells · Neutral grip on the Nighthawk — wrist-safe. Lower past the forehead for max long-head stretch.',tg:'tdb',sets:'3x',reps:'8-10',rir:'RIR 1',tr:'DB Skull Crusher'}]},
+      ],note:'<strong>Arms strategy:</strong> Antagonist pairs — biceps rest while triceps work. All curls stay DB, rope, or single-handle. Zero straight-bar supination.'},
+    {id:'b2',e:'🔱',lbl:'Block 2',meta:'Cable Pair + Y-Raise · 60-90 sec',
       g:[
-        {ss:true,ssl:'Superset A — Long Head (Bi + Tri)',r:[{n:'Incline DB Curl',nt:'Dumbbells · 45-60 degree incline. Full stretch at bottom — long head emphasis.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Incline DB Curl'},{n:'Skull Crushers',nt:'Tonal barbell · Elbows in, lower to forehead. Long head matches the incline curl — antagonist pair.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Skull Crushers'}]},
-        {ss:true,ssl:'Superset B — Brachialis + Medial (Bi + Tri)',r:[{n:'Hammer Curl',nt:'Dumbbells or Tonal cable · Neutral grip throughout — no supination. Loads brachialis and brachioradialis, pushes bicep peak higher.',tg:'tdb',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Hammer Curl'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative. Lateral head. Paired with hammer curl — arm fully extended on both movements.',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
+        {ss:true,ssl:'Superset B — Cable Curl + Pushdown',r:[{n:'Seated Bicep Curl',nt:'Tonal · Constant cable tension, no swing, squeeze at top.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Seated Bicep Curl'},{n:'Tricep Extension',nt:'Tonal cable · Pushdown — elbows pinned, full lockout, peak contraction.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Tricep Extension'}]},
+        {ss:false,r:[{n:'Y Pull',nt:'Tonal · Arms sweep to a Y. Lower traps + rear delts — the posture half of the delt cap.',tg:'tton',sets:'3x',reps:'15',rir:'RIR 1',tr:'Y Pull'}]},
+      ]},
+    {id:'b3',e:'⚡',lbl:'Block 3',meta:'Finishers · 45-60 sec',
+      g:[
+        {ss:true,ssl:'Superset C — Forearm + Overhead',r:[{n:'DB Reverse Curl',nt:'Dumbbells · Pronated grip — brachioradialis and forearm. Light, strict.',tg:'tdb',sets:'2x',reps:'12',rir:'RIR 1',tr:'DB Reverse Curl'},{n:'DB Overhead Tricep Extension',nt:'Dumbbells · Two hands, one DB. Elbows in, deep stretch behind the head.',tg:'tdb',sets:'2x',reps:'12',rir:'RIR 1',tr:'DB Overhead Tricep Extension'}]},
+        {ss:false,r:[{n:'DB Lateral Raise',nt:'Dumbbells · Priority delts: 4 sets, final set is a drop set — strip weight twice, go to near-failure each strip.',tg:'tdb',sets:'4x',reps:'12-20',rir:'RIR 0-1',tr:'DB Lateral Raise'}]},
       ]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Elbow focus',isCD:true,cdt:'arms'},
   ],
-  3:[
+  4:[
     {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Knee-conscious',isWU:true},
-    {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
+    {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compound · 2-3 min rest',
       g:[
-        {ss:false,r:[{n:'Barbell Back Squat',nt:'Custom · Load barbell on Tonal uprights, bar on upper traps. Use squat wedges. No wrist loading — eliminates front rack stress entirely.',tg:'tcus',sets:'4x',reps:'6-8',rir:'RIR 2',tr:'Back Squat'}]},
-        {ss:false,r:[{n:'Bulgarian Split Squat',nt:'Tonal cable for balance. Rear foot elevated on bench.',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'Bulgarian Split Squat'}]},
-      ],note:'Knee: Always use squat wedges. Swap Back Squat to Goblet Squat to Bench if knee aches. Back squat eliminates all wrist stress vs front rack.'},
-    {id:'b2',e:'🦵',lbl:'Block 2',meta:'Posterior · 90 sec rest',
+        {ss:false,r:[{n:'Conventional Deadlift',nt:'Tonal · Heaviest pull of the week. Brace hard, push the floor away, lock out tall. Quality over grinding.',tg:'tton',sets:'4x',reps:'5-6',rir:'RIR 2',tr:'Conventional Deadlift'}]},
+      ],note:'<strong>Lower B intent:</strong> Posterior chain + athletic power. Quads got theirs Monday — today is hinge, hips, and drive.'},
+    {id:'b2',e:'🍑',lbl:'Block 2',meta:'Hip Power · Superset · 90 sec rest',
       g:[
-        {ss:true,ssl:'Superset A — Hip Hinge + Hip Extension',r:[{n:'Barbell RDL',nt:'Tonal · Hip hinge, feel hamstring stretch at bottom',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Barbell RDL'},{n:'Barbell Hip Thrust',nt:'Tonal · Use barbell pad. Drive hips to full extension, 1-sec squeeze at top.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Barbell Hip Thrust'}]},
-        {ss:true,ssl:'Superset B — Step + Calf',r:[{n:'Resisted Step Up',nt:'Tonal · 3-sec descent, knee tracks second toe',tg:'tton',sets:'3x',reps:'12 ea.',rir:'RIR 2',tr:'Resisted Step Up'},{n:'Resisted Calf Raise',nt:'Tonal · Single leg, full ROM top to bottom',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Resisted Calf Raise'}]},
+        {ss:true,ssl:'Superset A — Thrust + Swing',r:[{n:'Barbell Hip Thrust',nt:'Tonal · Barbell pad, shoulders on the Nighthawk. Drive to full extension, 1-sec squeeze.',tg:'tton',sets:'3x',reps:'8-12',rir:'RIR 1',tr:'Barbell Hip Thrust'},{n:'KB Swing',nt:'50 lb kettlebell · Explosive hip snap, arms are ropes. Athletic power with zero knee impact.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'KB Swing'}]},
+      ]},
+    {id:'b3',e:'🦵',lbl:'Block 3',meta:'Quads + Calves · Superset · 60 sec',
+      g:[
+        {ss:true,ssl:'Superset B — Heel-Elevated + Seated Calf',r:[{n:'Goblet Squat',nt:'Tonal · Heels elevated on wedges, LIGHT (~60% of Monday). Upright torso, deep knee flexion — quad pump, not a strength test.',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Goblet Squat'},{n:'Seated Calf Raise',nt:'Bench seated, DBs on knees (pad under them). Soleus focus — slow, deep, 15-20 strict reps.',tg:'tcus',sets:'4x',reps:'15-20',rir:'RIR 1',tr:'Seated Calf Raise'}]},
       ]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Knee-priority',isCD:true,cdt:'legs'},
   ],
-  4:[
-    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
-    {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Compounds · 2-3 min rest',
-      g:[
-        {ss:false,r:[{n:'Barbell OHP',nt:'Tonal · Standing or seated. Push B is shoulder-dominant to complement Push A.',tg:'tton',sets:'4x',reps:'6-8',rir:'RIR 1-2',tr:'Barbell OHP'}]},
-        {ss:false,r:[{n:'Half Kneeling SA OHP',nt:'Tonal · Unilateral, core stability demand',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'Half Kneeling SA OHP'}]},
-      ],note:'<strong>Push B intent:</strong> Higher shoulder volume, less chest than Push A. Variation prevents accommodation.'},
-    {id:'b2',e:'💥',lbl:'Block 2',meta:'Supersets · 90 sec rest',
-      g:[
-        {ss:true,ssl:'Superset A — Chest + Lateral Delt',r:[{n:'Alt Bench Press',nt:'Tonal · Single-arm alternating, shoulder-friendly ROM',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 2',tr:'Alt Bench Press'},{n:'Lateral Raise',nt:'Tonal · Drop set on final set',tg:'tton',sets:'4x',reps:'12-15',rir:'RIR 1',tr:'Lateral Raise'}]},
-        {ss:true,ssl:'Superset B — Fly + Rear Delt',r:[{n:'Middle Chest Fly',nt:'Tonal cable · Squeeze at center',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Middle Chest Fly'},{n:'Reverse Fly',nt:'Tonal · Rear delt, light, full arc',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Reverse Fly'}]},
-      ]},
-    {id:'b3',e:'💪',lbl:'Block 3',meta:'Triceps + Finisher · 60 sec rest',
-      g:[
-        {ss:true,ssl:'Superset C — Overhead + Pushdown',r:[{n:'SA Tricep Extension',nt:'Tonal · Overhead, long head, elbow pointing up',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'SA Tricep Extension'},{n:'Tricep Extension',nt:'Tonal cable · Pushdown variation — intentionally different from Arms day kickbacks. Cable, elbow-locked, peak contraction.',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Extension'}]},
-        {ss:false,r:[{n:'Perfect Push-Ups',nt:'Equipment · Rotating handles — wrist-neutral throughout. Sets to failure. Natural cap to a shoulder-heavy day. Serratus anterior activation bonus.',tg:'tcus',sets:'2x',reps:'To failure',rir:'-',tr:'Perfect Push-Ups'}]},
-      ]},
-    {id:'b4',e:'🔩',lbl:'Block 4',meta:'Core · 45 sec rest',
-      g:[{ss:true,ssl:'Superset D — Anti-Rotation + Loaded Abs',r:[{n:'Seated Pallof Press',nt:'Tonal · Anti-rotation, elbows in, press straight out',tg:'tton',sets:'2x',reps:'12 ea.',rir:'-',tr:'Seated Pallof Press'},{n:'Weighted Incline Sit-Up',nt:'REP Nighthawk bench · Foot roller locked. Progress from bodyweight to plate hold once 3x20 is clean.',tg:'tcus',sets:'3x',reps:'12-15',rir:'-',tr:'Weighted Incline Sit-Up'}]}]},
-    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'push'},
-  ],
   5:[
-    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min',isWU:true},
-    {id:'b1',e:'🏋️',lbl:'Block 1',meta:'Lat Width · 2-3 min rest',
+    {id:'wu',e:'🔥',lbl:'Warm-Up',meta:'15 min · Full upper',isWU:true},
+    {id:'b1',e:'💥',lbl:'Block 1',meta:'Press + Row · Superset · 90 sec rest',
       g:[
-        {ss:false,r:[{n:'Bodyweight Chin-Up',nt:'REP PU-1100 · Shoulder-width supinated grip. More bicep involvement than pull-up. Same progression: 4 sets submax, add 1 rep/week. Target 3x10 before adding load.',tg:'tcus',sets:'4x',reps:'4-6',rir:'RIR 1-2',tr:'Weighted Chin-Up'}]},
-        {ss:false,r:[{n:'SA Bent Over Row',nt:'Tonal · Single arm, hinge at hips, elbow drives straight back. Longer ROM than barbell row — feel the lat stretch at the bottom. Corrects left/right imbalances.',tg:'tton',sets:'3x',reps:'10-12 ea.',rir:'RIR 2',tr:'SA Bent Over Row'}]},
-      ]},
-    {id:'b2',e:'🦅',lbl:'Block 2',meta:'Supersets · 90 sec rest',
+        {ss:true,ssl:'Superset A — Incline Press + Row',r:[{n:'Incline DB Press',nt:'Dumbbells · Nighthawk 30-45°. Moderate load, perfect reps — this is the metabolic day.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1-2',tr:'Incline DB Press'},{n:'Chest-Supported DB Row',nt:'Dumbbells · Chest down on the incline. Antagonist pair — push then pull, minimal rest.',tg:'tdb',sets:'3x',reps:'10-12',rir:'RIR 1-2',tr:'Chest-Supported DB Row'}]},
+      ],note:'<strong>Upper B intent:</strong> Pump + metabolic stress. Short rests, chase the burn — the heavy work already happened this week.'},
+    {id:'b2',e:'🦅',lbl:'Block 2',meta:'Cable Pair · Superset · 60-75 sec',
       g:[
-        {ss:true,ssl:'Superset A — Lat + Lower Trap',r:[{n:'Straight Arm Pulldown',nt:'Tonal · Arms straight, pure lat isolation',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Straight Arm Pulldown'},{n:'Y Pull',nt:'Tonal · Lower trap and posture',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Y Pull'}]},
-        {ss:true,ssl:'Superset B — Rear Delt + Trap Shelf',r:[{n:'W Hold',nt:'Tonal · 2-sec hold at contraction',tg:'tton',sets:'3x',reps:'15',rir:'RIR 1',tr:'W Hold'},{n:'Shoulder Shrug',nt:'Tonal · Full elevation, slow lower. Builds trap shelf.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Shoulder Shrug'}]},
+        {ss:true,ssl:'Superset B — Fly + Row',r:[{n:'Middle Chest Fly',nt:'Tonal cable · Squeeze at center, stretch wide.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Middle Chest Fly'},{n:'Seated Row',nt:'Tonal · Elbows tucked, 1-sec pause at contraction.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Seated Row'}]},
       ]},
-    {id:'b3',e:'💪',lbl:'Block 3',meta:'Biceps · 60 sec rest',
-      g:[{ss:true,ssl:'Superset C — Peak + Alternate',r:[{n:'Lying Bicep Curl',nt:'Tonal cable · Unique stretch angle, peak contraction',tg:'tton',sets:'3x',reps:'10-12',rir:'RIR 1',tr:'Lying Bicep Curl'},{n:'Seated Alt Bicep Curl',nt:'Tonal · Alternating, supinate at top',tg:'tton',sets:'3x',reps:'12 ea.',rir:'RIR 1',tr:'Seated Alt Bicep Curl'}]}]},
-    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'pull'},
+    {id:'b3',e:'💪',lbl:'Block 3',meta:'Arms + Delts · 45-60 sec',
+      g:[
+        {ss:true,ssl:'Superset C — Curl + Kickback',r:[{n:'Seated Alt Bicep Curl',nt:'Tonal · Alternating, supinate through the rep. Pump work.',tg:'tton',sets:'3x',reps:'12-15',rir:'RIR 1',tr:'Seated Alt Bicep Curl'},{n:'Tricep Kickback',nt:'Tonal cable · 3-sec negative, full lockout.',tg:'tton',sets:'3x',reps:'15-20',rir:'RIR 1',tr:'Tricep Kickback'}]},
+        {ss:false,r:[{n:'DB Lateral Raise',nt:'Dumbbells · Mechanical drop set: strict raises → lean-away raises → partials. That is one round. Three rounds.',tg:'tdb',sets:'3x',reps:'12+8+6',rir:'RIR 0',tr:'DB Lateral Raise'}]},
+      ]},
+    {id:'b4',e:'🔩',lbl:'Block 4',meta:'Core Circuit · 3 rounds · Minimal rest',
+      g:[
+        {ss:true,ssl:'Circuit — Rotation + Anti-Rotation + Stability',r:[{n:'Wood Chop',nt:'Tonal · High-to-low, rotate through the hips. Obliques under load.',tg:'tton',sets:'3x',reps:'10 ea.',rir:'-',tr:'Wood Chop'},{n:'Side Plank',nt:'Bodyweight · Straight line ear-to-ankle. Both sides = one set.',tg:'tcus',sets:'3x',reps:'30 sec ea.',rir:'-'},{n:'Dead Bug',nt:'Bodyweight · Low back glued to floor, slow opposite arm/leg.',tg:'tcus',sets:'3x',reps:'10 ea.',rir:'-'}]},
+      ]},
+    {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min',isCD:true,cdt:'upper'},
   ],
   6:[
     {id:'rec',e:'🧘',lbl:'Recovery',meta:'30-45 min · No loading',isRec:true},
@@ -798,11 +816,11 @@ function seedBaseline(){
 // Single source of truth for elapsed program weeks — all week/phase math flows through here
 function weeksSinceStart(){return Math.max(0,Math.floor((Date.now()-PROGRAM_START)/(7*24*60*60*1000)));}
 function getPhase(){
+  // IE2: 4-week waves — weeks 1-3 Build (double progression), week 4 Deload
   var totalW=weeksSinceStart();
-  var cw=totalW%18;
-  if(cw<8)return{phase:PHASES[0],wip:cw+1,tot:8,totalW:totalW+1};
-  if(cw<16)return{phase:PHASES[1],wip:cw-7,tot:8,totalW:totalW+1};
-  return{phase:PHASES[2],wip:cw-15,tot:2,totalW:totalW+1};
+  var cw=totalW%4,wave=Math.floor(totalW/4)+1;
+  if(cw<3)return{phase:PHASES[0],wip:cw+1,tot:3,totalW:totalW+1,wave:wave};
+  return{phase:PHASES[1],wip:1,tot:1,totalW:totalW+1,wave:wave};
 }
 function lowReps(rs){var m=(''+rs).match(/\d+/);return m?parseInt(m[0],10):null;}
 function highReps(rs){var m=(''+rs).match(/(\d+)\s*[-\u2013]\s*(\d+)/);return m?parseInt(m[2],10):lowReps(rs);}
@@ -812,15 +830,11 @@ function phaseSets(base){
   return Math.max(1,Math.ceil(parseInt(m[1],10)/2))+'x'; // deload = ~50% volume: halve sets, same movements
 }
 function phaseReps(base){
-  var ph=getPhase().phase.name;
-  if(ph!=='Intensification')return base;
-  var lo=lowReps(base);if(lo===null)return base;
-  var hi=highReps(base);
-  var nlo=Math.max(3,Math.round(lo*0.65)),nhi=Math.max(nlo+1,Math.round(hi*0.65));
-  return nlo+'-'+nhi;
+  // IE2 wave model: rep ranges are constant — progression comes from double progression, not phase compression
+  return base;
 }
 function getSugg(ex,repRange){
-  if(ex==='Perfect Push-Ups')return null; // bodyweight-only — a weight target isn't actionable
+  if(ex==='Perfect Push-Ups'||ex==='Hanging Knee Raise')return null; // bodyweight-only — a weight target isn't actionable
   var logs=ll();if(!logs[ex]||!logs[ex].length)return null;
   var ph=getPhase();
   var recent=logs[ex].slice(-5); // anchor to recent form, not all-time peak — auto-regulates after layoffs
@@ -833,10 +847,10 @@ function getSugg(ex,repRange){
 // ── SESSION ──────────────────────────────────────────────────────────────────
 
 function progWeek(){return weeksSinceStart()+1;}
-function isDone(di){return!!ls()['w'+progWeek()+'_d'+di];}
-function getTonalSummary(di){var s=ls()['w'+progWeek()+'_d'+di];return(s&&s.tonal)||null;}
+function isDone(di){return!!ls()['p2w'+progWeek()+'_d'+di];}
+function getTonalSummary(di){var s=ls()['p2w'+progWeek()+'_d'+di];return(s&&s.tonal)||null;}
 function calcSessionVolume(di){
-  var sess=ls(),key='w'+progWeek()+'_d'+di;
+  var sess=ls(),key='p2w'+progWeek()+'_d'+di;
   if(!sess[key])return 0;
   var dateStr=sess[key].date,logs=ll(),total=0;
   TRACK_EX.forEach(function(ex){
@@ -896,24 +910,24 @@ function saveTonalSummary(di){
   var g=function(id){var el=document.getElementById('tsm'+id);return el&&el.value?parseFloat(el.value)||el.value:null;};
   var tonal={volume:g('Volume'),work:g('Work'),cals:g('Cals'),avgHr:g('AvgHr'),maxHr:g('MaxHr'),duration:g('Dur'),notes:(document.getElementById('tsmNotes')||{}).value||null};
   Object.keys(tonal).forEach(function(k){if(!tonal[k])delete tonal[k];});
-  var sess=ls(),key='w'+progWeek()+'_d'+di;
+  var sess=ls(),key='p2w'+progWeek()+'_d'+di;
   if(sess[key])sess[key].tonal=tonal;ss(sess);
   closeTonalSummary();buildWC();showToast('✓ Tonal summary saved');
 }
 function isWeekComplete(){
   var sess=ls(),cw=progWeek(),count=0;
-  for(var i=0;i<6;i++){if(sess['w'+cw+'_d'+i])count++;}
+  for(var i=0;i<6;i++){if(sess['p2w'+cw+'_d'+i])count++;}
   return count>=6;
 }
 function toggleDone(di){
-  var sess=ls();var key='w'+progWeek()+'_d'+di;
+  var sess=ls();var key='p2w'+progWeek()+'_d'+di;
   var justCompleted=false;
   if(sess[key]){delete sess[key];xpAward('session_undo',-50,DAYS[di].name+' unmarked');}else{sess[key]={date:today(),ts:Date.now()};justCompleted=true;}
   ss(sess);buildDayScroll();buildWC();
   if(document.getElementById('sD').classList.contains('active'))buildDash();
   if(justCompleted){
     xpAward('session',50,DAYS[di].name+' complete');
-    var wkTag='w'+progWeek();
+    var wkTag='p2w'+progWeek();
     if(isWeekComplete()&&localStorage.getItem('ie_xp_wkc')!==wkTag){
       localStorage.setItem('ie_xp_wkc',wkTag);
       setTimeout(function(){xpAward('week6',100,'Week '+progWeek()+' — full week bonus');},500);
@@ -928,7 +942,7 @@ function toggleDone(di){
 function streakWeeks(){
   var sess=ls();var cw=progWeek();var weeks=[];
   for(var w=Math.max(1,cw-7);w<=cw;w++){
-    var c=0;for(var d=0;d<6;d++){if(sess['w'+w+'_d'+d])c++;}
+    var c=0;for(var d=0;d<6;d++){if(sess['p2w'+w+'_d'+d])c++;}
     weeks.push({week:w,completed:c,cur:w===cw});
   }
   return weeks;
@@ -940,7 +954,7 @@ function streakCount(){
 function flexStreakCount(){
   var sess=ls();var cw=progWeek();var s=0;
   for(var w=cw-1;w>=1;w--){
-    var c=0;for(var d=0;d<6;d++){if(sess['w'+w+'_d'+d])c++;}
+    var c=0;for(var d=0;d<6;d++){if(sess['p2w'+w+'_d'+d])c++;}
     if(c>=5)s++;else break;
   }
   return s;
@@ -1080,7 +1094,7 @@ function playWarmupClip(){
 }
 function nextWorkoutDay(){
   var sess=ls(),cw=progWeek();
-  for(var i=0;i<7;i++){if(!sess['w'+cw+'_d'+i])return i;}
+  for(var i=0;i<7;i++){if(!sess['p2w'+cw+'_d'+i])return i;}
   return 6;
 }
 // ── SESSION SWAPS ─────────────────────────────────────────────────────────────
@@ -1156,6 +1170,25 @@ var EXERCISE_ALTS={
   'Barbell Bent Over Row':[
     {n:'Seated Row',tr:'Seated Row',note:'Tonal · Horizontal pull, mid-back focus'},
     {n:'Neutral Grip Lat Pulldown',tr:'Neutral Grip Lat Pulldown',note:'Tonal · Vertical pull alternative'},
+  ],
+  'DB Reverse Lunge':[
+    {n:'Bulgarian Split Squat',tr:'Bulgarian Split Squat',note:'Tonal · Quiet-knee weeks only — rear foot on bench'},
+    {n:'Resisted Step Up',tr:'Resisted Step Up',note:'Tonal · 3-sec descent, knee tracks second toe'},
+  ],
+  'Goblet Squat':[
+    {n:'Back Squat',tr:'Back Squat',note:'Custom · Bar on Tonal uprights, upper traps, squat wedges'},
+    {n:'Bulgarian Split Squat',tr:'Bulgarian Split Squat',note:'Tonal · Unilateral quad option'},
+  ],
+  'Face Pull':[
+    {n:'Reverse Fly',tr:'Reverse Fly',note:'Tonal · Rear delts, light, full arc'},
+    {n:'W Hold',tr:'W Hold',note:'Tonal · 2-sec hold at contraction'},
+  ],
+  'Chest-Supported DB Row':[
+    {n:'SA Bent Over Row',tr:'SA Bent Over Row',note:'Tonal · Single arm, longer ROM'},
+    {n:'Seated Row',tr:'Seated Row',note:'Tonal · Cable horizontal pull'},
+  ],
+  'DB Lateral Raise':[
+    {n:'Lateral Raise',tr:'Lateral Raise',note:'Tonal · Constant cable tension version'},
   ],
 };
 function getEffectiveEx(r,di){
@@ -1390,7 +1423,7 @@ function renderCD(cdt){
 function prevDayNotes(di){
   var sess=ls(),prevWk=progWeek()-1;
   if(prevWk<1)return null;
-  var key='w'+prevWk+'_d'+di;
+  var key='p2w'+prevWk+'_d'+di;
   return sess[key]&&sess[key].tonal&&sess[key].tonal.notes?sess[key].tonal.notes:null;
 }
 function renderBlock(block,di,dt){
@@ -1419,7 +1452,7 @@ function renderBlock(block,di,dt){
     '<div class="nbox" style="border-radius:12px">Recovery day does real work — do not skip it.</div>';
   var html='';
   if(block.id==='b1'){
-    if(getPhase().phase.name==='Deload')html+='<div class="prev-note" style="border-left-color:#4499dd"><strong style="color:#4499dd">🔵 Deload Week</strong>Sets cut ~50% and target loads reduced 15% below. Same movements, easy quality reps — this week is consolidation, not stimulation.</div>';
+    if(getPhase().phase.name==='Deload')html+='<div class="prev-note" style="border-left-color:#4499dd"><strong style="color:#4499dd">🔵 Deload Week — Wave '+getPhase().wave+'</strong>Sets cut ~50% and target loads ~10% lighter below. Same movements, easy quality reps. Next Monday the wave resets with fresh double progression.</div>';
     var pn=prevDayNotes(di);
     if(pn)html+='<div class="prev-note"><strong>📝 Last session note</strong>'+pn+'</div>';
   }
@@ -1464,7 +1497,7 @@ function buildHeader(){
   var d=DAYS[curDay];
   var badge=document.getElementById('hBadge');
   badge.textContent=d.name;
-  badge.className='hdr-badge b'+d.type.substring(0,1)+(d.type==='pull'?'pu':d.type==='push'?'p':d.type==='legs'?'l':d.type==='arms'?'a':'r');
+  var cm={push:'bp',pull:'bpu',legs:'bl',arms:'ba',upper:'bu',recovery:'br'};badge.className='hdr-badge '+(cm[d.type]||'bp');
 }
 function buildWC(){
   var dt=DAYS[curDay].type;
@@ -1475,10 +1508,10 @@ function buildWC(){
 function selDay(i,userTap){
   curDay=i;curBlock=BLOCKS[i][0].id;buildHeader();buildDayScroll();buildBlockTabs();buildWC();
   if(userTap&&!isDone(i)){
-    var wkKey='ava_sd_w'+progWeek()+'_d'+i;
+    var wkKey='ava_sd_p2w'+progWeek()+'_d'+i;
     if(!localStorage.getItem(wkKey)){
       localStorage.setItem(wkKey,'1');
-      var clips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',recovery:'media/session-start-recovery.mp4'};
+      var clips={push:'media/session-start-push.mp4',pull:'media/session-start-pull.mp4',legs:'media/session-start-legs.mp4',arms:'media/session-start-arms.mp4',upper:'media/session-start-push.mp4',recovery:'media/session-start-recovery.mp4'};
       avaPlayClip(clips[DAYS[i].type]||'media/session-start.mp4');
     }
   }
@@ -1498,29 +1531,54 @@ function buildRecentPRs(){
   prs.sort(function(a,b){return b.e.ts-a.e.ts;});
   return prs.slice(0,12);
 }
+function allExerciseNames(){
+  var logs=ll(),set={};
+  TRACK_EX.forEach(function(n){set[n]=1;});
+  Object.keys(logs).forEach(function(n){if(logs[n]&&logs[n].length)set[n]=1;});
+  return Object.keys(set).sort();
+}
+var libSelEx=null;
+function libSelect(v){libSelEx=v;buildTracker();}
+function logExChanged(v){
+  var wrap=document.getElementById('logCustomWrap');
+  if(wrap)wrap.style.display=v==='__custom'?'block':'none';
+}
+function exDetailCard(ex){
+  var logs=ll();
+  if(!logs[ex]||!logs[ex].length)return'<div class="ehcard"><div class="ehhd"><div class="ehname">'+ex+'</div></div><div style="padding:16px 14px;font-size:12.5px;color:#444">No history yet — log a set above and it starts tracking here.</div></div>';
+  var entries=logs[ex];
+  var best=entries.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},entries[0]);
+  var recent=entries.slice(-8);
+  var maxW=Math.max.apply(null,recent.map(function(e){return e.weight;}));
+  var bars=recent.map(function(e){
+    var h=Math.max(6,Math.round((e.weight/maxW)*44));
+    var isLast=e===recent[recent.length-1];
+    return'<div class="cbw"><div class="cval">'+e.weight+'</div><div class="cbar" style="height:'+h+'px;background:'+(isLast?'#4499dd':'#252525')+'"></div><div class="cdate">'+e.date+'</div></div>';
+  }).join('');
+  var rows=[].concat(entries).reverse().slice(0,6).map(function(e){
+    var pr=e===best?'<span class="prbadge">PR</span>':'';
+    return'<div class="hrow"><div class="hdate">'+e.date+'</div><div style="text-align:right"><span class="hw">'+e.weight+' x '+e.reps+'</span>'+pr+'<div class="he1">e1RM ~'+e.e1rm+' lb</div></div></div>';
+  }).join('');
+  var sug=getSugg(ex);
+  var sugH2=sug?'<div style="padding:8px 14px;border-top:1px solid #181818"><span class="pill psug">Next target: '+sug.weight+' lb x '+sug.reps+' reps</span></div>':'';
+  return'<div class="ehcard"><div class="ehhd"><div class="ehname">'+ex+'</div><div class="ehbest">Best: '+best.weight+'x'+best.reps+'</div></div><div class="mchart"><div class="cbars">'+bars+'</div></div>'+rows+sugH2+'</div>';
+}
 function buildTracker(){
   var logs=ll();
-  var opts=TRACK_EX.map(function(e){return'<option value="'+e+'">'+e+'</option>';}).join('');
-  var withData=TRACK_EX.filter(function(e){return logs[e]&&logs[e].length>0;});
-  var histH=withData.length===0?'<div class="empty"><div class="ei">📊</div>No entries yet.<br>Log your first set above!</div>':
-    withData.map(function(ex){
-      var entries=logs[ex];
-      var best=entries.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},entries[0]);
-      var recent=entries.slice(-8);
-      var maxW=Math.max.apply(null,recent.map(function(e){return e.weight;}));
-      var bars=recent.map(function(e){
-        var h=Math.max(6,Math.round((e.weight/maxW)*44));
-        var isLast=e===recent[recent.length-1];
-        return'<div class="cbw"><div class="cval">'+e.weight+'</div><div class="cbar" style="height:'+h+'px;background:'+(isLast?'#4499dd':'#252525')+'"></div><div class="cdate">'+e.date+'</div></div>';
-      }).join('');
-      var rows=[].concat(entries).reverse().slice(0,6).map(function(e){
-        var pr=e===best?'<span class="prbadge">PR</span>':'';
-        return'<div class="hrow"><div class="hdate">'+e.date+'</div><div style="text-align:right"><span class="hw">'+e.weight+' x '+e.reps+'</span>'+pr+'<div class="he1">e1RM ~'+e.e1rm+' lb</div></div></div>';
-      }).join('');
-      var sug=getSugg(ex);
-      var sugH2=sug?'<div style="padding:8px 14px;border-top:1px solid #181818"><span class="pill psug">Next target: '+sug.weight+' lb x '+sug.reps+' reps</span></div>':'';
-      return'<div class="ehcard"><div class="ehhd"><div class="ehname">'+ex+'</div><div class="ehbest">Best: '+best.weight+'x'+best.reps+'</div></div><div class="mchart"><div class="cbars">'+bars+'</div></div>'+rows+sugH2+'</div>';
-    }).join('');
+  var names=allExerciseNames();
+  var withData=names.filter(function(e){return logs[e]&&logs[e].length>0;});
+  if(!libSelEx||names.indexOf(libSelEx)===-1){
+    libSelEx=withData.length?withData.reduce(function(a,b){
+      var ta=logs[a][logs[a].length-1].ts,tb=logs[b][logs[b].length-1].ts;return tb>ta?b:a;
+    }):names[0];
+  }
+  var curSet={};BLOCKS&&Object.keys(BLOCKS).forEach(function(d){BLOCKS[d].forEach(function(b){if(b.g)b.g.forEach(function(g){g.r.forEach(function(r){if(r.tr)curSet[r.tr]=1;});});});});
+  var curNames=names.filter(function(n){return curSet[n];});
+  var otherNames=names.filter(function(n){return!curSet[n];});
+  var optGroups='<optgroup label="Current Program">'+curNames.map(function(e){return'<option value="'+e+'">'+e+'</option>';}).join('')+'</optgroup>'+
+    '<optgroup label="All Other Movements">'+otherNames.map(function(e){return'<option value="'+e+'">'+e+'</option>';}).join('')+'</optgroup>';
+  var logOpts=optGroups+'<option value="__custom">＋ Custom exercise…</option>';
+  var libOpts=optGroups.replace(new RegExp('value="'+libSelEx.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'"'),'value="'+libSelEx+'" selected');
   var prs=buildRecentPRs();
   var btH=prs.length?'<div class="bt-card"><div class="bt-head">🏆 Recent Breakthroughs</div>'+
     prs.map(function(p,i){
@@ -1529,7 +1587,15 @@ function buildTracker(){
         '<div class="bt-ex">'+p.ex+'</div>'+
         '<div class="bt-lift">'+p.e.weight+' × '+p.e.reps+'<span class="bt-e1rm"> e1RM '+p.e.e1rm+'</span></div></div>';
     }).join('')+'</div>':'';
-  document.getElementById('trackerScroll').innerHTML='<div class="lfc"><div class="lftitle">📝 Log Top Set</div><div class="lfrow"><select class="lfsel" id="logEx">'+opts+'</select></div><div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div><button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+btH+histH;
+  document.getElementById('trackerScroll').innerHTML=
+    '<div class="lfc"><div class="lftitle">📝 Log Top Set</div>'+
+    '<div class="lfrow"><select class="lfsel" id="logEx" onchange="logExChanged(this.value)">'+logOpts+'</select></div>'+
+    '<div class="lfrow" id="logCustomWrap" style="display:none"><input class="lfin" id="logExCustom" type="text" placeholder="Exercise name" style="width:100%"></div>'+
+    '<div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div>'+
+    '<button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+
+    '<div class="lfc" style="margin-top:10px"><div class="lftitle">📚 Movement History</div>'+
+    '<div class="lfrow"><select class="lfsel" onchange="libSelect(this.value)">'+libOpts+'</select></div></div>'+
+    exDetailCard(libSelEx)+btH;
 }
 function commitLog(ex,w,r){
   if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return false;}
@@ -1541,9 +1607,14 @@ function commitLog(ex,w,r){
 }
 function handleLog(){
   var ex=document.getElementById('logEx').value;
+  if(ex==='__custom'){
+    var cEl=document.getElementById('logExCustom');
+    ex=cEl?cEl.value.trim():'';
+    if(!ex){showToast('Name the exercise');return;}
+  }
   var w=parseFloat(document.getElementById('logW').value);
   var r=parseInt(document.getElementById('logR').value);
-  commitLog(ex,w,r);
+  if(commitLog(ex,w,r))libSelEx=ex;
 }
 function quickLog(ev,ex,repRange){
   if(ev){ev.stopPropagation();ev.preventDefault();}
@@ -1580,14 +1651,14 @@ var IE_BADGES=[
   {id:'sessions_100',name:'100 Sessions',   desc:'Complete 100 training sessions',             icon:'💯'},
   {id:'streak_4',    name:'4-Wk Streak',   desc:'Train 5+ sessions/wk for 4 straight weeks',  icon:'🔥'},
   {id:'streak_12',   name:'12-Wk Streak',  desc:'Stay locked in for 12 straight weeks',       icon:'⚔️'},
-  {id:'phase_acc',   name:'Accumulation',  desc:'Complete the Accumulation phase',            icon:'📈'},
-  {id:'phase_int',   name:'Intensification',desc:'Complete the Intensification phase',        icon:'💥'},
+  {id:'phase_acc',   name:'Wave One',      desc:'Complete your first 4-week wave',            icon:'📈'},
+  {id:'phase_int',   name:'Three Waves',   desc:'Complete three full waves (12 weeks)',       icon:'💥'},
   {id:'pullup',      name:'Pull-Up Set',   desc:'Log a set on Weighted Pull-Up',              icon:'🏗️'},
   {id:'elite',       name:'Elite',          desc:'Reach Iron Edge Elite (Level 6)',             icon:'👑'},
 ];
 function totalSessionCount(){
   var sess=ls();
-  return Object.keys(sess).filter(function(k){return/^w\d+_d\d+$/.test(k);}).length;
+  return Object.keys(sess).filter(function(k){return/^(?:p2)?w\d+_d\d+$/.test(k);}).length;
 }
 function badgesGetEarned(){try{return JSON.parse(localStorage.getItem('ie_badges')||'[]');}catch(e){return[];}}
 function badgesSetEarned(arr){localStorage.setItem('ie_badges',JSON.stringify(arr));}
@@ -1606,8 +1677,8 @@ function badgeCondition(id){
     case 'sessions_100': return sc>=100;
     case 'streak_4':     return fs>=4;
     case 'streak_12':    return fs>=12;
-    case 'phase_acc':    return cw>8;
-    case 'phase_int':    return cw>16;
+    case 'phase_acc':    return cw>4;
+    case 'phase_int':    return cw>12;
     case 'pullup':       return !!(logs['Weighted Pull-Up']&&logs['Weighted Pull-Up'].length>0);
     case 'elite':        return lv.level>=6;
     default:             return false;
@@ -1729,7 +1800,7 @@ function avaActiveTier(){return Math.min(avaUnlockedTier(),AVA_ASSETS_TIER);}
 function avaPortrait(type){
   var at=avaActiveTier();
   var map=AVA_TIER_PORTRAITS[at]||AVA_TIER_PORTRAITS[1];
-  return map[type]||map.default;
+  return map[type]||(type==='upper'?map.push:null)||map.default;
 }
 function buildAvaUnlockCard(){
   var lv=xpLevel().level,unlockedT=avaUnlockedTier(),activeT=avaActiveTier();
@@ -1758,7 +1829,7 @@ function avaCtx(){
   var daysSince=lastTs?Math.round((avaDayStart(now)-avaDayStart(lastTs))/86400000):null;
   var trainedToday=false;Object.keys(sess).forEach(function(k){if(sess[k]&&sess[k].ts&&avaSameDay(sess[k].ts,now))trainedToday=true;});
   var todayIdx=(new Date().getDay()+6)%7,td=DAYS[todayIdx];
-  var weekDone=0;for(var d=0;d<6;d++){if(sess['w'+cw+'_d'+d])weekDone++;}
+  var weekDone=0;for(var d=0;d<6;d++){if(sess['p2w'+cw+'_d'+d])weekDone++;}
   var prToday=null;
   Object.keys(logs).forEach(function(ex){
     var arr=logs[ex];if(!Array.isArray(arr)||arr.length<2)return;
@@ -2129,12 +2200,12 @@ function saveProteinGoalEntry(){
 function closeBwmOv(){var ov=document.querySelector('.bwm-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 // ── MUSCLE READINESS ─────────────────────────────────────────────────────────
 var MUSCLE_DAY_MAP={
-  0:['chest','shoulders','triceps','abs','obliques'],
-  1:['back','rear_delts','biceps'],
-  2:['biceps','triceps'],
-  3:['quads','hamstrings','glutes','calves'],
-  4:['chest','shoulders','triceps','abs','obliques'],
-  5:['back','rear_delts','biceps'],
+  0:['quads','hamstrings','glutes','calves','abs'],
+  1:['chest','shoulders','triceps'],
+  2:['back','rear_delts','biceps','abs'],
+  3:['biceps','triceps','shoulders','rear_delts'],
+  4:['hamstrings','glutes','quads','calves'],
+  5:['chest','back','shoulders','biceps','triceps','obliques','abs'],
   6:[]
 };
 var MUSCLE_LABELS={
@@ -2148,7 +2219,7 @@ function getMuscleStates(){
   var sess=ls(),now=Date.now(),cw=progWeek(),lastMs={};
   for(var w=Math.max(1,cw-4);w<=cw;w++){
     for(var d=0;d<6;d++){
-      var k='w'+w+'_d'+d,e=sess[k];
+      var k='p2w'+w+'_d'+d,e=sess[k];
       if(e&&e.ts&&(!lastMs[d]||e.ts>lastMs[d]))lastMs[d]=e.ts;
     }
   }
@@ -2420,6 +2491,128 @@ function bodyWeightCard(){
     '</div><button class="bwcard-btn" onclick="openBWModal()">'+(latest?'Update':'+ Log')+'</button></div>'+
     sparkH+'</div>';
 }
+// ── RECOMP TILE (weight + waist) ─────────────────────────────────────────────
+var RECOMP_START_WAIST=42.0,RECOMP_TARGET_WAIST=39.5;
+function waistLog(){return getMetrics().entries.filter(function(e){return e.waist!=null;});}
+function saveWaist(v){
+  var data=getMetrics(),entry=null;
+  for(var i=0;i<data.entries.length;i++){if(data.entries[i].date===today()){entry=data.entries[i];break;}}
+  if(!entry){entry={date:today(),ts:Date.now()};data.entries.push(entry);}
+  entry.waist=v;
+  data.entries.sort(function(a,b){return a.ts-b.ts;});
+  saveMetrics(data);
+}
+function openWaistModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var wl=waistLog(),last=wl.length?wl[wl.length-1]:null;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">📏 Log Waist (at navel)</div>'+
+    '<div class="bwm-row"><input class="bwm-in" id="waistIn" type="number" inputmode="decimal" step="0.25" min="20" max="70" placeholder="in" value="'+(last?last.waist:'')+'"></div>'+
+    '<div style="font-size:11px;color:#555;text-align:center;margin-top:-4px;margin-bottom:10px">Morning · fasted · relaxed · same spot every time</div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBwmOv()">Cancel</button><button class="tsm-save" onclick="saveWaistEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBwmOv();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('waistIn');if(el){el.focus();el.select();}},60);
+}
+function saveWaistEntry(){
+  var v=parseFloat(document.getElementById('waistIn').value);
+  if(!v||v<20||v>70){showToast('Enter a valid measurement');return;}
+  saveWaist(v);closeBwmOv();buildDash();showToast('✓ Waist logged');
+}
+function recompSpark(vals,color){
+  if(vals.length<2)return'';
+  var W=118,H=26;
+  var minV=Math.min.apply(null,vals),maxV=Math.max.apply(null,vals),range=maxV-minV||1;
+  var pts=vals.map(function(v,i){return[(3+i*(W-6)/(vals.length-1)),(H-3-(v-minV)/range*(H-8))];});
+  var poly=pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ');
+  return'<svg width="100%" viewBox="0 0 '+W+' '+H+'" style="display:block;margin-top:6px;overflow:visible">'+
+    '<polyline points="'+poly+'" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>'+
+    '<circle cx="'+pts[pts.length-1][0]+'" cy="'+pts[pts.length-1][1]+'" r="3" fill="'+color+'"/></svg>';
+}
+function recompCard(){
+  var bw=bwLog().slice(-30),wl=waistLog().slice(-20);
+  var bwLast=bw.length?bw[bw.length-1]:null,bwPrev=bw.length>1?bw[bw.length-2]:null;
+  var wLast=wl.length?wl[wl.length-1]:null,wPrev=wl.length>1?wl[wl.length-2]:null;
+  var bwD=bwLast&&bwPrev?bwLast.w-bwPrev.w:null;
+  var wD=wLast&&wPrev?Math.round((wLast.waist-wPrev.waist)*100)/100:null;
+  var bwDH=bwD===null?'':'<span style="font-size:11px;font-weight:700;color:'+(bwD<0?'#44cc44':bwD>0?'#cc8844':'#666')+'"> '+(bwD>0?'+':'')+bwD.toFixed(1)+'</span>';
+  var wDH=wD===null?'':'<span style="font-size:11px;font-weight:700;color:'+(wD<0?'#44cc44':wD>0?'#cc4444':'#666')+'"> '+(wD>0?'+':'')+wD.toFixed(2)+'″</span>';
+  var startW=wl.length?wl[0].waist:RECOMP_START_WAIST;
+  var lost=wLast?Math.round((RECOMP_START_WAIST-wLast.waist)*100)/100:0;
+  var goalPct=wLast?Math.max(0,Math.min(100,Math.round(lost/(RECOMP_START_WAIST-RECOMP_TARGET_WAIST)*100))):0;
+  return'<div class="bwcard"><div class="bwcard-top" style="align-items:flex-start">'+
+    '<div style="flex:1"><div class="bwcard-lbl">RECOMP · Tape &gt; Scale</div>'+
+    '<div style="display:flex;gap:18px;margin-top:6px">'+
+      '<div style="flex:1"><div style="font-size:10px;color:#555;letter-spacing:.5px">WEIGHT</div>'+
+        (bwLast?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:24px;font-weight:900;color:#eee">'+bwLast.w+'<span style="font-size:12px;color:#666"> lb</span>'+bwDH+'</div>':'<div style="font-size:13px;color:#444;margin-top:4px">—</div>')+
+        recompSpark(bw.map(function(e){return e.w;}),'#d62828')+
+        '<button class="bwcard-btn" style="margin-top:8px;width:100%" onclick="openBWModal()">⚖️ Log</button></div>'+
+      '<div style="flex:1"><div style="font-size:10px;color:#555;letter-spacing:.5px">WAIST</div>'+
+        (wLast?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:24px;font-weight:900;color:#eee">'+wLast.waist+'<span style="font-size:12px;color:#666">″</span>'+wDH+'</div>':'<div style="font-size:13px;color:#444;margin-top:4px">—</div>')+
+        recompSpark(wl.map(function(e){return e.waist;}),'#14b8a6')+
+        '<button class="bwcard-btn" style="margin-top:8px;width:100%" onclick="openWaistModal()">📏 Log</button></div>'+
+    '</div>'+
+    '<div style="margin-top:10px;padding-top:9px;border-top:1px solid #1a1a1a;font-size:11px;color:#666">Start 42.0″ → target '+RECOMP_TARGET_WAIST+'″'+(wLast?' · <span style="color:'+(lost>0?'#44cc44':'#888')+'">'+(lost>0?'−'+lost+'″ so far · '+goalPct+'% there':'holding at start')+'</span>':' · log your first tape check')+'</div>'+
+    '</div></div></div>';
+}
+// ── CONDITIONING LOG (evening engine) ────────────────────────────────────────
+var CARDIO_TYPES=[
+  {key:'row_z2',label:'Row · Zone 2',icon:'🚣'},
+  {key:'row_int',label:'Row · Intervals',icon:'⚡'},
+  {key:'elliptical',label:'Elliptical · Zone 2',icon:'🔄'},
+  {key:'walk',label:'Walk',icon:'🚶'},
+  {key:'other',label:'Other',icon:'🏃'},
+];
+function cardioLog(){try{return JSON.parse(localStorage.getItem('ie_cardio_log')||'[]');}catch(e){return[];}}
+function saveCardioLog(l){localStorage.setItem('ie_cardio_log',JSON.stringify(l));}
+function cardioThisWeek(){
+  var now=new Date(),dow=(now.getDay()+6)%7;
+  var mon=new Date(now.getFullYear(),now.getMonth(),now.getDate()-dow).getTime();
+  return cardioLog().filter(function(e){return e.ts>=mon;});
+}
+function openCardioModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  var opts=CARDIO_TYPES.map(function(t){return'<option value="'+t.key+'">'+t.icon+' '+t.label+'</option>';}).join('');
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">🌙 Log Conditioning</div>'+
+    '<div class="bwm-row"><select class="lfsel" id="cardioType" style="width:100%">'+opts+'</select></div>'+
+    '<div class="bwm-row" style="display:flex;gap:8px"><input class="bwm-in" id="cardioMin" type="number" inputmode="numeric" min="1" max="300" placeholder="minutes" style="flex:1"><input class="bwm-in" id="cardioDist" type="number" inputmode="numeric" min="0" placeholder="meters (opt)" style="flex:1"></div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBwmOv()">Cancel</button><button class="tsm-save" onclick="saveCardioEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBwmOv();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('cardioMin');if(el)el.focus();},60);
+}
+function saveCardioEntry(){
+  var type=document.getElementById('cardioType').value;
+  var min=parseInt(document.getElementById('cardioMin').value);
+  var dist=parseInt(document.getElementById('cardioDist').value)||null;
+  if(!min||min<1){showToast('Enter the minutes');return;}
+  var l=cardioLog();
+  l.push({date:today(),ts:Date.now(),type:type,min:min,dist:dist});
+  l.sort(function(a,b){return a.ts-b.ts;});
+  saveCardioLog(l);closeBwmOv();buildDash();
+  xpAward('cardio',10,CARDIO_TYPES.filter(function(t){return t.key===type;})[0].label+' · '+min+' min');
+}
+function conditioningCard(){
+  var wk=cardioThisWeek();
+  var mins=wk.reduce(function(s,e){return s+e.min;},0);
+  var structured=wk.filter(function(e){return e.type!=='walk';}).length;
+  var recent=cardioLog().slice(-4).reverse().map(function(e){
+    var t=CARDIO_TYPES.filter(function(x){return x.key===e.type;})[0]||CARDIO_TYPES[4];
+    return'<div class="slrow"><div class="slck">'+t.icon+'</div><div class="slname">'+t.label+' · '+e.min+' min'+(e.dist?' · '+e.dist.toLocaleString()+'m':'')+'</div><div class="sldate">'+e.date+'</div></div>';
+  }).join('');
+  return'<div class="slcard"><div class="slhd" style="display:flex;align-items:center;justify-content:space-between"><div class="sltitle">🌙 Evening Conditioning</div>'+
+    '<button class="bwcard-btn" onclick="openCardioModal()">+ Log</button></div>'+
+    '<div style="display:flex;padding:10px 14px;gap:0;border-bottom:1px solid #181818">'+
+      '<div style="flex:1;text-align:center"><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:900;color:'+(structured>=3?'#44cc44':'#e8b840')+'">'+structured+'<span style="font-size:13px;color:#555">/3</span></div><div style="font-size:9.5px;color:#555;text-transform:uppercase;letter-spacing:.5px">Structured</div></div>'+
+      '<div style="flex:1;text-align:center"><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:900;color:#eee">'+mins+'</div><div style="font-size:9.5px;color:#555;text-transform:uppercase;letter-spacing:.5px">Min this wk</div></div>'+
+      '<div style="flex:1;text-align:center"><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:900;color:#eee">'+wk.length+'</div><div style="font-size:9.5px;color:#555;text-transform:uppercase;letter-spacing:.5px">Sessions</div></div>'+
+    '</div>'+
+    (recent||'<div style="padding:14px;font-size:12.5px;color:#444">Target: 3 structured sessions + evening walks. Mon Z2 row · Wed intervals · Thu elliptical · Sat Z2 row.</div>')+
+  '</div>';
+}
 function buildDash(){
   checkStreakMilestones();
   badgesCheck();
@@ -2427,7 +2620,7 @@ function buildDash(){
   var ph=getPhase();var p=ph.phase;var pct=Math.round((ph.wip/ph.tot)*100);
   var wLeft=ph.tot-ph.wip;
   var nextD=new Date();nextD.setDate(nextD.getDate()+wLeft*7);
-  var nextNames={Accumulation:'Intensification',Intensification:'Deload',Deload:'Accumulation'};
+  var nextNames={Build:'Deload',Deload:'Build'};
   var nextName=nextNames[p.name];
   var nextDateStr=nextD.toLocaleDateString('en-US',{month:'short',day:'numeric'});
   var streak=streakCount();var swks=streakWeeks();
@@ -2457,8 +2650,8 @@ function buildDash(){
     '<div class="skwks">'+dots+'</div></div>';
 
   var slRows=DAYS.map(function(d,i){
-    var done=!!sess['w'+cw+'_d'+i];
-    var dateStr=done?sess['w'+cw+'_d'+i].date:'—';
+    var done=!!sess['p2w'+cw+'_d'+i];
+    var dateStr=done?sess['p2w'+cw+'_d'+i].date:'—';
     return'<div class="slrow"><div class="slck">'+(done?'✅':'⬜')+'</div><div class="slname">'+d.dow+' · '+d.name+'</div><div class="sldate">'+dateStr+'</div></div>';
   }).join('');
   var slHtml='<div class="slcard"><div class="slhd"><div class="sltitle">📅 This Week — Week '+cw+'</div></div>'+slRows+'</div>';
@@ -2491,7 +2684,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+bodyWeightCard()+buildMetricsCard()+buildMuscleReadinessCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+recompCard()+conditioningCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+buildMetricsCard()+buildMuscleReadinessCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
@@ -2682,7 +2875,7 @@ function buildHeader(){
   var d=DAYS[curDay];
   var badge=document.getElementById('hBadge');
   badge.textContent=d.name;
-  var cm={push:'bp',pull:'bpu',legs:'bl',arms:'ba',recovery:'br'};
+  var cm={push:'bp',pull:'bpu',legs:'bl',arms:'ba',upper:'bu',recovery:'br'};
   badge.className='hdr-badge '+(cm[d.type]||'bp');
 }
 
