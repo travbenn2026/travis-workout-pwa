@@ -495,6 +495,13 @@
         "weight": 230,
         "reps": 8,
         "e1rm": 291
+      },
+      {
+        "date": "Jul 18",
+        "ts": 1784386509714,
+        "weight": 230,
+        "reps": 9,
+        "e1rm": 299
       }
     ],
     "Seated Row": [
@@ -1060,6 +1067,13 @@
         "weight": 97,
         "reps": 10,
         "e1rm": 129
+      },
+      {
+        "date": "Jul 18",
+        "ts": 1784386766343,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
       }
     ],
     "Straight Arm Pulldown": [
@@ -1106,6 +1120,13 @@
         "weight": 35,
         "reps": 15,
         "e1rm": 53
+      },
+      {
+        "date": "Jul 18",
+        "ts": 1784388450219,
+        "weight": 41,
+        "reps": 10,
+        "e1rm": 55
       }
     ],
     "W Hold": [
@@ -1544,7 +1565,7 @@
       }
     }
   },
-  "lastSaved": "2026-07-17T20:53:55.258Z",
+  "lastSaved": "2026-07-19T02:15:24.545Z",
   "version": 1,
   "seeded": true
 }
