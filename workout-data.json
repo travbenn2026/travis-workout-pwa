@@ -65,6 +65,13 @@
         "weight": 200,
         "reps": 7,
         "e1rm": 247
+      },
+      {
+        "date": "Jul 21",
+        "ts": 1784632439089,
+        "weight": 200,
+        "reps": 5,
+        "e1rm": 233
       }
     ],
     "Alt Bench Press": [
@@ -187,6 +194,13 @@
       {
         "date": "Jul 17",
         "ts": 1784293762936,
+        "weight": 260,
+        "reps": 12,
+        "e1rm": 364
+      },
+      {
+        "date": "Jul 21",
+        "ts": 1784634636477,
         "weight": 260,
         "reps": 12,
         "e1rm": 364
@@ -345,6 +359,13 @@
         "weight": 23,
         "reps": 8,
         "e1rm": 29
+      },
+      {
+        "date": "Jul 21",
+        "ts": 1784633541898,
+        "weight": 22,
+        "reps": 12,
+        "e1rm": 31
       }
     ],
     "Skull Crushers": [
@@ -834,6 +855,13 @@
         "weight": 115,
         "reps": 12,
         "e1rm": 161
+      },
+      {
+        "date": "Jul 20",
+        "ts": 1784550613376,
+        "weight": 100,
+        "reps": 15,
+        "e1rm": 140
       }
     ],
     "Weighted Incline Sit-Up": [
@@ -947,6 +975,13 @@
         "weight": 91,
         "reps": 7,
         "e1rm": 112
+      },
+      {
+        "date": "Jul 21",
+        "ts": 1784634329681,
+        "weight": 85,
+        "reps": 10,
+        "e1rm": 113
       }
     ],
     "Tricep Kickback": [
@@ -1214,6 +1249,13 @@
         "weight": 100,
         "reps": 8,
         "e1rm": 127
+      },
+      {
+        "date": "Jul 20",
+        "ts": 1784549095540,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -1285,6 +1327,60 @@
         "weight": 33,
         "reps": 7,
         "e1rm": 41
+      }
+    ],
+    "Goblet Squat": [
+      {
+        "date": "Jul 20",
+        "ts": 1784548860304,
+        "weight": 100,
+        "reps": 7,
+        "e1rm": 123
+      }
+    ],
+    "Racked Reverse Lunge": [
+      {
+        "date": "Jul 20",
+        "ts": 1784549874502,
+        "weight": 40,
+        "reps": 8,
+        "e1rm": 51
+      }
+    ],
+    "Single-Leg RDL": [
+      {
+        "date": "Jul 20",
+        "ts": 1784549636937,
+        "weight": 42,
+        "reps": 10,
+        "e1rm": 56
+      }
+    ],
+    "Cable Crunch": [
+      {
+        "date": "Jul 20",
+        "ts": 1784551537444,
+        "weight": 40,
+        "reps": 15,
+        "e1rm": 56
+      }
+    ],
+    "Seated Overhead Press": [
+      {
+        "date": "Jul 21",
+        "ts": 1784633243006,
+        "weight": 50,
+        "reps": 6,
+        "e1rm": 60
+      }
+    ],
+    "Incline Press": [
+      {
+        "date": "Jul 21",
+        "ts": 1784633690812,
+        "weight": 75,
+        "reps": 8,
+        "e1rm": 95
       }
     ]
   },
@@ -1563,9 +1659,39 @@
         "duration": 66,
         "notes": "Pretty good. "
       }
+    },
+    "p2w1_d6": {
+      "date": "Jul 19",
+      "ts": 1784487918054
+    },
+    "p2w1_d0": {
+      "date": "Jul 20",
+      "ts": 1784552061244,
+      "tonal": {
+        "volume": 30382,
+        "work": 57.9,
+        "cals": 522,
+        "avgHr": 122,
+        "maxHr": 152,
+        "duration": 55,
+        "notes": "Good"
+      }
+    },
+    "p2w1_d1": {
+      "date": "Jul 21",
+      "ts": 1784635129027,
+      "tonal": {
+        "volume": 14274,
+        "work": 38.8,
+        "cals": 357,
+        "avgHr": 119,
+        "maxHr": 154,
+        "duration": 49,
+        "notes": "Arms and shoulders hurt, but was good. "
+      }
     }
   },
-  "lastSaved": "2026-07-19T18:58:43.623Z",
+  "lastSaved": "2026-07-21T12:00:00.042Z",
   "version": 1,
   "seeded": true
 }
