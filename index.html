@@ -2876,6 +2876,29 @@ function buildHeader(){
   badge.className='hdr-badge '+(cm[d.type]||'bp');
 }
 
+// ── DATE ROLLOVER GUARD ──────────────────────────────────────────────────────
+// iOS keeps installed PWAs alive in memory when backgrounded, so the DOM can go
+// stale across a midnight/week boundary until something forces a re-render.
+// These listeners catch that on resume and refresh whatever's showing.
+var lastKnownDayIdx=(new Date().getDay()+6)%7;
+function checkDateRollover(){
+  var todayIdx=(new Date().getDay()+6)%7;
+  if(todayIdx===lastKnownDayIdx)return;
+  var wasOnToday=(curDay===lastKnownDayIdx);
+  lastKnownDayIdx=todayIdx;
+  if(wasOnToday)selDay(todayIdx); // they were viewing "today" — carry them into the new day
+  else buildDayScroll(); // otherwise just refresh checkmarks/week context without moving their view
+  var dEl=document.getElementById('sD'),tEl=document.getElementById('sT');
+  if(dEl&&dEl.classList.contains('active'))buildDash();
+  if(tEl&&tEl.classList.contains('active'))buildTracker();
+}
+['visibilitychange','pageshow','focus'].forEach(function(ev){
+  window.addEventListener(ev,function(){
+    if(document.visibilityState==='hidden')return;
+    checkDateRollover();
+  });
+});
+
 migrateSeed();seedBaseline();selDay((new Date().getDay()+6)%7);autoLoadFromGH();
 </script>
 </body>
