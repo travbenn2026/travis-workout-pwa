@@ -470,6 +470,13 @@
         "weight": 91,
         "reps": 7,
         "e1rm": 112
+      },
+      {
+        "date": "Jul 22",
+        "ts": 1784720375437,
+        "weight": 81,
+        "reps": 10,
+        "e1rm": 108
       }
     ],
     "Weighted Pull-Up": [
@@ -490,6 +497,13 @@
       {
         "date": "Jul 14",
         "ts": 1784029803995,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
+      },
+      {
+        "date": "Jul 22",
+        "ts": 1784719416335,
         "weight": 230,
         "reps": 8,
         "e1rm": 291
@@ -1311,6 +1325,13 @@
         "weight": 85,
         "reps": 8,
         "e1rm": 108
+      },
+      {
+        "date": "Jul 22",
+        "ts": 1784721320786,
+        "weight": 87,
+        "reps": 8,
+        "e1rm": 110
       }
     ],
     "SA Tricep Extension": [
@@ -1381,6 +1402,33 @@
         "weight": 75,
         "reps": 8,
         "e1rm": 95
+      }
+    ],
+    "Chest-Supported Row": [
+      {
+        "date": "Jul 22",
+        "ts": 1784719910732,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
+      }
+    ],
+    "Face Pull": [
+      {
+        "date": "Jul 22",
+        "ts": 1784720487170,
+        "weight": 87,
+        "reps": 15,
+        "e1rm": 122
+      }
+    ],
+    "Hanging Knee Raise": [
+      {
+        "date": "Jul 22",
+        "ts": 1784721219205,
+        "weight": 230,
+        "reps": 10,
+        "e1rm": 307
       }
     ]
   },
@@ -1689,9 +1737,22 @@
         "duration": 49,
         "notes": "Arms and shoulders hurt, but was good. "
       }
+    },
+    "p2w1_d2": {
+      "date": "Jul 22",
+      "ts": 1784721978449,
+      "tonal": {
+        "volume": 16607,
+        "work": 36.5,
+        "cals": 342,
+        "avgHr": 124,
+        "maxHr": 150,
+        "duration": 49,
+        "notes": "Pulls a bit hard"
+      }
     }
   },
-  "lastSaved": "2026-07-21T12:00:00.042Z",
+  "lastSaved": "2026-07-22T23:15:08.798Z",
   "version": 1,
   "seeded": true
 }
