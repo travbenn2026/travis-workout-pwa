@@ -692,6 +692,13 @@
         "weight": 43,
         "reps": 7,
         "e1rm": 53
+      },
+      {
+        "date": "Jul 23",
+        "ts": 1784810650345,
+        "weight": 40,
+        "reps": 10,
+        "e1rm": 53
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -743,6 +750,13 @@
         "weight": 29,
         "reps": 8,
         "e1rm": 37
+      },
+      {
+        "date": "Jul 23",
+        "ts": 1784811351822,
+        "weight": 26,
+        "reps": 12,
+        "e1rm": 36
       }
     ],
     "Bulgarian Split Squat": [
@@ -846,6 +860,13 @@
         "weight": 200,
         "reps": 12,
         "e1rm": 280
+      },
+      {
+        "date": "Jul 24",
+        "ts": 1784895772121,
+        "weight": 200,
+        "reps": 8,
+        "e1rm": 253
       }
     ],
     "Resisted Calf Raise": [
@@ -996,6 +1017,13 @@
         "weight": 85,
         "reps": 10,
         "e1rm": 113
+      },
+      {
+        "date": "Jul 23",
+        "ts": 1784811355361,
+        "weight": 80,
+        "reps": 12,
+        "e1rm": 112
       }
     ],
     "Tricep Kickback": [
@@ -1093,6 +1121,13 @@
         "weight": 86,
         "reps": 10,
         "e1rm": 115
+      },
+      {
+        "date": "Jul 23",
+        "ts": 1784810268654,
+        "weight": 86,
+        "reps": 10,
+        "e1rm": 115
       }
     ],
     "SA Bent Over Row": [
@@ -1176,6 +1211,13 @@
         "weight": 41,
         "reps": 10,
         "e1rm": 55
+      },
+      {
+        "date": "Jul 23",
+        "ts": 1784811106348,
+        "weight": 37,
+        "reps": 15,
+        "e1rm": 52
       }
     ],
     "W Hold": [
@@ -1357,6 +1399,13 @@
         "weight": 100,
         "reps": 7,
         "e1rm": 123
+      },
+      {
+        "date": "Jul 24",
+        "ts": 1784896646015,
+        "weight": 99,
+        "reps": 10,
+        "e1rm": 132
       }
     ],
     "Racked Reverse Lunge": [
@@ -1429,6 +1478,42 @@
         "weight": 230,
         "reps": 10,
         "e1rm": 307
+      }
+    ],
+    "Incline Curl": [
+      {
+        "date": "Jul 23",
+        "ts": 1784809909990,
+        "weight": 32,
+        "reps": 8,
+        "e1rm": 41
+      }
+    ],
+    "Skull Crusher": [
+      {
+        "date": "Jul 23",
+        "ts": 1784809774004,
+        "weight": 34,
+        "reps": 8,
+        "e1rm": 43
+      }
+    ],
+    "Neutral Grip Deadlift": [
+      {
+        "date": "Jul 24",
+        "ts": 1784895273579,
+        "weight": 100,
+        "reps": 6,
+        "e1rm": 120
+      }
+    ],
+    "KB Swing": [
+      {
+        "date": "Jul 24",
+        "ts": 1784895823302,
+        "weight": 50,
+        "reps": 15,
+        "e1rm": 70
       }
     ]
   },
@@ -1750,9 +1835,35 @@
         "duration": 49,
         "notes": "Pulls a bit hard"
       }
+    },
+    "p2w1_d3": {
+      "date": "Jul 23",
+      "ts": 1784812688066,
+      "tonal": {
+        "volume": 16991,
+        "work": 58.2,
+        "cals": 417,
+        "avgHr": 122,
+        "maxHr": 151,
+        "duration": 59,
+        "notes": "Elbows hurt"
+      }
+    },
+    "p2w1_d4": {
+      "date": "Jul 24",
+      "ts": 1784897459059,
+      "tonal": {
+        "volume": 21550,
+        "work": 33.5,
+        "cals": 345,
+        "avgHr": 127,
+        "maxHr": 155,
+        "duration": 37,
+        "notes": "Light Weight!"
+      }
     }
   },
-  "lastSaved": "2026-07-22T23:15:08.798Z",
+  "lastSaved": "2026-07-24T12:52:12.454Z",
   "version": 1,
   "seeded": true
 }
