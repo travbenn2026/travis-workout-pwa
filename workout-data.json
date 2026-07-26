@@ -366,6 +366,13 @@
         "weight": 22,
         "reps": 12,
         "e1rm": 31
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784996328517,
+        "weight": 22,
+        "reps": 12,
+        "e1rm": 31
       }
     ],
     "Skull Crushers": [
@@ -566,6 +573,13 @@
         "ts": 1784030730227,
         "weight": 100,
         "reps": 7,
+        "e1rm": 123
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784994784939,
+        "weight": 88,
+        "reps": 12,
         "e1rm": 123
       }
     ],
@@ -1084,6 +1098,13 @@
         "weight": 48,
         "reps": 8,
         "e1rm": 61
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784994678856,
+        "weight": 44,
+        "reps": 12,
+        "e1rm": 62
       }
     ],
     "Tricep Extension": [
@@ -1335,6 +1356,13 @@
         "weight": 30,
         "reps": 12,
         "e1rm": 42
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784995537247,
+        "weight": 31,
+        "reps": 12,
+        "e1rm": 43
       }
     ],
     "Seated Pallof Press": [
@@ -1451,6 +1479,13 @@
         "weight": 75,
         "reps": 8,
         "e1rm": 95
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784993015193,
+        "weight": 71,
+        "reps": 10,
+        "e1rm": 95
       }
     ],
     "Chest-Supported Row": [
@@ -1460,6 +1495,13 @@
         "weight": 100,
         "reps": 8,
         "e1rm": 127
+      },
+      {
+        "date": "Jul 25",
+        "ts": 1784993106456,
+        "weight": 90,
+        "reps": 10,
+        "e1rm": 120
       }
     ],
     "Face Pull": [
@@ -1514,6 +1556,15 @@
         "weight": 50,
         "reps": 15,
         "e1rm": 70
+      }
+    ],
+    "Wood Chop": [
+      {
+        "date": "Jul 25",
+        "ts": 1784996893008,
+        "weight": 55,
+        "reps": 10,
+        "e1rm": 73
       }
     ]
   },
@@ -1793,10 +1844,6 @@
         "notes": "Pretty good. "
       }
     },
-    "p2w1_d6": {
-      "date": "Jul 19",
-      "ts": 1784487918054
-    },
     "p2w1_d0": {
       "date": "Jul 20",
       "ts": 1784552061244,
@@ -1861,9 +1908,25 @@
         "duration": 37,
         "notes": "Light Weight!"
       }
+    },
+    "p2w1_d5": {
+      "date": "Jul 25",
+      "ts": 1784997386661,
+      "tonal": {
+        "volume": 27652,
+        "work": 77,
+        "cals": 554,
+        "avgHr": 127,
+        "maxHr": 163,
+        "duration": 81
+      }
+    },
+    "p2w1_d6": {
+      "date": "Jul 26",
+      "ts": 1785099708883
     }
   },
-  "lastSaved": "2026-07-24T12:52:12.454Z",
+  "lastSaved": "2026-07-26T21:02:37.531Z",
   "version": 1,
   "seeded": true
 }
