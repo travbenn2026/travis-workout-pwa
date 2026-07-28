@@ -72,6 +72,13 @@
         "weight": 200,
         "reps": 5,
         "e1rm": 233
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785239487285,
+        "weight": 212,
+        "reps": 5,
+        "e1rm": 247
       }
     ],
     "Alt Bench Press": [
@@ -203,6 +210,13 @@
         "ts": 1784634636477,
         "weight": 260,
         "reps": 12,
+        "e1rm": 364
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785241791655,
+        "weight": 260,
+        "reps": 13,
         "e1rm": 364
       }
     ],
@@ -370,6 +384,13 @@
       {
         "date": "Jul 25",
         "ts": 1784996328517,
+        "weight": 22,
+        "reps": 12,
+        "e1rm": 31
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785240947402,
         "weight": 22,
         "reps": 12,
         "e1rm": 31
@@ -794,6 +815,13 @@
         "weight": 37,
         "reps": 7,
         "e1rm": 46
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785155522711,
+        "weight": 38,
+        "reps": 8,
+        "e1rm": 48
       }
     ],
     "Back Squat": [
@@ -908,6 +936,13 @@
       {
         "date": "Jul 20",
         "ts": 1784550613376,
+        "weight": 100,
+        "reps": 15,
+        "e1rm": 140
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785156221873,
         "weight": 100,
         "reps": 15,
         "e1rm": 140
@@ -1310,6 +1345,13 @@
         "weight": 33,
         "reps": 8,
         "e1rm": 42
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785241507544,
+        "weight": 33,
+        "reps": 10,
+        "e1rm": 44
       }
     ],
     "RDL": [
@@ -1330,6 +1372,13 @@
       {
         "date": "Jul 20",
         "ts": 1784549095540,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785154376330,
         "weight": 100,
         "reps": 8,
         "e1rm": 127
@@ -1434,6 +1483,13 @@
         "weight": 99,
         "reps": 10,
         "e1rm": 132
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785154040608,
+        "weight": 100,
+        "reps": 8,
+        "e1rm": 127
       }
     ],
     "Racked Reverse Lunge": [
@@ -1452,6 +1508,13 @@
         "weight": 42,
         "reps": 10,
         "e1rm": 56
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785155029994,
+        "weight": 42,
+        "reps": 10,
+        "e1rm": 56
       }
     ],
     "Cable Crunch": [
@@ -1461,6 +1524,13 @@
         "weight": 40,
         "reps": 15,
         "e1rm": 56
+      },
+      {
+        "date": "Jul 27",
+        "ts": 1785156793933,
+        "weight": 63,
+        "reps": 12,
+        "e1rm": 88
       }
     ],
     "Seated Overhead Press": [
@@ -1470,6 +1540,13 @@
         "weight": 50,
         "reps": 6,
         "e1rm": 60
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785240218668,
+        "weight": 51,
+        "reps": 6,
+        "e1rm": 61
       }
     ],
     "Incline Press": [
@@ -1486,6 +1563,13 @@
         "weight": 71,
         "reps": 10,
         "e1rm": 95
+      },
+      {
+        "date": "Jul 28",
+        "ts": 1785240854179,
+        "weight": 77,
+        "reps": 8,
+        "e1rm": 98
       }
     ],
     "Chest-Supported Row": [
@@ -1924,9 +2008,32 @@
     "p2w1_d6": {
       "date": "Jul 26",
       "ts": 1785099708883
+    },
+    "p2w2_d0": {
+      "date": "Jul 27",
+      "ts": 1785157506330,
+      "tonal": {
+        "volume": 30048,
+        "work": 54.9,
+        "cals": 515,
+        "avgHr": 114,
+        "maxHr": 142,
+        "duration": 60,
+        "notes": "Good. Liked the switch to Bulgarians. "
+      }
+    },
+    "p2w2_d1": {
+      "date": "Jul 28",
+      "ts": 1785242108208,
+      "tonal": {
+        "volume": 13982,
+        "work": 33,
+        "cals": 345,
+        "duration": 49
+      }
     }
   },
-  "lastSaved": "2026-07-26T21:02:37.531Z",
+  "lastSaved": "2026-07-28T17:59:39.635Z",
   "version": 1,
   "seeded": true
 }
