@@ -535,6 +535,13 @@
         "weight": 230,
         "reps": 8,
         "e1rm": 291
+      },
+      {
+        "date": "Jul 29",
+        "ts": 1785326057465,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
       }
     ],
     "Weighted Chin-Up": [
@@ -1451,6 +1458,13 @@
         "weight": 87,
         "reps": 8,
         "e1rm": 110
+      },
+      {
+        "date": "Jul 29",
+        "ts": 1785327878658,
+        "weight": 87,
+        "reps": 8,
+        "e1rm": 110
       }
     ],
     "SA Tricep Extension": [
@@ -1586,6 +1600,13 @@
         "weight": 90,
         "reps": 10,
         "e1rm": 120
+      },
+      {
+        "date": "Jul 29",
+        "ts": 1785326730243,
+        "weight": 98,
+        "reps": 8,
+        "e1rm": 124
       }
     ],
     "Face Pull": [
@@ -1595,6 +1616,13 @@
         "weight": 87,
         "reps": 15,
         "e1rm": 122
+      },
+      {
+        "date": "Jul 29",
+        "ts": 1785327374478,
+        "weight": 89,
+        "reps": 15,
+        "e1rm": 125
       }
     ],
     "Hanging Knee Raise": [
@@ -1604,6 +1632,13 @@
         "weight": 230,
         "reps": 10,
         "e1rm": 307
+      },
+      {
+        "date": "Jul 29",
+        "ts": 1785327886847,
+        "weight": 230,
+        "reps": 15,
+        "e1rm": 322
       }
     ],
     "Incline Curl": [
@@ -2031,9 +2066,22 @@
         "cals": 345,
         "duration": 49
       }
+    },
+    "p2w2_d2": {
+      "date": "Jul 29",
+      "ts": 1785328861356,
+      "tonal": {
+        "volume": 16647,
+        "work": 32.8,
+        "cals": 356,
+        "avgHr": 127,
+        "maxHr": 151,
+        "duration": 52,
+        "notes": "Pretty good. "
+      }
     }
   },
-  "lastSaved": "2026-07-28T17:59:39.635Z",
+  "lastSaved": "2026-07-29T12:42:19.281Z",
   "version": 1,
   "seeded": true
 }
