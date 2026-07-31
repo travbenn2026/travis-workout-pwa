@@ -840,7 +840,8 @@ function getSugg(ex,repRange){
   var recent=logs[ex].slice(-5); // anchor to recent form, not all-time peak — auto-regulates after layoffs
   var best=recent.reduce(function(b,e){return e.e1rm>b.e1rm?e:b;},recent[0]);
   var tr=(repRange&&lowReps(repRange))||ph.phase.treps;
-  var suggested=Math.round((best.e1rm/(1+tr/30))*ph.phase.wmult);
+  var trCapped=Math.min(tr,12); // mirror e1rm()'s rep-term cap so the suggestion round-trips correctly above 12 reps
+  var suggested=Math.round((best.e1rm/(1+trCapped/30))*ph.phase.wmult);
   return{weight:suggested,reps:tr};
 }
 
@@ -1160,6 +1161,9 @@ var EXERCISE_ALTS={
     {n:'Standing Incline Chest Press',tr:'Standing Incline Chest Press',note:'Tonal · Cable, constant tension'},
     {n:'Alt Bench Press',tr:'Alt Bench Press',note:'Tonal · Alternate arms, core stability'},
     {n:'Middle Chest Fly',tr:'Middle Chest Fly',note:'Tonal · Isolation, full pec stretch'},
+  ],
+  'Seated Calf Raise':[
+    {n:'Resisted Calf Raise',tr:'Resisted Calf Raise',note:'Tonal · Standing, straight-leg — gastrocnemius emphasis, more load capacity than seated'},
   ],
   'Barbell Back Squat':[
     {n:'Bulgarian Split Squat',tr:'Bulgarian Split Squat',note:'Tonal · Unilateral, knee-conscious'},
