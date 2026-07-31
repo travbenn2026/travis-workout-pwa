@@ -394,6 +394,13 @@
         "weight": 22,
         "reps": 12,
         "e1rm": 31
+      },
+      {
+        "date": "Jul 30",
+        "ts": 1785417035773,
+        "weight": 23,
+        "reps": 12,
+        "e1rm": 32
       }
     ],
     "Skull Crushers": [
@@ -741,6 +748,13 @@
         "weight": 40,
         "reps": 10,
         "e1rm": 53
+      },
+      {
+        "date": "Jul 30",
+        "ts": 1785415165405,
+        "weight": 40,
+        "reps": 10,
+        "e1rm": 53
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -796,6 +810,13 @@
       {
         "date": "Jul 23",
         "ts": 1784811351822,
+        "weight": 26,
+        "reps": 12,
+        "e1rm": 36
+      },
+      {
+        "date": "Jul 30",
+        "ts": 1785416587605,
         "weight": 26,
         "reps": 12,
         "e1rm": 36
@@ -916,6 +937,13 @@
         "weight": 200,
         "reps": 8,
         "e1rm": 253
+      },
+      {
+        "date": "Jul 31",
+        "ts": 1785500585977,
+        "weight": 250,
+        "reps": 8,
+        "e1rm": 317
       }
     ],
     "Resisted Calf Raise": [
@@ -953,6 +981,13 @@
         "weight": 100,
         "reps": 15,
         "e1rm": 140
+      },
+      {
+        "date": "Jul 31",
+        "ts": 1785501392085,
+        "weight": 125,
+        "reps": 15,
+        "e1rm": 175
       }
     ],
     "Weighted Incline Sit-Up": [
@@ -1281,6 +1316,13 @@
         "weight": 37,
         "reps": 15,
         "e1rm": 52
+      },
+      {
+        "date": "Jul 30",
+        "ts": 1785415844722,
+        "weight": 37,
+        "reps": 15,
+        "e1rm": 52
       }
     ],
     "W Hold": [
@@ -1504,6 +1546,13 @@
         "weight": 100,
         "reps": 8,
         "e1rm": 127
+      },
+      {
+        "date": "Jul 31",
+        "ts": 1785501528429,
+        "weight": 102,
+        "reps": 10,
+        "e1rm": 136
       }
     ],
     "Racked Reverse Lunge": [
@@ -1648,6 +1697,13 @@
         "weight": 32,
         "reps": 8,
         "e1rm": 41
+      },
+      {
+        "date": "Jul 30",
+        "ts": 1785415034400,
+        "weight": 33,
+        "reps": 8,
+        "e1rm": 42
       }
     ],
     "Skull Crusher": [
@@ -1666,6 +1722,13 @@
         "weight": 100,
         "reps": 6,
         "e1rm": 120
+      },
+      {
+        "date": "Jul 31",
+        "ts": 1785499572207,
+        "weight": 125,
+        "reps": 6,
+        "e1rm": 150
       }
     ],
     "KB Swing": [
@@ -1674,6 +1737,13 @@
         "ts": 1784895823302,
         "weight": 50,
         "reps": 15,
+        "e1rm": 70
+      },
+      {
+        "date": "Jul 31",
+        "ts": 1785500356956,
+        "weight": 50,
+        "reps": 12,
         "e1rm": 70
       }
     ],
@@ -2079,9 +2149,35 @@
         "duration": 52,
         "notes": "Pretty good. "
       }
+    },
+    "p2w2_d3": {
+      "date": "Jul 30",
+      "ts": 1785417572536,
+      "tonal": {
+        "volume": 11531,
+        "work": 43.6,
+        "cals": 404,
+        "avgHr": 113,
+        "maxHr": 144,
+        "duration": 57,
+        "notes": "Elbow discomfort. Did recovery mode. "
+      }
+    },
+    "p2w2_d4": {
+      "date": "Jul 31",
+      "ts": 1785502094933,
+      "tonal": {
+        "volume": 25750,
+        "work": 34.2,
+        "cals": 382,
+        "avgHr": 125,
+        "maxHr": 152,
+        "duration": 44,
+        "notes": "Still good"
+      }
     }
   },
-  "lastSaved": "2026-07-29T12:42:19.281Z",
+  "lastSaved": "2026-07-31T17:05:47.002Z",
   "version": 1,
   "seeded": true
 }
