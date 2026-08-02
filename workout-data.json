@@ -401,6 +401,13 @@
         "weight": 23,
         "reps": 12,
         "e1rm": 32
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785594920235,
+        "weight": 23,
+        "reps": 12,
+        "e1rm": 32
       }
     ],
     "Skull Crushers": [
@@ -1145,6 +1152,13 @@
         "weight": 27,
         "reps": 10,
         "e1rm": 36
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785594458896,
+        "weight": 24,
+        "reps": 15,
+        "e1rm": 34
       }
     ],
     "Middle Chest Fly": [
@@ -1182,6 +1196,13 @@
         "weight": 44,
         "reps": 12,
         "e1rm": 62
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785593558152,
+        "weight": 45,
+        "reps": 12,
+        "e1rm": 63
       }
     ],
     "Tricep Extension": [
@@ -1461,6 +1482,13 @@
         "weight": 31,
         "reps": 12,
         "e1rm": 43
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785594389031,
+        "weight": 33,
+        "reps": 12,
+        "e1rm": 46
       }
     ],
     "Seated Pallof Press": [
@@ -1633,6 +1661,13 @@
         "weight": 77,
         "reps": 8,
         "e1rm": 98
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785592773045,
+        "weight": 74,
+        "reps": 10,
+        "e1rm": 99
       }
     ],
     "Chest-Supported Row": [
@@ -1656,6 +1691,13 @@
         "weight": 98,
         "reps": 8,
         "e1rm": 124
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785592960692,
+        "weight": 92,
+        "reps": 10,
+        "e1rm": 123
       }
     ],
     "Face Pull": [
@@ -1751,6 +1793,13 @@
       {
         "date": "Jul 25",
         "ts": 1784996893008,
+        "weight": 55,
+        "reps": 10,
+        "e1rm": 73
+      },
+      {
+        "date": "Aug 1",
+        "ts": 1785594917252,
         "weight": 55,
         "reps": 10,
         "e1rm": 73
@@ -2175,9 +2224,22 @@
         "duration": 44,
         "notes": "Still good"
       }
+    },
+    "p2w2_d5": {
+      "date": "Aug 1",
+      "ts": 1785595955617,
+      "tonal": {
+        "volume": 30692,
+        "work": 73.9,
+        "cals": 493,
+        "avgHr": 128,
+        "maxHr": 154,
+        "duration": 66,
+        "notes": "Felt good"
+      }
     }
   },
-  "lastSaved": "2026-07-31T17:05:47.002Z",
+  "lastSaved": "2026-08-02T01:08:48.609Z",
   "version": 1,
   "seeded": true
 }
