@@ -79,6 +79,13 @@
         "weight": 212,
         "reps": 5,
         "e1rm": 247
+      },
+      {
+        "date": "Aug 4",
+        "ts": 1785843039803,
+        "weight": 212,
+        "reps": 5,
+        "e1rm": 247
       }
     ],
     "Alt Bench Press": [
@@ -857,6 +864,13 @@
         "weight": 38,
         "reps": 8,
         "e1rm": 48
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785759237959,
+        "weight": 38,
+        "reps": 8,
+        "e1rm": 48
       }
     ],
     "Back Squat": [
@@ -994,6 +1008,13 @@
         "ts": 1785501392085,
         "weight": 125,
         "reps": 15,
+        "e1rm": 175
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785760949825,
+        "weight": 125,
+        "reps": 12,
         "e1rm": 175
       }
     ],
@@ -1452,6 +1473,13 @@
         "weight": 100,
         "reps": 8,
         "e1rm": 127
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785759012064,
+        "weight": 114,
+        "reps": 8,
+        "e1rm": 144
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -1581,6 +1609,13 @@
         "weight": 102,
         "reps": 10,
         "e1rm": 136
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785758584476,
+        "weight": 119,
+        "reps": 6,
+        "e1rm": 143
       }
     ],
     "Racked Reverse Lunge": [
@@ -1606,6 +1641,13 @@
         "weight": 42,
         "reps": 10,
         "e1rm": 56
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785759411281,
+        "weight": 42,
+        "reps": 10,
+        "e1rm": 56
       }
     ],
     "Cable Crunch": [
@@ -1622,6 +1664,13 @@
         "weight": 63,
         "reps": 12,
         "e1rm": 88
+      },
+      {
+        "date": "Aug 3",
+        "ts": 1785760947341,
+        "weight": 63,
+        "reps": 12,
+        "e1rm": 88
       }
     ],
     "Seated Overhead Press": [
@@ -1635,6 +1684,13 @@
       {
         "date": "Jul 28",
         "ts": 1785240218668,
+        "weight": 51,
+        "reps": 6,
+        "e1rm": 61
+      },
+      {
+        "date": "Aug 4",
+        "ts": 1785843719321,
         "weight": 51,
         "reps": 6,
         "e1rm": 61
@@ -1668,6 +1724,13 @@
         "weight": 74,
         "reps": 10,
         "e1rm": 99
+      },
+      {
+        "date": "Aug 4",
+        "ts": 1785844606785,
+        "weight": 80,
+        "reps": 8,
+        "e1rm": 101
       }
     ],
     "Chest-Supported Row": [
@@ -2237,9 +2300,21 @@
         "duration": 66,
         "notes": "Felt good"
       }
+    },
+    "p2w3_d0": {
+      "date": "Aug 3",
+      "ts": 1785762118896,
+      "tonal": {
+        "volume": 32291,
+        "work": 56,
+        "cals": 572,
+        "avgHr": 130,
+        "maxHr": 157,
+        "duration": 65
+      }
     }
   },
-  "lastSaved": "2026-08-02T01:08:49.959Z",
+  "lastSaved": "2026-08-04T11:59:09.339Z",
   "version": 1,
   "seeded": true
 }
