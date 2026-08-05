@@ -225,6 +225,13 @@
         "weight": 260,
         "reps": 13,
         "e1rm": 364
+      },
+      {
+        "date": "Aug 4",
+        "ts": 1785845443294,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
       }
     ],
     "Barbell OHP": [
@@ -2312,9 +2319,34 @@
         "maxHr": 157,
         "duration": 65
       }
+    },
+    "p2w3_d1": {
+      "date": "Aug 4",
+      "ts": 1785845767780,
+      "tonal": {
+        "volume": 13801,
+        "work": 31.1,
+        "cals": 355,
+        "avgHr": 115,
+        "maxHr": 151,
+        "duration": 51,
+        "notes": "Subbed tricep pushdown. "
+      }
+    },
+    "p2w3_d2": {
+      "date": "Aug 5",
+      "ts": 1785933803604,
+      "tonal": {
+        "volume": 16811,
+        "work": 33.3,
+        "cals": 334,
+        "avgHr": 125,
+        "maxHr": 155,
+        "duration": 48
+      }
     }
   },
-  "lastSaved": "2026-08-04T11:59:09.339Z",
+  "lastSaved": "2026-08-05T12:44:25.864Z",
   "version": 1,
   "seeded": true
 }
