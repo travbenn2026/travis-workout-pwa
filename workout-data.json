@@ -776,6 +776,13 @@
         "weight": 40,
         "reps": 10,
         "e1rm": 53
+      },
+      {
+        "date": "Aug 6",
+        "ts": 1786019616679,
+        "weight": 41,
+        "reps": 10,
+        "e1rm": 55
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -841,6 +848,13 @@
         "weight": 26,
         "reps": 12,
         "e1rm": 36
+      },
+      {
+        "date": "Aug 6",
+        "ts": 1786020220041,
+        "weight": 27,
+        "reps": 12,
+        "e1rm": 38
       }
     ],
     "Bulgarian Split Squat": [
@@ -1372,6 +1386,13 @@
         "weight": 37,
         "reps": 15,
         "e1rm": 52
+      },
+      {
+        "date": "Aug 6",
+        "ts": 1786019974700,
+        "weight": 39,
+        "reps": 15,
+        "e1rm": 55
       }
     ],
     "W Hold": [
@@ -1816,6 +1837,13 @@
         "weight": 33,
         "reps": 8,
         "e1rm": 42
+      },
+      {
+        "date": "Aug 6",
+        "ts": 1786018917487,
+        "weight": 35,
+        "reps": 8,
+        "e1rm": 44
       }
     ],
     "Skull Crusher": [
@@ -2344,9 +2372,21 @@
         "maxHr": 155,
         "duration": 48
       }
+    },
+    "p2w3_d3": {
+      "date": "Aug 6",
+      "ts": 1786021590832,
+      "tonal": {
+        "volume": 15802,
+        "work": 49.9,
+        "cals": 375,
+        "avgHr": 119,
+        "maxHr": 145,
+        "duration": 55
+      }
     }
   },
-  "lastSaved": "2026-08-05T12:44:25.864Z",
+  "lastSaved": "2026-08-06T13:07:27.681Z",
   "version": 1,
   "seeded": true
 }
