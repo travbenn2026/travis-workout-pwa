@@ -986,6 +986,13 @@
         "weight": 250,
         "reps": 8,
         "e1rm": 317
+      },
+      {
+        "date": "Aug 7",
+        "ts": 1786104365096,
+        "weight": 250,
+        "reps": 8,
+        "e1rm": 317
       }
     ],
     "Resisted Calf Raise": [
@@ -1036,6 +1043,13 @@
         "ts": 1785760949825,
         "weight": 125,
         "reps": 12,
+        "e1rm": 175
+      },
+      {
+        "date": "Aug 7",
+        "ts": 1786105702771,
+        "weight": 125,
+        "reps": 15,
         "e1rm": 175
       }
     ],
@@ -1644,6 +1658,13 @@
         "weight": 119,
         "reps": 6,
         "e1rm": 143
+      },
+      {
+        "date": "Aug 7",
+        "ts": 1786105692870,
+        "weight": 107,
+        "reps": 10,
+        "e1rm": 143
       }
     ],
     "Racked Reverse Lunge": [
@@ -1869,6 +1890,13 @@
         "weight": 125,
         "reps": 6,
         "e1rm": 150
+      },
+      {
+        "date": "Aug 7",
+        "ts": 1786103846299,
+        "weight": 125,
+        "reps": 6,
+        "e1rm": 150
       }
     ],
     "KB Swing": [
@@ -1884,6 +1912,13 @@
         "ts": 1785500356956,
         "weight": 50,
         "reps": 12,
+        "e1rm": 70
+      },
+      {
+        "date": "Aug 7",
+        "ts": 1786104432687,
+        "weight": 50,
+        "reps": 15,
         "e1rm": 70
       }
     ],
@@ -2384,9 +2419,25 @@
         "maxHr": 145,
         "duration": 55
       }
+    },
+    "p2w3_d4": {
+      "date": "Aug 7",
+      "ts": 1786106337913,
+      "tonal": {
+        "volume": 27386,
+        "work": 36.9,
+        "cals": 392,
+        "avgHr": 129,
+        "maxHr": 156,
+        "duration": 43
+      }
+    },
+    "p2w4_d0": {
+      "date": "Aug 10",
+      "ts": 1786365445255
     }
   },
-  "lastSaved": "2026-08-06T13:07:27.681Z",
+  "lastSaved": "2026-08-10T15:10:41.820Z",
   "version": 1,
   "seeded": true
 }
