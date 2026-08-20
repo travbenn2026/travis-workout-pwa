@@ -86,6 +86,20 @@
         "weight": 212,
         "reps": 5,
         "e1rm": 247
+      },
+      {
+        "date": "Aug 11",
+        "ts": 1786446607979,
+        "weight": 191,
+        "reps": 5,
+        "e1rm": 223
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787051429384,
+        "weight": 217,
+        "reps": 5,
+        "e1rm": 253
       }
     ],
     "Alt Bench Press": [
@@ -229,6 +243,13 @@
       {
         "date": "Aug 4",
         "ts": 1785845443294,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787053064749,
         "weight": 260,
         "reps": 14,
         "e1rm": 364
@@ -422,6 +443,13 @@
         "weight": 23,
         "reps": 12,
         "e1rm": 32
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787052439550,
+        "weight": 23,
+        "reps": 12,
+        "e1rm": 32
       }
     ],
     "Skull Crushers": [
@@ -533,6 +561,13 @@
         "weight": 81,
         "reps": 10,
         "e1rm": 108
+      },
+      {
+        "date": "Aug 13",
+        "ts": 1786620793757,
+        "weight": 76,
+        "reps": 10,
+        "e1rm": 101
       }
     ],
     "Weighted Pull-Up": [
@@ -567,6 +602,13 @@
       {
         "date": "Jul 29",
         "ts": 1785326057465,
+        "weight": 230,
+        "reps": 8,
+        "e1rm": 291
+      },
+      {
+        "date": "Aug 19",
+        "ts": 1787138006637,
         "weight": 230,
         "reps": 8,
         "e1rm": 291
@@ -852,6 +894,13 @@
       {
         "date": "Aug 6",
         "ts": 1786020220041,
+        "weight": 27,
+        "reps": 12,
+        "e1rm": 38
+      },
+      {
+        "date": "Aug 20",
+        "ts": 1787224793520,
         "weight": 27,
         "reps": 12,
         "e1rm": 38
@@ -1215,6 +1264,13 @@
         "weight": 24,
         "reps": 15,
         "e1rm": 34
+      },
+      {
+        "date": "Aug 20",
+        "ts": 1787224789502,
+        "weight": 26,
+        "reps": 12,
+        "e1rm": 36
       }
     ],
     "Middle Chest Fly": [
@@ -1303,6 +1359,20 @@
         "weight": 86,
         "reps": 10,
         "e1rm": 115
+      },
+      {
+        "date": "Aug 14",
+        "ts": 1786707170570,
+        "weight": 50,
+        "reps": 8,
+        "e1rm": 63
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787052803397,
+        "weight": 65,
+        "reps": 10,
+        "e1rm": 87
       }
     ],
     "SA Bent Over Row": [
@@ -1743,6 +1813,20 @@
         "weight": 51,
         "reps": 6,
         "e1rm": 61
+      },
+      {
+        "date": "Aug 11",
+        "ts": 1786446813445,
+        "weight": 46,
+        "reps": 6,
+        "e1rm": 55
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787051753413,
+        "weight": 52,
+        "reps": 6,
+        "e1rm": 62
       }
     ],
     "Incline Press": [
@@ -1780,6 +1864,20 @@
         "weight": 80,
         "reps": 8,
         "e1rm": 101
+      },
+      {
+        "date": "Aug 11",
+        "ts": 1786447054293,
+        "weight": 72,
+        "reps": 8,
+        "e1rm": 91
+      },
+      {
+        "date": "Aug 18",
+        "ts": 1787052156339,
+        "weight": 81,
+        "reps": 8,
+        "e1rm": 103
       }
     ],
     "Chest-Supported Row": [
@@ -1826,6 +1924,13 @@
         "weight": 89,
         "reps": 15,
         "e1rm": 125
+      },
+      {
+        "date": "Aug 19",
+        "ts": 1787139156191,
+        "weight": 85,
+        "reps": 15,
+        "e1rm": 119
       }
     ],
     "Hanging Knee Raise": [
@@ -1862,6 +1967,20 @@
       {
         "date": "Aug 6",
         "ts": 1786018917487,
+        "weight": 35,
+        "reps": 8,
+        "e1rm": 44
+      },
+      {
+        "date": "Aug 14",
+        "ts": 1786707158140,
+        "weight": 31,
+        "reps": 8,
+        "e1rm": 39
+      },
+      {
+        "date": "Aug 20",
+        "ts": 1787222873654,
         "weight": 35,
         "reps": 8,
         "e1rm": 44
@@ -2435,9 +2554,37 @@
     "p2w4_d0": {
       "date": "Aug 10",
       "ts": 1786365445255
+    },
+    "p2w4_d1": {
+      "date": "Aug 11",
+      "ts": 1786448156723
+    },
+    "p2w4_d2": {
+      "date": "Aug 13",
+      "ts": 1786621921337
+    },
+    "p2w4_d3": {
+      "date": "Aug 14",
+      "ts": 1786708194136
+    },
+    "p2w5_d1": {
+      "date": "Aug 18",
+      "ts": 1787053350253,
+      "tonal": {
+        "volume": 15114,
+        "work": 34.5,
+        "cals": 337,
+        "avgHr": 118,
+        "maxHr": 150,
+        "duration": 44
+      }
+    },
+    "p2w5_d2": {
+      "date": "Aug 19",
+      "ts": 1787140366832
     }
   },
-  "lastSaved": "2026-08-10T15:10:41.820Z",
+  "lastSaved": "2026-08-20T11:20:07.768Z",
   "version": 1,
   "seeded": true
 }
