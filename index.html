@@ -178,6 +178,10 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .lfbtn{width:100%;background:#4499dd;border:none;border-radius:8px;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:12px;cursor:pointer;margin-top:4px;}
 .lfbtn:active{background:#3388cc;}
 .prbadge{display:inline-block;background:#1a2a08;color:#88cc44;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:6px;}
+.modesel{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0;}
+.modebtn{flex:1;min-width:70px;background:#161616;border:1px solid #262626;color:#888;font-size:11px;font-weight:600;padding:8px 4px;border-radius:8px;cursor:pointer;text-align:center;}
+.modebtn.active{background:#1a2a3a;border-color:#4499dd;color:#7abfff;}
+.modetag{display:block;font-size:10px;color:#4499dd;margin-top:2px;text-align:right;}
 .ehcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;}
 .ehhd{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
 .ehname{font-size:14px;font-weight:600;color:#fff;}
@@ -791,9 +795,20 @@ function quoteOfDay(){
 }
 function today(){return new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 
-function logSet(ex,w,r){
+// Base weight always drives e1RM/PR math, regardless of mode — a dynamic-mode set
+// with a lower base weight than a straight-set PR will never register as a false PR,
+// even though Tonal's own on-device tracker can be fooled by the mode's peak load.
+var MODE_META={
+  straight:{lbl:'Straight',ic:''},
+  eccentric:{lbl:'Eccentric',ic:'⬇️'},
+  chains:{lbl:'Chains',ic:'⛓️'},
+  smartflex:{lbl:'Smart Flex',ic:'🌀'},
+};
+function logSet(ex,w,r,mode,peak){
   var logs=ll();if(!logs[ex])logs[ex]=[];
   var entry={date:today(),ts:Date.now(),weight:w,reps:r,e1rm:e1rm(w,r)};
+  if(mode&&mode!=='straight')entry.mode=mode;
+  if(peak&&peak>0)entry.peak=peak;
   var sd=null;for(var i=0;i<logs[ex].length;i++){if(logs[ex][i].date===today()){sd=logs[ex][i];break;}}
   if(sd){if(w>sd.weight||(w===sd.weight&&r>sd.reps)){logs[ex]=logs[ex].filter(function(e){return e.date!==today();});logs[ex].push(entry);}}
   else{logs[ex].push(entry);}
@@ -1563,7 +1578,8 @@ function exDetailCard(ex){
   }).join('');
   var rows=[].concat(entries).reverse().slice(0,6).map(function(e){
     var pr=e===best?'<span class="prbadge">PR</span>':'';
-    return'<div class="hrow"><div class="hdate">'+e.date+'</div><div style="text-align:right"><span class="hw">'+e.weight+' x '+e.reps+'</span>'+pr+'<div class="he1">e1RM ~'+e.e1rm+' lb</div></div></div>';
+    var modeTag=(e.mode&&MODE_META[e.mode])?'<span class="modetag">'+MODE_META[e.mode].ic+' '+MODE_META[e.mode].lbl+(e.peak?' · peak '+e.peak+' lb':'')+'</span>':'';
+    return'<div class="hrow"><div class="hdate">'+e.date+'</div><div style="text-align:right"><span class="hw">'+e.weight+' x '+e.reps+'</span>'+pr+'<div class="he1">e1RM ~'+e.e1rm+' lb (base)</div>'+modeTag+'</div></div>';
   }).join('');
   var sug=getSugg(ex);
   var sugH2=sug?'<div style="padding:8px 14px;border-top:1px solid #181818"><span class="pill psug">Next target: '+sug.weight+' lb x '+sug.reps+' reps</span></div>':'';
@@ -1597,19 +1613,38 @@ function buildTracker(){
     '<div class="lfc"><div class="lftitle">📝 Log Top Set</div>'+
     '<div class="lfrow"><select class="lfsel" id="logEx" onchange="logExChanged(this.value)">'+logOpts+'</select></div>'+
     '<div class="lfrow" id="logCustomWrap" style="display:none"><input class="lfin" id="logExCustom" type="text" placeholder="Exercise name" style="width:100%"></div>'+
-    '<div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div>'+
+    '<div class="lfrow"><input class="lfin" id="logW" type="number" placeholder="lbs (base weight)" inputmode="decimal" min="0" step="2.5"><input class="lfin" id="logR" type="number" placeholder="reps" inputmode="numeric" min="1" max="30"></div>'+
+    modeSelectorHtml('log')+
     '<button class="lfbtn" onclick="handleLog()">Save Set</button></div>'+
     '<div class="lfc" style="margin-top:10px"><div class="lftitle">📚 Movement History</div>'+
     '<div class="lfrow"><select class="lfsel" onchange="libSelect(this.value)">'+libOpts+'</select></div></div>'+
     exDetailCard(libSelEx)+btH;
 }
-function commitLog(ex,w,r){
+function commitLog(ex,w,r,mode,peak){
   if(!ex||!w||!r||w<=0||r<=0){showToast('Enter weight and reps');return false;}
   var hadPrior=!!(ll()[ex]&&ll()[ex].length);
-  var pr=isPR(ex,w,r);logSet(ex,w,r);
+  var pr=isPR(ex,w,r);logSet(ex,w,r,mode,peak);
   showToast(pr&&hadPrior?'🏆 New PR! Logged.':'✓ Set logged');buildTracker();
   if(pr&&hadPrior){playPRClip(ex,w,r);prBurst();xpAward('pr',25,ex+' — new PR');}
   return true;
+}
+function modeSelectorHtml(prefix){
+  var btns=['straight','eccentric','chains','smartflex'].map(function(m){
+    var mm=MODE_META[m];
+    return'<button type="button" class="modebtn'+(m==='straight'?' active':'')+'" data-mode="'+m+'" onclick="pickMode(this,\''+prefix+'\')">'+(mm.ic?mm.ic+' ':'')+mm.lbl+'</button>';
+  }).join('');
+  return'<input type="hidden" id="'+prefix+'Mode" value="straight">'+
+    '<div class="modesel">'+btns+'</div>'+
+    '<div class="lfrow" id="'+prefix+'PeakWrap" style="display:none"><input class="lfin" id="'+prefix+'Peak" type="number" inputmode="decimal" min="0" step="2.5" placeholder="Peak weight (optional)" style="width:100%"></div>';
+}
+function pickMode(btn,prefix){
+  var wrap=btn.parentNode;
+  Array.prototype.forEach.call(wrap.children,function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var mode=btn.getAttribute('data-mode');
+  document.getElementById(prefix+'Mode').value=mode;
+  var peakWrap=document.getElementById(prefix+'PeakWrap');
+  if(peakWrap)peakWrap.style.display=(mode==='straight')?'none':'block';
 }
 function handleLog(){
   var ex=document.getElementById('logEx').value;
@@ -1620,7 +1655,9 @@ function handleLog(){
   }
   var w=parseFloat(document.getElementById('logW').value);
   var r=parseInt(document.getElementById('logR').value);
-  if(commitLog(ex,w,r))libSelEx=ex;
+  var mode=document.getElementById('logMode').value;
+  var peak=parseFloat(document.getElementById('logPeak').value)||null;
+  if(commitLog(ex,w,r,mode,peak))libSelEx=ex;
 }
 function quickLog(ev,ex,repRange){
   if(ev){ev.stopPropagation();ev.preventDefault();}
@@ -1630,7 +1667,8 @@ function quickLog(ev,ex,repRange){
   var ov=document.createElement('div');ov.className='ql-ov';
   ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);padding:24px;box-sizing:border-box';
   ov.innerHTML='<div class="ql-card"><div class="ql-title">'+ex+'</div><div class="ql-sub">Log your top set</div>'+
-    '<div class="ql-row"><input class="ql-in" id="qlW" type="number" inputmode="decimal" min="0" step="2.5" placeholder="lbs" value="'+wVal+'"><span class="ql-x">×</span><input class="ql-in" id="qlR" type="number" inputmode="numeric" min="1" max="30" placeholder="reps" value="'+rVal+'"></div>'+
+    '<div class="ql-row"><input class="ql-in" id="qlW" type="number" inputmode="decimal" min="0" step="2.5" placeholder="lbs (base weight)" value="'+wVal+'"><span class="ql-x">×</span><input class="ql-in" id="qlR" type="number" inputmode="numeric" min="1" max="30" placeholder="reps" value="'+rVal+'"></div>'+
+    modeSelectorHtml('ql')+
     '<div class="ql-btns"><button class="ql-cancel" onclick="closeQuickLog()">Cancel</button><button class="ql-save" onclick="saveQuickLog(\''+ex+'\')">Save Set</button></div></div>';
   ov.addEventListener('click',function(e){if(e.target===ov)closeQuickLog();});
   document.body.appendChild(ov);
@@ -1639,7 +1677,9 @@ function quickLog(ev,ex,repRange){
 function closeQuickLog(){var ov=document.querySelector('.ql-ov');if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);}
 function saveQuickLog(ex){
   var w=parseFloat(document.getElementById('qlW').value),r=parseInt(document.getElementById('qlR').value);
-  if(commitLog(ex,w,r))closeQuickLog();
+  var mode=document.getElementById('qlMode').value;
+  var peak=parseFloat(document.getElementById('qlPeak').value)||null;
+  if(commitLog(ex,w,r,mode,peak))closeQuickLog();
 }
 
 // ── DASHBOARD ────────────────────────────────────────────────────────────────
