@@ -2582,9 +2582,22 @@
     "p2w5_d2": {
       "date": "Aug 19",
       "ts": 1787140366832
+    },
+    "p2w5_d3": {
+      "date": "Aug 20",
+      "ts": 1787225419027,
+      "tonal": {
+        "volume": 15509,
+        "work": 47.9,
+        "cals": 352,
+        "avgHr": 117,
+        "maxHr": 153,
+        "duration": 50,
+        "notes": "Used tricep swaps"
+      }
     }
   },
-  "lastSaved": "2026-08-20T11:20:07.768Z",
+  "lastSaved": "2026-08-20T11:31:15.972Z",
   "version": 1,
   "seeded": true
 }
