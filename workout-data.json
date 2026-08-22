@@ -1042,6 +1042,13 @@
         "weight": 250,
         "reps": 8,
         "e1rm": 317
+      },
+      {
+        "date": "Aug 21",
+        "ts": 1787316910224,
+        "weight": 250,
+        "reps": 8,
+        "e1rm": 317
       }
     ],
     "Resisted Calf Raise": [
@@ -1097,6 +1104,13 @@
       {
         "date": "Aug 7",
         "ts": 1786105702771,
+        "weight": 125,
+        "reps": 15,
+        "e1rm": 175
+      },
+      {
+        "date": "Aug 21",
+        "ts": 1787318047077,
         "weight": 125,
         "reps": 15,
         "e1rm": 175
@@ -1735,6 +1749,13 @@
         "weight": 107,
         "reps": 10,
         "e1rm": 143
+      },
+      {
+        "date": "Aug 21",
+        "ts": 1787318513575,
+        "weight": 108,
+        "reps": 10,
+        "e1rm": 144
       }
     ],
     "Racked Reverse Lunge": [
@@ -2016,6 +2037,13 @@
         "weight": 125,
         "reps": 6,
         "e1rm": 150
+      },
+      {
+        "date": "Aug 21",
+        "ts": 1787316450289,
+        "weight": 125,
+        "reps": 6,
+        "e1rm": 150
       }
     ],
     "KB Swing": [
@@ -2036,6 +2064,13 @@
       {
         "date": "Aug 7",
         "ts": 1786104432687,
+        "weight": 50,
+        "reps": 15,
+        "e1rm": 70
+      },
+      {
+        "date": "Aug 21",
+        "ts": 1787318028927,
         "weight": 50,
         "reps": 15,
         "e1rm": 70
@@ -2595,9 +2630,21 @@
         "duration": 50,
         "notes": "Used tricep swaps"
       }
+    },
+    "p2w5_d4": {
+      "date": "Aug 21",
+      "ts": 1787319226627,
+      "tonal": {
+        "volume": 27466,
+        "work": 36.3,
+        "cals": 406,
+        "avgHr": 131,
+        "maxHr": 160,
+        "duration": 47
+      }
     }
   },
-  "lastSaved": "2026-08-20T11:31:15.972Z",
+  "lastSaved": "2026-08-22T02:46:45.038Z",
   "version": 1,
   "seeded": true
 }
