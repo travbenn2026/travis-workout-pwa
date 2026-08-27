@@ -1343,7 +1343,20 @@ function buildCDTimerHTML(){
 }
 function startCDTimer(cdt){
   if(cdTimerState)clearInterval(cdTimerState.intervalId);
-  try{cdAudioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){cdAudioCtx=null;}
+  try{
+    cdAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    // iOS only honors AudioContext.resume() when called synchronously inside a real
+    // user-gesture handler (this onclick chain). Calling it later from a setInterval
+    // tick — which is what cdChime() previously relied on — gets silently ignored,
+    // leaving the context suspended forever. Unlock it here, plus play a silent
+    // zero-gain tone (belt-and-suspenders — some iOS versions want an actual
+    // start()/stop() during the gesture, not just resume()).
+    if(cdAudioCtx.state==='suspended')cdAudioCtx.resume();
+    var primer=cdAudioCtx.createOscillator(),pg=cdAudioCtx.createGain();
+    primer.connect(pg);pg.connect(cdAudioCtx.destination);
+    pg.gain.value=0;primer.frequency.value=440;
+    primer.start(cdAudioCtx.currentTime);primer.stop(cdAudioCtx.currentTime+0.01);
+  }catch(e){cdAudioCtx=null;}
   var strs=CD[cdt].s.map(function(s){var p=parseCDHold(s.h);return{name:s.n,secs:p.secs,bilateral:p.bilateral};});
   cdTimerState={cdt:cdt,stretches:strs,idx:0,side:0,total:strs[0].secs,remaining:strs[0].secs,done:false,intervalId:null};
   var f=strs[0];cdSpeak(f.bilateral?f.name+'. Left side.':f.name);
@@ -1354,7 +1367,7 @@ var cdAudioCtx=null;
 function cdChime(pitch){
   try{
     if(!cdAudioCtx||cdAudioCtx.state==='closed')return;
-    if(cdAudioCtx.state==='suspended')cdAudioCtx.resume();
+    if(cdAudioCtx.state==='suspended'){cdAudioCtx.resume();return;} // already unlocked at start; if suspended again (e.g. brief backgrounding) skip this beep rather than schedule against a dead context
     var osc=cdAudioCtx.createOscillator(),gain=cdAudioCtx.createGain();
     osc.connect(gain);gain.connect(cdAudioCtx.destination);
     osc.type='sine';osc.frequency.value=pitch||880;
