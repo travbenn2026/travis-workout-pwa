@@ -2623,6 +2623,67 @@ function recompCard(){
     '<div style="margin-top:10px;padding-top:9px;border-top:1px solid #1a1a1a;font-size:11px;color:#666">Start 42.0″ → target '+RECOMP_TARGET_WAIST+'″'+(wLast?' · <span style="color:'+(lost>0?'#44cc44':'#888')+'">'+(lost>0?'−'+lost+'″ so far · '+goalPct+'% there':'holding at start')+'</span>':' · log your first tape check')+'</div>'+
     '</div></div></div>';
 }
+// ── BODY COMPOSITION (Hume Pod: body fat %, muscle mass, water %) ────────────
+function bodyCompLog(){return getMetrics().entries.filter(function(e){return e.bodyFat!=null;});}
+function saveBodyComp(bf,mm,water){
+  var data=getMetrics(),entry=null;
+  for(var i=0;i<data.entries.length;i++){if(data.entries[i].date===today()){entry=data.entries[i];break;}}
+  if(!entry){entry={date:today(),ts:Date.now()};data.entries.push(entry);}
+  if(bf!=null)entry.bodyFat=bf;
+  if(mm!=null)entry.muscleMass=mm;
+  if(water!=null)entry.bodyWater=water;
+  data.entries.sort(function(a,b){return a.ts-b.ts;});
+  saveMetrics(data);
+}
+function openBodyCompModal(){
+  if(document.querySelector('.bwm-ov'))return;
+  var bl=bodyCompLog(),last=bl.length?bl[bl.length-1]:null;
+  var ov=document.createElement('div');ov.className='bwm-ov';
+  ov.style.cssText='position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.75);padding:24px;box-sizing:border-box';
+  ov.innerHTML='<div class="bwm-card"><div class="bwm-title">🩻 Log Body Composition</div>'+
+    '<div class="bwm-row"><label style="font-size:11px;color:#777;display:block;margin-bottom:3px">Body Fat %</label><input class="bwm-in" id="bfIn" type="number" inputmode="decimal" step="0.1" min="3" max="60" placeholder="%" value="'+(last&&last.bodyFat!=null?last.bodyFat:'')+'"></div>'+
+    '<div class="bwm-row"><label style="font-size:11px;color:#777;display:block;margin-bottom:3px">Muscle Mass (lb)</label><input class="bwm-in" id="mmIn" type="number" inputmode="decimal" step="0.1" min="50" max="300" placeholder="lb" value="'+(last&&last.muscleMass!=null?last.muscleMass:'')+'"></div>'+
+    '<div class="bwm-row"><label style="font-size:11px;color:#777;display:block;margin-bottom:3px">Body Water %</label><input class="bwm-in" id="bwIn2" type="number" inputmode="decimal" step="0.1" min="30" max="75" placeholder="%" value="'+(last&&last.bodyWater!=null?last.bodyWater:'')+'"></div>'+
+    '<div style="font-size:11px;color:#555;text-align:center;margin-top:-4px;margin-bottom:10px">Same time and conditions each check — BIA shifts with hydration. Skip the sauna first.</div>'+
+    '<div class="bwm-btns"><button class="tsm-skip" onclick="closeBwmOv()">Cancel</button><button class="tsm-save" onclick="saveBodyCompEntry()">Save</button></div></div>';
+  ov.addEventListener('click',function(e){if(e.target===ov)closeBwmOv();});
+  document.body.appendChild(ov);
+  setTimeout(function(){var el=document.getElementById('bfIn');if(el){el.focus();el.select();}},60);
+}
+function saveBodyCompEntry(){
+  var bf=parseFloat(document.getElementById('bfIn').value)||null;
+  var mm=parseFloat(document.getElementById('mmIn').value)||null;
+  var water=parseFloat(document.getElementById('bwIn2').value)||null;
+  if(bf===null&&mm===null&&water===null){showToast('Enter at least one reading');return;}
+  saveBodyComp(bf,mm,water);closeBwmOv();buildDash();showToast('✓ Body composition logged');
+}
+function bodyCompCard(){
+  var bl=bodyCompLog().slice(-30);
+  if(!bl.length)return'<div class="bwcard"><div class="bwcard-top"><div style="flex:1"><div class="bwcard-lbl">BODY COMPOSITION</div>'+
+    '<div style="font-size:12.5px;color:#666;margin-top:6px">No readings yet — log your first Hume Pod scan here. Body fat % and muscle mass track what is actually changing during the recomp, alongside the tape.</div>'+
+    '<button class="bwcard-btn" style="margin-top:10px;width:100%" onclick="openBodyCompModal()">🩻 Log Reading</button></div></div></div>';
+  var last=bl[bl.length-1],prev=bl.length>1?bl[bl.length-2]:null;
+  var bfVals=bl.filter(function(e){return e.bodyFat!=null;}).map(function(e){return e.bodyFat;});
+  var mmVals=bl.filter(function(e){return e.muscleMass!=null;}).map(function(e){return e.muscleMass;});
+  var bfD=(last.bodyFat!=null&&prev&&prev.bodyFat!=null)?Math.round((last.bodyFat-prev.bodyFat)*10)/10:null;
+  var mmD=(last.muscleMass!=null&&prev&&prev.muscleMass!=null)?Math.round((last.muscleMass-prev.muscleMass)*10)/10:null;
+  var bfDH=bfD===null?'':'<span style="font-size:11px;font-weight:700;color:'+(bfD<0?'#44cc44':bfD>0?'#cc8844':'#666')+'"> '+(bfD>0?'+':'')+bfD+'</span>';
+  var mmDH=mmD===null?'':'<span style="font-size:11px;font-weight:700;color:'+(mmD>0?'#44cc44':mmD<0?'#cc4444':'#666')+'"> '+(mmD>0?'+':'')+mmD+'</span>';
+  return'<div class="bwcard"><div class="bwcard-top" style="align-items:flex-start">'+
+    '<div style="flex:1"><div class="bwcard-lbl">BODY COMPOSITION · Hume Pod</div>'+
+    '<div style="display:flex;gap:18px;margin-top:6px">'+
+      '<div style="flex:1"><div style="font-size:10px;color:#555;letter-spacing:.5px">BODY FAT</div>'+
+        (last.bodyFat!=null?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:24px;font-weight:900;color:#eee">'+last.bodyFat+'<span style="font-size:12px;color:#666">%</span>'+bfDH+'</div>':'<div style="font-size:13px;color:#444;margin-top:4px">—</div>')+
+        (bfVals.length>1?recompSpark(bfVals,'#e8b840'):'')+'</div>'+
+      '<div style="flex:1"><div style="font-size:10px;color:#555;letter-spacing:.5px">MUSCLE MASS</div>'+
+        (last.muscleMass!=null?'<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:24px;font-weight:900;color:#eee">'+last.muscleMass+'<span style="font-size:12px;color:#666"> lb</span>'+mmDH+'</div>':'<div style="font-size:13px;color:#444;margin-top:4px">—</div>')+
+        (mmVals.length>1?recompSpark(mmVals,'#27b872'):'')+'</div>'+
+    '</div>'+
+    (last.bodyWater!=null?'<div style="margin-top:8px;font-size:11px;color:#777">Body water: '+last.bodyWater+'%</div>':'')+
+    '<button class="bwcard-btn" style="margin-top:10px;width:100%" onclick="openBodyCompModal()">🩻 Log Reading</button>'+
+    '<div style="margin-top:9px;padding-top:9px;border-top:1px solid #1a1a1a;font-size:11px;color:#666">BIA shifts with hydration — same conditions each time, judge the trend, not any single reading.</div>'+
+    '</div></div></div>';
+}
 // ── CONDITIONING LOG (evening engine) ────────────────────────────────────────
 var CARDIO_TYPES=[
   {key:'row_z2',label:'Row · Zone 2',icon:'🚣'},
@@ -2751,7 +2812,7 @@ function buildDash(){
     '</div>'+
   '</div>';
 
-  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+recompCard()+conditioningCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+buildMetricsCard()+buildMuscleReadinessCard()+skHtml+slHtml+prHtml;
+  document.getElementById('dashScroll').innerHTML=buildXPCard()+buildBadgeShelf()+avaCard()+buildAvaUnlockCard()+recompCard()+bodyCompCard()+conditioningCard()+syncHtml+phHtml+nxHtml+weekVolumeCard()+buildMetricsCard()+buildMuscleReadinessCard()+skHtml+slHtml+prHtml;
 }
 
 // ── NAV ──────────────────────────────────────────────────────────────────────
