@@ -100,6 +100,13 @@
         "weight": 217,
         "reps": 5,
         "e1rm": 253
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787655548559,
+        "weight": 217,
+        "reps": 5,
+        "e1rm": 253
       }
     ],
     "Alt Bench Press": [
@@ -250,6 +257,13 @@
       {
         "date": "Aug 18",
         "ts": 1787053064749,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787657746235,
         "weight": 260,
         "reps": 14,
         "e1rm": 364
@@ -450,6 +464,20 @@
         "weight": 23,
         "reps": 12,
         "e1rm": 32
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787409774679,
+        "weight": 23,
+        "reps": 12,
+        "e1rm": 32
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787656586472,
+        "weight": 24,
+        "reps": 12,
+        "e1rm": 34
       }
     ],
     "Skull Crushers": [
@@ -679,6 +707,15 @@
         "weight": 88,
         "reps": 12,
         "e1rm": 123
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787408188456,
+        "weight": 84,
+        "reps": 12,
+        "e1rm": 118,
+        "mode": "smartflex",
+        "peak": 105
       }
     ],
     "X Pulldown": [
@@ -825,6 +862,13 @@
         "weight": 41,
         "reps": 10,
         "e1rm": 55
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787836340040,
+        "weight": 42,
+        "reps": 10,
+        "e1rm": 56
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -904,6 +948,13 @@
         "weight": 27,
         "reps": 12,
         "e1rm": 38
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787837408909,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
       }
     ],
     "Bulgarian Split Squat": [
@@ -941,6 +992,13 @@
         "weight": 38,
         "reps": 8,
         "e1rm": 48
+      },
+      {
+        "date": "Aug 24",
+        "ts": 1787570885799,
+        "weight": 39,
+        "reps": 8,
+        "e1rm": 49
       }
     ],
     "Back Squat": [
@@ -1285,6 +1343,20 @@
         "weight": 26,
         "reps": 12,
         "e1rm": 36
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787409394277,
+        "weight": 26,
+        "reps": 15,
+        "e1rm": 36
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787837476423,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
       }
     ],
     "Middle Chest Fly": [
@@ -1326,6 +1398,13 @@
       {
         "date": "Aug 1",
         "ts": 1785593558152,
+        "weight": 45,
+        "reps": 12,
+        "e1rm": 63
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787408371906,
         "weight": 45,
         "reps": 12,
         "e1rm": 63
@@ -1387,6 +1466,24 @@
         "weight": 65,
         "reps": 10,
         "e1rm": 87
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787657476549,
+        "weight": 70,
+        "reps": 10,
+        "e1rm": 93,
+        "mode": "smartflex",
+        "peak": 88
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787835860499,
+        "weight": 75,
+        "reps": 8,
+        "e1rm": 95,
+        "mode": "smartflex",
+        "peak": 94
       }
     ],
     "SA Bent Over Row": [
@@ -1491,6 +1588,13 @@
         "weight": 39,
         "reps": 15,
         "e1rm": 55
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787837011147,
+        "weight": 40,
+        "reps": 15,
+        "e1rm": 56
       }
     ],
     "W Hold": [
@@ -1569,6 +1673,13 @@
         "weight": 33,
         "reps": 10,
         "e1rm": 44
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787836458318,
+        "weight": 33,
+        "reps": 10,
+        "e1rm": 44
       }
     ],
     "RDL": [
@@ -1606,6 +1717,13 @@
         "weight": 114,
         "reps": 8,
         "e1rm": 144
+      },
+      {
+        "date": "Aug 24",
+        "ts": 1787570686890,
+        "weight": 116,
+        "reps": 8,
+        "e1rm": 147
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -1640,6 +1758,13 @@
       {
         "date": "Aug 1",
         "ts": 1785594389031,
+        "weight": 33,
+        "reps": 12,
+        "e1rm": 46
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787409095022,
         "weight": 33,
         "reps": 12,
         "e1rm": 46
@@ -1756,6 +1881,13 @@
         "weight": 108,
         "reps": 10,
         "e1rm": 144
+      },
+      {
+        "date": "Aug 24",
+        "ts": 1787570079627,
+        "weight": 120,
+        "reps": 6,
+        "e1rm": 144
       }
     ],
     "Racked Reverse Lunge": [
@@ -1848,6 +1980,13 @@
         "weight": 52,
         "reps": 6,
         "e1rm": 62
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787656186207,
+        "weight": 52,
+        "reps": 6,
+        "e1rm": 62
       }
     ],
     "Incline Press": [
@@ -1899,6 +2038,22 @@
         "weight": 81,
         "reps": 8,
         "e1rm": 103
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787407521968,
+        "weight": 72,
+        "reps": 10,
+        "e1rm": 96,
+        "mode": "smartflex",
+        "peak": 90
+      },
+      {
+        "date": "Aug 25",
+        "ts": 1787656482556,
+        "weight": 81,
+        "reps": 8,
+        "e1rm": 103
       }
     ],
     "Chest-Supported Row": [
@@ -1929,6 +2084,15 @@
         "weight": 92,
         "reps": 10,
         "e1rm": 123
+      },
+      {
+        "date": "Aug 22",
+        "ts": 1787407327342,
+        "weight": 81,
+        "reps": 10,
+        "e1rm": 108,
+        "mode": "smartflex",
+        "peak": 101
       }
     ],
     "Face Pull": [
@@ -2005,6 +2169,13 @@
         "weight": 35,
         "reps": 8,
         "e1rm": 44
+      },
+      {
+        "date": "Aug 27",
+        "ts": 1787835830654,
+        "weight": 36,
+        "reps": 8,
+        "e1rm": 46
       }
     ],
     "Skull Crusher": [
@@ -2642,9 +2813,37 @@
         "maxHr": 160,
         "duration": 47
       }
+    },
+    "p2w5_d5": {
+      "date": "Aug 22",
+      "ts": 1787410001210
+    },
+    "p2w6_d0": {
+      "date": "Aug 24",
+      "ts": 1787574512953
+    },
+    "p2w6_d1": {
+      "date": "Aug 25",
+      "ts": 1787658075308
+    },
+    "p2w6_d2": {
+      "date": "Aug 26",
+      "ts": 1787743812303
+    },
+    "p2w6_d3": {
+      "date": "Aug 27",
+      "ts": 1787838316518,
+      "tonal": {
+        "volume": 17035,
+        "work": 51.8,
+        "cals": 369,
+        "avgHr": 125,
+        "maxHr": 147,
+        "duration": 51
+      }
     }
   },
-  "lastSaved": "2026-08-22T02:46:45.038Z",
+  "lastSaved": "2026-08-27T13:46:28.114Z",
   "version": 1,
   "seeded": true
 }
