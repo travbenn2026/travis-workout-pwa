@@ -2210,7 +2210,7 @@ function buildProtein(){
   var remain=goal-total;
   var remainLine=remain>0?(remain+'g remaining today'):('Goal reached · +'+(-remain)+'g over');
   var quickRow='<div class="pr-quickrow">'+
-    [15,25,40].map(function(a){return'<button class="pr-qbtn" onclick="addProteinEntry('+a+',null)">+'+a+'g</button>';}).join('')+
+    [20,30,50].map(function(a){return'<button class="pr-qbtn" onclick="addProteinEntry('+a+',null)">+'+a+'g</button>';}).join('')+
     '<button class="pr-qbtn pr-qbtn-custom" onclick="openProteinCustomModal()">Custom</button></div>';
   var mealRows=PROTEIN_MEALS.map(function(m,i){
     return'<div class="pr-meal-row"><span class="pr-meal-name">'+m+'</span>'+
