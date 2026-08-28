@@ -1107,6 +1107,13 @@
         "weight": 250,
         "reps": 8,
         "e1rm": 317
+      },
+      {
+        "date": "Aug 28",
+        "ts": 1787915554108,
+        "weight": 250,
+        "reps": 8,
+        "e1rm": 317
       }
     ],
     "Resisted Calf Raise": [
@@ -2215,6 +2222,13 @@
         "weight": 125,
         "reps": 6,
         "e1rm": 150
+      },
+      {
+        "date": "Aug 28",
+        "ts": 1787914792756,
+        "weight": 125,
+        "reps": 6,
+        "e1rm": 150
       }
     ],
     "KB Swing": [
@@ -2242,6 +2256,13 @@
       {
         "date": "Aug 21",
         "ts": 1787318028927,
+        "weight": 50,
+        "reps": 15,
+        "e1rm": 70
+      },
+      {
+        "date": "Aug 28",
+        "ts": 1787915560976,
         "weight": 50,
         "reps": 15,
         "e1rm": 70
@@ -2841,9 +2862,21 @@
         "maxHr": 147,
         "duration": 51
       }
+    },
+    "p2w6_d4": {
+      "date": "Aug 28",
+      "ts": 1787917375689,
+      "tonal": {
+        "volume": 26670,
+        "work": 34.1,
+        "cals": 374,
+        "avgHr": 116,
+        "maxHr": 144,
+        "duration": 44
+      }
     }
   },
-  "lastSaved": "2026-08-27T13:46:28.114Z",
+  "lastSaved": "2026-08-28T11:43:50.642Z",
   "version": 1,
   "seeded": true
 }
