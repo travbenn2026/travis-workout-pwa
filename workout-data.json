@@ -716,6 +716,13 @@
         "e1rm": 118,
         "mode": "smartflex",
         "peak": 105
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788008325610,
+        "weight": 90,
+        "reps": 12,
+        "e1rm": 126
       }
     ],
     "X Pulldown": [
@@ -1364,6 +1371,13 @@
         "weight": 28,
         "reps": 12,
         "e1rm": 39
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788009110083,
+        "weight": 27,
+        "reps": 15,
+        "e1rm": 38
       }
     ],
     "Middle Chest Fly": [
@@ -1412,6 +1426,13 @@
       {
         "date": "Aug 22",
         "ts": 1787408371906,
+        "weight": 45,
+        "reps": 12,
+        "e1rm": 63
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788008183223,
         "weight": 45,
         "reps": 12,
         "e1rm": 63
@@ -1775,6 +1796,13 @@
         "weight": 33,
         "reps": 12,
         "e1rm": 46
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788009026191,
+        "weight": 34,
+        "reps": 12,
+        "e1rm": 48
       }
     ],
     "Seated Pallof Press": [
@@ -2061,6 +2089,13 @@
         "weight": 81,
         "reps": 8,
         "e1rm": 103
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788007791251,
+        "weight": 78,
+        "reps": 10,
+        "e1rm": 104
       }
     ],
     "Chest-Supported Row": [
@@ -2100,6 +2135,15 @@
         "e1rm": 108,
         "mode": "smartflex",
         "peak": 101
+      },
+      {
+        "date": "Aug 29",
+        "ts": 1788007577561,
+        "weight": 82,
+        "reps": 10,
+        "e1rm": 109,
+        "mode": "smartflex",
+        "peak": 103
       }
     ],
     "Face Pull": [
@@ -2874,9 +2918,21 @@
         "maxHr": 144,
         "duration": 44
       }
+    },
+    "p2w6_d5": {
+      "date": "Aug 29",
+      "ts": 1788010880694,
+      "tonal": {
+        "volume": 31407,
+        "work": 77.2,
+        "cals": 453,
+        "avgHr": 126,
+        "maxHr": 151,
+        "duration": 63
+      }
     }
   },
-  "lastSaved": "2026-08-28T15:22:45.002Z",
+  "lastSaved": "2026-08-29T13:42:34.014Z",
   "version": 1,
   "seeded": true
 }
