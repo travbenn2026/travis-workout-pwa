@@ -1006,6 +1006,13 @@
         "weight": 39,
         "reps": 8,
         "e1rm": 49
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788181803386,
+        "weight": 42,
+        "reps": 8,
+        "e1rm": 53
       }
     ],
     "Back Squat": [
@@ -1185,6 +1192,13 @@
         "ts": 1787318047077,
         "weight": 125,
         "reps": 15,
+        "e1rm": 175
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788182330564,
+        "weight": 125,
+        "reps": 12,
         "e1rm": 175
       }
     ],
@@ -1752,6 +1766,13 @@
         "weight": 116,
         "reps": 8,
         "e1rm": 147
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788180586782,
+        "weight": 117,
+        "reps": 8,
+        "e1rm": 148
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -1923,6 +1944,13 @@
         "weight": 120,
         "reps": 6,
         "e1rm": 144
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788180677427,
+        "weight": 122,
+        "reps": 6,
+        "e1rm": 146
       }
     ],
     "Racked Reverse Lunge": [
@@ -1955,6 +1983,13 @@
         "weight": 42,
         "reps": 10,
         "e1rm": 56
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788181592480,
+        "weight": 43,
+        "reps": 10,
+        "e1rm": 57
       }
     ],
     "Cable Crunch": [
@@ -1978,6 +2013,13 @@
         "weight": 63,
         "reps": 12,
         "e1rm": 88
+      },
+      {
+        "date": "Aug 31",
+        "ts": 1788183136992,
+        "weight": 95,
+        "reps": 12,
+        "e1rm": 133
       }
     ],
     "Seated Overhead Press": [
@@ -2930,9 +2972,21 @@
         "maxHr": 151,
         "duration": 63
       }
+    },
+    "p2w7_d0": {
+      "date": "Aug 31",
+      "ts": 1788183645326,
+      "tonal": {
+        "volume": 33878,
+        "work": 62,
+        "cals": 513,
+        "avgHr": 127,
+        "maxHr": 148,
+        "duration": 58
+      }
     }
   },
-  "lastSaved": "2026-08-29T13:42:34.014Z",
+  "lastSaved": "2026-08-31T13:41:40.797Z",
   "version": 1,
   "seeded": true
 }
