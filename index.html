@@ -558,7 +558,7 @@ var TRACK_EX=[
   'Weighted Pull-Up','Chest-Supported Row','Neutral Grip Lat Pulldown','Face Pull','Seated Row','Middle Chest Fly',
   // Arms
   'Incline Curl','Skull Crusher','Seated Bicep Curl','Tricep Extension','Y Pull',
-  'Reverse Grip Bicep Curl','Hammer Curl','Seated Alt Bicep Curl','Tricep Kickback',
+  'Reverse Grip Bicep Curl','Hammer Curl','Seated Alt Bicep Curl','Tricep Kickback','Upright Row',
   // Core
   'Cable Crunch','Hanging Knee Raise','Wood Chop',
   // ── IE1 legacy (history preserved) ──
@@ -679,7 +679,7 @@ var BLOCKS={
     {id:'b3',e:'⚡',lbl:'Block 3',meta:'Finishers · 45-60 sec',
       g:[
         {ss:true,ssl:'Superset C — Forearm + Overhead',r:[{n:'Reverse Grip Bicep Curl',nt:'Tonal · Pronated grip — brachioradialis and forearm. Light, strict.',tg:'tton',sets:'2x',reps:'12',rir:'RIR 1',tr:'Reverse Grip Bicep Curl'},{n:'SA Overhead Tricep Extension',nt:'Tonal · Elbow in, deep stretch behind the head, full lockout at top.',tg:'tton',sets:'2x',reps:'12',rir:'RIR 1',tr:'SA Overhead Tricep Extension'}]},
-        {ss:false,r:[{n:'Lateral Raise',nt:'Tonal · Priority delts: 4 sets, final set is a drop set — strip weight instantly via the app twice, go to near-failure each strip.',tg:'tton',sets:'4x',reps:'12-20',rir:'RIR 0-1',tr:'Lateral Raise'}]},
+        {ss:false,r:[{n:'Upright Row',nt:'Tonal · Handles, pull to chest height leading with the elbows. Side delt + trap emphasis — a different resistance curve than lateral raise, so the shoulder joint isn\'t hit at the same angle two sessions running.',tg:'tton',sets:'4x',reps:'10-12',rir:'RIR 1',tr:'Upright Row'}]},
       ]},
     {id:'cd',e:'🧊',lbl:'Cool-Down',meta:'5 min · Elbow focus',isCD:true,cdt:'arms'},
   ],
@@ -1151,6 +1151,10 @@ var EXERCISE_ALTS={
     {n:'Reverse Grip Tricep Extension',tr:'Reverse Grip Tricep Extension',note:'Tonal · Underhand — less elbow flexion under load'},
     {n:'Skull Crusher',tr:'Skull Crusher',note:'Tonal · Handles, deep stretch — also elbow-loaded, your call'},
     {n:'SA Tricep Extension',tr:'SA Tricep Extension',note:'Tonal · Pushdown variation, unilateral'},
+  ],
+  'Upright Row':[
+    {n:'Lateral Raise',tr:'Lateral Raise',note:'Tonal · Revert to the original isolation move if preferred'},
+    {n:'Y Pull',tr:'Y Pull',note:'Tonal · Lower traps + rear delts, posture-focused alternative'},
   ],
   'Skull Crusher':[
     {n:'Tricep Extension',tr:'Tricep Extension',note:'Tonal · Cable pushdown, easier on the elbow — shorter stretch range'},
