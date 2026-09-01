@@ -107,6 +107,13 @@
         "weight": 217,
         "reps": 5,
         "e1rm": 253
+      },
+      {
+        "date": "Sep 1",
+        "ts": 1788261076943,
+        "weight": 217,
+        "reps": 5,
+        "e1rm": 253
       }
     ],
     "Alt Bench Press": [
@@ -264,6 +271,13 @@
       {
         "date": "Aug 25",
         "ts": 1787657746235,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
+      },
+      {
+        "date": "Sep 1",
+        "ts": 1788262940835,
         "weight": 260,
         "reps": 14,
         "e1rm": 364
@@ -2064,6 +2078,13 @@
         "weight": 52,
         "reps": 6,
         "e1rm": 62
+      },
+      {
+        "date": "Sep 1",
+        "ts": 1788261614530,
+        "weight": 53,
+        "reps": 6,
+        "e1rm": 64
       }
     ],
     "Incline Press": [
@@ -2137,6 +2158,13 @@
         "ts": 1788007791251,
         "weight": 78,
         "reps": 10,
+        "e1rm": 104
+      },
+      {
+        "date": "Sep 1",
+        "ts": 1788262362676,
+        "weight": 82,
+        "reps": 8,
         "e1rm": 104
       }
     ],
@@ -2984,9 +3012,21 @@
         "maxHr": 148,
         "duration": 58
       }
+    },
+    "p2w7_d1": {
+      "date": "Sep 1",
+      "ts": 1788263252898,
+      "tonal": {
+        "volume": 15234,
+        "work": 33.9,
+        "cals": 335,
+        "avgHr": 121,
+        "maxHr": 161,
+        "duration": 46
+      }
     }
   },
-  "lastSaved": "2026-08-31T13:41:40.797Z",
+  "lastSaved": "2026-09-01T14:44:00.894Z",
   "version": 1,
   "seeded": true
 }
