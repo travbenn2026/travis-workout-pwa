@@ -610,6 +610,13 @@
         "weight": 76,
         "reps": 10,
         "e1rm": 101
+      },
+      {
+        "date": "Sep 2",
+        "ts": 1788348305518,
+        "weight": 88,
+        "reps": 10,
+        "e1rm": 117
       }
     ],
     "Weighted Pull-Up": [
@@ -1884,6 +1891,13 @@
         "weight": 87,
         "reps": 8,
         "e1rm": 110
+      },
+      {
+        "date": "Sep 2",
+        "ts": 1788349269590,
+        "weight": 88,
+        "reps": 8,
+        "e1rm": 111
       }
     ],
     "SA Tricep Extension": [
@@ -2237,6 +2251,13 @@
         "weight": 85,
         "reps": 15,
         "e1rm": 119
+      },
+      {
+        "date": "Sep 2",
+        "ts": 1788348403456,
+        "weight": 91,
+        "reps": 15,
+        "e1rm": 127
       }
     ],
     "Hanging Knee Raise": [
@@ -3024,9 +3045,13 @@
         "maxHr": 161,
         "duration": 46
       }
+    },
+    "p2w7_d2": {
+      "date": "Sep 2",
+      "ts": 1788349833708
     }
   },
-  "lastSaved": "2026-09-01T14:44:00.894Z",
+  "lastSaved": "2026-09-02T11:50:54.158Z",
   "version": 1,
   "seeded": true
 }
