@@ -897,6 +897,13 @@
         "weight": 42,
         "reps": 10,
         "e1rm": 56
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788440842140,
+        "weight": 42,
+        "reps": 10,
+        "e1rm": 56
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -983,6 +990,13 @@
         "weight": 28,
         "reps": 12,
         "e1rm": 39
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788442016831,
+        "weight": 29,
+        "reps": 12,
+        "e1rm": 41
       }
     ],
     "Bulgarian Split Squat": [
@@ -1348,6 +1362,15 @@
         "weight": 80,
         "reps": 12,
         "e1rm": 112
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788441523469,
+        "weight": 70,
+        "reps": 10,
+        "e1rm": 93,
+        "mode": "smartflex",
+        "peak": 88
       }
     ],
     "Tricep Kickback": [
@@ -1658,6 +1681,13 @@
         "weight": 40,
         "reps": 15,
         "e1rm": 56
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788441052506,
+        "weight": 41,
+        "reps": 15,
+        "e1rm": 57
       }
     ],
     "W Hold": [
@@ -1743,6 +1773,13 @@
         "weight": 33,
         "reps": 10,
         "e1rm": 44
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788442437492,
+        "weight": 33,
+        "reps": 12,
+        "e1rm": 46
       }
     ],
     "RDL": [
@@ -2318,6 +2355,13 @@
         "weight": 36,
         "reps": 8,
         "e1rm": 46
+      },
+      {
+        "date": "Sep 3",
+        "ts": 1788440029207,
+        "weight": 37,
+        "reps": 8,
+        "e1rm": 47
       }
     ],
     "Skull Crusher": [
@@ -2417,6 +2461,15 @@
         "weight": 55,
         "reps": 10,
         "e1rm": 73
+      }
+    ],
+    "Upright Row": [
+      {
+        "date": "Sep 3",
+        "ts": 1788441924795,
+        "weight": 48,
+        "reps": 12,
+        "e1rm": 67
       }
     ]
   },
@@ -3049,9 +3102,21 @@
     "p2w7_d2": {
       "date": "Sep 2",
       "ts": 1788349833708
+    },
+    "p2w7_d3": {
+      "date": "Sep 3",
+      "ts": 1788443001403,
+      "tonal": {
+        "volume": 19280,
+        "work": 59.5,
+        "cals": 372,
+        "avgHr": 117,
+        "maxHr": 149,
+        "duration": 56
+      }
     }
   },
-  "lastSaved": "2026-09-02T11:50:54.158Z",
+  "lastSaved": "2026-09-03T13:44:13.768Z",
   "version": 1,
   "seeded": true
 }
