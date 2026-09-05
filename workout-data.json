@@ -1450,6 +1450,13 @@
         "weight": 27,
         "reps": 15,
         "e1rm": 38
+      },
+      {
+        "date": "Sep 5",
+        "ts": 1788617412937,
+        "weight": 28,
+        "reps": 15,
+        "e1rm": 39
       }
     ],
     "Middle Chest Fly": [
@@ -1508,6 +1515,13 @@
         "weight": 45,
         "reps": 12,
         "e1rm": 63
+      },
+      {
+        "date": "Sep 5",
+        "ts": 1788616544357,
+        "weight": 46,
+        "reps": 12,
+        "e1rm": 64
       }
     ],
     "Tricep Extension": [
@@ -1896,6 +1910,13 @@
         "weight": 34,
         "reps": 12,
         "e1rm": 48
+      },
+      {
+        "date": "Sep 5",
+        "ts": 1788617410838,
+        "weight": 34,
+        "reps": 12,
+        "e1rm": 48
       }
     ],
     "Seated Pallof Press": [
@@ -2231,6 +2252,13 @@
         "weight": 82,
         "reps": 8,
         "e1rm": 104
+      },
+      {
+        "date": "Sep 5",
+        "ts": 1788615858916,
+        "weight": 79,
+        "reps": 10,
+        "e1rm": 105
       }
     ],
     "Chest-Supported Row": [
@@ -2279,6 +2307,15 @@
         "e1rm": 109,
         "mode": "smartflex",
         "peak": 103
+      },
+      {
+        "date": "Sep 5",
+        "ts": 1788615433949,
+        "weight": 83,
+        "reps": 10,
+        "e1rm": 111,
+        "mode": "smartflex",
+        "peak": 104
       }
     ],
     "Face Pull": [
@@ -3147,9 +3184,21 @@
         "maxHr": 152,
         "duration": 44
       }
+    },
+    "p2w7_d5": {
+      "date": "Sep 5",
+      "ts": 1788619260379,
+      "tonal": {
+        "volume": 31883,
+        "work": 76.2,
+        "cals": 490,
+        "avgHr": 125,
+        "maxHr": 154,
+        "duration": 72
+      }
     }
   },
-  "lastSaved": "2026-09-04T13:26:50.104Z",
+  "lastSaved": "2026-09-05T14:42:04.676Z",
   "version": 1,
   "seeded": true
 }
