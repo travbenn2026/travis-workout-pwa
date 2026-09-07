@@ -1048,6 +1048,13 @@
         "weight": 42,
         "reps": 8,
         "e1rm": 53
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788793282405,
+        "weight": 38,
+        "reps": 8,
+        "e1rm": 48
       }
     ],
     "Back Squat": [
@@ -1249,6 +1256,13 @@
         "weight": 125,
         "reps": 15,
         "e1rm": 175
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788793759965,
+        "weight": 113,
+        "reps": 12,
+        "e1rm": 158
       }
     ],
     "Weighted Incline Sit-Up": [
@@ -1859,6 +1873,13 @@
         "weight": 117,
         "reps": 8,
         "e1rm": 148
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788792231537,
+        "weight": 105,
+        "reps": 8,
+        "e1rm": 133
       }
     ],
     "Seated Alt Bicep Curl": [
@@ -2051,6 +2072,13 @@
         "weight": 122,
         "reps": 6,
         "e1rm": 146
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788792519588,
+        "weight": 110,
+        "reps": 6,
+        "e1rm": 132
       }
     ],
     "Racked Reverse Lunge": [
@@ -2090,6 +2118,13 @@
         "weight": 43,
         "reps": 10,
         "e1rm": 57
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788793286439,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Cable Crunch": [
@@ -2120,6 +2155,13 @@
         "weight": 95,
         "reps": 12,
         "e1rm": 133
+      },
+      {
+        "date": "Sep 7",
+        "ts": 1788793762047,
+        "weight": 86,
+        "reps": 12,
+        "e1rm": 120
       }
     ],
     "Seated Overhead Press": [
@@ -3196,9 +3238,21 @@
         "maxHr": 154,
         "duration": 72
       }
+    },
+    "p2w8_d0": {
+      "date": "Sep 7",
+      "ts": 1788794306482,
+      "tonal": {
+        "volume": 18891,
+        "work": 35.7,
+        "cals": 343,
+        "avgHr": 125,
+        "maxHr": 146,
+        "duration": 37
+      }
     }
   },
-  "lastSaved": "2026-09-05T14:42:04.676Z",
+  "lastSaved": "2026-09-07T15:19:18.178Z",
   "version": 1,
   "seeded": true
 }
