@@ -114,6 +114,13 @@
         "weight": 217,
         "reps": 5,
         "e1rm": 253
+      },
+      {
+        "date": "Sep 8",
+        "ts": 1788871668523,
+        "weight": 195,
+        "reps": 5,
+        "e1rm": 228
       }
     ],
     "Alt Bench Press": [
@@ -1399,6 +1406,13 @@
         "e1rm": 93,
         "mode": "smartflex",
         "peak": 88
+      },
+      {
+        "date": "Sep 8",
+        "ts": 1788872667933,
+        "weight": 76,
+        "reps": 10,
+        "e1rm": 101
       }
     ],
     "Tricep Kickback": [
@@ -2213,6 +2227,13 @@
         "weight": 53,
         "reps": 6,
         "e1rm": 64
+      },
+      {
+        "date": "Sep 8",
+        "ts": 1788872082239,
+        "weight": 48,
+        "reps": 6,
+        "e1rm": 58
       }
     ],
     "Incline Press": [
@@ -3250,9 +3271,13 @@
         "maxHr": 146,
         "duration": 37
       }
+    },
+    "p2w8_d1": {
+      "date": "Sep 8",
+      "ts": 1788873411119
     }
   },
-  "lastSaved": "2026-09-07T15:19:18.178Z",
+  "lastSaved": "2026-09-08T13:17:11.276Z",
   "version": 1,
   "seeded": true
 }
