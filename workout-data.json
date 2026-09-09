@@ -624,6 +624,13 @@
         "weight": 88,
         "reps": 10,
         "e1rm": 117
+      },
+      {
+        "date": "Sep 9",
+        "ts": 1788961331708,
+        "weight": 79,
+        "reps": 10,
+        "e1rm": 105
       }
     ],
     "Weighted Pull-Up": [
@@ -668,6 +675,13 @@
         "weight": 230,
         "reps": 8,
         "e1rm": 291
+      },
+      {
+        "date": "Sep 9",
+        "ts": 1788960626339,
+        "weight": 225,
+        "reps": 8,
+        "e1rm": 285
       }
     ],
     "Weighted Chin-Up": [
@@ -2379,6 +2393,15 @@
         "e1rm": 111,
         "mode": "smartflex",
         "peak": 104
+      },
+      {
+        "date": "Sep 9",
+        "ts": 1788960612949,
+        "weight": 88,
+        "reps": 8,
+        "e1rm": 111,
+        "mode": "smartflex",
+        "peak": 110
       }
     ],
     "Face Pull": [
@@ -2409,6 +2432,13 @@
         "weight": 91,
         "reps": 15,
         "e1rm": 127
+      },
+      {
+        "date": "Sep 9",
+        "ts": 1788961334158,
+        "weight": 82,
+        "reps": 15,
+        "e1rm": 115
       }
     ],
     "Hanging Knee Raise": [
@@ -3275,9 +3305,13 @@
     "p2w8_d1": {
       "date": "Sep 8",
       "ts": 1788873411119
+    },
+    "p2w8_d2": {
+      "date": "Sep 9",
+      "ts": 1788962178321
     }
   },
-  "lastSaved": "2026-09-08T13:17:11.276Z",
+  "lastSaved": "2026-09-09T13:56:34.688Z",
   "version": 1,
   "seeded": true
 }
