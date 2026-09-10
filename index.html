@@ -2884,7 +2884,18 @@ function mergeAndApply(ghData){
 }
 
 function exportJSON(){
-  var data={logs:ll(),sessions:ls(),exported:new Date().toISOString()};
+  // Full local backup — everything the app tracks, not just logs/sessions.
+  // NOTE: bodyweight/protein/metrics stay out of ghSave's public cloud sync
+  // on purpose (see the comment above PK) — this Export button is a file
+  // YOU download, so it's fine for it to carry everything.
+  var data={
+    logs:ll(),sessions:ls(),
+    xp:xpGetLog(),badges:badgesGetEarned(),
+    metrics:getMetrics(),bodyweight:bwLog(),
+    protein:proteinLog(),proteinGoal:localStorage.getItem(PK_GOAL),
+    cardio:cardioLog(),
+    exported:new Date().toISOString()
+  };
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
   var a=document.createElement('a');a.href=url;
@@ -2900,6 +2911,13 @@ function importJSON(file){
       var data=JSON.parse(e.target.result);
       if(data.logs)sl(data.logs);
       if(data.sessions)ss(data.sessions);
+      if(data.xp)xpSaveLog(data.xp);
+      if(data.badges)badgesSetEarned(data.badges);
+      if(data.metrics)saveMetrics(data.metrics);
+      if(data.bodyweight)localStorage.setItem('bw_log',JSON.stringify(data.bodyweight));
+      if(data.protein)localStorage.setItem(PK,JSON.stringify(data.protein));
+      if(data.proteinGoal)localStorage.setItem(PK_GOAL,data.proteinGoal);
+      if(data.cardio)saveCardioLog(data.cardio);
       setSyncMeta({lastSaved:data.exported||data.lastSaved||null});
       showToast('✅ Backup imported');
       if(document.getElementById('sD').classList.contains('active'))buildDash();
