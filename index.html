@@ -1369,6 +1369,19 @@ function startCDTimer(cdt){
 }
 var cdAudioCtx=null;
 function cdChime(pitch){
+  // In the native iOS wrapper, WKWebView's own Web Audio output silently stays
+  // muted whenever the hardware ringer switch is off, no matter what audio
+  // session category the native app sets — a long-standing WebKit quirk that
+  // only affects raw AudioContext tones, not native-side audio. When the wrapper
+  // is present (it registers this message handler; Safari/browser never does),
+  // hand the beep to native code instead, which plays it through a normal
+  // AVAudioSession and isn’t subject to that bug.
+  try{
+    if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.cdChime){
+      window.webkit.messageHandlers.cdChime.postMessage(pitch||880);
+      return;
+    }
+  }catch(e){}
   try{
     if(!cdAudioCtx||cdAudioCtx.state==='closed')return;
     if(cdAudioCtx.state==='suspended'){cdAudioCtx.resume();return;} // already unlocked at start; if suspended again (e.g. brief backgrounding) skip this beep rather than schedule against a dead context
