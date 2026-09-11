@@ -1,3182 +1,2894 @@
 {
   "logs": {
-    "Incline Barbell Bench Press": [
-      {
-        "date": "May 9",
-        "ts": 1746748800000,
-        "weight": 160,
-        "reps": 6,
-        "e1rm": 192
-      },
-      {
-        "date": "Jun 13",
-        "ts": 1781377052818,
-        "weight": 175,
-        "reps": 6,
-        "e1rm": 210
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781968173083,
-        "weight": 176,
-        "reps": 6,
-        "e1rm": 211
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782567096165,
-        "weight": 180,
-        "reps": 6,
-        "e1rm": 216
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783945937776,
-        "weight": 191,
-        "reps": 4,
-        "e1rm": 216
-      }
-    ],
-    "Barbell Bench Press (Flat)": [
-      {
-        "date": "May 9",
-        "ts": 1746748800500,
-        "weight": 192,
-        "reps": 8,
-        "e1rm": 243
-      },
-      {
-        "date": "Jun 13",
-        "ts": 1781377092946,
-        "weight": 185,
-        "reps": 8,
-        "e1rm": 234
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781968190395,
-        "weight": 193,
-        "reps": 8,
-        "e1rm": 244
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783946064603,
-        "weight": 200,
-        "reps": 7,
-        "e1rm": 247
-      },
-      {
-        "date": "Jul 21",
-        "ts": 1784632439089,
-        "weight": 200,
-        "reps": 5,
-        "e1rm": 233
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785239487285,
-        "weight": 212,
-        "reps": 5,
-        "e1rm": 247
-      },
-      {
-        "date": "Aug 4",
-        "ts": 1785843039803,
-        "weight": 212,
-        "reps": 5,
-        "e1rm": 247
-      },
-      {
-        "date": "Aug 11",
-        "ts": 1786446607979,
-        "weight": 191,
-        "reps": 5,
-        "e1rm": 223
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787051429384,
-        "weight": 217,
-        "reps": 5,
-        "e1rm": 253
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787655548559,
-        "weight": 217,
-        "reps": 5,
-        "e1rm": 253
-      },
-      {
-        "date": "Sep 1",
-        "ts": 1788261076943,
-        "weight": 217,
-        "reps": 5,
-        "e1rm": 253
-      },
-      {
-        "date": "Sep 8",
-        "ts": 1788871668523,
-        "weight": 195,
-        "reps": 5,
-        "e1rm": 228
-      }
-    ],
-    "Alt Bench Press": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385350920,
-        "weight": 63,
-        "reps": 10,
-        "e1rm": 84
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781698690502,
-        "weight": 65,
-        "reps": 10,
-        "e1rm": 87
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782302643925,
-        "weight": 65,
-        "reps": 10,
-        "e1rm": 87
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783687442290,
-        "weight": 67,
-        "reps": 10,
-        "e1rm": 89
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784291999804,
-        "weight": 73,
-        "reps": 8,
-        "e1rm": 92
-      }
-    ],
-    "Standing Incline Chest Press": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385380863,
-        "weight": 47,
-        "reps": 10,
-        "e1rm": 63
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781968653516,
-        "weight": 49,
-        "reps": 10,
-        "e1rm": 65
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782568276982,
-        "weight": 51,
-        "reps": 10,
-        "e1rm": 68
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783946241118,
-        "weight": 56,
-        "reps": 7,
-        "e1rm": 69
-      }
-    ],
-    "Perfect Push-Ups": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385400425,
-        "weight": 230,
-        "reps": 15,
-        "e1rm": 345
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781700283190,
-        "weight": 230,
-        "reps": 20,
-        "e1rm": 383
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781969411176,
-        "weight": 230,
-        "reps": 20,
-        "e1rm": 383
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782304453837,
-        "weight": 230,
-        "reps": 20,
-        "e1rm": 383
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782569069701,
-        "weight": 260,
-        "reps": 15,
-        "e1rm": 390
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783689699157,
-        "weight": 260,
-        "reps": 12,
-        "e1rm": 364
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783946815736,
-        "weight": 260,
-        "reps": 12,
-        "e1rm": 364
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784293762936,
-        "weight": 260,
-        "reps": 12,
-        "e1rm": 364
-      },
-      {
-        "date": "Jul 21",
-        "ts": 1784634636477,
-        "weight": 260,
-        "reps": 12,
-        "e1rm": 364
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785241791655,
-        "weight": 260,
-        "reps": 13,
-        "e1rm": 364
-      },
-      {
-        "date": "Aug 4",
-        "ts": 1785845443294,
-        "weight": 260,
-        "reps": 14,
-        "e1rm": 364
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787053064749,
-        "weight": 260,
-        "reps": 14,
-        "e1rm": 364
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787657746235,
-        "weight": 260,
-        "reps": 14,
-        "e1rm": 364
-      },
-      {
-        "date": "Sep 1",
-        "ts": 1788262940835,
-        "weight": 260,
-        "reps": 14,
-        "e1rm": 364
-      }
-    ],
-    "Barbell OHP": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385427504,
-        "weight": 87,
-        "reps": 6,
-        "e1rm": 104
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781697834647,
-        "weight": 89,
-        "reps": 6,
-        "e1rm": 107
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782302284612,
-        "weight": 105,
-        "reps": 6,
-        "e1rm": 126
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783686872845,
-        "weight": 109,
-        "reps": 6,
-        "e1rm": 131
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784290855822,
-        "weight": 117,
-        "reps": 4,
-        "e1rm": 133
-      }
-    ],
-    "Half Kneeling SA OHP": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385442964,
-        "weight": 39,
-        "reps": 10,
-        "e1rm": 52
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781697996757,
-        "weight": 41,
-        "reps": 10,
-        "e1rm": 55
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782302430316,
-        "weight": 43,
-        "reps": 10,
-        "e1rm": 57
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783686327988,
-        "weight": 43,
-        "reps": 10,
-        "e1rm": 57
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784291353255,
-        "weight": 48,
-        "reps": 7,
-        "e1rm": 59
-      }
-    ],
-    "Front Raise": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385469814,
-        "weight": 15,
-        "reps": 12,
-        "e1rm": 21
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781968991348,
-        "weight": 15,
-        "reps": 12,
-        "e1rm": 21
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782568133475,
-        "weight": 15,
-        "reps": 12,
-        "e1rm": 21
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783946303432,
-        "weight": 18,
-        "reps": 8,
-        "e1rm": 23
-      }
-    ],
-    "Lateral Raise": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385480748,
-        "weight": 15,
-        "reps": 15,
-        "e1rm": 23
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781698776196,
-        "weight": 18,
-        "reps": 12,
-        "e1rm": 25
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781969422761,
-        "weight": 17,
-        "reps": 15,
-        "e1rm": 26
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782302981057,
-        "weight": 19,
-        "reps": 12,
-        "e1rm": 27
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782568601416,
-        "weight": 18,
-        "reps": 15,
-        "e1rm": 27
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783946881401,
-        "weight": 22,
-        "reps": 10,
-        "e1rm": 29
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784291842235,
-        "weight": 23,
-        "reps": 8,
-        "e1rm": 29
-      },
-      {
-        "date": "Jul 21",
-        "ts": 1784633541898,
-        "weight": 22,
-        "reps": 12,
-        "e1rm": 31
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784996328517,
-        "weight": 22,
-        "reps": 12,
-        "e1rm": 31
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785240947402,
-        "weight": 22,
-        "reps": 12,
-        "e1rm": 31
-      },
-      {
-        "date": "Jul 30",
-        "ts": 1785417035773,
-        "weight": 23,
-        "reps": 12,
-        "e1rm": 32
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785594920235,
-        "weight": 23,
-        "reps": 12,
-        "e1rm": 32
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787052439550,
-        "weight": 23,
-        "reps": 12,
-        "e1rm": 32
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787409774679,
-        "weight": 23,
-        "reps": 12,
-        "e1rm": 32
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787656586472,
-        "weight": 24,
-        "reps": 12,
-        "e1rm": 34
-      }
-    ],
-    "Skull Crushers": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385498878,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Jun 16",
-        "ts": 1781612353696,
-        "weight": 38,
-        "reps": 10,
-        "e1rm": 51
-      },
-      {
-        "date": "Jun 20",
-        "ts": 1781969607375,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Jun 23",
-        "ts": 1782217763624,
-        "weight": 38,
-        "reps": 10,
-        "e1rm": 51
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782569422860,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 9",
-        "ts": 1783602689165,
-        "weight": 38,
-        "reps": 10,
-        "e1rm": 51
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783947621462,
-        "weight": 43,
-        "reps": 7,
-        "e1rm": 53
-      }
-    ],
-    "Barbell Bent Over Row": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385754327,
-        "weight": 93,
-        "reps": 6,
-        "e1rm": 112
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782046293377,
-        "weight": 95,
-        "reps": 6,
-        "e1rm": 114
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784029689862,
-        "weight": 100,
-        "reps": 4,
-        "e1rm": 113
-      }
-    ],
-    "Neutral Grip Lat Pulldown": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385779571,
-        "weight": 80,
-        "reps": 10,
-        "e1rm": 107
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781442161273,
-        "weight": 82,
-        "reps": 10,
-        "e1rm": 109
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782046796434,
-        "weight": 82,
-        "reps": 10,
-        "e1rm": 109
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784030590011,
-        "weight": 91,
-        "reps": 7,
-        "e1rm": 112
-      },
-      {
-        "date": "Jul 22",
-        "ts": 1784720375437,
-        "weight": 81,
-        "reps": 10,
-        "e1rm": 108
-      },
-      {
-        "date": "Aug 13",
-        "ts": 1786620793757,
-        "weight": 76,
-        "reps": 10,
-        "e1rm": 101
-      },
-      {
-        "date": "Sep 2",
-        "ts": 1788348305518,
-        "weight": 88,
-        "reps": 10,
-        "e1rm": 117
-      },
-      {
-        "date": "Sep 9",
-        "ts": 1788961331708,
-        "weight": 79,
-        "reps": 10,
-        "e1rm": 105
-      }
-    ],
-    "Weighted Pull-Up": [
-      {
-        "date": "Jun 13",
-        "ts": 1781398081743,
-        "weight": 231,
-        "reps": 6,
-        "e1rm": 277
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782046313282,
-        "weight": 230,
-        "reps": 7,
-        "e1rm": 284
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784029803995,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Jul 22",
-        "ts": 1784719416335,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Jul 29",
-        "ts": 1785326057465,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Aug 19",
-        "ts": 1787138006637,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Sep 9",
-        "ts": 1788960626339,
-        "weight": 225,
-        "reps": 8,
-        "e1rm": 285
-      }
-    ],
-    "Weighted Chin-Up": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385807414,
-        "weight": 230,
-        "reps": 6,
-        "e1rm": 276
-      },
-      {
-        "date": "Jun 25",
-        "ts": 1782389775687,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783776099774,
-        "weight": 230,
-        "reps": 8,
-        "e1rm": 291
-      },
-      {
-        "date": "Jul 18",
-        "ts": 1784386509714,
-        "weight": 230,
-        "reps": 9,
-        "e1rm": 299
-      }
-    ],
-    "Seated Row": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385835572,
-        "weight": 86,
-        "reps": 10,
-        "e1rm": 115
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781442334830,
-        "weight": 88,
-        "reps": 10,
-        "e1rm": 117
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782046921678,
-        "weight": 88,
-        "reps": 10,
-        "e1rm": 117
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784030730227,
-        "weight": 100,
-        "reps": 7,
-        "e1rm": 123
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784994784939,
-        "weight": 88,
-        "reps": 12,
-        "e1rm": 123
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787408188456,
-        "weight": 84,
-        "reps": 12,
-        "e1rm": 118,
-        "mode": "smartflex",
-        "peak": 105
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788008325610,
-        "weight": 90,
-        "reps": 12,
-        "e1rm": 126
-      }
-    ],
-    "X Pulldown": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385854425,
-        "weight": 54,
-        "reps": 12,
-        "e1rm": 76
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781442969051,
-        "weight": 54,
-        "reps": 12,
-        "e1rm": 76
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782048228035,
-        "weight": 59,
-        "reps": 12,
-        "e1rm": 83
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784031363036,
-        "weight": 69,
-        "reps": 8,
-        "e1rm": 87
-      }
-    ],
-    "Reverse Fly": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385866785,
-        "weight": 11,
-        "reps": 15,
-        "e1rm": 17
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781442997289,
-        "weight": 12,
-        "reps": 15,
-        "e1rm": 18
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781699464574,
-        "weight": 12,
-        "reps": 15,
-        "e1rm": 18
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782047811431,
-        "weight": 14,
-        "reps": 15,
-        "e1rm": 21
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782303865666,
-        "weight": 12,
-        "reps": 15,
-        "e1rm": 18
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783688293825,
-        "weight": 12,
-        "reps": 15,
-        "e1rm": 18
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784031648477,
-        "weight": 16,
-        "reps": 10,
-        "e1rm": 21
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784292507485,
-        "weight": 15,
-        "reps": 10,
-        "e1rm": 20
-      }
-    ],
-    "Seated Bicep Curl": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385883047,
-        "weight": 36,
-        "reps": 10,
-        "e1rm": 48
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781443655586,
-        "weight": 38,
-        "reps": 10,
-        "e1rm": 51
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782048488107,
-        "weight": 39,
-        "reps": 10,
-        "e1rm": 52
-      },
-      {
-        "date": "Jun 23",
-        "ts": 1782216228526,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784032071792,
-        "weight": 43,
-        "reps": 7,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 23",
-        "ts": 1784810650345,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 30",
-        "ts": 1785415165405,
-        "weight": 40,
-        "reps": 10,
-        "e1rm": 53
-      },
-      {
-        "date": "Aug 6",
-        "ts": 1786019616679,
-        "weight": 41,
-        "reps": 10,
-        "e1rm": 55
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787836340040,
-        "weight": 42,
-        "reps": 10,
-        "e1rm": 56
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788440842140,
-        "weight": 42,
-        "reps": 10,
-        "e1rm": 56
-      }
-    ],
-    "Reverse Grip Bicep Curl": [
-      {
-        "date": "Jun 13",
-        "ts": 1781385902829,
-        "weight": 23,
-        "reps": 12,
-        "e1rm": 32
-      },
-      {
-        "date": "Jun 14",
-        "ts": 1781443736841,
-        "weight": 25,
-        "reps": 12,
-        "e1rm": 35
-      },
-      {
-        "date": "Jun 16",
-        "ts": 1781611036675,
-        "weight": 25,
-        "reps": 12,
-        "e1rm": 35
-      },
-      {
-        "date": "Jun 21",
-        "ts": 1782048550510,
-        "weight": 25,
-        "reps": 12,
-        "e1rm": 35
-      },
-      {
-        "date": "Jun 23",
-        "ts": 1782215761707,
-        "weight": 25,
-        "reps": 12,
-        "e1rm": 35
-      },
-      {
-        "date": "Jul 9",
-        "ts": 1783600860147,
-        "weight": 26,
-        "reps": 12,
-        "e1rm": 36
-      },
-      {
-        "date": "Jul 14",
-        "ts": 1784032479002,
-        "weight": 29,
-        "reps": 8,
-        "e1rm": 37
-      },
-      {
-        "date": "Jul 23",
-        "ts": 1784811351822,
-        "weight": 26,
-        "reps": 12,
-        "e1rm": 36
-      },
-      {
-        "date": "Jul 30",
-        "ts": 1785416587605,
-        "weight": 26,
-        "reps": 12,
-        "e1rm": 36
-      },
-      {
-        "date": "Aug 6",
-        "ts": 1786020220041,
-        "weight": 27,
-        "reps": 12,
-        "e1rm": 38
-      },
-      {
-        "date": "Aug 20",
-        "ts": 1787224793520,
-        "weight": 27,
-        "reps": 12,
-        "e1rm": 38
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787837408909,
-        "weight": 28,
-        "reps": 12,
-        "e1rm": 39
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788442016831,
-        "weight": 29,
-        "reps": 12,
-        "e1rm": 41
-      }
-    ],
-    "Bulgarian Split Squat": [
-      {
-        "date": "Jun 15",
-        "ts": 1781527865081,
-        "weight": 31,
-        "reps": 10,
-        "e1rm": 41
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782130278165,
-        "weight": 31,
-        "reps": 10,
-        "e1rm": 41
-      },
-      {
-        "date": "Jul 16",
-        "ts": 1784205092727,
-        "weight": 37,
-        "reps": 7,
-        "e1rm": 46
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785155522711,
-        "weight": 38,
-        "reps": 8,
-        "e1rm": 48
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785759237959,
-        "weight": 38,
-        "reps": 8,
-        "e1rm": 48
-      },
-      {
-        "date": "Aug 24",
-        "ts": 1787570885799,
-        "weight": 39,
-        "reps": 8,
-        "e1rm": 49
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788181803386,
-        "weight": 42,
-        "reps": 8,
-        "e1rm": 53
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788793282405,
-        "weight": 38,
-        "reps": 8,
-        "e1rm": 48
-      }
-    ],
-    "Back Squat": [
-      {
-        "date": "Jun 15",
-        "ts": 1781527733206,
-        "weight": 150,
-        "reps": 6,
-        "e1rm": 180
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782129903148,
-        "weight": 165,
-        "reps": 6,
-        "e1rm": 198
-      },
-      {
-        "date": "Jul 16",
-        "ts": 1784204866202,
-        "weight": 185,
-        "reps": 5,
-        "e1rm": 216
-      }
-    ],
-    "Barbell Glute Bridge": [
-      {
-        "date": "Jun 15",
-        "ts": 1781528281014,
-        "weight": 198,
-        "reps": 12,
-        "e1rm": 277
-      }
-    ],
-    "Barbell RDL": [
-      {
-        "date": "Jun 15",
-        "ts": 1781528913351,
-        "weight": 175,
-        "reps": 10,
-        "e1rm": 233
-      }
-    ],
-    "Resisted Step Up": [
-      {
-        "date": "Jun 15",
-        "ts": 1781529647997,
-        "weight": 37,
-        "reps": 12,
-        "e1rm": 52
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782132086518,
-        "weight": 38,
-        "reps": 12,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 16",
-        "ts": 1784206940789,
-        "weight": 46,
-        "reps": 8,
-        "e1rm": 58
-      }
-    ],
-    "Barbell Hip Thrust": [
-      {
-        "date": "Jun 15",
-        "ts": 1781551305052,
-        "weight": 200,
-        "reps": 12,
-        "e1rm": 280
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782131517914,
-        "weight": 200,
-        "reps": 12,
-        "e1rm": 280
-      },
-      {
-        "date": "Jul 24",
-        "ts": 1784895772121,
-        "weight": 200,
-        "reps": 8,
-        "e1rm": 253
-      },
-      {
-        "date": "Jul 31",
-        "ts": 1785500585977,
-        "weight": 250,
-        "reps": 8,
-        "e1rm": 317
-      },
-      {
-        "date": "Aug 7",
-        "ts": 1786104365096,
-        "weight": 250,
-        "reps": 8,
-        "e1rm": 317
-      },
-      {
-        "date": "Aug 21",
-        "ts": 1787316910224,
-        "weight": 250,
-        "reps": 8,
-        "e1rm": 317
-      },
-      {
-        "date": "Aug 28",
-        "ts": 1787915554108,
-        "weight": 250,
-        "reps": 8,
-        "e1rm": 317
-      },
-      {
-        "date": "Sep 4",
-        "ts": 1788526855477,
-        "weight": 250,
-        "reps": 9,
-        "e1rm": 325
-      }
-    ],
-    "Resisted Calf Raise": [
-      {
-        "date": "Jun 15",
-        "ts": 1781551324390,
-        "weight": 100,
-        "reps": 15,
-        "e1rm": 150
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782131664004,
-        "weight": 100,
-        "reps": 15,
-        "e1rm": 150
-      },
-      {
-        "date": "Jul 16",
-        "ts": 1784207119569,
-        "weight": 115,
-        "reps": 12,
-        "e1rm": 161
-      },
-      {
-        "date": "Jul 20",
-        "ts": 1784550613376,
-        "weight": 100,
-        "reps": 15,
-        "e1rm": 140
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785156221873,
-        "weight": 100,
-        "reps": 15,
-        "e1rm": 140
-      },
-      {
-        "date": "Jul 31",
-        "ts": 1785501392085,
-        "weight": 125,
-        "reps": 15,
-        "e1rm": 175
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785760949825,
-        "weight": 125,
-        "reps": 12,
-        "e1rm": 175
-      },
-      {
-        "date": "Aug 7",
-        "ts": 1786105702771,
-        "weight": 125,
-        "reps": 15,
-        "e1rm": 175
-      },
-      {
-        "date": "Aug 21",
-        "ts": 1787318047077,
-        "weight": 125,
-        "reps": 15,
-        "e1rm": 175
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788182330564,
-        "weight": 125,
-        "reps": 12,
-        "e1rm": 175
-      },
-      {
-        "date": "Sep 4",
-        "ts": 1788527268148,
-        "weight": 125,
-        "reps": 15,
-        "e1rm": 175
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788793759965,
-        "weight": 113,
-        "reps": 12,
-        "e1rm": 158
-      }
-    ],
-    "Weighted Incline Sit-Up": [
-      {
-        "date": "Jun 15",
-        "ts": 1781551342739,
-        "weight": 1,
-        "reps": 20,
-        "e1rm": 2
-      },
-      {
-        "date": "Jun 16",
-        "ts": 1781614021184,
-        "weight": 27.5,
-        "reps": 15,
-        "e1rm": 41
-      },
-      {
-        "date": "Jun 22",
-        "ts": 1782133116030,
-        "weight": 38.5,
-        "reps": 15,
-        "e1rm": 58
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782305087309,
-        "weight": 38.5,
-        "reps": 15,
-        "e1rm": 58
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783689823928,
-        "weight": 44,
-        "reps": 12,
-        "e1rm": 62
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784293997432,
-        "weight": 49.5,
-        "reps": 8,
-        "e1rm": 63
-      }
-    ],
-    "DB Alternating Curl": [
-      {
-        "date": "Jun 16",
-        "ts": 1781610778978,
-        "weight": 38.5,
-        "reps": 8,
-        "e1rm": 49
-      },
-      {
-        "date": "Jul 9",
-        "ts": 1783599814382,
-        "weight": 39,
-        "reps": 8,
-        "e1rm": 49
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784116982905,
-        "weight": 42,
-        "reps": 6,
-        "e1rm": 50
-      }
-    ],
-    "Incline DB Curl": [
-      {
-        "date": "Jun 16",
-        "ts": 1781611196088,
-        "weight": 33,
-        "reps": 10,
-        "e1rm": 44
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784118551842,
-        "weight": 37,
-        "reps": 7,
-        "e1rm": 46
-      }
-    ],
-    "SA Overhead Tricep Extension": [
-      {
-        "date": "Jun 16",
-        "ts": 1781611962101,
-        "weight": 82,
-        "reps": 10,
-        "e1rm": 109
-      },
-      {
-        "date": "Jun 23",
-        "ts": 1782216609784,
-        "weight": 84,
-        "reps": 10,
-        "e1rm": 112
-      },
-      {
-        "date": "Jul 9",
-        "ts": 1783601139998,
-        "weight": 84,
-        "reps": 10,
-        "e1rm": 112
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784117104803,
-        "weight": 91,
-        "reps": 7,
-        "e1rm": 112
-      },
-      {
-        "date": "Jul 21",
-        "ts": 1784634329681,
-        "weight": 85,
-        "reps": 10,
-        "e1rm": 113
-      },
-      {
-        "date": "Jul 23",
-        "ts": 1784811355361,
-        "weight": 80,
-        "reps": 12,
-        "e1rm": 112
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788441523469,
-        "weight": 70,
-        "reps": 10,
-        "e1rm": 93,
-        "mode": "smartflex",
-        "peak": 88
-      },
-      {
-        "date": "Sep 8",
-        "ts": 1788872667933,
-        "weight": 76,
-        "reps": 10,
-        "e1rm": 101
-      }
-    ],
-    "Tricep Kickback": [
-      {
-        "date": "Jun 16",
-        "ts": 1781612427884,
-        "weight": 22,
-        "reps": 15,
-        "e1rm": 33
-      },
-      {
-        "date": "Jun 17",
-        "ts": 1781700087865,
-        "weight": 24,
-        "reps": 15,
-        "e1rm": 36
-      },
-      {
-        "date": "Jul 9",
-        "ts": 1783602698804,
-        "weight": 24,
-        "reps": 15,
-        "e1rm": 36
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784118863335,
-        "weight": 27,
-        "reps": 10,
-        "e1rm": 36
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785594458896,
-        "weight": 24,
-        "reps": 15,
-        "e1rm": 34
-      },
-      {
-        "date": "Aug 20",
-        "ts": 1787224789502,
-        "weight": 26,
-        "reps": 12,
-        "e1rm": 36
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787409394277,
-        "weight": 26,
-        "reps": 15,
-        "e1rm": 36
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787837476423,
-        "weight": 28,
-        "reps": 12,
-        "e1rm": 39
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788009110083,
-        "weight": 27,
-        "reps": 15,
-        "e1rm": 38
-      },
-      {
-        "date": "Sep 5",
-        "ts": 1788617412937,
-        "weight": 28,
-        "reps": 15,
-        "e1rm": 39
-      }
-    ],
-    "Middle Chest Fly": [
-      {
-        "date": "Jun 17",
-        "ts": 1781699389480,
-        "weight": 39,
-        "reps": 12,
-        "e1rm": 55
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782303793295,
-        "weight": 41,
-        "reps": 12,
-        "e1rm": 57
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783688188253,
-        "weight": 42,
-        "reps": 12,
-        "e1rm": 59
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784292647172,
-        "weight": 48,
-        "reps": 8,
-        "e1rm": 61
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784994678856,
-        "weight": 44,
-        "reps": 12,
-        "e1rm": 62
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785593558152,
-        "weight": 45,
-        "reps": 12,
-        "e1rm": 63
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787408371906,
-        "weight": 45,
-        "reps": 12,
-        "e1rm": 63
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788008183223,
-        "weight": 45,
-        "reps": 12,
-        "e1rm": 63
-      },
-      {
-        "date": "Sep 5",
-        "ts": 1788616544357,
-        "weight": 46,
-        "reps": 12,
-        "e1rm": 64
-      }
-    ],
-    "Tricep Extension": [
-      {
-        "date": "Jun 17",
-        "ts": 1781699998730,
-        "weight": 85,
-        "reps": 10,
-        "e1rm": 113
-      },
-      {
-        "date": "Jun 24",
-        "ts": 1782304008063,
-        "weight": 85,
-        "reps": 10,
-        "e1rm": 113
-      },
-      {
-        "date": "Jul 10",
-        "ts": 1783688886104,
-        "weight": 73,
-        "reps": 15,
-        "e1rm": 110
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784118159223,
-        "weight": 92,
-        "reps": 7,
-        "e1rm": 113
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784293611839,
-        "weight": 86,
-        "reps": 10,
-        "e1rm": 115
-      },
-      {
-        "date": "Jul 23",
-        "ts": 1784810268654,
-        "weight": 86,
-        "reps": 10,
-        "e1rm": 115
-      },
-      {
-        "date": "Aug 14",
-        "ts": 1786707170570,
-        "weight": 50,
-        "reps": 8,
-        "e1rm": 63
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787052803397,
-        "weight": 65,
-        "reps": 10,
-        "e1rm": 87
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787657476549,
-        "weight": 70,
-        "reps": 10,
-        "e1rm": 93,
-        "mode": "smartflex",
-        "peak": 88
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787835860499,
-        "weight": 75,
-        "reps": 8,
-        "e1rm": 95,
-        "mode": "smartflex",
-        "peak": 94
-      }
-    ],
-    "SA Bent Over Row": [
-      {
-        "date": "Jun 19",
-        "ts": 1781872110190,
-        "weight": 99,
-        "reps": 8,
-        "e1rm": 125
-      },
-      {
-        "date": "Jun 25",
-        "ts": 1782390245755,
-        "weight": 99,
-        "reps": 8,
-        "e1rm": 125
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783776122421,
-        "weight": 97,
-        "reps": 10,
-        "e1rm": 129
-      },
-      {
-        "date": "Jul 18",
-        "ts": 1784386766343,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      }
-    ],
-    "Straight Arm Pulldown": [
-      {
-        "date": "Jun 19",
-        "ts": 1781872779286,
-        "weight": 36,
-        "reps": 12,
-        "e1rm": 50
-      },
-      {
-        "date": "Jun 25",
-        "ts": 1782390707565,
-        "weight": 36,
-        "reps": 12,
-        "e1rm": 50
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783777224187,
-        "weight": 37,
-        "reps": 12,
-        "e1rm": 52
-      }
-    ],
-    "Y Pull": [
-      {
-        "date": "Jun 19",
-        "ts": 1781872872068,
-        "weight": 34,
-        "reps": 15,
-        "e1rm": 51
-      },
-      {
-        "date": "Jun 25",
-        "ts": 1782390878861,
-        "weight": 35,
-        "reps": 15,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783777133465,
-        "weight": 35,
-        "reps": 15,
-        "e1rm": 53
-      },
-      {
-        "date": "Jul 18",
-        "ts": 1784388450219,
-        "weight": 41,
-        "reps": 10,
-        "e1rm": 55
-      },
-      {
-        "date": "Jul 23",
-        "ts": 1784811106348,
-        "weight": 37,
-        "reps": 15,
-        "e1rm": 52
-      },
-      {
-        "date": "Jul 30",
-        "ts": 1785415844722,
-        "weight": 37,
-        "reps": 15,
-        "e1rm": 52
-      },
-      {
-        "date": "Aug 6",
-        "ts": 1786019974700,
-        "weight": 39,
-        "reps": 15,
-        "e1rm": 55
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787837011147,
-        "weight": 40,
-        "reps": 15,
-        "e1rm": 56
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788441052506,
-        "weight": 41,
-        "reps": 15,
-        "e1rm": 57
-      }
-    ],
-    "W Hold": [
-      {
-        "date": "Jun 19",
-        "ts": 1781873389772,
-        "weight": 1,
-        "reps": 12,
-        "e1rm": 1
-      }
-    ],
-    "Shoulder Shrug": [
-      {
-        "date": "Jun 19",
-        "ts": 1781873396335,
-        "weight": 100,
-        "reps": 12,
-        "e1rm": 140
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783778234887,
-        "weight": 100,
-        "reps": 12,
-        "e1rm": 140
-      }
-    ],
     "Lying Bicep Curl": [
       {
-        "date": "Jun 19",
         "ts": 1781873885139,
-        "weight": 32,
         "reps": 10,
-        "e1rm": 43
+        "weight": 32,
+        "e1rm": 43,
+        "date": "Jun 19"
       },
       {
-        "date": "Jun 25",
         "ts": 1782392294150,
-        "weight": 32,
         "reps": 10,
-        "e1rm": 43
+        "weight": 32,
+        "e1rm": 43,
+        "date": "Jun 25"
       },
       {
-        "date": "Jul 11",
         "ts": 1783779163836,
+        "reps": 10,
         "weight": 33,
-        "reps": 10,
-        "e1rm": 44
-      }
-    ],
-    "Reverse Grip Tricep Extension": [
-      {
-        "date": "Jun 20",
-        "ts": 1781969688743,
-        "weight": 29,
-        "reps": 12,
-        "e1rm": 41
-      },
-      {
-        "date": "Jun 27",
-        "ts": 1782569424926,
-        "weight": 29,
-        "reps": 12,
-        "e1rm": 41
-      },
-      {
-        "date": "Jul 13",
-        "ts": 1783947560744,
-        "weight": 33,
-        "reps": 8,
-        "e1rm": 42
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785241507544,
-        "weight": 33,
-        "reps": 10,
-        "e1rm": 44
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787836458318,
-        "weight": 33,
-        "reps": 10,
-        "e1rm": 44
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788442437492,
-        "weight": 33,
-        "reps": 12,
-        "e1rm": 46
-      }
-    ],
-    "RDL": [
-      {
-        "date": "Jun 22",
-        "ts": 1782140245778,
-        "weight": 94,
-        "reps": 10,
-        "e1rm": 125
-      },
-      {
-        "date": "Jul 16",
-        "ts": 1784205260106,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      },
-      {
-        "date": "Jul 20",
-        "ts": 1784549095540,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785154376330,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785759012064,
-        "weight": 114,
-        "reps": 8,
-        "e1rm": 144
-      },
-      {
-        "date": "Aug 24",
-        "ts": 1787570686890,
-        "weight": 116,
-        "reps": 8,
-        "e1rm": 147
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788180586782,
-        "weight": 117,
-        "reps": 8,
-        "e1rm": 148
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788792231537,
-        "weight": 105,
-        "reps": 8,
-        "e1rm": 133
-      }
-    ],
-    "Seated Alt Bicep Curl": [
-      {
-        "date": "Jun 23",
-        "ts": 1782215440978,
-        "weight": 33,
-        "reps": 8,
-        "e1rm": 42
-      },
-      {
-        "date": "Jun 25",
-        "ts": 1782392246866,
-        "weight": 28,
-        "reps": 12,
-        "e1rm": 39
-      },
-      {
-        "date": "Jul 11",
-        "ts": 1783779039317,
-        "weight": 30,
-        "reps": 12,
-        "e1rm": 42
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784995537247,
-        "weight": 31,
-        "reps": 12,
-        "e1rm": 43
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785594389031,
-        "weight": 33,
-        "reps": 12,
-        "e1rm": 46
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787409095022,
-        "weight": 33,
-        "reps": 12,
-        "e1rm": 46
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788009026191,
-        "weight": 34,
-        "reps": 12,
-        "e1rm": 48
-      },
-      {
-        "date": "Sep 5",
-        "ts": 1788617410838,
-        "weight": 34,
-        "reps": 12,
-        "e1rm": 48
-      }
-    ],
-    "Seated Pallof Press": [
-      {
-        "date": "Jun 24",
-        "ts": 1782306191549,
-        "weight": 28,
-        "reps": 12,
-        "e1rm": 39
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784294183227,
-        "weight": 31,
-        "reps": 8,
-        "e1rm": 39
-      }
-    ],
-    "Hammer Curl": [
-      {
-        "date": "Jul 9",
-        "ts": 1783627022267,
-        "weight": 80,
-        "reps": 10,
-        "e1rm": 107
-      },
-      {
-        "date": "Jul 15",
-        "ts": 1784118799972,
-        "weight": 85,
-        "reps": 8,
-        "e1rm": 108
-      },
-      {
-        "date": "Jul 22",
-        "ts": 1784721320786,
-        "weight": 87,
-        "reps": 8,
-        "e1rm": 110
-      },
-      {
-        "date": "Jul 29",
-        "ts": 1785327878658,
-        "weight": 87,
-        "reps": 8,
-        "e1rm": 110
-      },
-      {
-        "date": "Sep 2",
-        "ts": 1788349269590,
-        "weight": 88,
-        "reps": 8,
-        "e1rm": 111
-      }
-    ],
-    "SA Tricep Extension": [
-      {
-        "date": "Jul 10",
-        "ts": 1783689042091,
-        "weight": 30,
-        "reps": 10,
-        "e1rm": 40
-      },
-      {
-        "date": "Jul 17",
-        "ts": 1784293531146,
-        "weight": 33,
-        "reps": 7,
-        "e1rm": 41
-      }
-    ],
-    "Goblet Squat": [
-      {
-        "date": "Jul 20",
-        "ts": 1784548860304,
-        "weight": 100,
-        "reps": 7,
-        "e1rm": 123
-      },
-      {
-        "date": "Jul 24",
-        "ts": 1784896646015,
-        "weight": 99,
-        "reps": 10,
-        "e1rm": 132
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785154040608,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      },
-      {
-        "date": "Jul 31",
-        "ts": 1785501528429,
-        "weight": 102,
-        "reps": 10,
-        "e1rm": 136
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785758584476,
-        "weight": 119,
-        "reps": 6,
-        "e1rm": 143
-      },
-      {
-        "date": "Aug 7",
-        "ts": 1786105692870,
-        "weight": 107,
-        "reps": 10,
-        "e1rm": 143
-      },
-      {
-        "date": "Aug 21",
-        "ts": 1787318513575,
-        "weight": 108,
-        "reps": 10,
-        "e1rm": 144
-      },
-      {
-        "date": "Aug 24",
-        "ts": 1787570079627,
-        "weight": 120,
-        "reps": 6,
-        "e1rm": 144
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788180677427,
-        "weight": 122,
-        "reps": 6,
-        "e1rm": 146
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788792519588,
-        "weight": 110,
-        "reps": 6,
-        "e1rm": 132
-      }
-    ],
-    "Racked Reverse Lunge": [
-      {
-        "date": "Jul 20",
-        "ts": 1784549874502,
-        "weight": 40,
-        "reps": 8,
-        "e1rm": 51
-      }
-    ],
-    "Single-Leg RDL": [
-      {
-        "date": "Jul 20",
-        "ts": 1784549636937,
-        "weight": 42,
-        "reps": 10,
-        "e1rm": 56
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785155029994,
-        "weight": 42,
-        "reps": 10,
-        "e1rm": 56
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785759411281,
-        "weight": 42,
-        "reps": 10,
-        "e1rm": 56
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788181592480,
-        "weight": 43,
-        "reps": 10,
-        "e1rm": 57
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788793286439,
-        "weight": 38,
-        "reps": 10,
-        "e1rm": 51
-      }
-    ],
-    "Cable Crunch": [
-      {
-        "date": "Jul 20",
-        "ts": 1784551537444,
-        "weight": 40,
-        "reps": 15,
-        "e1rm": 56
-      },
-      {
-        "date": "Jul 27",
-        "ts": 1785156793933,
-        "weight": 63,
-        "reps": 12,
-        "e1rm": 88
-      },
-      {
-        "date": "Aug 3",
-        "ts": 1785760947341,
-        "weight": 63,
-        "reps": 12,
-        "e1rm": 88
-      },
-      {
-        "date": "Aug 31",
-        "ts": 1788183136992,
-        "weight": 95,
-        "reps": 12,
-        "e1rm": 133
-      },
-      {
-        "date": "Sep 7",
-        "ts": 1788793762047,
-        "weight": 86,
-        "reps": 12,
-        "e1rm": 120
-      }
-    ],
-    "Seated Overhead Press": [
-      {
-        "date": "Jul 21",
-        "ts": 1784633243006,
-        "weight": 50,
-        "reps": 6,
-        "e1rm": 60
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785240218668,
-        "weight": 51,
-        "reps": 6,
-        "e1rm": 61
-      },
-      {
-        "date": "Aug 4",
-        "ts": 1785843719321,
-        "weight": 51,
-        "reps": 6,
-        "e1rm": 61
-      },
-      {
-        "date": "Aug 11",
-        "ts": 1786446813445,
-        "weight": 46,
-        "reps": 6,
-        "e1rm": 55
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787051753413,
-        "weight": 52,
-        "reps": 6,
-        "e1rm": 62
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787656186207,
-        "weight": 52,
-        "reps": 6,
-        "e1rm": 62
-      },
-      {
-        "date": "Sep 1",
-        "ts": 1788261614530,
-        "weight": 53,
-        "reps": 6,
-        "e1rm": 64
-      },
-      {
-        "date": "Sep 8",
-        "ts": 1788872082239,
-        "weight": 48,
-        "reps": 6,
-        "e1rm": 58
-      }
-    ],
-    "Incline Press": [
-      {
-        "date": "Jul 21",
-        "ts": 1784633690812,
-        "weight": 75,
-        "reps": 8,
-        "e1rm": 95
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784993015193,
-        "weight": 71,
-        "reps": 10,
-        "e1rm": 95
-      },
-      {
-        "date": "Jul 28",
-        "ts": 1785240854179,
-        "weight": 77,
-        "reps": 8,
-        "e1rm": 98
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785592773045,
-        "weight": 74,
-        "reps": 10,
-        "e1rm": 99
-      },
-      {
-        "date": "Aug 4",
-        "ts": 1785844606785,
-        "weight": 80,
-        "reps": 8,
-        "e1rm": 101
-      },
-      {
-        "date": "Aug 11",
-        "ts": 1786447054293,
-        "weight": 72,
-        "reps": 8,
-        "e1rm": 91
-      },
-      {
-        "date": "Aug 18",
-        "ts": 1787052156339,
-        "weight": 81,
-        "reps": 8,
-        "e1rm": 103
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787407521968,
-        "weight": 72,
-        "reps": 10,
-        "e1rm": 96,
-        "mode": "smartflex",
-        "peak": 90
-      },
-      {
-        "date": "Aug 25",
-        "ts": 1787656482556,
-        "weight": 81,
-        "reps": 8,
-        "e1rm": 103
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788007791251,
-        "weight": 78,
-        "reps": 10,
-        "e1rm": 104
-      },
-      {
-        "date": "Sep 1",
-        "ts": 1788262362676,
-        "weight": 82,
-        "reps": 8,
-        "e1rm": 104
-      },
-      {
-        "date": "Sep 5",
-        "ts": 1788615858916,
-        "weight": 79,
-        "reps": 10,
-        "e1rm": 105
-      }
-    ],
-    "Chest-Supported Row": [
-      {
-        "date": "Jul 22",
-        "ts": 1784719910732,
-        "weight": 100,
-        "reps": 8,
-        "e1rm": 127
-      },
-      {
-        "date": "Jul 25",
-        "ts": 1784993106456,
-        "weight": 90,
-        "reps": 10,
-        "e1rm": 120
-      },
-      {
-        "date": "Jul 29",
-        "ts": 1785326730243,
-        "weight": 98,
-        "reps": 8,
-        "e1rm": 124
-      },
-      {
-        "date": "Aug 1",
-        "ts": 1785592960692,
-        "weight": 92,
-        "reps": 10,
-        "e1rm": 123
-      },
-      {
-        "date": "Aug 22",
-        "ts": 1787407327342,
-        "weight": 81,
-        "reps": 10,
-        "e1rm": 108,
-        "mode": "smartflex",
-        "peak": 101
-      },
-      {
-        "date": "Aug 29",
-        "ts": 1788007577561,
-        "weight": 82,
-        "reps": 10,
-        "e1rm": 109,
-        "mode": "smartflex",
-        "peak": 103
-      },
-      {
-        "date": "Sep 5",
-        "ts": 1788615433949,
-        "weight": 83,
-        "reps": 10,
-        "e1rm": 111,
-        "mode": "smartflex",
-        "peak": 104
-      },
-      {
-        "date": "Sep 9",
-        "ts": 1788960612949,
-        "weight": 88,
-        "reps": 8,
-        "e1rm": 111,
-        "mode": "smartflex",
-        "peak": 110
-      }
-    ],
-    "Face Pull": [
-      {
-        "date": "Jul 22",
-        "ts": 1784720487170,
-        "weight": 87,
-        "reps": 15,
-        "e1rm": 122
-      },
-      {
-        "date": "Jul 29",
-        "ts": 1785327374478,
-        "weight": 89,
-        "reps": 15,
-        "e1rm": 125
-      },
-      {
-        "date": "Aug 19",
-        "ts": 1787139156191,
-        "weight": 85,
-        "reps": 15,
-        "e1rm": 119
-      },
-      {
-        "date": "Sep 2",
-        "ts": 1788348403456,
-        "weight": 91,
-        "reps": 15,
-        "e1rm": 127
-      },
-      {
-        "date": "Sep 9",
-        "ts": 1788961334158,
-        "weight": 82,
-        "reps": 15,
-        "e1rm": 115
-      }
-    ],
-    "Hanging Knee Raise": [
-      {
-        "date": "Jul 22",
-        "ts": 1784721219205,
-        "weight": 230,
-        "reps": 10,
-        "e1rm": 307
-      },
-      {
-        "date": "Jul 29",
-        "ts": 1785327886847,
-        "weight": 230,
-        "reps": 15,
-        "e1rm": 322
-      }
-    ],
-    "Incline Curl": [
-      {
-        "date": "Jul 23",
-        "ts": 1784809909990,
-        "weight": 32,
-        "reps": 8,
-        "e1rm": 41
-      },
-      {
-        "date": "Jul 30",
-        "ts": 1785415034400,
-        "weight": 33,
-        "reps": 8,
-        "e1rm": 42
-      },
-      {
-        "date": "Aug 6",
-        "ts": 1786018917487,
-        "weight": 35,
-        "reps": 8,
-        "e1rm": 44
-      },
-      {
-        "date": "Aug 14",
-        "ts": 1786707158140,
-        "weight": 31,
-        "reps": 8,
-        "e1rm": 39
-      },
-      {
-        "date": "Aug 20",
-        "ts": 1787222873654,
-        "weight": 35,
-        "reps": 8,
-        "e1rm": 44
-      },
-      {
-        "date": "Aug 27",
-        "ts": 1787835830654,
-        "weight": 36,
-        "reps": 8,
-        "e1rm": 46
-      },
-      {
-        "date": "Sep 3",
-        "ts": 1788440029207,
-        "weight": 37,
-        "reps": 8,
-        "e1rm": 47
-      }
-    ],
-    "Skull Crusher": [
-      {
-        "date": "Jul 23",
-        "ts": 1784809774004,
-        "weight": 34,
-        "reps": 8,
-        "e1rm": 43
-      }
-    ],
-    "Neutral Grip Deadlift": [
-      {
-        "date": "Jul 24",
-        "ts": 1784895273579,
-        "weight": 100,
-        "reps": 6,
-        "e1rm": 120
-      },
-      {
-        "date": "Jul 31",
-        "ts": 1785499572207,
-        "weight": 125,
-        "reps": 6,
-        "e1rm": 150
-      },
-      {
-        "date": "Aug 7",
-        "ts": 1786103846299,
-        "weight": 125,
-        "reps": 6,
-        "e1rm": 150
-      },
-      {
-        "date": "Aug 21",
-        "ts": 1787316450289,
-        "weight": 125,
-        "reps": 6,
-        "e1rm": 150
-      },
-      {
-        "date": "Aug 28",
-        "ts": 1787914792756,
-        "weight": 125,
-        "reps": 6,
-        "e1rm": 150
-      },
-      {
-        "date": "Sep 4",
-        "ts": 1788526237893,
-        "weight": 125,
-        "reps": 6,
-        "e1rm": 150
+        "e1rm": 44,
+        "date": "Jul 11"
       }
     ],
     "KB Swing": [
       {
-        "date": "Jul 24",
         "ts": 1784895823302,
-        "weight": 50,
         "reps": 15,
-        "e1rm": 70
+        "weight": 50,
+        "e1rm": 70,
+        "date": "Jul 24"
       },
       {
-        "date": "Jul 31",
         "ts": 1785500356956,
-        "weight": 50,
         "reps": 12,
-        "e1rm": 70
+        "weight": 50,
+        "e1rm": 70,
+        "date": "Jul 31"
       },
       {
-        "date": "Aug 7",
         "ts": 1786104432687,
-        "weight": 50,
         "reps": 15,
-        "e1rm": 70
+        "weight": 50,
+        "e1rm": 70,
+        "date": "Aug 7"
       },
       {
-        "date": "Aug 21",
         "ts": 1787318028927,
-        "weight": 50,
         "reps": 15,
-        "e1rm": 70
+        "weight": 50,
+        "e1rm": 70,
+        "date": "Aug 21"
       },
       {
-        "date": "Aug 28",
         "ts": 1787915560976,
-        "weight": 50,
         "reps": 15,
-        "e1rm": 70
+        "weight": 50,
+        "e1rm": 70,
+        "date": "Aug 28"
+      },
+      {
+        "date": "Sep 11",
+        "ts": 1789130817145,
+        "weight": 45,
+        "reps": 15,
+        "e1rm": 63
+      }
+    ],
+    "Barbell RDL": [
+      {
+        "ts": 1781528913351,
+        "reps": 10,
+        "weight": 175,
+        "e1rm": 233,
+        "date": "Jun 15"
+      }
+    ],
+    "Barbell Bent Over Row": [
+      {
+        "ts": 1781385754327,
+        "reps": 6,
+        "weight": 93,
+        "e1rm": 112,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1782046293377,
+        "reps": 6,
+        "weight": 95,
+        "e1rm": 114,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1784029689862,
+        "reps": 4,
+        "weight": 100,
+        "e1rm": 113,
+        "date": "Jul 14"
+      }
+    ],
+    "Neutral Grip Lat Pulldown": [
+      {
+        "ts": 1781385779571,
+        "reps": 10,
+        "weight": 80,
+        "e1rm": 107,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781442161273,
+        "reps": 10,
+        "weight": 82,
+        "e1rm": 109,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1782046796434,
+        "reps": 10,
+        "weight": 82,
+        "e1rm": 109,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1784030590011,
+        "reps": 7,
+        "weight": 91,
+        "e1rm": 112,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784720375437,
+        "reps": 10,
+        "weight": 81,
+        "e1rm": 108,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1786620793757,
+        "reps": 10,
+        "weight": 76,
+        "e1rm": 101,
+        "date": "Aug 13"
+      },
+      {
+        "ts": 1788348305518,
+        "reps": 10,
+        "weight": 88,
+        "e1rm": 117,
+        "date": "Sep 2"
+      },
+      {
+        "ts": 1788961331708,
+        "reps": 10,
+        "weight": 79,
+        "e1rm": 105,
+        "date": "Sep 9"
+      }
+    ],
+    "Tricep Extension": [
+      {
+        "ts": 1781699998730,
+        "reps": 10,
+        "weight": 85,
+        "e1rm": 113,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782304008063,
+        "reps": 10,
+        "weight": 85,
+        "e1rm": 113,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783688886104,
+        "reps": 15,
+        "weight": 73,
+        "e1rm": 110,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784118159223,
+        "reps": 7,
+        "weight": 92,
+        "e1rm": 113,
+        "date": "Jul 15"
+      },
+      {
+        "ts": 1784293611839,
+        "reps": 10,
+        "weight": 86,
+        "e1rm": 115,
+        "date": "Jul 17"
+      },
+      {
+        "ts": 1784810268654,
+        "reps": 10,
+        "weight": 86,
+        "e1rm": 115,
+        "date": "Jul 23"
+      },
+      {
+        "ts": 1786707170570,
+        "reps": 8,
+        "weight": 50,
+        "e1rm": 63,
+        "date": "Aug 14"
+      },
+      {
+        "ts": 1787052803397,
+        "reps": 10,
+        "weight": 65,
+        "e1rm": 87,
+        "date": "Aug 18"
+      },
+      {
+        "weight": 70,
+        "reps": 10,
+        "ts": 1787657476549,
+        "mode": "smartflex",
+        "date": "Aug 25",
+        "e1rm": 93,
+        "peak": 88
+      },
+      {
+        "weight": 75,
+        "reps": 8,
+        "ts": 1787835860499,
+        "mode": "smartflex",
+        "date": "Aug 27",
+        "e1rm": 95,
+        "peak": 94
+      },
+      {
+        "ts": 1789039286395,
+        "reps": 8,
+        "weight": 82,
+        "e1rm": 104,
+        "date": "Sep 10"
+      }
+    ],
+    "Skull Crusher": [
+      {
+        "ts": 1784809774004,
+        "reps": 8,
+        "weight": 34,
+        "e1rm": 43,
+        "date": "Jul 23"
+      }
+    ],
+    "Seated Bicep Curl": [
+      {
+        "ts": 1781385883047,
+        "reps": 10,
+        "weight": 36,
+        "e1rm": 48,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781443655586,
+        "reps": 10,
+        "weight": 38,
+        "e1rm": 51,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1782048488107,
+        "reps": 10,
+        "weight": 39,
+        "e1rm": 52,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1782216228526,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jun 23"
+      },
+      {
+        "ts": 1784032071792,
+        "reps": 7,
+        "weight": 43,
+        "e1rm": 53,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784810650345,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jul 23"
+      },
+      {
+        "ts": 1785415165405,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jul 30"
+      },
+      {
+        "ts": 1786019616679,
+        "reps": 10,
+        "weight": 41,
+        "e1rm": 55,
+        "date": "Aug 6"
+      },
+      {
+        "ts": 1787836340040,
+        "reps": 10,
+        "weight": 42,
+        "e1rm": 56,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788440842140,
+        "reps": 10,
+        "weight": 42,
+        "e1rm": 56,
+        "date": "Sep 3"
+      }
+    ],
+    "Resisted Step Up": [
+      {
+        "ts": 1781529647997,
+        "reps": 12,
+        "weight": 37,
+        "e1rm": 52,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1782132086518,
+        "reps": 12,
+        "weight": 38,
+        "e1rm": 53,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784206940789,
+        "reps": 8,
+        "weight": 46,
+        "e1rm": 58,
+        "date": "Jul 16"
+      }
+    ],
+    "Tricep Kickback": [
+      {
+        "ts": 1781612427884,
+        "reps": 15,
+        "weight": 22,
+        "e1rm": 33,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1781700087865,
+        "reps": 15,
+        "weight": 24,
+        "e1rm": 36,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1783602698804,
+        "reps": 15,
+        "weight": 24,
+        "e1rm": 36,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1784118863335,
+        "reps": 10,
+        "weight": 27,
+        "e1rm": 36,
+        "date": "Jul 15"
+      },
+      {
+        "ts": 1785594458896,
+        "reps": 15,
+        "weight": 24,
+        "e1rm": 34,
+        "date": "Aug 1"
+      },
+      {
+        "ts": 1787224789502,
+        "reps": 12,
+        "weight": 26,
+        "e1rm": 36,
+        "date": "Aug 20"
+      },
+      {
+        "ts": 1787409394277,
+        "reps": 15,
+        "weight": 26,
+        "e1rm": 36,
+        "date": "Aug 22"
+      },
+      {
+        "ts": 1787837476423,
+        "reps": 12,
+        "weight": 28,
+        "e1rm": 39,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788009110083,
+        "reps": 15,
+        "weight": 27,
+        "e1rm": 38,
+        "date": "Aug 29"
+      },
+      {
+        "ts": 1788617412937,
+        "reps": 15,
+        "weight": 28,
+        "e1rm": 39,
+        "date": "Sep 5"
+      }
+    ],
+    "Weighted Chin-Up": [
+      {
+        "ts": 1781385807414,
+        "reps": 6,
+        "weight": 230,
+        "e1rm": 276,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1782389775687,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Jun 25"
+      },
+      {
+        "ts": 1783776099774,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Jul 11"
+      },
+      {
+        "ts": 1784386509714,
+        "reps": 9,
+        "weight": 230,
+        "e1rm": 299,
+        "date": "Jul 18"
+      }
+    ],
+    "Racked Reverse Lunge": [
+      {
+        "ts": 1784549874502,
+        "reps": 8,
+        "weight": 40,
+        "e1rm": 51,
+        "date": "Jul 20"
+      }
+    ],
+    "Bulgarian Split Squat": [
+      {
+        "ts": 1781527865081,
+        "reps": 10,
+        "weight": 31,
+        "e1rm": 41,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1782130278165,
+        "reps": 10,
+        "weight": 31,
+        "e1rm": 41,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784205092727,
+        "reps": 7,
+        "weight": 37,
+        "e1rm": 46,
+        "date": "Jul 16"
+      },
+      {
+        "ts": 1785155522711,
+        "reps": 8,
+        "weight": 38,
+        "e1rm": 48,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785759237959,
+        "reps": 8,
+        "weight": 38,
+        "e1rm": 48,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1787570885799,
+        "reps": 8,
+        "weight": 39,
+        "e1rm": 49,
+        "date": "Aug 24"
+      },
+      {
+        "ts": 1788181803386,
+        "reps": 8,
+        "weight": 42,
+        "e1rm": 53,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788793282405,
+        "reps": 8,
+        "weight": 38,
+        "e1rm": 48,
+        "date": "Sep 7"
       }
     ],
     "Wood Chop": [
       {
-        "date": "Jul 25",
         "ts": 1784996893008,
-        "weight": 55,
         "reps": 10,
-        "e1rm": 73
+        "weight": 55,
+        "e1rm": 73,
+        "date": "Jul 25"
       },
       {
-        "date": "Aug 1",
         "ts": 1785594917252,
-        "weight": 55,
         "reps": 10,
-        "e1rm": 73
+        "weight": 55,
+        "e1rm": 73,
+        "date": "Aug 1"
+      }
+    ],
+    "SA Tricep Extension": [
+      {
+        "ts": 1783689042091,
+        "reps": 10,
+        "weight": 30,
+        "e1rm": 40,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784293531146,
+        "reps": 7,
+        "weight": 33,
+        "e1rm": 41,
+        "date": "Jul 17"
+      }
+    ],
+    "Perfect Push-Ups": [
+      {
+        "ts": 1781385400425,
+        "reps": 15,
+        "weight": 230,
+        "e1rm": 345,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781700283190,
+        "reps": 20,
+        "weight": 230,
+        "e1rm": 383,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1781969411176,
+        "reps": 20,
+        "weight": 230,
+        "e1rm": 383,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782304453837,
+        "reps": 20,
+        "weight": 230,
+        "e1rm": 383,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1782569069701,
+        "reps": 15,
+        "weight": 260,
+        "e1rm": 390,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783689699157,
+        "reps": 12,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1783946815736,
+        "reps": 12,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Jul 13"
+      },
+      {
+        "ts": 1784293762936,
+        "reps": 12,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Jul 17"
+      },
+      {
+        "ts": 1784634636477,
+        "reps": 12,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1785241791655,
+        "reps": 13,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1785845443294,
+        "reps": 14,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Aug 4"
+      },
+      {
+        "ts": 1787053064749,
+        "reps": 14,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Aug 18"
+      },
+      {
+        "ts": 1787657746235,
+        "reps": 14,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Aug 25"
+      },
+      {
+        "ts": 1788262940835,
+        "reps": 14,
+        "weight": 260,
+        "e1rm": 364,
+        "date": "Sep 1"
+      }
+    ],
+    "Front Raise": [
+      {
+        "ts": 1781385469814,
+        "reps": 12,
+        "weight": 15,
+        "e1rm": 21,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781968991348,
+        "reps": 12,
+        "weight": 15,
+        "e1rm": 21,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782568133475,
+        "reps": 12,
+        "weight": 15,
+        "e1rm": 21,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783946303432,
+        "reps": 8,
+        "weight": 18,
+        "e1rm": 23,
+        "date": "Jul 13"
+      }
+    ],
+    "Skull Crushers": [
+      {
+        "ts": 1781385498878,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781612353696,
+        "reps": 10,
+        "weight": 38,
+        "e1rm": 51,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1781969607375,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782217763624,
+        "reps": 10,
+        "weight": 38,
+        "e1rm": 51,
+        "date": "Jun 23"
+      },
+      {
+        "ts": 1782569422860,
+        "reps": 10,
+        "weight": 40,
+        "e1rm": 53,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783602689165,
+        "reps": 10,
+        "weight": 38,
+        "e1rm": 51,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1783947621462,
+        "reps": 7,
+        "weight": 43,
+        "e1rm": 53,
+        "date": "Jul 13"
+      }
+    ],
+    "Barbell Hip Thrust": [
+      {
+        "ts": 1781551305052,
+        "reps": 12,
+        "weight": 200,
+        "e1rm": 280,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1782131517914,
+        "reps": 12,
+        "weight": 200,
+        "e1rm": 280,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784895772121,
+        "reps": 8,
+        "weight": 200,
+        "e1rm": 253,
+        "date": "Jul 24"
+      },
+      {
+        "ts": 1785500585977,
+        "reps": 8,
+        "weight": 250,
+        "e1rm": 317,
+        "date": "Jul 31"
+      },
+      {
+        "ts": 1786104365096,
+        "reps": 8,
+        "weight": 250,
+        "e1rm": 317,
+        "date": "Aug 7"
+      },
+      {
+        "ts": 1787316910224,
+        "reps": 8,
+        "weight": 250,
+        "e1rm": 317,
+        "date": "Aug 21"
+      },
+      {
+        "ts": 1787915554108,
+        "reps": 8,
+        "weight": 250,
+        "e1rm": 317,
+        "date": "Aug 28"
+      },
+      {
+        "ts": 1788526855477,
+        "reps": 9,
+        "weight": 250,
+        "e1rm": 325,
+        "date": "Sep 4"
+      },
+      {
+        "date": "Sep 11",
+        "ts": 1789130803096,
+        "weight": 231,
+        "reps": 8,
+        "e1rm": 293
+      }
+    ],
+    "Reverse Grip Tricep Extension": [
+      {
+        "ts": 1781969688743,
+        "reps": 12,
+        "weight": 29,
+        "e1rm": 41,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782569424926,
+        "reps": 12,
+        "weight": 29,
+        "e1rm": 41,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783947560744,
+        "reps": 8,
+        "weight": 33,
+        "e1rm": 42,
+        "date": "Jul 13"
+      },
+      {
+        "ts": 1785241507544,
+        "reps": 10,
+        "weight": 33,
+        "e1rm": 44,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1787836458318,
+        "reps": 10,
+        "weight": 33,
+        "e1rm": 44,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788442437492,
+        "reps": 12,
+        "weight": 33,
+        "e1rm": 46,
+        "date": "Sep 3"
+      }
+    ],
+    "Barbell Bench Press (Flat)": [
+      {
+        "ts": 1746748800500,
+        "reps": 8,
+        "weight": 192,
+        "e1rm": 243,
+        "date": "May 9"
+      },
+      {
+        "ts": 1781377092946,
+        "reps": 8,
+        "weight": 185,
+        "e1rm": 234,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781968190395,
+        "reps": 8,
+        "weight": 193,
+        "e1rm": 244,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1783946064603,
+        "reps": 7,
+        "weight": 200,
+        "e1rm": 247,
+        "date": "Jul 13"
+      },
+      {
+        "ts": 1784632439089,
+        "reps": 5,
+        "weight": 200,
+        "e1rm": 233,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1785239487285,
+        "reps": 5,
+        "weight": 212,
+        "e1rm": 247,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1785843039803,
+        "reps": 5,
+        "weight": 212,
+        "e1rm": 247,
+        "date": "Aug 4"
+      },
+      {
+        "ts": 1786446607979,
+        "reps": 5,
+        "weight": 191,
+        "e1rm": 223,
+        "date": "Aug 11"
+      },
+      {
+        "ts": 1787051429384,
+        "reps": 5,
+        "weight": 217,
+        "e1rm": 253,
+        "date": "Aug 18"
+      },
+      {
+        "ts": 1787655548559,
+        "reps": 5,
+        "weight": 217,
+        "e1rm": 253,
+        "date": "Aug 25"
+      },
+      {
+        "ts": 1788261076943,
+        "reps": 5,
+        "weight": 217,
+        "e1rm": 253,
+        "date": "Sep 1"
+      },
+      {
+        "ts": 1788871668523,
+        "reps": 5,
+        "weight": 195,
+        "e1rm": 228,
+        "date": "Sep 8"
+      }
+    ],
+    "SA Bent Over Row": [
+      {
+        "ts": 1781872110190,
+        "reps": 8,
+        "weight": 99,
+        "e1rm": 125,
+        "date": "Jun 19"
+      },
+      {
+        "ts": 1782390245755,
+        "reps": 8,
+        "weight": 99,
+        "e1rm": 125,
+        "date": "Jun 25"
+      },
+      {
+        "ts": 1783776122421,
+        "reps": 10,
+        "weight": 97,
+        "e1rm": 129,
+        "date": "Jul 11"
+      },
+      {
+        "ts": 1784386766343,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 18"
+      }
+    ],
+    "Alt Bench Press": [
+      {
+        "ts": 1781385350920,
+        "reps": 10,
+        "weight": 63,
+        "e1rm": 84,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781698690502,
+        "reps": 10,
+        "weight": 65,
+        "e1rm": 87,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782302643925,
+        "reps": 10,
+        "weight": 65,
+        "e1rm": 87,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783687442290,
+        "reps": 10,
+        "weight": 67,
+        "e1rm": 89,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784291999804,
+        "reps": 8,
+        "weight": 73,
+        "e1rm": 92,
+        "date": "Jul 17"
+      }
+    ],
+    "Reverse Fly": [
+      {
+        "ts": 1781385866785,
+        "reps": 15,
+        "weight": 11,
+        "e1rm": 17,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781442997289,
+        "reps": 15,
+        "weight": 12,
+        "e1rm": 18,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1781699464574,
+        "reps": 15,
+        "weight": 12,
+        "e1rm": 18,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782047811431,
+        "reps": 15,
+        "weight": 14,
+        "e1rm": 21,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1782303865666,
+        "reps": 15,
+        "weight": 12,
+        "e1rm": 18,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783688293825,
+        "reps": 15,
+        "weight": 12,
+        "e1rm": 18,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784031648477,
+        "reps": 10,
+        "weight": 16,
+        "e1rm": 21,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784292507485,
+        "reps": 10,
+        "weight": 15,
+        "e1rm": 20,
+        "date": "Jul 17"
+      }
+    ],
+    "Weighted Incline Sit-Up": [
+      {
+        "ts": 1781551342739,
+        "reps": 20,
+        "weight": 1,
+        "e1rm": 2,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1781614021184,
+        "reps": 15,
+        "weight": 27.5,
+        "e1rm": 41,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1782133116030,
+        "reps": 15,
+        "weight": 38.5,
+        "e1rm": 58,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1782305087309,
+        "reps": 15,
+        "weight": 38.5,
+        "e1rm": 58,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783689823928,
+        "reps": 12,
+        "weight": 44,
+        "e1rm": 62,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784293997432,
+        "reps": 8,
+        "weight": 49.5,
+        "e1rm": 63,
+        "date": "Jul 17"
+      }
+    ],
+    "Seated Alt Bicep Curl": [
+      {
+        "ts": 1782215440978,
+        "reps": 8,
+        "weight": 33,
+        "e1rm": 42,
+        "date": "Jun 23"
+      },
+      {
+        "ts": 1782392246866,
+        "reps": 12,
+        "weight": 28,
+        "e1rm": 39,
+        "date": "Jun 25"
+      },
+      {
+        "ts": 1783779039317,
+        "reps": 12,
+        "weight": 30,
+        "e1rm": 42,
+        "date": "Jul 11"
+      },
+      {
+        "ts": 1784995537247,
+        "reps": 12,
+        "weight": 31,
+        "e1rm": 43,
+        "date": "Jul 25"
+      },
+      {
+        "ts": 1785594389031,
+        "reps": 12,
+        "weight": 33,
+        "e1rm": 46,
+        "date": "Aug 1"
+      },
+      {
+        "ts": 1787409095022,
+        "reps": 12,
+        "weight": 33,
+        "e1rm": 46,
+        "date": "Aug 22"
+      },
+      {
+        "ts": 1788009026191,
+        "reps": 12,
+        "weight": 34,
+        "e1rm": 48,
+        "date": "Aug 29"
+      },
+      {
+        "ts": 1788617410838,
+        "reps": 12,
+        "weight": 34,
+        "e1rm": 48,
+        "date": "Sep 5"
+      }
+    ],
+    "Reverse Grip Bicep Curl": [
+      {
+        "ts": 1781385902829,
+        "reps": 12,
+        "weight": 23,
+        "e1rm": 32,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781443736841,
+        "reps": 12,
+        "weight": 25,
+        "e1rm": 35,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1781611036675,
+        "reps": 12,
+        "weight": 25,
+        "e1rm": 35,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1782048550510,
+        "reps": 12,
+        "weight": 25,
+        "e1rm": 35,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1782215761707,
+        "reps": 12,
+        "weight": 25,
+        "e1rm": 35,
+        "date": "Jun 23"
+      },
+      {
+        "ts": 1783600860147,
+        "reps": 12,
+        "weight": 26,
+        "e1rm": 36,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1784032479002,
+        "reps": 8,
+        "weight": 29,
+        "e1rm": 37,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784811351822,
+        "reps": 12,
+        "weight": 26,
+        "e1rm": 36,
+        "date": "Jul 23"
+      },
+      {
+        "ts": 1785416587605,
+        "reps": 12,
+        "weight": 26,
+        "e1rm": 36,
+        "date": "Jul 30"
+      },
+      {
+        "ts": 1786020220041,
+        "reps": 12,
+        "weight": 27,
+        "e1rm": 38,
+        "date": "Aug 6"
+      },
+      {
+        "ts": 1787224793520,
+        "reps": 12,
+        "weight": 27,
+        "e1rm": 38,
+        "date": "Aug 20"
+      },
+      {
+        "ts": 1787837408909,
+        "reps": 12,
+        "weight": 28,
+        "e1rm": 39,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788442016831,
+        "reps": 12,
+        "weight": 29,
+        "e1rm": 41,
+        "date": "Sep 3"
+      }
+    ],
+    "Hammer Curl": [
+      {
+        "ts": 1783627022267,
+        "reps": 10,
+        "weight": 80,
+        "e1rm": 107,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1784118799972,
+        "reps": 8,
+        "weight": 85,
+        "e1rm": 108,
+        "date": "Jul 15"
+      },
+      {
+        "ts": 1784721320786,
+        "reps": 8,
+        "weight": 87,
+        "e1rm": 110,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1785327878658,
+        "reps": 8,
+        "weight": 87,
+        "e1rm": 110,
+        "date": "Jul 29"
+      },
+      {
+        "ts": 1788349269590,
+        "reps": 8,
+        "weight": 88,
+        "e1rm": 111,
+        "date": "Sep 2"
+      }
+    ],
+    "Single-Leg RDL": [
+      {
+        "ts": 1784549636937,
+        "reps": 10,
+        "weight": 42,
+        "e1rm": 56,
+        "date": "Jul 20"
+      },
+      {
+        "ts": 1785155029994,
+        "reps": 10,
+        "weight": 42,
+        "e1rm": 56,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785759411281,
+        "reps": 10,
+        "weight": 42,
+        "e1rm": 56,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1788181592480,
+        "reps": 10,
+        "weight": 43,
+        "e1rm": 57,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788793286439,
+        "reps": 10,
+        "weight": 38,
+        "e1rm": 51,
+        "date": "Sep 7"
+      }
+    ],
+    "Incline DB Curl": [
+      {
+        "ts": 1781611196088,
+        "reps": 10,
+        "weight": 33,
+        "e1rm": 44,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1784118551842,
+        "reps": 7,
+        "weight": 37,
+        "e1rm": 46,
+        "date": "Jul 15"
+      }
+    ],
+    "DB Alternating Curl": [
+      {
+        "ts": 1781610778978,
+        "reps": 8,
+        "weight": 38.5,
+        "e1rm": 49,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1783599814382,
+        "reps": 8,
+        "weight": 39,
+        "e1rm": 49,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1784116982905,
+        "reps": 6,
+        "weight": 42,
+        "e1rm": 50,
+        "date": "Jul 15"
+      }
+    ],
+    "Chest-Supported Row": [
+      {
+        "ts": 1784719910732,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1784993106456,
+        "reps": 10,
+        "weight": 90,
+        "e1rm": 120,
+        "date": "Jul 25"
+      },
+      {
+        "ts": 1785326730243,
+        "reps": 8,
+        "weight": 98,
+        "e1rm": 124,
+        "date": "Jul 29"
+      },
+      {
+        "ts": 1785592960692,
+        "reps": 10,
+        "weight": 92,
+        "e1rm": 123,
+        "date": "Aug 1"
+      },
+      {
+        "weight": 81,
+        "reps": 10,
+        "ts": 1787407327342,
+        "mode": "smartflex",
+        "date": "Aug 22",
+        "e1rm": 108,
+        "peak": 101
+      },
+      {
+        "weight": 82,
+        "reps": 10,
+        "ts": 1788007577561,
+        "mode": "smartflex",
+        "date": "Aug 29",
+        "e1rm": 109,
+        "peak": 103
+      },
+      {
+        "weight": 83,
+        "reps": 10,
+        "ts": 1788615433949,
+        "mode": "smartflex",
+        "date": "Sep 5",
+        "e1rm": 111,
+        "peak": 104
+      },
+      {
+        "weight": 88,
+        "reps": 8,
+        "ts": 1788960612949,
+        "mode": "smartflex",
+        "date": "Sep 9",
+        "e1rm": 111,
+        "peak": 110
+      }
+    ],
+    "Lateral Raise": [
+      {
+        "ts": 1781385480748,
+        "reps": 15,
+        "weight": 15,
+        "e1rm": 23,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781698776196,
+        "reps": 12,
+        "weight": 18,
+        "e1rm": 25,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1781969422761,
+        "reps": 15,
+        "weight": 17,
+        "e1rm": 26,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782302981057,
+        "reps": 12,
+        "weight": 19,
+        "e1rm": 27,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1782568601416,
+        "reps": 15,
+        "weight": 18,
+        "e1rm": 27,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783946881401,
+        "reps": 10,
+        "weight": 22,
+        "e1rm": 29,
+        "date": "Jul 13"
+      },
+      {
+        "ts": 1784291842235,
+        "reps": 8,
+        "weight": 23,
+        "e1rm": 29,
+        "date": "Jul 17"
+      },
+      {
+        "ts": 1784633541898,
+        "reps": 12,
+        "weight": 22,
+        "e1rm": 31,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1784996328517,
+        "reps": 12,
+        "weight": 22,
+        "e1rm": 31,
+        "date": "Jul 25"
+      },
+      {
+        "ts": 1785240947402,
+        "reps": 12,
+        "weight": 22,
+        "e1rm": 31,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1785417035773,
+        "reps": 12,
+        "weight": 23,
+        "e1rm": 32,
+        "date": "Jul 30"
+      },
+      {
+        "ts": 1785594920235,
+        "reps": 12,
+        "weight": 23,
+        "e1rm": 32,
+        "date": "Aug 1"
+      },
+      {
+        "ts": 1787052439550,
+        "reps": 12,
+        "weight": 23,
+        "e1rm": 32,
+        "date": "Aug 18"
+      },
+      {
+        "ts": 1787409774679,
+        "reps": 12,
+        "weight": 23,
+        "e1rm": 32,
+        "date": "Aug 22"
+      },
+      {
+        "ts": 1787656586472,
+        "reps": 12,
+        "weight": 24,
+        "e1rm": 34,
+        "date": "Aug 25"
+      }
+    ],
+    "W Hold": [
+      {
+        "ts": 1781873389772,
+        "reps": 12,
+        "weight": 1,
+        "e1rm": 1,
+        "date": "Jun 19"
+      }
+    ],
+    "Incline Barbell Bench Press": [
+      {
+        "ts": 1746748800000,
+        "reps": 6,
+        "weight": 160,
+        "e1rm": 192,
+        "date": "May 9"
+      },
+      {
+        "ts": 1781377052818,
+        "reps": 6,
+        "weight": 175,
+        "e1rm": 210,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781968173083,
+        "reps": 6,
+        "weight": 176,
+        "e1rm": 211,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782567096165,
+        "reps": 6,
+        "weight": 180,
+        "e1rm": 216,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783945937776,
+        "reps": 4,
+        "weight": 191,
+        "e1rm": 216,
+        "date": "Jul 13"
+      }
+    ],
+    "Goblet Squat": [
+      {
+        "ts": 1784548860304,
+        "reps": 7,
+        "weight": 100,
+        "e1rm": 123,
+        "date": "Jul 20"
+      },
+      {
+        "ts": 1784896646015,
+        "reps": 10,
+        "weight": 99,
+        "e1rm": 132,
+        "date": "Jul 24"
+      },
+      {
+        "ts": 1785154040608,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785501528429,
+        "reps": 10,
+        "weight": 102,
+        "e1rm": 136,
+        "date": "Jul 31"
+      },
+      {
+        "ts": 1785758584476,
+        "reps": 6,
+        "weight": 119,
+        "e1rm": 143,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1786105692870,
+        "reps": 10,
+        "weight": 107,
+        "e1rm": 143,
+        "date": "Aug 7"
+      },
+      {
+        "ts": 1787318513575,
+        "reps": 10,
+        "weight": 108,
+        "e1rm": 144,
+        "date": "Aug 21"
+      },
+      {
+        "ts": 1787570079627,
+        "reps": 6,
+        "weight": 120,
+        "e1rm": 144,
+        "date": "Aug 24"
+      },
+      {
+        "ts": 1788180677427,
+        "reps": 6,
+        "weight": 122,
+        "e1rm": 146,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788792519588,
+        "reps": 6,
+        "weight": 110,
+        "e1rm": 132,
+        "date": "Sep 7"
+      }
+    ],
+    "Back Squat": [
+      {
+        "ts": 1781527733206,
+        "reps": 6,
+        "weight": 150,
+        "e1rm": 180,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1782129903148,
+        "reps": 6,
+        "weight": 165,
+        "e1rm": 198,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784204866202,
+        "reps": 5,
+        "weight": 185,
+        "e1rm": 216,
+        "date": "Jul 16"
+      }
+    ],
+    "Barbell OHP": [
+      {
+        "ts": 1781385427504,
+        "reps": 6,
+        "weight": 87,
+        "e1rm": 104,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781697834647,
+        "reps": 6,
+        "weight": 89,
+        "e1rm": 107,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782302284612,
+        "reps": 6,
+        "weight": 105,
+        "e1rm": 126,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783686872845,
+        "reps": 6,
+        "weight": 109,
+        "e1rm": 131,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784290855822,
+        "reps": 4,
+        "weight": 117,
+        "e1rm": 133,
+        "date": "Jul 17"
+      }
+    ],
+    "Y Pull": [
+      {
+        "ts": 1781872872068,
+        "reps": 15,
+        "weight": 34,
+        "e1rm": 51,
+        "date": "Jun 19"
+      },
+      {
+        "ts": 1782390878861,
+        "reps": 15,
+        "weight": 35,
+        "e1rm": 53,
+        "date": "Jun 25"
+      },
+      {
+        "ts": 1783777133465,
+        "reps": 15,
+        "weight": 35,
+        "e1rm": 53,
+        "date": "Jul 11"
+      },
+      {
+        "ts": 1784388450219,
+        "reps": 10,
+        "weight": 41,
+        "e1rm": 55,
+        "date": "Jul 18"
+      },
+      {
+        "ts": 1784811106348,
+        "reps": 15,
+        "weight": 37,
+        "e1rm": 52,
+        "date": "Jul 23"
+      },
+      {
+        "ts": 1785415844722,
+        "reps": 15,
+        "weight": 37,
+        "e1rm": 52,
+        "date": "Jul 30"
+      },
+      {
+        "ts": 1786019974700,
+        "reps": 15,
+        "weight": 39,
+        "e1rm": 55,
+        "date": "Aug 6"
+      },
+      {
+        "ts": 1787837011147,
+        "reps": 15,
+        "weight": 40,
+        "e1rm": 56,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788441052506,
+        "reps": 15,
+        "weight": 41,
+        "e1rm": 57,
+        "date": "Sep 3"
+      }
+    ],
+    "Face Pull": [
+      {
+        "ts": 1784720487170,
+        "reps": 15,
+        "weight": 87,
+        "e1rm": 122,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1785327374478,
+        "reps": 15,
+        "weight": 89,
+        "e1rm": 125,
+        "date": "Jul 29"
+      },
+      {
+        "ts": 1787139156191,
+        "reps": 15,
+        "weight": 85,
+        "e1rm": 119,
+        "date": "Aug 19"
+      },
+      {
+        "ts": 1788348403456,
+        "reps": 15,
+        "weight": 91,
+        "e1rm": 127,
+        "date": "Sep 2"
+      },
+      {
+        "ts": 1788961334158,
+        "reps": 15,
+        "weight": 82,
+        "e1rm": 115,
+        "date": "Sep 9"
+      }
+    ],
+    "Incline Curl": [
+      {
+        "ts": 1784809909990,
+        "reps": 8,
+        "weight": 32,
+        "e1rm": 41,
+        "date": "Jul 23"
+      },
+      {
+        "ts": 1785415034400,
+        "reps": 8,
+        "weight": 33,
+        "e1rm": 42,
+        "date": "Jul 30"
+      },
+      {
+        "ts": 1786018917487,
+        "reps": 8,
+        "weight": 35,
+        "e1rm": 44,
+        "date": "Aug 6"
+      },
+      {
+        "ts": 1786707158140,
+        "reps": 8,
+        "weight": 31,
+        "e1rm": 39,
+        "date": "Aug 14"
+      },
+      {
+        "ts": 1787222873654,
+        "reps": 8,
+        "weight": 35,
+        "e1rm": 44,
+        "date": "Aug 20"
+      },
+      {
+        "ts": 1787835830654,
+        "reps": 8,
+        "weight": 36,
+        "e1rm": 46,
+        "date": "Aug 27"
+      },
+      {
+        "ts": 1788440029207,
+        "reps": 8,
+        "weight": 37,
+        "e1rm": 47,
+        "date": "Sep 3"
+      },
+      {
+        "ts": 1789039081907,
+        "reps": 8,
+        "weight": 33,
+        "e1rm": 42,
+        "date": "Sep 10"
+      }
+    ],
+    "Barbell Glute Bridge": [
+      {
+        "ts": 1781528281014,
+        "reps": 12,
+        "weight": 198,
+        "e1rm": 277,
+        "date": "Jun 15"
+      }
+    ],
+    "SA Overhead Tricep Extension": [
+      {
+        "ts": 1781611962101,
+        "reps": 10,
+        "weight": 82,
+        "e1rm": 109,
+        "date": "Jun 16"
+      },
+      {
+        "ts": 1782216609784,
+        "reps": 10,
+        "weight": 84,
+        "e1rm": 112,
+        "date": "Jun 23"
+      },
+      {
+        "ts": 1783601139998,
+        "reps": 10,
+        "weight": 84,
+        "e1rm": 112,
+        "date": "Jul 9"
+      },
+      {
+        "ts": 1784117104803,
+        "reps": 7,
+        "weight": 91,
+        "e1rm": 112,
+        "date": "Jul 15"
+      },
+      {
+        "ts": 1784634329681,
+        "reps": 10,
+        "weight": 85,
+        "e1rm": 113,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1784811355361,
+        "reps": 12,
+        "weight": 80,
+        "e1rm": 112,
+        "date": "Jul 23"
+      },
+      {
+        "weight": 70,
+        "reps": 10,
+        "ts": 1788441523469,
+        "mode": "smartflex",
+        "date": "Sep 3",
+        "e1rm": 93,
+        "peak": 88
+      },
+      {
+        "ts": 1788872667933,
+        "reps": 10,
+        "weight": 76,
+        "e1rm": 101,
+        "date": "Sep 8"
+      }
+    ],
+    "Standing Incline Chest Press": [
+      {
+        "ts": 1781385380863,
+        "reps": 10,
+        "weight": 47,
+        "e1rm": 63,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781968653516,
+        "reps": 10,
+        "weight": 49,
+        "e1rm": 65,
+        "date": "Jun 20"
+      },
+      {
+        "ts": 1782568276982,
+        "reps": 10,
+        "weight": 51,
+        "e1rm": 68,
+        "date": "Jun 27"
+      },
+      {
+        "ts": 1783946241118,
+        "reps": 7,
+        "weight": 56,
+        "e1rm": 69,
+        "date": "Jul 13"
+      }
+    ],
+    "Neutral Grip Deadlift": [
+      {
+        "ts": 1784895273579,
+        "reps": 6,
+        "weight": 100,
+        "e1rm": 120,
+        "date": "Jul 24"
+      },
+      {
+        "ts": 1785499572207,
+        "reps": 6,
+        "weight": 125,
+        "e1rm": 150,
+        "date": "Jul 31"
+      },
+      {
+        "ts": 1786103846299,
+        "reps": 6,
+        "weight": 125,
+        "e1rm": 150,
+        "date": "Aug 7"
+      },
+      {
+        "ts": 1787316450289,
+        "reps": 6,
+        "weight": 125,
+        "e1rm": 150,
+        "date": "Aug 21"
+      },
+      {
+        "ts": 1787914792756,
+        "reps": 6,
+        "weight": 125,
+        "e1rm": 150,
+        "date": "Aug 28"
+      },
+      {
+        "ts": 1788526237893,
+        "reps": 6,
+        "weight": 125,
+        "e1rm": 150,
+        "date": "Sep 4"
+      },
+      {
+        "date": "Sep 11",
+        "ts": 1789130799577,
+        "weight": 116,
+        "reps": 6,
+        "e1rm": 139
+      }
+    ],
+    "Resisted Calf Raise": [
+      {
+        "ts": 1781551324390,
+        "reps": 15,
+        "weight": 100,
+        "e1rm": 150,
+        "date": "Jun 15"
+      },
+      {
+        "ts": 1782131664004,
+        "reps": 15,
+        "weight": 100,
+        "e1rm": 150,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784207119569,
+        "reps": 12,
+        "weight": 115,
+        "e1rm": 161,
+        "date": "Jul 16"
+      },
+      {
+        "ts": 1784550613376,
+        "reps": 15,
+        "weight": 100,
+        "e1rm": 140,
+        "date": "Jul 20"
+      },
+      {
+        "ts": 1785156221873,
+        "reps": 15,
+        "weight": 100,
+        "e1rm": 140,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785501392085,
+        "reps": 15,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Jul 31"
+      },
+      {
+        "ts": 1785760949825,
+        "reps": 12,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1786105702771,
+        "reps": 15,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Aug 7"
+      },
+      {
+        "ts": 1787318047077,
+        "reps": 15,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Aug 21"
+      },
+      {
+        "ts": 1788182330564,
+        "reps": 12,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788527268148,
+        "reps": 15,
+        "weight": 125,
+        "e1rm": 175,
+        "date": "Sep 4"
+      },
+      {
+        "ts": 1788793759965,
+        "reps": 12,
+        "weight": 113,
+        "e1rm": 158,
+        "date": "Sep 7"
+      }
+    ],
+    "Seated Overhead Press": [
+      {
+        "ts": 1784633243006,
+        "reps": 6,
+        "weight": 50,
+        "e1rm": 60,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1785240218668,
+        "reps": 6,
+        "weight": 51,
+        "e1rm": 61,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1785843719321,
+        "reps": 6,
+        "weight": 51,
+        "e1rm": 61,
+        "date": "Aug 4"
+      },
+      {
+        "ts": 1786446813445,
+        "reps": 6,
+        "weight": 46,
+        "e1rm": 55,
+        "date": "Aug 11"
+      },
+      {
+        "ts": 1787051753413,
+        "reps": 6,
+        "weight": 52,
+        "e1rm": 62,
+        "date": "Aug 18"
+      },
+      {
+        "ts": 1787656186207,
+        "reps": 6,
+        "weight": 52,
+        "e1rm": 62,
+        "date": "Aug 25"
+      },
+      {
+        "ts": 1788261614530,
+        "reps": 6,
+        "weight": 53,
+        "e1rm": 64,
+        "date": "Sep 1"
+      },
+      {
+        "ts": 1788872082239,
+        "reps": 6,
+        "weight": 48,
+        "e1rm": 58,
+        "date": "Sep 8"
+      }
+    ],
+    "Cable Crunch": [
+      {
+        "ts": 1784551537444,
+        "reps": 15,
+        "weight": 40,
+        "e1rm": 56,
+        "date": "Jul 20"
+      },
+      {
+        "ts": 1785156793933,
+        "reps": 12,
+        "weight": 63,
+        "e1rm": 88,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785760947341,
+        "reps": 12,
+        "weight": 63,
+        "e1rm": 88,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1788183136992,
+        "reps": 12,
+        "weight": 95,
+        "e1rm": 133,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788793762047,
+        "reps": 12,
+        "weight": 86,
+        "e1rm": 120,
+        "date": "Sep 7"
+      }
+    ],
+    "Seated Pallof Press": [
+      {
+        "ts": 1782306191549,
+        "reps": 12,
+        "weight": 28,
+        "e1rm": 39,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1784294183227,
+        "reps": 8,
+        "weight": 31,
+        "e1rm": 39,
+        "date": "Jul 17"
+      }
+    ],
+    "Half Kneeling SA OHP": [
+      {
+        "ts": 1781385442964,
+        "reps": 10,
+        "weight": 39,
+        "e1rm": 52,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781697996757,
+        "reps": 10,
+        "weight": 41,
+        "e1rm": 55,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782302430316,
+        "reps": 10,
+        "weight": 43,
+        "e1rm": 57,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783686327988,
+        "reps": 10,
+        "weight": 43,
+        "e1rm": 57,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784291353255,
+        "reps": 7,
+        "weight": 48,
+        "e1rm": 59,
+        "date": "Jul 17"
+      }
+    ],
+    "Straight Arm Pulldown": [
+      {
+        "ts": 1781872779286,
+        "reps": 12,
+        "weight": 36,
+        "e1rm": 50,
+        "date": "Jun 19"
+      },
+      {
+        "ts": 1782390707565,
+        "reps": 12,
+        "weight": 36,
+        "e1rm": 50,
+        "date": "Jun 25"
+      },
+      {
+        "ts": 1783777224187,
+        "reps": 12,
+        "weight": 37,
+        "e1rm": 52,
+        "date": "Jul 11"
+      }
+    ],
+    "Seated Row": [
+      {
+        "ts": 1781385835572,
+        "reps": 10,
+        "weight": 86,
+        "e1rm": 115,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781442334830,
+        "reps": 10,
+        "weight": 88,
+        "e1rm": 117,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1782046921678,
+        "reps": 10,
+        "weight": 88,
+        "e1rm": 117,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1784030730227,
+        "reps": 7,
+        "weight": 100,
+        "e1rm": 123,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784994784939,
+        "reps": 12,
+        "weight": 88,
+        "e1rm": 123,
+        "date": "Jul 25"
+      },
+      {
+        "weight": 84,
+        "reps": 12,
+        "ts": 1787408188456,
+        "mode": "smartflex",
+        "date": "Aug 22",
+        "e1rm": 118,
+        "peak": 105
+      },
+      {
+        "ts": 1788008325610,
+        "reps": 12,
+        "weight": 90,
+        "e1rm": 126,
+        "date": "Aug 29"
+      }
+    ],
+    "X Pulldown": [
+      {
+        "ts": 1781385854425,
+        "reps": 12,
+        "weight": 54,
+        "e1rm": 76,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1781442969051,
+        "reps": 12,
+        "weight": 54,
+        "e1rm": 76,
+        "date": "Jun 14"
+      },
+      {
+        "ts": 1782048228035,
+        "reps": 12,
+        "weight": 59,
+        "e1rm": 83,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1784031363036,
+        "reps": 8,
+        "weight": 69,
+        "e1rm": 87,
+        "date": "Jul 14"
+      }
+    ],
+    "RDL": [
+      {
+        "ts": 1782140245778,
+        "reps": 10,
+        "weight": 94,
+        "e1rm": 125,
+        "date": "Jun 22"
+      },
+      {
+        "ts": 1784205260106,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 16"
+      },
+      {
+        "ts": 1784549095540,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 20"
+      },
+      {
+        "ts": 1785154376330,
+        "reps": 8,
+        "weight": 100,
+        "e1rm": 127,
+        "date": "Jul 27"
+      },
+      {
+        "ts": 1785759012064,
+        "reps": 8,
+        "weight": 114,
+        "e1rm": 144,
+        "date": "Aug 3"
+      },
+      {
+        "ts": 1787570686890,
+        "reps": 8,
+        "weight": 116,
+        "e1rm": 147,
+        "date": "Aug 24"
+      },
+      {
+        "ts": 1788180586782,
+        "reps": 8,
+        "weight": 117,
+        "e1rm": 148,
+        "date": "Aug 31"
+      },
+      {
+        "ts": 1788792231537,
+        "reps": 8,
+        "weight": 105,
+        "e1rm": 133,
+        "date": "Sep 7"
+      }
+    ],
+    "Shoulder Shrug": [
+      {
+        "ts": 1781873396335,
+        "reps": 12,
+        "weight": 100,
+        "e1rm": 140,
+        "date": "Jun 19"
+      },
+      {
+        "ts": 1783778234887,
+        "reps": 12,
+        "weight": 100,
+        "e1rm": 140,
+        "date": "Jul 11"
       }
     ],
     "Upright Row": [
       {
-        "date": "Sep 3",
         "ts": 1788441924795,
-        "weight": 48,
         "reps": 12,
-        "e1rm": 67
+        "weight": 48,
+        "e1rm": 67,
+        "date": "Sep 3"
+      },
+      {
+        "ts": 1789040244284,
+        "reps": 12,
+        "weight": 54,
+        "e1rm": 76,
+        "date": "Sep 10"
+      }
+    ],
+    "Incline Press": [
+      {
+        "ts": 1784633690812,
+        "reps": 8,
+        "weight": 75,
+        "e1rm": 95,
+        "date": "Jul 21"
+      },
+      {
+        "ts": 1784993015193,
+        "reps": 10,
+        "weight": 71,
+        "e1rm": 95,
+        "date": "Jul 25"
+      },
+      {
+        "ts": 1785240854179,
+        "reps": 8,
+        "weight": 77,
+        "e1rm": 98,
+        "date": "Jul 28"
+      },
+      {
+        "ts": 1785592773045,
+        "reps": 10,
+        "weight": 74,
+        "e1rm": 99,
+        "date": "Aug 1"
+      },
+      {
+        "ts": 1785844606785,
+        "reps": 8,
+        "weight": 80,
+        "e1rm": 101,
+        "date": "Aug 4"
+      },
+      {
+        "ts": 1786447054293,
+        "reps": 8,
+        "weight": 72,
+        "e1rm": 91,
+        "date": "Aug 11"
+      },
+      {
+        "ts": 1787052156339,
+        "reps": 8,
+        "weight": 81,
+        "e1rm": 103,
+        "date": "Aug 18"
+      },
+      {
+        "weight": 72,
+        "reps": 10,
+        "ts": 1787407521968,
+        "mode": "smartflex",
+        "date": "Aug 22",
+        "e1rm": 96,
+        "peak": 90
+      },
+      {
+        "ts": 1787656482556,
+        "reps": 8,
+        "weight": 81,
+        "e1rm": 103,
+        "date": "Aug 25"
+      },
+      {
+        "ts": 1788007791251,
+        "reps": 10,
+        "weight": 78,
+        "e1rm": 104,
+        "date": "Aug 29"
+      },
+      {
+        "ts": 1788262362676,
+        "reps": 8,
+        "weight": 82,
+        "e1rm": 104,
+        "date": "Sep 1"
+      },
+      {
+        "ts": 1788615858916,
+        "reps": 10,
+        "weight": 79,
+        "e1rm": 105,
+        "date": "Sep 5"
+      }
+    ],
+    "Hanging Knee Raise": [
+      {
+        "ts": 1784721219205,
+        "reps": 10,
+        "weight": 230,
+        "e1rm": 307,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1785327886847,
+        "reps": 15,
+        "weight": 230,
+        "e1rm": 322,
+        "date": "Jul 29"
+      }
+    ],
+    "Weighted Pull-Up": [
+      {
+        "ts": 1781398081743,
+        "reps": 6,
+        "weight": 231,
+        "e1rm": 277,
+        "date": "Jun 13"
+      },
+      {
+        "ts": 1782046313282,
+        "reps": 7,
+        "weight": 230,
+        "e1rm": 284,
+        "date": "Jun 21"
+      },
+      {
+        "ts": 1784029803995,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Jul 14"
+      },
+      {
+        "ts": 1784719416335,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Jul 22"
+      },
+      {
+        "ts": 1785326057465,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Jul 29"
+      },
+      {
+        "ts": 1787138006637,
+        "reps": 8,
+        "weight": 230,
+        "e1rm": 291,
+        "date": "Aug 19"
+      },
+      {
+        "ts": 1788960626339,
+        "reps": 8,
+        "weight": 225,
+        "e1rm": 285,
+        "date": "Sep 9"
+      }
+    ],
+    "Middle Chest Fly": [
+      {
+        "ts": 1781699389480,
+        "reps": 12,
+        "weight": 39,
+        "e1rm": 55,
+        "date": "Jun 17"
+      },
+      {
+        "ts": 1782303793295,
+        "reps": 12,
+        "weight": 41,
+        "e1rm": 57,
+        "date": "Jun 24"
+      },
+      {
+        "ts": 1783688188253,
+        "reps": 12,
+        "weight": 42,
+        "e1rm": 59,
+        "date": "Jul 10"
+      },
+      {
+        "ts": 1784292647172,
+        "reps": 8,
+        "weight": 48,
+        "e1rm": 61,
+        "date": "Jul 17"
+      },
+      {
+        "ts": 1784994678856,
+        "reps": 12,
+        "weight": 44,
+        "e1rm": 62,
+        "date": "Jul 25"
+      },
+      {
+        "ts": 1785593558152,
+        "reps": 12,
+        "weight": 45,
+        "e1rm": 63,
+        "date": "Aug 1"
+      },
+      {
+        "ts": 1787408371906,
+        "reps": 12,
+        "weight": 45,
+        "e1rm": 63,
+        "date": "Aug 22"
+      },
+      {
+        "ts": 1788008183223,
+        "reps": 12,
+        "weight": 45,
+        "e1rm": 63,
+        "date": "Aug 29"
+      },
+      {
+        "ts": 1788616544357,
+        "reps": 12,
+        "weight": 46,
+        "e1rm": 64,
+        "date": "Sep 5"
       }
     ]
   },
   "sessions": {
-    "w5_d0": {
-      "date": "Jun 13",
-      "ts": 1781385964241,
+    "w8_d6": {
+      "date": "Jul 12",
       "tonal": {
-        "volume": 18022,
-        "work": 50,
-        "cals": 464,
-        "avgHr": 128,
-        "maxHr": 163,
-        "duration": 63
-      }
+        "notes": "20 min row. 30 min elliptical. "
+      },
+      "ts": 1783863381006
     },
-    "w5_d1": {
-      "date": "Jun 14",
-      "ts": 1781444065865,
+    "p2w3_d0": {
+      "date": "Aug 3",
       "tonal": {
-        "volume": 23160,
-        "work": 60,
-        "cals": 436,
+        "work": 56,
+        "cals": 572,
+        "volume": 32291,
+        "avgHr": 130,
+        "maxHr": 157,
+        "duration": 65
+      },
+      "ts": 1785762118896
+    },
+    "p2w3_d1": {
+      "date": "Aug 4",
+      "tonal": {
+        "volume": 13801,
+        "work": 31.1,
+        "notes": "Subbed tricep pushdown. ",
+        "cals": 355,
+        "duration": 51,
+        "avgHr": 115,
+        "maxHr": 151
+      },
+      "ts": 1785845767780
+    },
+    "p2w3_d2": {
+      "date": "Aug 5",
+      "tonal": {
+        "work": 33.3,
+        "cals": 334,
+        "volume": 16811,
+        "avgHr": 125,
+        "maxHr": 155,
+        "duration": 48
+      },
+      "ts": 1785933803604
+    },
+    "p2w3_d3": {
+      "date": "Aug 6",
+      "tonal": {
+        "work": 49.9,
+        "cals": 375,
+        "volume": 15802,
+        "avgHr": 119,
+        "maxHr": 145,
+        "duration": 55
+      },
+      "ts": 1786021590832
+    },
+    "p2w3_d4": {
+      "date": "Aug 7",
+      "tonal": {
+        "work": 36.9,
+        "cals": 392,
+        "volume": 27386,
         "avgHr": 129,
-        "maxHr": 164,
-        "duration": 59
-      }
+        "maxHr": 156,
+        "duration": 43
+      },
+      "ts": 1786106337913
     },
-    "w5_d2": {
-      "date": "Jun 15",
-      "ts": 1781531413021,
+    "p2w8_d0": {
+      "date": "Sep 7",
       "tonal": {
-        "volume": 35014,
-        "work": 62,
-        "cals": 653,
-        "avgHr": 134,
-        "maxHr": 162,
-        "duration": 71,
-        "notes": "Good, room to go up on squat. "
-      }
+        "work": 35.7,
+        "cals": 343,
+        "volume": 18891,
+        "avgHr": 125,
+        "maxHr": 146,
+        "duration": 37
+      },
+      "ts": 1788794306482
+    },
+    "p2w8_d1": {
+      "date": "Sep 8",
+      "ts": 1788873411119
     },
     "w5_d3": {
       "date": "Jun 16",
-      "ts": 1781613905383,
       "tonal": {
-        "volume": 12083,
         "work": 33.4,
         "cals": 453,
+        "volume": 12083,
         "avgHr": 119,
         "maxHr": 144,
         "duration": 66
-      }
-    },
-    "w5_d4": {
-      "date": "Jun 17",
-      "ts": 1781700586729,
-      "tonal": {
-        "volume": 18106,
-        "work": 49.3,
-        "cals": 460,
-        "avgHr": 114,
-        "maxHr": 150,
-        "duration": 59
-      }
-    },
-    "w5_d5": {
-      "date": "Jun 19",
-      "ts": 1781874938109
-    },
-    "w6_d0": {
-      "date": "Jun 20",
-      "ts": 1781970564744,
-      "tonal": {
-        "volume": 19038,
-        "work": 52.1,
-        "cals": 485,
-        "avgHr": 126,
-        "maxHr": 161,
-        "duration": 69
-      }
-    },
-    "w6_d1": {
-      "date": "Jun 21",
-      "ts": 1782049360345,
-      "tonal": {
-        "volume": 23786,
-        "work": 63.7,
-        "cals": 458,
-        "avgHr": 124,
-        "maxHr": 155,
-        "duration": 64
-      }
-    },
-    "w6_d2": {
-      "date": "Jun 22",
-      "ts": 1782133538204,
-      "tonal": {
-        "volume": 35856,
-        "work": 62.1,
-        "cals": 656,
-        "avgHr": 128,
-        "maxHr": 157,
-        "duration": 75
-      }
-    },
-    "w6_d3": {
-      "date": "Jun 23",
-      "ts": 1782218071083,
-      "tonal": {
-        "volume": 14750,
-        "work": 42.6,
-        "cals": 386,
-        "avgHr": 107,
-        "maxHr": 141,
-        "duration": 58
-      }
-    },
-    "w6_d4": {
-      "date": "Jun 24",
-      "ts": 1782305398013,
-      "tonal": {
-        "volume": 18060,
-        "work": 50.5,
-        "cals": 462,
-        "duration": 63
-      }
-    },
-    "w6_d5": {
-      "date": "Jun 25",
-      "ts": 1782393294470,
-      "tonal": {
-        "volume": 20103,
-        "work": 48.9,
-        "cals": 443,
-        "avgHr": 121,
-        "maxHr": 148,
-        "duration": 62
-      }
-    },
-    "w6_d6": {
-      "date": "Jun 26",
-      "ts": 1782479938654
-    },
-    "w7_d0": {
-      "date": "Jun 27",
-      "ts": 1782570529409,
-      "tonal": {
-        "volume": 18865,
-        "work": 51.8,
-        "cals": 509,
-        "avgHr": 123,
-        "maxHr": 155,
-        "duration": 77,
-        "notes": "Tough, but doable"
-      }
-    },
-    "w8_d0": {
-      "date": "Jul 6",
-      "ts": 1783366959912
-    },
-    "w8_d1": {
-      "date": "Jul 7",
-      "ts": 1783428097972
-    },
-    "w8_d2": {
-      "date": "Jul 8",
-      "ts": 1783514479396
-    },
-    "w8_d3": {
-      "date": "Jul 9",
-      "ts": 1783603052787,
-      "tonal": {
-        "volume": 15373,
-        "work": 41.6,
-        "cals": 387,
-        "avgHr": 110,
-        "maxHr": 149,
-        "duration": 57,
-        "notes": "Feel like I’m getting back to normal after trip. "
-      }
-    },
-    "w8_d4": {
-      "date": "Jul 10",
-      "ts": 1783690582010,
-      "tonal": {
-        "volume": 21079,
-        "work": 55.8,
-        "cals": 518,
-        "avgHr": 124,
-        "maxHr": 153,
-        "duration": 74,
-        "notes": "Tough but good"
-      }
-    },
-    "w8_d5": {
-      "date": "Jul 11",
-      "ts": 1783779612999,
-      "tonal": {
-        "volume": 21335,
-        "work": 52.1,
-        "cals": 462,
-        "avgHr": 120,
-        "maxHr": 153,
-        "duration": 66,
-        "notes": "Great!"
-      }
-    },
-    "w8_d6": {
-      "date": "Jul 12",
-      "ts": 1783863381006,
-      "tonal": {
-        "notes": "20 min row. 30 min elliptical. "
-      }
-    },
-    "w9_d0": {
-      "date": "Jul 13",
-      "ts": 1783949102859,
-      "tonal": {
-        "volume": 15362,
-        "work": 42.8,
-        "cals": 470,
-        "avgHr": 126,
-        "maxHr": 159,
-        "duration": 66,
-        "notes": "Good. Little room to go up. "
-      }
-    },
-    "w9_d1": {
-      "date": "Jul 14",
-      "ts": 1784032782495,
-      "tonal": {
-        "volume": 18384,
-        "work": 47.2,
-        "cals": 411,
-        "avgHr": 122,
-        "maxHr": 154,
-        "duration": 57,
-        "notes": "Tough, but doable"
-      }
-    },
-    "w9_d2": {
-      "date": "Jul 15",
-      "ts": 1784119550268,
-      "tonal": {
-        "volume": 12499,
-        "work": 37.4,
-        "cals": 326,
-        "avgHr": 116,
-        "maxHr": 140,
-        "duration": 47,
-        "notes": "Some forearm and elbow discomfort. Switch to pushdown if elbow hurts. "
-      }
-    },
-    "w9_d3": {
-      "date": "Jul 16",
-      "ts": 1784208293941,
-      "tonal": {
-        "volume": 27525,
-        "work": 48.7,
-        "cals": 563,
-        "avgHr": 116,
-        "maxHr": 153,
-        "duration": 73,
-        "notes": "Felt good. "
-      }
-    },
-    "w9_d4": {
-      "date": "Jul 17",
-      "ts": 1784294822068,
-      "tonal": {
-        "volume": 16671,
-        "work": 46,
-        "cals": 480,
-        "avgHr": 130,
-        "maxHr": 154,
-        "duration": 66,
-        "notes": "Pretty good. "
-      }
+      },
+      "ts": 1781613905383
     },
     "p2w1_d0": {
       "date": "Jul 20",
-      "ts": 1784552061244,
       "tonal": {
         "volume": 30382,
         "work": 57.9,
+        "notes": "Good",
         "cals": 522,
-        "avgHr": 122,
-        "maxHr": 152,
         "duration": 55,
-        "notes": "Good"
-      }
+        "avgHr": 122,
+        "maxHr": 152
+      },
+      "ts": 1784552061244
+    },
+    "w6_d3": {
+      "date": "Jun 23",
+      "tonal": {
+        "work": 42.6,
+        "cals": 386,
+        "volume": 14750,
+        "avgHr": 107,
+        "maxHr": 141,
+        "duration": 58
+      },
+      "ts": 1782218071083
     },
     "p2w1_d1": {
       "date": "Jul 21",
-      "ts": 1784635129027,
       "tonal": {
         "volume": 14274,
         "work": 38.8,
+        "notes": "Arms and shoulders hurt, but was good. ",
         "cals": 357,
-        "avgHr": 119,
-        "maxHr": 154,
         "duration": 49,
-        "notes": "Arms and shoulders hurt, but was good. "
-      }
+        "avgHr": 119,
+        "maxHr": 154
+      },
+      "ts": 1784635129027
     },
     "p2w1_d2": {
       "date": "Jul 22",
-      "ts": 1784721978449,
       "tonal": {
         "volume": 16607,
         "work": 36.5,
+        "notes": "Pulls a bit hard",
         "cals": 342,
-        "avgHr": 124,
-        "maxHr": 150,
         "duration": 49,
-        "notes": "Pulls a bit hard"
-      }
+        "avgHr": 124,
+        "maxHr": 150
+      },
+      "ts": 1784721978449
+    },
+    "p2w8_d2": {
+      "date": "Sep 9",
+      "ts": 1788962178321
+    },
+    "w8_d3": {
+      "date": "Jul 9",
+      "tonal": {
+        "volume": 15373,
+        "work": 41.6,
+        "notes": "Feel like I’m getting back to normal after trip. ",
+        "cals": 387,
+        "duration": 57,
+        "avgHr": 110,
+        "maxHr": 149
+      },
+      "ts": 1783603052787
     },
     "p2w1_d3": {
       "date": "Jul 23",
-      "ts": 1784812688066,
       "tonal": {
         "volume": 16991,
         "work": 58.2,
+        "notes": "Elbows hurt",
         "cals": 417,
-        "avgHr": 122,
-        "maxHr": 151,
         "duration": 59,
-        "notes": "Elbows hurt"
-      }
+        "avgHr": 122,
+        "maxHr": 151
+      },
+      "ts": 1784812688066
+    },
+    "w9_d3": {
+      "date": "Jul 16",
+      "tonal": {
+        "volume": 27525,
+        "work": 48.7,
+        "notes": "Felt good. ",
+        "cals": 563,
+        "duration": 73,
+        "avgHr": 116,
+        "maxHr": 153
+      },
+      "ts": 1784208293941
     },
     "p2w1_d4": {
       "date": "Jul 24",
-      "ts": 1784897459059,
       "tonal": {
         "volume": 21550,
         "work": 33.5,
+        "notes": "Light Weight!",
         "cals": 345,
-        "avgHr": 127,
-        "maxHr": 155,
         "duration": 37,
-        "notes": "Light Weight!"
-      }
+        "avgHr": 127,
+        "maxHr": 155
+      },
+      "ts": 1784897459059
     },
     "p2w1_d5": {
       "date": "Jul 25",
-      "ts": 1784997386661,
       "tonal": {
-        "volume": 27652,
         "work": 77,
         "cals": 554,
+        "volume": 27652,
         "avgHr": 127,
         "maxHr": 163,
         "duration": 81
-      }
+      },
+      "ts": 1784997386661
+    },
+    "p2w8_d3": {
+      "date": "Sep 10",
+      "ts": 1789040844986
     },
     "p2w1_d6": {
       "date": "Jul 26",
       "ts": 1785099708883
-    },
-    "p2w2_d0": {
-      "date": "Jul 27",
-      "ts": 1785157506330,
-      "tonal": {
-        "volume": 30048,
-        "work": 54.9,
-        "cals": 515,
-        "avgHr": 114,
-        "maxHr": 142,
-        "duration": 60,
-        "notes": "Good. Liked the switch to Bulgarians. "
-      }
-    },
-    "p2w2_d1": {
-      "date": "Jul 28",
-      "ts": 1785242108208,
-      "tonal": {
-        "volume": 13982,
-        "work": 33,
-        "cals": 345,
-        "duration": 49
-      }
-    },
-    "p2w2_d2": {
-      "date": "Jul 29",
-      "ts": 1785328861356,
-      "tonal": {
-        "volume": 16647,
-        "work": 32.8,
-        "cals": 356,
-        "avgHr": 127,
-        "maxHr": 151,
-        "duration": 52,
-        "notes": "Pretty good. "
-      }
-    },
-    "p2w2_d3": {
-      "date": "Jul 30",
-      "ts": 1785417572536,
-      "tonal": {
-        "volume": 11531,
-        "work": 43.6,
-        "cals": 404,
-        "avgHr": 113,
-        "maxHr": 144,
-        "duration": 57,
-        "notes": "Elbow discomfort. Did recovery mode. "
-      }
-    },
-    "p2w2_d4": {
-      "date": "Jul 31",
-      "ts": 1785502094933,
-      "tonal": {
-        "volume": 25750,
-        "work": 34.2,
-        "cals": 382,
-        "avgHr": 125,
-        "maxHr": 152,
-        "duration": 44,
-        "notes": "Still good"
-      }
-    },
-    "p2w2_d5": {
-      "date": "Aug 1",
-      "ts": 1785595955617,
-      "tonal": {
-        "volume": 30692,
-        "work": 73.9,
-        "cals": 493,
-        "avgHr": 128,
-        "maxHr": 154,
-        "duration": 66,
-        "notes": "Felt good"
-      }
-    },
-    "p2w3_d0": {
-      "date": "Aug 3",
-      "ts": 1785762118896,
-      "tonal": {
-        "volume": 32291,
-        "work": 56,
-        "cals": 572,
-        "avgHr": 130,
-        "maxHr": 157,
-        "duration": 65
-      }
-    },
-    "p2w3_d1": {
-      "date": "Aug 4",
-      "ts": 1785845767780,
-      "tonal": {
-        "volume": 13801,
-        "work": 31.1,
-        "cals": 355,
-        "avgHr": 115,
-        "maxHr": 151,
-        "duration": 51,
-        "notes": "Subbed tricep pushdown. "
-      }
-    },
-    "p2w3_d2": {
-      "date": "Aug 5",
-      "ts": 1785933803604,
-      "tonal": {
-        "volume": 16811,
-        "work": 33.3,
-        "cals": 334,
-        "avgHr": 125,
-        "maxHr": 155,
-        "duration": 48
-      }
-    },
-    "p2w3_d3": {
-      "date": "Aug 6",
-      "ts": 1786021590832,
-      "tonal": {
-        "volume": 15802,
-        "work": 49.9,
-        "cals": 375,
-        "avgHr": 119,
-        "maxHr": 145,
-        "duration": 55
-      }
-    },
-    "p2w3_d4": {
-      "date": "Aug 7",
-      "ts": 1786106337913,
-      "tonal": {
-        "volume": 27386,
-        "work": 36.9,
-        "cals": 392,
-        "avgHr": 129,
-        "maxHr": 156,
-        "duration": 43
-      }
-    },
-    "p2w4_d0": {
-      "date": "Aug 10",
-      "ts": 1786365445255
-    },
-    "p2w4_d1": {
-      "date": "Aug 11",
-      "ts": 1786448156723
-    },
-    "p2w4_d2": {
-      "date": "Aug 13",
-      "ts": 1786621921337
-    },
-    "p2w4_d3": {
-      "date": "Aug 14",
-      "ts": 1786708194136
-    },
-    "p2w5_d1": {
-      "date": "Aug 18",
-      "ts": 1787053350253,
-      "tonal": {
-        "volume": 15114,
-        "work": 34.5,
-        "cals": 337,
-        "avgHr": 118,
-        "maxHr": 150,
-        "duration": 44
-      }
-    },
-    "p2w5_d2": {
-      "date": "Aug 19",
-      "ts": 1787140366832
-    },
-    "p2w5_d3": {
-      "date": "Aug 20",
-      "ts": 1787225419027,
-      "tonal": {
-        "volume": 15509,
-        "work": 47.9,
-        "cals": 352,
-        "avgHr": 117,
-        "maxHr": 153,
-        "duration": 50,
-        "notes": "Used tricep swaps"
-      }
-    },
-    "p2w5_d4": {
-      "date": "Aug 21",
-      "ts": 1787319226627,
-      "tonal": {
-        "volume": 27466,
-        "work": 36.3,
-        "cals": 406,
-        "avgHr": 131,
-        "maxHr": 160,
-        "duration": 47
-      }
-    },
-    "p2w5_d5": {
-      "date": "Aug 22",
-      "ts": 1787410001210
     },
     "p2w6_d0": {
       "date": "Aug 24",
@@ -3192,63 +2904,326 @@
     },
     "p2w6_d3": {
       "date": "Aug 27",
-      "ts": 1787838316518,
       "tonal": {
-        "volume": 17035,
         "work": 51.8,
         "cals": 369,
+        "volume": 17035,
         "avgHr": 125,
         "maxHr": 147,
         "duration": 51
-      }
+      },
+      "ts": 1787838316518
     },
     "p2w6_d4": {
       "date": "Aug 28",
-      "ts": 1787917375689,
       "tonal": {
-        "volume": 26670,
         "work": 34.1,
         "cals": 374,
+        "volume": 26670,
         "avgHr": 116,
         "maxHr": 144,
         "duration": 44
-      }
+      },
+      "ts": 1787917375689
     },
     "p2w6_d5": {
       "date": "Aug 29",
-      "ts": 1788010880694,
       "tonal": {
-        "volume": 31407,
         "work": 77.2,
         "cals": 453,
+        "volume": 31407,
         "avgHr": 126,
         "maxHr": 151,
         "duration": 63
-      }
+      },
+      "ts": 1788010880694
+    },
+    "w5_d0": {
+      "date": "Jun 13",
+      "tonal": {
+        "work": 50,
+        "cals": 464,
+        "volume": 18022,
+        "avgHr": 128,
+        "maxHr": 163,
+        "duration": 63
+      },
+      "ts": 1781385964241
+    },
+    "w6_d0": {
+      "date": "Jun 20",
+      "tonal": {
+        "work": 52.1,
+        "cals": 485,
+        "volume": 19038,
+        "avgHr": 126,
+        "maxHr": 161,
+        "duration": 69
+      },
+      "ts": 1781970564744
+    },
+    "w7_d0": {
+      "date": "Jun 27",
+      "tonal": {
+        "volume": 18865,
+        "work": 51.8,
+        "notes": "Tough, but doable",
+        "cals": 509,
+        "duration": 77,
+        "avgHr": 123,
+        "maxHr": 155
+      },
+      "ts": 1782570529409
+    },
+    "w5_d4": {
+      "date": "Jun 17",
+      "tonal": {
+        "work": 49.3,
+        "cals": 460,
+        "volume": 18106,
+        "avgHr": 114,
+        "maxHr": 150,
+        "duration": 59
+      },
+      "ts": 1781700586729
+    },
+    "w8_d0": {
+      "date": "Jul 6",
+      "ts": 1783366959912
+    },
+    "w6_d4": {
+      "date": "Jun 24",
+      "tonal": {
+        "work": 50.5,
+        "cals": 462,
+        "volume": 18060,
+        "duration": 63
+      },
+      "ts": 1782305398013
+    },
+    "w9_d0": {
+      "date": "Jul 13",
+      "tonal": {
+        "volume": 15362,
+        "work": 42.8,
+        "notes": "Good. Little room to go up. ",
+        "cals": 470,
+        "duration": 66,
+        "avgHr": 126,
+        "maxHr": 159
+      },
+      "ts": 1783949102859
+    },
+    "p2w4_d0": {
+      "date": "Aug 10",
+      "ts": 1786365445255
+    },
+    "p2w4_d1": {
+      "date": "Aug 11",
+      "ts": 1786448156723
+    },
+    "w8_d4": {
+      "date": "Jul 10",
+      "tonal": {
+        "volume": 21079,
+        "work": 55.8,
+        "notes": "Tough but good",
+        "cals": 518,
+        "duration": 74,
+        "avgHr": 124,
+        "maxHr": 153
+      },
+      "ts": 1783690582010
+    },
+    "p2w4_d2": {
+      "date": "Aug 13",
+      "ts": 1786621921337
+    },
+    "w9_d4": {
+      "date": "Jul 17",
+      "tonal": {
+        "volume": 16671,
+        "work": 46,
+        "notes": "Pretty good. ",
+        "cals": 480,
+        "duration": 66,
+        "avgHr": 130,
+        "maxHr": 154
+      },
+      "ts": 1784294822068
+    },
+    "p2w4_d3": {
+      "date": "Aug 14",
+      "ts": 1786708194136
+    },
+    "p2w2_d0": {
+      "date": "Jul 27",
+      "tonal": {
+        "volume": 30048,
+        "work": 54.9,
+        "notes": "Good. Liked the switch to Bulgarians. ",
+        "cals": 515,
+        "duration": 60,
+        "avgHr": 114,
+        "maxHr": 142
+      },
+      "ts": 1785157506330
+    },
+    "p2w2_d1": {
+      "date": "Jul 28",
+      "tonal": {
+        "work": 33,
+        "cals": 345,
+        "volume": 13982,
+        "duration": 49
+      },
+      "ts": 1785242108208
+    },
+    "p2w2_d2": {
+      "date": "Jul 29",
+      "tonal": {
+        "volume": 16647,
+        "work": 32.8,
+        "notes": "Pretty good. ",
+        "cals": 356,
+        "duration": 52,
+        "avgHr": 127,
+        "maxHr": 151
+      },
+      "ts": 1785328861356
+    },
+    "p2w2_d3": {
+      "date": "Jul 30",
+      "tonal": {
+        "volume": 11531,
+        "work": 43.6,
+        "notes": "Elbow discomfort. Did recovery mode. ",
+        "cals": 404,
+        "duration": 57,
+        "avgHr": 113,
+        "maxHr": 144
+      },
+      "ts": 1785417572536
+    },
+    "w5_d1": {
+      "date": "Jun 14",
+      "tonal": {
+        "work": 60,
+        "cals": 436,
+        "volume": 23160,
+        "avgHr": 129,
+        "maxHr": 164,
+        "duration": 59
+      },
+      "ts": 1781444065865
+    },
+    "p2w2_d4": {
+      "date": "Jul 31",
+      "tonal": {
+        "volume": 25750,
+        "work": 34.2,
+        "notes": "Still good",
+        "cals": 382,
+        "duration": 44,
+        "avgHr": 125,
+        "maxHr": 152
+      },
+      "ts": 1785502094933
+    },
+    "w6_d1": {
+      "date": "Jun 21",
+      "tonal": {
+        "work": 63.7,
+        "cals": 458,
+        "volume": 23786,
+        "avgHr": 124,
+        "maxHr": 155,
+        "duration": 64
+      },
+      "ts": 1782049360345
+    },
+    "p2w2_d5": {
+      "date": "Aug 1",
+      "tonal": {
+        "volume": 30692,
+        "work": 73.9,
+        "notes": "Felt good",
+        "cals": 493,
+        "duration": 66,
+        "avgHr": 128,
+        "maxHr": 154
+      },
+      "ts": 1785595955617
+    },
+    "w5_d5": {
+      "date": "Jun 19",
+      "ts": 1781874938109
+    },
+    "w8_d1": {
+      "date": "Jul 7",
+      "ts": 1783428097972
+    },
+    "w6_d5": {
+      "date": "Jun 25",
+      "tonal": {
+        "work": 48.9,
+        "cals": 443,
+        "volume": 20103,
+        "avgHr": 121,
+        "maxHr": 148,
+        "duration": 62
+      },
+      "ts": 1782393294470
+    },
+    "w9_d1": {
+      "date": "Jul 14",
+      "tonal": {
+        "volume": 18384,
+        "work": 47.2,
+        "notes": "Tough, but doable",
+        "cals": 411,
+        "duration": 57,
+        "avgHr": 122,
+        "maxHr": 154
+      },
+      "ts": 1784032782495
     },
     "p2w7_d0": {
       "date": "Aug 31",
-      "ts": 1788183645326,
       "tonal": {
-        "volume": 33878,
         "work": 62,
         "cals": 513,
+        "volume": 33878,
         "avgHr": 127,
         "maxHr": 148,
         "duration": 58
-      }
+      },
+      "ts": 1788183645326
+    },
+    "w8_d5": {
+      "date": "Jul 11",
+      "tonal": {
+        "volume": 21335,
+        "work": 52.1,
+        "notes": "Great!",
+        "cals": 462,
+        "duration": 66,
+        "avgHr": 120,
+        "maxHr": 153
+      },
+      "ts": 1783779612999
     },
     "p2w7_d1": {
       "date": "Sep 1",
-      "ts": 1788263252898,
       "tonal": {
-        "volume": 15234,
         "work": 33.9,
         "cals": 335,
+        "volume": 15234,
         "avgHr": 121,
         "maxHr": 161,
         "duration": 46
-      }
+      },
+      "ts": 1788263252898
     },
     "p2w7_d2": {
       "date": "Sep 2",
@@ -3256,62 +3231,137 @@
     },
     "p2w7_d3": {
       "date": "Sep 3",
-      "ts": 1788443001403,
       "tonal": {
-        "volume": 19280,
         "work": 59.5,
         "cals": 372,
+        "volume": 19280,
         "avgHr": 117,
         "maxHr": 149,
         "duration": 56
-      }
+      },
+      "ts": 1788443001403
     },
     "p2w7_d4": {
       "date": "Sep 4",
-      "ts": 1788528338380,
       "tonal": {
-        "volume": 27356,
         "work": 34.9,
         "cals": 377,
+        "volume": 27356,
         "avgHr": 123,
         "maxHr": 152,
         "duration": 44
-      }
+      },
+      "ts": 1788528338380
     },
     "p2w7_d5": {
       "date": "Sep 5",
-      "ts": 1788619260379,
       "tonal": {
-        "volume": 31883,
         "work": 76.2,
         "cals": 490,
+        "volume": 31883,
         "avgHr": 125,
         "maxHr": 154,
         "duration": 72
-      }
+      },
+      "ts": 1788619260379
     },
-    "p2w8_d0": {
-      "date": "Sep 7",
-      "ts": 1788794306482,
+    "p2w5_d1": {
+      "date": "Aug 18",
       "tonal": {
-        "volume": 18891,
-        "work": 35.7,
-        "cals": 343,
-        "avgHr": 125,
-        "maxHr": 146,
-        "duration": 37
-      }
+        "work": 34.5,
+        "cals": 337,
+        "volume": 15114,
+        "avgHr": 118,
+        "maxHr": 150,
+        "duration": 44
+      },
+      "ts": 1787053350253
     },
-    "p2w8_d1": {
-      "date": "Sep 8",
-      "ts": 1788873411119
+    "p2w5_d2": {
+      "date": "Aug 19",
+      "ts": 1787140366832
     },
-    "p2w8_d2": {
-      "date": "Sep 9",
-      "ts": 1788962178321
+    "w5_d2": {
+      "date": "Jun 15",
+      "tonal": {
+        "volume": 35014,
+        "work": 62,
+        "notes": "Good, room to go up on squat. ",
+        "cals": 653,
+        "duration": 71,
+        "avgHr": 134,
+        "maxHr": 162
+      },
+      "ts": 1781531413021
+    },
+    "p2w5_d3": {
+      "date": "Aug 20",
+      "tonal": {
+        "volume": 15509,
+        "work": 47.9,
+        "notes": "Used tricep swaps",
+        "cals": 352,
+        "duration": 50,
+        "avgHr": 117,
+        "maxHr": 153
+      },
+      "ts": 1787225419027
+    },
+    "w6_d2": {
+      "date": "Jun 22",
+      "tonal": {
+        "work": 62.1,
+        "cals": 656,
+        "volume": 35856,
+        "avgHr": 128,
+        "maxHr": 157,
+        "duration": 75
+      },
+      "ts": 1782133538204
+    },
+    "p2w5_d4": {
+      "date": "Aug 21",
+      "tonal": {
+        "work": 36.3,
+        "cals": 406,
+        "volume": 27466,
+        "avgHr": 131,
+        "maxHr": 160,
+        "duration": 47
+      },
+      "ts": 1787319226627
+    },
+    "p2w5_d5": {
+      "date": "Aug 22",
+      "ts": 1787410001210
+    },
+    "w8_d2": {
+      "date": "Jul 8",
+      "ts": 1783514479396
+    },
+    "w6_d6": {
+      "date": "Jun 26",
+      "ts": 1782479938654
+    },
+    "w9_d2": {
+      "date": "Jul 15",
+      "tonal": {
+        "volume": 12499,
+        "work": 37.4,
+        "notes": "Some forearm and elbow discomfort. Switch to pushdown if elbow hurts. ",
+        "cals": 326,
+        "duration": 47,
+        "avgHr": 116,
+        "maxHr": 140
+      },
+      "ts": 1784119550268
+    },
+    "p2w8_d4": {
+      "date": "Sep 11",
+      "ts": 1789132032246
     }
   },
-  "lastSaved": "2026-09-09T13:56:34.688Z",
+  "lastSaved": "2026-09-11T14:05:40.357Z",
   "version": 1,
   "seeded": true
 }
