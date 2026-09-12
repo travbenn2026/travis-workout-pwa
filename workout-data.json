@@ -414,6 +414,13 @@
         "weight": 28,
         "e1rm": 39,
         "date": "Sep 5"
+      },
+      {
+        "date": "Sep 12",
+        "ts": 1789236102404,
+        "weight": 25,
+        "reps": 15,
+        "e1rm": 35
       }
     ],
     "Weighted Chin-Up": [
@@ -1146,6 +1153,13 @@
         "weight": 34,
         "e1rm": 48,
         "date": "Sep 5"
+      },
+      {
+        "date": "Sep 12",
+        "ts": 1789236101003,
+        "weight": 31,
+        "reps": 12,
+        "e1rm": 43
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -1418,6 +1432,13 @@
         "date": "Sep 9",
         "e1rm": 111,
         "peak": 110
+      },
+      {
+        "date": "Sep 12",
+        "ts": 1789234866823,
+        "weight": 83,
+        "reps": 10,
+        "e1rm": 111
       }
     ],
     "Lateral Raise": [
@@ -2531,6 +2552,13 @@
         "weight": 79,
         "e1rm": 105,
         "date": "Sep 5"
+      },
+      {
+        "date": "Sep 12",
+        "ts": 1789234864842,
+        "weight": 71,
+        "reps": 10,
+        "e1rm": 95
       }
     ],
     "Hanging Knee Raise": [
@@ -3359,9 +3387,13 @@
     "p2w8_d4": {
       "date": "Sep 11",
       "ts": 1789132032246
+    },
+    "p2w8_d5": {
+      "date": "Sep 12",
+      "ts": 1789237605286
     }
   },
-  "lastSaved": "2026-09-11T14:05:40.357Z",
+  "lastSaved": "2026-09-12T18:27:28.698Z",
   "version": 1,
   "seeded": true
 }
