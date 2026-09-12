@@ -942,6 +942,17 @@ function toggleDone(di){
   ss(sess);buildDayScroll();buildWC();
   if(document.getElementById('sD').classList.contains('active'))buildDash();
   if(justCompleted){
+    // Tell the native iOS wrapper right away, so it can cancel today's
+    // “missed workout” reminder immediately instead of waiting for the app
+    // to be reopened or reloaded — without this, logging a workout and then
+    // just closing the app (the normal flow) left the evening alert scheduled
+    // and it fired anyway, even though the session was already saved.
+    // No-op in Safari / the home-screen PWA, which never register this handler.
+    try{
+      if(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.workoutLogged){
+        window.webkit.messageHandlers.workoutLogged.postMessage(DAYS[di].name);
+      }
+    }catch(e){}
     xpAward('session',50,DAYS[di].name+' complete');
     var wkTag='p2w'+progWeek();
     if(isWeekComplete()&&localStorage.getItem('ie_xp_wkc')!==wkTag){
