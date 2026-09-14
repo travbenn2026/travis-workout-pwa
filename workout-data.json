@@ -460,6 +460,13 @@
         "weight": 40,
         "e1rm": 51,
         "date": "Jul 20"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789384865159,
+        "weight": 42,
+        "reps": 8,
+        "e1rm": 53
       }
     ],
     "Bulgarian Split Squat": [
@@ -518,6 +525,13 @@
         "weight": 38,
         "e1rm": 48,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789385961543,
+        "weight": 42,
+        "reps": 8,
+        "e1rm": 53
       }
     ],
     "Wood Chop": [
@@ -1327,6 +1341,13 @@
         "weight": 38,
         "e1rm": 51,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789384859166,
+        "weight": 43,
+        "reps": 10,
+        "e1rm": 57
       }
     ],
     "Incline DB Curl": [
@@ -1664,6 +1685,13 @@
         "weight": 110,
         "e1rm": 132,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789384455421,
+        "weight": 123,
+        "reps": 6,
+        "e1rm": 148
       }
     ],
     "Back Squat": [
@@ -2120,6 +2148,13 @@
         "weight": 113,
         "e1rm": 158,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789385967261,
+        "weight": 125,
+        "reps": 12,
+        "e1rm": 175
       }
     ],
     "Seated Overhead Press": [
@@ -2215,6 +2250,13 @@
         "weight": 86,
         "e1rm": 120,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789385971344,
+        "weight": 95,
+        "reps": 12,
+        "e1rm": 133
       }
     ],
     "Seated Pallof Press": [
@@ -2432,6 +2474,13 @@
         "weight": 105,
         "e1rm": 133,
         "date": "Sep 7"
+      },
+      {
+        "date": "Sep 14",
+        "ts": 1789384187488,
+        "weight": 118,
+        "reps": 8,
+        "e1rm": 149
       }
     ],
     "Shoulder Shrug": [
@@ -3391,9 +3440,13 @@
     "p2w8_d5": {
       "date": "Sep 12",
       "ts": 1789237605286
+    },
+    "p2w9_d0": {
+      "date": "Sep 14",
+      "ts": 1789388765017
     }
   },
-  "lastSaved": "2026-09-12T18:27:28.698Z",
+  "lastSaved": "2026-09-14T12:26:26.443Z",
   "version": 1,
   "seeded": true
 }
