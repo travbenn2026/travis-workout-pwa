@@ -238,6 +238,13 @@
         "weight": 82,
         "e1rm": 104,
         "date": "Sep 10"
+      },
+      {
+        "date": "Sep 17",
+        "ts": 1789644691095,
+        "weight": 78,
+        "reps": 10,
+        "e1rm": 104
       }
     ],
     "Skull Crusher": [
@@ -664,6 +671,13 @@
         "weight": 260,
         "e1rm": 364,
         "date": "Sep 1"
+      },
+      {
+        "date": "Sep 17",
+        "ts": 1789645183085,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
       }
     ],
     "Front Raise": [
@@ -940,6 +954,13 @@
         "weight": 195,
         "e1rm": 228,
         "date": "Sep 8"
+      },
+      {
+        "date": "Sep 17",
+        "ts": 1789643208266,
+        "weight": 217,
+        "reps": 5,
+        "e1rm": 253
       }
     ],
     "SA Bent Over Row": [
@@ -2213,6 +2234,13 @@
         "weight": 48,
         "e1rm": 58,
         "date": "Sep 8"
+      },
+      {
+        "date": "Sep 17",
+        "ts": 1789643633186,
+        "weight": 53,
+        "reps": 6,
+        "e1rm": 64
       }
     ],
     "Cable Crunch": [
@@ -2608,6 +2636,13 @@
         "weight": 71,
         "reps": 10,
         "e1rm": 95
+      },
+      {
+        "date": "Sep 17",
+        "ts": 1789643971037,
+        "weight": 83,
+        "reps": 8,
+        "e1rm": 105
       }
     ],
     "Hanging Knee Raise": [
@@ -3444,9 +3479,21 @@
     "p2w9_d0": {
       "date": "Sep 14",
       "ts": 1789388765017
+    },
+    "p2w9_d1": {
+      "date": "Sep 17",
+      "ts": 1789645468228,
+      "tonal": {
+        "volume": 14906,
+        "work": 31.8,
+        "cals": 333,
+        "avgHr": 128,
+        "maxHr": 154,
+        "duration": 45
+      }
     }
   },
-  "lastSaved": "2026-09-14T12:26:26.443Z",
+  "lastSaved": "2026-09-17T17:55:00.676Z",
   "version": 1,
   "seeded": true
 }
