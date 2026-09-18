@@ -155,6 +155,13 @@
         "weight": 79,
         "e1rm": 105,
         "date": "Sep 9"
+      },
+      {
+        "date": "Sep 18",
+        "ts": 1789738729227,
+        "weight": 88,
+        "reps": 10,
+        "e1rm": 117
       }
     ],
     "Tricep Extension": [
@@ -1325,6 +1332,13 @@
         "weight": 88,
         "e1rm": 111,
         "date": "Sep 2"
+      },
+      {
+        "date": "Sep 18",
+        "ts": 1789739466305,
+        "weight": 90,
+        "reps": 8,
+        "e1rm": 114
       }
     ],
     "Single-Leg RDL": [
@@ -1481,6 +1495,13 @@
         "weight": 83,
         "reps": 10,
         "e1rm": 111
+      },
+      {
+        "date": "Sep 18",
+        "ts": 1789738389883,
+        "weight": 90,
+        "reps": 8,
+        "e1rm": 114
       }
     ],
     "Lateral Raise": [
@@ -1875,6 +1896,13 @@
         "weight": 82,
         "e1rm": 115,
         "date": "Sep 9"
+      },
+      {
+        "date": "Sep 18",
+        "ts": 1789738755929,
+        "weight": 94,
+        "reps": 15,
+        "e1rm": 132
       }
     ],
     "Incline Curl": [
@@ -2710,6 +2738,13 @@
         "weight": 225,
         "e1rm": 285,
         "date": "Sep 9"
+      },
+      {
+        "date": "Sep 18",
+        "ts": 1789738194485,
+        "weight": 222,
+        "reps": 8,
+        "e1rm": 281
       }
     ],
     "Middle Chest Fly": [
@@ -3491,9 +3526,21 @@
         "maxHr": 154,
         "duration": 45
       }
+    },
+    "p2w9_d2": {
+      "date": "Sep 18",
+      "ts": 1789740459642,
+      "tonal": {
+        "volume": 17230,
+        "work": 33.2,
+        "cals": 349,
+        "avgHr": 123,
+        "maxHr": 160,
+        "duration": 54
+      }
     }
   },
-  "lastSaved": "2026-09-17T17:55:00.676Z",
+  "lastSaved": "2026-09-18T18:06:56.016Z",
   "version": 1,
   "seeded": true
 }
