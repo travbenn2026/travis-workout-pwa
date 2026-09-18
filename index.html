@@ -1437,6 +1437,25 @@ function stopCDTimer(){
   if(cdTimerState){clearInterval(cdTimerState.intervalId);cdTimerState=null;}
   updateCDTimerUI();
 }
+function postCDActivity(){
+  // Bridges the cooldown timer to the iOS wrapper's Live Activity (see
+  // CooldownActivityManager.swift) -- no-op in a plain browser tab, since
+  // window.webkit.messageHandlers.cdActivity only exists inside the wrapper.
+  try{
+    if(!(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.cdActivity))return;
+    if(!cdTimerState||cdTimerState.done){window.webkit.messageHandlers.cdActivity.postMessage({phase:'end'});return;}
+    var st=cdTimerState,s=st.stretches[st.idx];
+    var name=s.name+(s.bilateral?(st.side===0?' \u2014 Left':' \u2014 Right'):'');
+    window.webkit.messageHandlers.cdActivity.postMessage({
+      phase:'update',
+      name:name,
+      stepIndex:st.idx,
+      totalSteps:st.stretches.length,
+      remaining:st.remaining,
+      total:st.total
+    });
+  }catch(e){}
+}
 function updateCDTimerUI(){
   var wrap=document.getElementById('cdTimerWrap');
   if(!wrap)return;
@@ -1446,6 +1465,7 @@ function updateCDTimerUI(){
     el.classList.toggle('cdactive',!!cdTimerState&&!cdTimerState.done&&si===cdTimerState.idx);
   });
   updateCDDemo();
+  postCDActivity();
 }
 
 // ── RENDER HELPERS ───────────────────────────────────────────────────────────
