@@ -65,6 +65,13 @@
         "weight": 45,
         "reps": 15,
         "e1rm": 63
+      },
+      {
+        "date": "Sep 20",
+        "ts": 1789939094473,
+        "weight": 50,
+        "reps": 15,
+        "e1rm": 70
       }
     ],
     "Barbell RDL": [
@@ -252,6 +259,13 @@
         "weight": 78,
         "reps": 10,
         "e1rm": 104
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789833912818,
+        "weight": 86,
+        "reps": 8,
+        "e1rm": 109
       }
     ],
     "Skull Crusher": [
@@ -333,6 +347,13 @@
         "weight": 42,
         "e1rm": 56,
         "date": "Sep 3"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789834050713,
+        "weight": 43,
+        "reps": 10,
+        "e1rm": 57
       }
     ],
     "Resisted Step Up": [
@@ -435,6 +456,20 @@
         "weight": 25,
         "reps": 15,
         "e1rm": 35
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789835039888,
+        "weight": 31,
+        "reps": 12,
+        "e1rm": 43
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789996891370,
+        "weight": 30,
+        "reps": 15,
+        "e1rm": 42
       }
     ],
     "Weighted Chin-Up": [
@@ -562,6 +597,13 @@
         "weight": 55,
         "e1rm": 73,
         "date": "Aug 1"
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789998198650,
+        "weight": 56,
+        "reps": 10,
+        "e1rm": 75
       }
     ],
     "SA Tricep Extension": [
@@ -831,6 +873,13 @@
         "weight": 231,
         "reps": 8,
         "e1rm": 293
+      },
+      {
+        "date": "Sep 20",
+        "ts": 1789939087259,
+        "weight": 250,
+        "reps": 8,
+        "e1rm": 317
       }
     ],
     "Reverse Grip Tricep Extension": [
@@ -875,6 +924,13 @@
         "weight": 33,
         "e1rm": 46,
         "date": "Sep 3"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789834493149,
+        "weight": 36,
+        "reps": 10,
+        "e1rm": 48
       }
     ],
     "Barbell Bench Press (Flat)": [
@@ -1202,6 +1258,13 @@
         "weight": 31,
         "reps": 12,
         "e1rm": 43
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789996877309,
+        "weight": 35,
+        "reps": 12,
+        "e1rm": 49
       }
     ],
     "Reverse Grip Bicep Curl": [
@@ -1295,6 +1358,13 @@
         "weight": 29,
         "e1rm": 41,
         "date": "Sep 3"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789834979774,
+        "weight": 30,
+        "reps": 12,
+        "e1rm": 42
       }
     ],
     "Hammer Curl": [
@@ -1734,6 +1804,13 @@
         "weight": 123,
         "reps": 6,
         "e1rm": 148
+      },
+      {
+        "date": "Sep 20",
+        "ts": 1789940601556,
+        "weight": 111,
+        "reps": 10,
+        "e1rm": 148
       }
     ],
     "Back Squat": [
@@ -1859,6 +1936,13 @@
         "weight": 41,
         "e1rm": 57,
         "date": "Sep 3"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789834587357,
+        "weight": 42,
+        "reps": 15,
+        "e1rm": 59
       }
     ],
     "Face Pull": [
@@ -1961,6 +2045,13 @@
         "weight": 33,
         "e1rm": 42,
         "date": "Sep 10"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789833642462,
+        "weight": 38,
+        "reps": 8,
+        "e1rm": 48
       }
     ],
     "Barbell Glute Bridge": [
@@ -2111,6 +2202,13 @@
         "weight": 116,
         "reps": 6,
         "e1rm": 139
+      },
+      {
+        "date": "Sep 20",
+        "ts": 1789938578122,
+        "weight": 125,
+        "reps": 6,
+        "e1rm": 150
       }
     ],
     "Resisted Calf Raise": [
@@ -2203,6 +2301,13 @@
         "ts": 1789385967261,
         "weight": 125,
         "reps": 12,
+        "e1rm": 175
+      },
+      {
+        "date": "Sep 20",
+        "ts": 1789940611378,
+        "weight": 125,
+        "reps": 15,
         "e1rm": 175
       }
     ],
@@ -2442,6 +2547,15 @@
         "weight": 90,
         "e1rm": 126,
         "date": "Aug 29"
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789996012376,
+        "weight": 86,
+        "reps": 12,
+        "e1rm": 120,
+        "mode": "smartflex",
+        "peak": 108
       }
     ],
     "X Pulldown": [
@@ -2569,6 +2683,15 @@
         "weight": 54,
         "e1rm": 76,
         "date": "Sep 10"
+      },
+      {
+        "date": "Sep 19",
+        "ts": 1789835414357,
+        "weight": 70,
+        "reps": 12,
+        "e1rm": 98,
+        "mode": "smartflex",
+        "peak": 91
       }
     ],
     "Incline Press": [
@@ -2671,6 +2794,13 @@
         "weight": 83,
         "reps": 8,
         "e1rm": 105
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789995026567,
+        "weight": 80,
+        "reps": 10,
+        "e1rm": 107
       }
     ],
     "Hanging Knee Raise": [
@@ -2810,6 +2940,13 @@
         "weight": 46,
         "e1rm": 64,
         "date": "Sep 5"
+      },
+      {
+        "date": "Sep 21",
+        "ts": 1789995610099,
+        "weight": 46,
+        "reps": 12,
+        "e1rm": 64
       }
     ]
   },
@@ -3538,9 +3675,37 @@
         "maxHr": 160,
         "duration": 54
       }
+    },
+    "p2w9_d3": {
+      "date": "Sep 19",
+      "ts": 1789836339718
+    },
+    "p2w9_d4": {
+      "date": "Sep 20",
+      "ts": 1789940989790,
+      "tonal": {
+        "volume": 27456,
+        "work": 33.5,
+        "cals": 375,
+        "avgHr": 134,
+        "maxHr": 157,
+        "duration": 42
+      }
+    },
+    "p2w10_d5": {
+      "date": "Sep 21",
+      "ts": 1789998519553,
+      "tonal": {
+        "volume": 31870,
+        "work": 74.7,
+        "cals": 484,
+        "avgHr": 130,
+        "maxHr": 155,
+        "duration": 70
+      }
     }
   },
-  "lastSaved": "2026-09-18T18:06:56.016Z",
+  "lastSaved": "2026-09-21T13:49:30.454Z",
   "version": 1,
   "seeded": true
 }
