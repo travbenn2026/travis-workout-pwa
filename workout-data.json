@@ -81,6 +81,13 @@
         "weight": 175,
         "e1rm": 233,
         "date": "Jun 15"
+      },
+      {
+        "date": "Sep 22",
+        "ts": 1790075121408,
+        "weight": 204,
+        "reps": 8,
+        "e1rm": 258
       }
     ],
     "Barbell Bent Over Row": [
@@ -266,6 +273,13 @@
         "weight": 86,
         "reps": 8,
         "e1rm": 109
+      },
+      {
+        "date": "Sep 23",
+        "ts": 1790170660304,
+        "weight": 84,
+        "reps": 10,
+        "e1rm": 112
       }
     ],
     "Skull Crusher": [
@@ -581,6 +595,13 @@
         "weight": 42,
         "reps": 8,
         "e1rm": 53
+      },
+      {
+        "date": "Sep 22",
+        "ts": 1790076846772,
+        "weight": 43,
+        "reps": 8,
+        "e1rm": 54
       }
     ],
     "Wood Chop": [
@@ -724,6 +745,13 @@
       {
         "date": "Sep 17",
         "ts": 1789645183085,
+        "weight": 260,
+        "reps": 14,
+        "e1rm": 364
+      },
+      {
+        "date": "Sep 23",
+        "ts": 1790170955008,
         "weight": 260,
         "reps": 14,
         "e1rm": 364
@@ -1024,6 +1052,13 @@
         "weight": 217,
         "reps": 5,
         "e1rm": 253
+      },
+      {
+        "date": "Sep 23",
+        "ts": 1790169197078,
+        "weight": 219,
+        "reps": 5,
+        "e1rm": 256
       }
     ],
     "SA Bent Over Row": [
@@ -2374,6 +2409,13 @@
         "weight": 53,
         "reps": 6,
         "e1rm": 64
+      },
+      {
+        "date": "Sep 23",
+        "ts": 1790169319465,
+        "weight": 53,
+        "reps": 6,
+        "e1rm": 64
       }
     ],
     "Cable Crunch": [
@@ -2801,6 +2843,13 @@
         "weight": 80,
         "reps": 10,
         "e1rm": 107
+      },
+      {
+        "date": "Sep 23",
+        "ts": 1790170065115,
+        "weight": 85,
+        "reps": 8,
+        "e1rm": 108
       }
     ],
     "Hanging Knee Raise": [
@@ -3703,9 +3752,25 @@
         "maxHr": 155,
         "duration": 70
       }
+    },
+    "p2w10_d0": {
+      "date": "Sep 22",
+      "ts": 1790080104196
+    },
+    "p2w10_d1": {
+      "date": "Sep 23",
+      "ts": 1790171236936,
+      "tonal": {
+        "volume": 15467,
+        "work": 33.1,
+        "cals": 350,
+        "avgHr": 121,
+        "maxHr": 151,
+        "duration": 51
+      }
     }
   },
-  "lastSaved": "2026-09-21T13:49:30.454Z",
+  "lastSaved": "2026-09-23T13:48:09.758Z",
   "version": 1,
   "seeded": true
 }
