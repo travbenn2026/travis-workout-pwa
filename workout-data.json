@@ -1444,6 +1444,13 @@
         "weight": 90,
         "reps": 8,
         "e1rm": 114
+      },
+      {
+        "date": "Sep 25",
+        "ts": 1790354378679,
+        "weight": 90,
+        "reps": 8,
+        "e1rm": 114
       }
     ],
     "Single-Leg RDL": [
@@ -1607,6 +1614,13 @@
         "weight": 90,
         "reps": 8,
         "e1rm": 114
+      },
+      {
+        "date": "Sep 25",
+        "ts": 1790352569612,
+        "weight": 91,
+        "reps": 8,
+        "e1rm": 115
       }
     ],
     "Lateral Raise": [
@@ -2019,6 +2033,13 @@
       {
         "date": "Sep 18",
         "ts": 1789738755929,
+        "weight": 94,
+        "reps": 15,
+        "e1rm": 132
+      },
+      {
+        "date": "Sep 25",
+        "ts": 1790353429957,
         "weight": 94,
         "reps": 15,
         "e1rm": 132
@@ -2866,6 +2887,13 @@
         "weight": 230,
         "e1rm": 322,
         "date": "Jul 29"
+      },
+      {
+        "date": "Sep 25",
+        "ts": 1790354843711,
+        "weight": 230,
+        "reps": 15,
+        "e1rm": 322
       }
     ],
     "Weighted Pull-Up": [
@@ -3768,9 +3796,21 @@
         "maxHr": 151,
         "duration": 51
       }
+    },
+    "p2w10_d2": {
+      "date": "Sep 25",
+      "ts": 1790355157365,
+      "tonal": {
+        "volume": 17199,
+        "work": 32.8,
+        "cals": 348,
+        "avgHr": 128,
+        "maxHr": 158,
+        "duration": 52
+      }
     }
   },
-  "lastSaved": "2026-09-23T13:48:09.758Z",
+  "lastSaved": "2026-09-25T16:54:03.001Z",
   "version": 1,
   "seeded": true
 }
