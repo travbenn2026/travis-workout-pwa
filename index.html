@@ -420,7 +420,7 @@ html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;background
 .bwm-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:16px}
 .bwm-row{margin-bottom:16px}
 .bwm-in{width:100%;background:#0a0a0a;border:1px solid #2e2e2e;border-radius:10px;color:#fff;font-size:32px;font-weight:800;text-align:center;padding:14px 8px;box-sizing:border-box}
-.bwm-btns{display:flex;gap:10px}.md-top{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#151515,#0b0b0b);border:1px solid #242424;border-left:3px solid var(--meds);border-radius:14px;padding:16px;margin-bottom:12px;}.md-vial-visual{width:52px;height:72px;border:2px solid #333;border-radius:8px 8px 4px 4px;position:relative;overflow:hidden;flex-shrink:0;background:#0a0a0a;}.md-vial-fill{position:absolute;bottom:0;left:0;right:0;background:var(--meds);transition:height .4s;}.md-vial-units{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7);}.md-info{flex:1;min-width:0;}.md-headline{font-size:15px;font-weight:700;color:#eee;margin-bottom:4px;}.md-sub{font-size:12px;color:var(--muted);}.md-warn{color:#e0a030;}.md-crit{color:#e0483a;}.md-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;}.md-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #181818;}.md-row:last-child{border-bottom:none;}.md-label{font-size:12.5px;color:var(--muted);}.md-value{font-size:13.5px;font-weight:700;color:#eee;}.md-btn{width:100%;background:var(--meds);border:none;color:#0a0a0a;font-size:14px;font-weight:800;padding:13px;border-radius:10px;cursor:pointer;margin-top:4px;}.md-btn:active{opacity:.85;}.md-btn-secondary{width:100%;background:var(--card);border:1px solid var(--border);color:#ccc;font-size:13px;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;margin-top:8px;}.md-hist-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid #181818;font-size:12.5px;}.md-hist-row:last-child{border-bottom:none;}.md-hist-date{color:#ccc;}.md-hist-detail{color:var(--muted);text-align:right;}.md-empty{padding:16px 14px;font-size:12.5px;color:#444;text-align:center;}
+.bwm-btns{display:flex;gap:10px}.md-top{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#151515,#0b0b0b);border:1px solid #242424;border-left:3px solid var(--meds);border-radius:14px;padding:16px;margin-bottom:12px;}.md-vial-visual{width:52px;height:72px;border:2px solid #333;border-radius:8px 8px 4px 4px;position:relative;overflow:hidden;flex-shrink:0;background:#0a0a0a;}.md-vial-fill{position:absolute;bottom:0;left:0;right:0;background:var(--meds);transition:height .4s;}.md-vial-units{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7);}.md-info{flex:1;min-width:0;}.md-headline{font-size:15px;font-weight:700;color:#eee;margin-bottom:4px;}.md-sub{font-size:12px;color:var(--muted);}.md-warn{color:#e0a030;}.md-crit{color:#e0483a;}.md-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;}.md-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #181818;}.md-row:last-child{border-bottom:none;}.md-label{font-size:12.5px;color:var(--muted);}.md-value{font-size:13.5px;font-weight:700;color:#eee;}.md-btn{width:100%;background:var(--meds);border:none;color:#0a0a0a;font-size:14px;font-weight:800;padding:13px;border-radius:10px;cursor:pointer;margin-top:4px;}.md-btn:active{opacity:.85;}.md-btn-secondary{width:100%;background:var(--card);border:1px solid var(--border);color:#ccc;font-size:13px;font-weight:700;padding:11px;border-radius:10px;cursor:pointer;margin-top:8px;}.md-hist-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid #181818;font-size:12.5px;}.md-hist-row:last-child{border-bottom:none;}.md-hist-date{color:#ccc;}.md-hist-detail{color:var(--muted);text-align:right;}.md-empty{padding:16px 14px;font-size:12.5px;color:#444;text-align:center;}.md-site-btn{background:var(--card);border:1px solid var(--border);color:#999;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;cursor:pointer;}.md-site-btn.active{background:var(--meds);color:#0a0a0a;border-color:var(--meds);}
 .rec-ava-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#080e0e;border:1px solid #1a2a2a;border-left:3px solid #4a9999;border-radius:12px;margin-bottom:10px}
 .rec-ava-vid{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto}
 .avp-carousel{position:relative;width:100%;overflow:hidden;border-radius:14px 14px 0 0}
@@ -2321,12 +2321,29 @@ function closeBwmOv(){var ov=document.querySelector('.bwm-ov');if(ov&&ov.parentN
 // Inventory is never persisted directly -- it's always replayed from the vials-
 // received log and the dose log, so there's no separate "current state" that
 // can drift out of sync with the history (undo/edit just works).
-var MDK_LOG='ie_meds_log',MDK_RECV='ie_meds_recv';
+var MDK_LOG='ie_meds_log',MDK_RECV='ie_meds_recv',MDK_SITE_SEED='ie_meds_site_seed',MDK_SITE_OVERRIDE='ie_meds_site_override';
 function mdConf(){return{unitsPerDose:60,vialCap:100,doseDays:[0,4]};} // Sun=0, Thu=4 (Date.getDay()); U-100 syringe units
 function mdLog(){try{return JSON.parse(localStorage.getItem(MDK_LOG))||[];}catch(e){return[];}}
 function mdSaveLog(a){localStorage.setItem(MDK_LOG,JSON.stringify(a));}
 function mdRecv(){try{return JSON.parse(localStorage.getItem(MDK_RECV))||[];}catch(e){return[];}}
 function mdSaveRecv(a){localStorage.setItem(MDK_RECV,JSON.stringify(a));}
+
+
+function mdLastLoggedSite(){
+  var log=mdLog();
+  for(var i=log.length-1;i>=0;i--){if(log[i].site)return log[i].site;}
+  var seed=localStorage.getItem(MDK_SITE_SEED);
+  return(seed==='L'||seed==='R')?seed:null;
+}
+function mdOppositeSite(s){return s==='L'?'R':(s==='R'?'L':null);}
+function mdSuggestedSite(){
+  var override=localStorage.getItem(MDK_SITE_OVERRIDE);
+  if(override==='L'||override==='R')return override;
+  return mdOppositeSite(mdLastLoggedSite())||'L';
+}
+function mdSetSiteOverride(s){localStorage.setItem(MDK_SITE_OVERRIDE,s);buildMeds();}
+function mdSetSiteSeed(s){localStorage.setItem(MDK_SITE_SEED,s);buildMeds();showToast('Got it — suggesting '+mdSiteLabel(mdOppositeSite(s))+' next');}
+function mdSiteLabel(s){return s==='L'?'Left':(s==='R'?'Right':'—');}
 
 function mdSimDoseAgainst(sealed,open,conf){
   conf=conf||mdConf();
@@ -2363,10 +2380,12 @@ function mdAddVials(n){
 function mdLogDose(){
   var preview=mdPreviewDose();
   if(!preview.ok){showToast('⚠️ Not enough supply on hand — add vials first');return;}
+  var site=mdSuggestedSite();
   var log=mdLog();
-  log.push({ts:Date.now(),steps:preview.steps});
+  log.push({ts:Date.now(),steps:preview.steps,site:site});
   mdSaveLog(log);
-  buildMeds();showToast('✓ Dose logged');
+  localStorage.removeItem(MDK_SITE_OVERRIDE);
+  buildMeds();showToast('✓ Dose logged · '+mdSiteLabel(site)+' side');
 }
 
 function mdUndoLastDose(){
@@ -2442,18 +2461,19 @@ function mdPostScheduleToNative(){
   try{
     if(!(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.mdSchedule))return;
     var conf=mdConf(),inv=mdCurrentInv(),d=new Date();d.setHours(0,0,0,0);
-    var sealed=inv.sealed,open=inv.open,doses=[];
+    var sealed=inv.sealed,open=inv.open,doses=[],site=mdSuggestedSite();
     for(var i=0;i<90&&doses.length<8;i++){
       if(conf.doseDays.indexOf(d.getDay())!==-1){
         var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
         var sim=mdSimDoseAgainst(sealed,open,conf);
         if(sim.ok){
-          doses.push({dateKey:key,text:mdStepsSentence(sim.steps)});
+          doses.push({dateKey:key,text:mdStepsSentence(sim.steps)+' '+mdSiteLabel(site)+' side.'});
           sealed=sim.sealed;open=sim.open;
         }else{
           doses.push({dateKey:key,text:'Low supply — add vials before this dose.'});
           break;
         }
+        site=mdOppositeSite(site);
       }
       d.setDate(d.getDate()+1);
     }
@@ -2477,8 +2497,15 @@ function buildMeds(){
     '<div class="md-sub '+statusCls+'">'+runOut.doseCount+' dose'+(runOut.doseCount===1?'':'s')+' left · lasts through '+runOutLbl+'</div>'+
     '</div></div>';
 
+  var nextSite=mdSuggestedSite();
+  var siteRow='<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">'+
+    '<span class="md-label">SITE</span>'+
+    '<button class="md-site-btn'+(nextSite==='L'?' active':'')+'" onclick="mdSetSiteOverride(\'L\')">Left</button>'+
+    '<button class="md-site-btn'+(nextSite==='R'?' active':'')+'" onclick="mdSetSiteOverride(\'R\')">Right</button>'+
+    '</div>';
   var nextCard=preview.ok?
     ('<div class="md-card"><div class="md-label" style="margin-bottom:8px">NEXT DOSE · '+nextLbl+'</div>'+
+    siteRow+
     '<div class="md-value" style="font-size:15px;margin-bottom:10px;font-weight:600">'+mdStepsSentence(preview.steps)+'</div>'+
     '<button class="md-btn" onclick="mdLogDose()">✓ Log This Dose</button></div>'):
     ('<div class="md-card"><div class="md-label" style="margin-bottom:8px;color:#e0483a">⚠ NOT ENOUGH SUPPLY</div>'+
@@ -2494,13 +2521,23 @@ function buildMeds(){
   var fullLog=mdLog(),recent=fullLog.slice().reverse().slice(0,10);
   var histRows=recent.length?recent.map(function(e){
     var dt=new Date(e.ts).toLocaleDateString('en-US',{month:'short',day:'numeric'});
-    return'<div class="md-hist-row"><span class="md-hist-date">'+dt+'</span><span class="md-hist-detail">'+mdStepsText(e.steps)+'</span></div>';
+    var siteTag=e.site?(' · '+mdSiteLabel(e.site)):'';
+    return'<div class="md-hist-row"><span class="md-hist-date">'+dt+'</span><span class="md-hist-detail">'+mdStepsText(e.steps)+siteTag+'</span></div>';
   }).join(''):'<div class="md-empty">No doses logged yet.</div>';
   var histCard='<div class="md-card" style="padding:0"><div class="md-label" style="padding:12px 14px 0">RECENT DOSES</div>'+histRows+
     (fullLog.length?('<div style="padding:8px 14px 12px"><button class="md-btn-secondary" style="margin-top:0" onclick="mdUndoLastDose()">↩ Undo Last Dose</button></div>'):'')+
     '</div>';
 
-  document.getElementById('medsScroll').innerHTML=topCard+nextCard+invCard+histCard;
+  var calibCard='';
+  if(!mdLog().length&&!localStorage.getItem(MDK_SITE_SEED)){
+    calibCard='<div class="md-card"><div class="md-label" style="margin-bottom:8px">ROTATION SETUP</div>'+
+      '<div class="md-sub" style="margin-bottom:10px">Which side was your most recent injection? I\'ll suggest the opposite side next time.</div>'+
+      '<div style="display:flex;gap:8px">'+
+      '<button class="md-btn-secondary" style="margin-top:0;flex:1" onclick="mdSetSiteSeed(\'L\')">Left</button>'+
+      '<button class="md-btn-secondary" style="margin-top:0;flex:1" onclick="mdSetSiteSeed(\'R\')">Right</button>'+
+      '</div></div>';
+  }
+  document.getElementById('medsScroll').innerHTML=calibCard+topCard+nextCard+invCard+histCard;
   mdPostScheduleToNative();
 }
 
