@@ -280,6 +280,20 @@
         "weight": 84,
         "reps": 10,
         "e1rm": 112
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790541609499,
+        "weight": 89,
+        "reps": 8,
+        "e1rm": 113
+      },
+      {
+        "date": "Oct 1",
+        "ts": 1790861997709,
+        "weight": 87,
+        "reps": 10,
+        "e1rm": 116
       }
     ],
     "Skull Crusher": [
@@ -365,6 +379,13 @@
       {
         "date": "Sep 19",
         "ts": 1789834050713,
+        "weight": 43,
+        "reps": 10,
+        "e1rm": 57
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790542382505,
         "weight": 43,
         "reps": 10,
         "e1rm": 57
@@ -484,6 +505,13 @@
         "weight": 30,
         "reps": 15,
         "e1rm": 42
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790543641378,
+        "weight": 33,
+        "reps": 12,
+        "e1rm": 46
       }
     ],
     "Weighted Chin-Up": [
@@ -755,6 +783,13 @@
         "weight": 260,
         "reps": 14,
         "e1rm": 364
+      },
+      {
+        "date": "Oct 1",
+        "ts": 1790861991795,
+        "weight": 260,
+        "reps": 15,
+        "e1rm": 364
       }
     ],
     "Front Raise": [
@@ -959,6 +994,13 @@
         "weight": 36,
         "reps": 10,
         "e1rm": 48
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790542225897,
+        "weight": 37,
+        "reps": 10,
+        "e1rm": 49
       }
     ],
     "Barbell Bench Press (Flat)": [
@@ -1059,6 +1101,13 @@
         "weight": 219,
         "reps": 5,
         "e1rm": 256
+      },
+      {
+        "date": "Oct 1",
+        "ts": 1790859883392,
+        "weight": 224,
+        "reps": 5,
+        "e1rm": 261
       }
     ],
     "SA Bent Over Row": [
@@ -1400,6 +1449,13 @@
         "weight": 30,
         "reps": 12,
         "e1rm": 42
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790543564099,
+        "weight": 31,
+        "reps": 12,
+        "e1rm": 43
       }
     ],
     "Hammer Curl": [
@@ -1883,6 +1939,13 @@
         "weight": 185,
         "e1rm": 216,
         "date": "Jul 16"
+      },
+      {
+        "date": "Oct 5",
+        "ts": 1791204345344,
+        "weight": 162,
+        "reps": 8,
+        "e1rm": 205
       }
     ],
     "Barbell OHP": [
@@ -1989,6 +2052,13 @@
       {
         "date": "Sep 19",
         "ts": 1789834587357,
+        "weight": 42,
+        "reps": 15,
+        "e1rm": 59
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790542367202,
         "weight": 42,
         "reps": 15,
         "e1rm": 59
@@ -2108,6 +2178,13 @@
         "weight": 38,
         "reps": 8,
         "e1rm": 48
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790541542632,
+        "weight": 39,
+        "reps": 8,
+        "e1rm": 49
       }
     ],
     "Barbell Glute Bridge": [
@@ -2365,6 +2442,13 @@
         "weight": 125,
         "reps": 15,
         "e1rm": 175
+      },
+      {
+        "date": "Oct 5",
+        "ts": 1791206484452,
+        "weight": 113,
+        "reps": 12,
+        "e1rm": 158
       }
     ],
     "Seated Overhead Press": [
@@ -2437,6 +2521,13 @@
         "weight": 53,
         "reps": 6,
         "e1rm": 64
+      },
+      {
+        "date": "Oct 1",
+        "ts": 1790860353267,
+        "weight": 54,
+        "reps": 6,
+        "e1rm": 65
       }
     ],
     "Cable Crunch": [
@@ -2481,6 +2572,13 @@
         "weight": 95,
         "reps": 12,
         "e1rm": 133
+      },
+      {
+        "date": "Oct 5",
+        "ts": 1791206485936,
+        "weight": 86,
+        "reps": 12,
+        "e1rm": 120
       }
     ],
     "Seated Pallof Press": [
@@ -2755,6 +2853,13 @@
         "e1rm": 98,
         "mode": "smartflex",
         "peak": 91
+      },
+      {
+        "date": "Sep 27",
+        "ts": 1790543671011,
+        "weight": 76,
+        "reps": 12,
+        "e1rm": 106
       }
     ],
     "Incline Press": [
@@ -2868,6 +2973,13 @@
       {
         "date": "Sep 23",
         "ts": 1790170065115,
+        "weight": 85,
+        "reps": 8,
+        "e1rm": 108
+      },
+      {
+        "date": "Oct 1",
+        "ts": 1790860543487,
         "weight": 85,
         "reps": 8,
         "e1rm": 108
@@ -3808,9 +3920,45 @@
         "maxHr": 158,
         "duration": 52
       }
+    },
+    "p2w10_d3": {
+      "date": "Sep 27",
+      "ts": 1790544341323,
+      "tonal": {
+        "volume": 19801,
+        "work": 56.4,
+        "cals": 359,
+        "avgHr": 115,
+        "maxHr": 151,
+        "duration": 57
+      }
+    },
+    "p2w11_d1": {
+      "date": "Oct 1",
+      "ts": 1790862285660,
+      "tonal": {
+        "volume": 15917,
+        "work": 33.9,
+        "cals": 367,
+        "avgHr": 123,
+        "maxHr": 160,
+        "duration": 54
+      }
+    },
+    "p2w12_d0": {
+      "date": "Oct 5",
+      "ts": 1791206900291,
+      "tonal": {
+        "volume": 25992,
+        "work": 46.7,
+        "cals": 378,
+        "avgHr": 1,
+        "maxHr": 146,
+        "duration": 49
+      }
     }
   },
-  "lastSaved": "2026-09-25T16:54:03.001Z",
+  "lastSaved": "2026-10-05T17:24:15.653Z",
   "version": 1,
   "seeded": true
 }
