@@ -1108,6 +1108,13 @@
         "weight": 224,
         "reps": 5,
         "e1rm": 261
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286102850,
+        "weight": 201,
+        "reps": 5,
+        "e1rm": 235
       }
     ],
     "SA Bent Over Row": [
@@ -2254,6 +2261,13 @@
         "weight": 76,
         "e1rm": 101,
         "date": "Sep 8"
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286814266,
+        "weight": 76,
+        "reps": 10,
+        "e1rm": 101
       }
     ],
     "Standing Incline Chest Press": [
@@ -2528,6 +2542,13 @@
         "weight": 54,
         "reps": 6,
         "e1rm": 65
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286165760,
+        "weight": 49,
+        "reps": 6,
+        "e1rm": 59
       }
     ],
     "Cable Crunch": [
@@ -3956,9 +3977,13 @@
         "maxHr": 146,
         "duration": 49
       }
+    },
+    "p2w12_d1": {
+      "date": "Oct 6",
+      "ts": 1791287318655
     }
   },
-  "lastSaved": "2026-10-05T17:24:17.894Z",
+  "lastSaved": "2026-10-07T23:12:36.889Z",
   "version": 1,
   "seeded": true
 }
