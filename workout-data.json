@@ -176,6 +176,13 @@
         "weight": 88,
         "reps": 10,
         "e1rm": 117
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464416201,
+        "weight": 79,
+        "reps": 10,
+        "e1rm": 105
       }
     ],
     "Tricep Extension": [
@@ -1514,6 +1521,13 @@
         "weight": 90,
         "reps": 8,
         "e1rm": 114
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791465373211,
+        "weight": 81,
+        "reps": 8,
+        "e1rm": 103
       }
     ],
     "Single-Leg RDL": [
@@ -1684,6 +1698,13 @@
         "weight": 91,
         "reps": 8,
         "e1rm": 115
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464411568,
+        "weight": 82,
+        "reps": 8,
+        "e1rm": 104
       }
     ],
     "Lateral Raise": [
@@ -3085,6 +3106,13 @@
         "weight": 222,
         "reps": 8,
         "e1rm": 281
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464405961,
+        "weight": 218,
+        "reps": 8,
+        "e1rm": 276
       }
     ],
     "Middle Chest Fly": [
@@ -3981,9 +4009,13 @@
     "p2w12_d1": {
       "date": "Oct 6",
       "ts": 1791287318655
+    },
+    "p2w12_d2": {
+      "date": "Oct 8",
+      "ts": 1791466569853
     }
   },
-  "lastSaved": "2026-10-07T23:12:36.889Z",
+  "lastSaved": "2026-10-08T23:07:58.770Z",
   "version": 1,
   "seeded": true
 }
