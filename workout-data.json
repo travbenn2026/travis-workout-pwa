@@ -301,6 +301,13 @@
         "weight": 87,
         "reps": 10,
         "e1rm": 116
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791549623066,
+        "weight": 82,
+        "reps": 8,
+        "e1rm": 104
       }
     ],
     "Skull Crusher": [
@@ -396,6 +403,13 @@
         "weight": 43,
         "reps": 10,
         "e1rm": 57
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550511020,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Resisted Step Up": [
@@ -519,6 +533,13 @@
         "weight": 33,
         "reps": 12,
         "e1rm": 46
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550669730,
+        "weight": 30,
+        "reps": 12,
+        "e1rm": 42
       }
     ],
     "Weighted Chin-Up": [
@@ -1470,6 +1491,13 @@
         "weight": 31,
         "reps": 12,
         "e1rm": 43
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550667674,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
       }
     ],
     "Hammer Curl": [
@@ -2090,6 +2118,13 @@
         "weight": 42,
         "reps": 15,
         "e1rm": 59
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550513986,
+        "weight": 38,
+        "reps": 15,
+        "e1rm": 53
       }
     ],
     "Face Pull": [
@@ -2213,6 +2248,13 @@
         "weight": 39,
         "reps": 8,
         "e1rm": 49
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791549621430,
+        "weight": 35,
+        "reps": 8,
+        "e1rm": 44
       }
     ],
     "Barbell Glute Bridge": [
@@ -2902,6 +2944,13 @@
         "weight": 76,
         "reps": 12,
         "e1rm": 106
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550672060,
+        "weight": 72,
+        "reps": 10,
+        "e1rm": 96
       }
     ],
     "Incline Press": [
@@ -4013,9 +4062,13 @@
     "p2w12_d2": {
       "date": "Oct 8",
       "ts": 1791466569853
+    },
+    "p2w12_d3": {
+      "date": "Oct 9",
+      "ts": 1791551275687
     }
   },
-  "lastSaved": "2026-10-08T23:07:58.770Z",
+  "lastSaved": "2026-10-09T13:08:37.723Z",
   "version": 1,
   "seeded": true
 }
