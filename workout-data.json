@@ -176,6 +176,13 @@
         "weight": 88,
         "reps": 10,
         "e1rm": 117
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464416201,
+        "weight": 79,
+        "reps": 10,
+        "e1rm": 105
       }
     ],
     "Tricep Extension": [
@@ -294,6 +301,13 @@
         "weight": 87,
         "reps": 10,
         "e1rm": 116
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791549623066,
+        "weight": 82,
+        "reps": 8,
+        "e1rm": 104
       }
     ],
     "Skull Crusher": [
@@ -389,6 +403,13 @@
         "weight": 43,
         "reps": 10,
         "e1rm": 57
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550511020,
+        "weight": 38,
+        "reps": 10,
+        "e1rm": 51
       }
     ],
     "Resisted Step Up": [
@@ -512,6 +533,13 @@
         "weight": 33,
         "reps": 12,
         "e1rm": 46
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550669730,
+        "weight": 30,
+        "reps": 12,
+        "e1rm": 42
       }
     ],
     "Weighted Chin-Up": [
@@ -1108,6 +1136,13 @@
         "weight": 224,
         "reps": 5,
         "e1rm": 261
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286102850,
+        "weight": 201,
+        "reps": 5,
+        "e1rm": 235
       }
     ],
     "SA Bent Over Row": [
@@ -1456,6 +1491,13 @@
         "weight": 31,
         "reps": 12,
         "e1rm": 43
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550667674,
+        "weight": 28,
+        "reps": 12,
+        "e1rm": 39
       }
     ],
     "Hammer Curl": [
@@ -1507,6 +1549,13 @@
         "weight": 90,
         "reps": 8,
         "e1rm": 114
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791465373211,
+        "weight": 81,
+        "reps": 8,
+        "e1rm": 103
       }
     ],
     "Single-Leg RDL": [
@@ -1677,6 +1726,13 @@
         "weight": 91,
         "reps": 8,
         "e1rm": 115
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464411568,
+        "weight": 82,
+        "reps": 8,
+        "e1rm": 104
       }
     ],
     "Lateral Raise": [
@@ -2062,6 +2118,13 @@
         "weight": 42,
         "reps": 15,
         "e1rm": 59
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550513986,
+        "weight": 38,
+        "reps": 15,
+        "e1rm": 53
       }
     ],
     "Face Pull": [
@@ -2185,6 +2248,13 @@
         "weight": 39,
         "reps": 8,
         "e1rm": 49
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791549621430,
+        "weight": 35,
+        "reps": 8,
+        "e1rm": 44
       }
     ],
     "Barbell Glute Bridge": [
@@ -2254,6 +2324,13 @@
         "weight": 76,
         "e1rm": 101,
         "date": "Sep 8"
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286814266,
+        "weight": 76,
+        "reps": 10,
+        "e1rm": 101
       }
     ],
     "Standing Incline Chest Press": [
@@ -2528,6 +2605,13 @@
         "weight": 54,
         "reps": 6,
         "e1rm": 65
+      },
+      {
+        "date": "Oct 6",
+        "ts": 1791286165760,
+        "weight": 49,
+        "reps": 6,
+        "e1rm": 59
       }
     ],
     "Cable Crunch": [
@@ -2860,6 +2944,13 @@
         "weight": 76,
         "reps": 12,
         "e1rm": 106
+      },
+      {
+        "date": "Oct 9",
+        "ts": 1791550672060,
+        "weight": 72,
+        "reps": 10,
+        "e1rm": 96
       }
     ],
     "Incline Press": [
@@ -3064,6 +3155,13 @@
         "weight": 222,
         "reps": 8,
         "e1rm": 281
+      },
+      {
+        "date": "Oct 8",
+        "ts": 1791464405961,
+        "weight": 218,
+        "reps": 8,
+        "e1rm": 276
       }
     ],
     "Middle Chest Fly": [
@@ -3956,9 +4054,25 @@
         "maxHr": 146,
         "duration": 49
       }
+    },
+    "p2w12_d1": {
+      "date": "Oct 6",
+      "ts": 1791287318655
+    },
+    "p2w12_d2": {
+      "date": "Oct 8",
+      "ts": 1791466569853
+    },
+    "p2w12_d3": {
+      "date": "Oct 9",
+      "ts": 1791551275687
+    },
+    "p2w12_d4": {
+      "date": "Oct 10",
+      "ts": 1791643429620
     }
   },
-  "lastSaved": "2026-10-05T17:24:17.894Z",
+  "lastSaved": "2026-10-10T14:44:22.121Z",
   "version": 1,
   "seeded": true
 }
